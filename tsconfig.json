@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "rootDir": "./",
+    "baseUrl": "./",
+    "paths": {
+      "*": ["/*", "dist/*"]
+    }
+  },
+  "include": ["**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts", "dist/**/*"]
+}

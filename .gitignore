@@ -3,3 +3,5 @@ node_modules/
 dist/
 config.json
 npm-debug.log
+db.json
+.~db.json
