@@ -36,7 +36,7 @@ interface ResourcePrices {
   [id:string]: MarketItem;
 }
 
-const regex = /^([a-zA-Z0-9 ]+) {0,1}-{0,1} {0,1}([0-5]\/{0,1}[0-5]{0,1}\/{0,1}[0-5]{0,1}){0,1}/;
+const regex = /((?:mk\s?\d)?[a-zA-Z ]+[a-zA-Z](?: [0-9]+(?!\/))?)(?:(?:\s+|\s*-\s*)(\d+(?:\/\d+)*))?/;
 
 export default class BlueprintCommand extends Command {
 
