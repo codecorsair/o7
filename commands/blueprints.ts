@@ -30,7 +30,7 @@ const fuseOptions = {
   ]
 }
 
-const regex = /^(.+) ([0-5]\/{0,1}[0-5]{0,1}\/{0,1}[0-5]{0,1}){0,1}/;
+const regex = /^([a-zA-Z0-9 ]+) {0,1}-{0,1} {0,1}([0-5]\/{0,1}[0-5]{0,1}\/{0,1}[0-5]{0,1}){0,1}/;
 
 export default class BlueprintCommand extends Command {
 
@@ -68,8 +68,7 @@ export default class BlueprintCommand extends Command {
   exec(message: Message, args: any) {
     
     const parsedArgs = args.value.match(regex);
-    
-    const name = parsedArgs[1];
+    const name = parsedArgs[1].trim();
     
     const results = this.fuse.search(name);
     if (results.length == 0) {

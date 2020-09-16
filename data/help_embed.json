@@ -6,7 +6,7 @@
   "fields": [
     {
       "name": "Blueprints",
-      "value": "Get information about what it will take to manufacture items.\n\n**bp** _<name>_  _(<#/#/#>: optional skill levels basic / advanced / expert)_"
+      "value": "Get information about what it will take to manufacture items.\n\n**bp** _<name>_ - _(<#/#/#>: optional skill levels basic / advanced / expert)_"
     },
     {
       "name": "Market Prices",
