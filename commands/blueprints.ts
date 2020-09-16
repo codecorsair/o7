@@ -6,6 +6,8 @@ import moment from 'moment';
 import { startCase } from 'lodash';
 
 import blueprints from '../data/blueprints.json';
+import { getMarketData } from '../lib/market-api';
+import { MarketItem } from '../lib/market-api';
 
 const fuseOptions = {
   isCaseSensitive: false,
@@ -30,11 +32,16 @@ const fuseOptions = {
   ]
 }
 
+interface ResourcePrices {
+  [id:string]: MarketItem;
+}
+
 const regex = /^([a-zA-Z0-9 ]+) {0,1}-{0,1} {0,1}([0-5]\/{0,1}[0-5]{0,1}\/{0,1}[0-5]{0,1}){0,1}/;
 
 export default class BlueprintCommand extends Command {
 
   private fuse: Fuse<any>;
+  private resourcePrices: ResourcePrices = {};
 
   constructor() {
     super('blueprint', {
@@ -62,10 +69,17 @@ export default class BlueprintCommand extends Command {
         keywords,
       };
     });
+
     this.fuse = new Fuse(bps, fuseOptions);
+    getResourcePrices().then(prices => this.resourcePrices = prices);
+    setTimeout(async () => {
+      this.resourcePrices = await getResourcePrices();
+    }, 5 * 60 * 1000);
   }
 
-  exec(message: Message, args: any) {
+
+
+  async exec(message: Message, args: any) {
     
     const parsedArgs = args.value.match(regex);
     const name = parsedArgs[1].trim();
@@ -77,6 +91,7 @@ export default class BlueprintCommand extends Command {
     
     const skillLevels = parsedArgs[2] && parsedArgs[2].split('/').map((s: string) => parseInt(s)) || [];
     const mod = skillModifier(skillLevels);
+    let total = { cost: 0 };
 
     const bp = results[0].item;
     let embed = new MessageEmbed()
@@ -84,20 +99,36 @@ export default class BlueprintCommand extends Command {
       .setTitle(bp.name)
       .setDescription(`Type **${bp.type}**\nTech Level **${bp.techLevel}**`);
     if (hasAny(bp, mineralKeys)) {
-      embed = embed.addField('Minerals', printKeys(bp, mineralKeys, mod.material));
+      embed = embed.addField('Minerals', printKeys(bp, mineralKeys, mod.material, this.resourcePrices, total));
     }
 
     if (hasAny(bp, piKeys)) {
-      embed = embed.addField('Planetary Resources', printKeys(bp, piKeys, mod.material));
+      embed = embed.addField('Planetary Resources', printKeys(bp, piKeys, mod.material, this.resourcePrices, total));
     }
 
     if (hasAny(bp, salvageKeys)) {
-      embed = embed.addField('Salvage', printKeys(bp, salvageKeys, mod.material));
+      embed = embed.addField('Salvage', printKeys(bp, salvageKeys, mod.material, this.resourcePrices, total));
     }
 
     embed = embed.addField('Production', printProduction(bp, mod.time));
+
+    total.cost += bp.productionCost;
+
+    const itemPrice = await getMarketData(bp.name);
+    if (itemPrice) {
+      embed = embed.addField('Cost', printCosts(itemPrice, total));
+    }
     return message.reply(embed);
   }
+}
+
+function printCosts(itemPrice: MarketItem, total: { cost: number }) {
+  let result = '```\n'
+  let latestPrice = itemPrice.prices[0];
+  result += alignText('Cost to build', `${numeral(total.cost).format('0[.]0a')} ISK\n`);
+  result += alignText('Market sell', `low ${numeral(latestPrice.lowest_sell).format('0[.]0a')} ISK | median ${numeral(latestPrice.median_sell).format('0[.]0a')} ISK\n`);
+  result += alignText('Profit margin', `low ${numeral(latestPrice.lowest_sell - total.cost).format('0[.]0a')} ISK | median ${numeral(latestPrice.median_sell - total.cost).format('0[.]0a')} ISK\n`);
+  return result + '```';
 }
 
 function hasAny(bp: any, keys: string[]) {
@@ -107,9 +138,23 @@ function hasAny(bp: any, keys: string[]) {
   return false;
 }
 
-function printKeys(bp: any, keys: string[], valueModifier: number) {
+function printKeys(bp: any, keys: string[], valueModifier: number, prices: ResourcePrices, total: { cost: number; }) {
   let result = '```\n';
-  keys.forEach(key => bp[key] && (result += alignText(startCase(key), Math.ceil(bp[key] * valueModifier))))
+  keys.forEach(key => {
+    if (!bp[key]) return;
+    const marketItem = prices[key];
+
+    const quantity = Math.ceil(bp[key] * valueModifier);
+    result += alignText(startCase(key), quantity);
+    if (!marketItem) {
+      result += '\n';
+      return;
+    }
+    const price = marketItem.prices[0];
+    const cost = price.median_buy * quantity;
+    total.cost += cost;
+    result += ` [${numeral(price.median_buy).format('0[.]0a')} ISK > ${numeral(cost).format('0[.]0a')} ISK]\n`
+  });
   return result + '```';
 }
 
@@ -170,9 +215,9 @@ const salvageKeys = [
 
 function printProduction(bp: any, timeMod: number) {
   let result = '```\n';
-  result += numeral(bp.productionCost).format('0[.]0a') + ' ISK\n';
-  result +=  printDuration(moment.duration(Math.ceil(bp.productionTime * 1000 * timeMod))) + '\n';
-  result += `Runs ${bp.productionCount}\n`
+  result += alignText('Manufacturing cost', numeral(bp.productionCost).format('0[.]0a') + ' ISK\n');
+  result += alignText('Manufacturing time ', printDuration(moment.duration(Math.ceil(bp.productionTime * 1000 * timeMod))) + '\n');
+  result += alignText('Runs available',  `${bp.productionCount}\n`);
   return result + '```';
 }
 
@@ -186,7 +231,7 @@ function printDuration(duration: any) {
 const column = 25;
 function alignText(key: string, value: any) {
   const stringValue = value + '';
-  return capitalize(key) + stringValue.padStart(column - key.length + stringValue.length, ' ') + '\n';
+  return capitalize(key) + stringValue.padStart(column - key.length + stringValue.length, ' ');
 }
 
 function capitalize(str: string) {
@@ -215,4 +260,28 @@ function skillModifier(skillLevels: [number?,number?,number?]) {
       - (advLvl > 0 && timeModPerLvl[advLvl - 1] || 0)
       - (expLvl> 0 && timeModPerLvl[expLvl- 1] || 0),
   };
+}
+
+async function getResourcePrices() {
+  let data: ResourcePrices = {};
+
+  for (const mineral of mineralKeys) {
+    const item = await getMarketData(mineral);
+    if (!item) continue;
+    data[mineral] = item;
+  }
+
+  for (const pi of piKeys) {
+    const item = await getMarketData(pi);
+    if (!item) continue;
+    data[pi] = item;
+  }
+
+  for (const salvage of salvageKeys) {
+    const item = await getMarketData(salvage);
+    if (!item) continue;
+    data[salvage] = item;
+  }
+
+  return data;
 }

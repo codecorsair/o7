@@ -10,7 +10,6 @@ export default class PingCommand extends Command {
   constructor() {
     super('market', {
       aliases: ['market', 'mp', 'pc', 'price', 'pricecheck', 'value'],
-      channel: 'guild',
       args: [
         {
           id: 'searchTerms',

@@ -14,9 +14,6 @@
     "moduleResolution": "node",
     "rootDir": "./",
     "baseUrl": "./",
-    "paths": {
-      "*": ["/*", "dist/*"]
-    }
   },
   "include": ["**/*"],
   "exclude": ["node_modules", "**/*.spec.ts", "dist/**/*"]

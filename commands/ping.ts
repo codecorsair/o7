@@ -6,7 +6,6 @@ export default class PingCommand extends Command {
     super('ping', {
       aliases: ['ping'],
       ownerOnly: true,
-      channel: 'guild',
     });
   }
 

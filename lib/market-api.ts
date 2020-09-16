@@ -5,9 +5,9 @@ import items from '../data/market-items.json';
 const MARKET_API = 'https://api.eve-echoes-market.com/market-stats/'
 
 export interface MarketItem {
-  name: string;
+  name_en: string;
   id: string;
-  prices: MarketPrice;
+  prices: MarketPrice[];
 }
 
 export interface MarketPrice {
@@ -49,7 +49,7 @@ export function searchItem(searchTerms: string) {
     return results[0].item;
 }
 
-export async function getMarketData(searchTerms: string) {
+export async function getMarketData(searchTerms: string): Promise<MarketItem | null> {
   const item = searchItem(searchTerms);
   if (item == null) return null;
 
