@@ -115,19 +115,23 @@ export default class BlueprintCommand extends Command {
     total.cost += bp.productionCost;
 
     const itemPrice = await getMarketData(bp.name);
-    if (itemPrice) {
-      embed = embed.addField('Cost', printCosts(itemPrice, total));
+    const bpPrice = await getMarketData(bp.name + ' blueprint');
+    if (itemPrice && bpPrice) {
+      embed = embed.addField('Cost', printCosts(itemPrice, bpPrice, total));
     }
     return message.reply(embed);
   }
 }
 
-function printCosts(itemPrice: MarketItem, total: { cost: number }) {
+function printCosts(item: MarketItem, blueprint: MarketItem, total: { cost: number }) {
   let result = '```\n'
-  let latestPrice = itemPrice.prices[0];
+  const latestPrice = item.prices[0];
+  const bpPrice = blueprint.prices[0];
   result += alignText('Cost to build', `${numeral(total.cost).format('0[.]0a')} ISK\n`);
+  result += alignText('Blueprint Cost', `low ${numeral(bpPrice.lowest_sell).format('0[.]0a')} ISK | median ${numeral(bpPrice.median_sell).format('0[.]0a')} ISK\n`);
   result += alignText('Market sell', `low ${numeral(latestPrice.lowest_sell).format('0[.]0a')} ISK | median ${numeral(latestPrice.median_sell).format('0[.]0a')} ISK\n`);
   result += alignText('Profit margin', `low ${numeral(latestPrice.lowest_sell - total.cost).format('0[.]0a')} ISK | median ${numeral(latestPrice.median_sell - total.cost).format('0[.]0a')} ISK\n`);
+  result += alignText('Profit margin (buy BP)', `low ${numeral(latestPrice.lowest_sell - (total.cost + bpPrice.lowest_sell)).format('0[.]0a')} ISK | median ${numeral(latestPrice.median_sell - (total.cost + bpPrice.median_sell)).format('0[.]0a')} ISK\n`);
   return result + '```';
 }
 
