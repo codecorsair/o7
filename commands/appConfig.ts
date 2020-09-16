@@ -50,7 +50,7 @@ export default class AppConfigCommand extends Command {
     
     try {
       db.collection(APP_CONFIG_COLLECTION)
-        .upsert({ id: doc.id }, doc);
+        .upsert({ id: doc.id }, { $set: { ...doc } });
       return message.reply('Applications all set, Thanks!');
     } catch (err) {
       return message.reply('I\'m sorry, but there was a problem storing your config to our database.');
