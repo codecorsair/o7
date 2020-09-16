@@ -1,0 +1,31 @@
+{
+  "title": "o7 Help",
+  "description": "Thank you for taking the time to use my bot. I am always open to suggestions for this bot on my development discord: <https://discord.gg/PfruVg4>\n\nIf you would like to invite this bot to your own discord, please use this link: <https://discord.com/oauth2/authorize?client_id=753820564665270333&scope=bot&permissions=268954688>",
+  "url": "https://discord.gg/PfruVg4",
+  "color": 7506394,
+  "fields": [
+    {
+      "name": "Blueprints",
+      "value": "Get information about what it will take to manufacture items.\n\n**bp** _<name>_  _(<#/#/#>: optional skill levels basic / advanced / expert)_"
+    },
+    {
+      "name": "Market Prices",
+      "value": "Retrieves market data based on provided search terms.\n\n_Special Thanks to_ <https://www.reddit.com/user/eve-echoes-market/> for creating <https://eve-echoes-market.com> where this bot queries for market data.\n\n**pricecheck** _<item name>_\n_aliases_: **market** / **mp** / **pc** / **price**/ **value**"
+    },
+    {
+      "name": "Applications",
+      "value": "Will ask the user questions that have been configured by the server admins and post the users answers in a specified channel.\n\n_Admin Configuration_\n**appconfig**\n\n_Start User Application_\n**apply** \n_aliases:_ **app**  / **application**"
+    },
+    {
+      "name": "Set Roles",
+      "value": "A helper to allow a server admin to quickly set a users role.\n\n**setrole** _<@user>_ _<@role>_\n**setrole**  _<@role>_ _<@user>_"
+    },
+    {
+      "name": "Help",
+      "value": "Displays this help text.\n\n**help**"
+    }
+  ],
+  "thumbnail": {
+    "url": "https://i.imgur.com/kBKDFlS.png"
+  }
+}

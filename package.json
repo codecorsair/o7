@@ -27,6 +27,7 @@
   "author": "JB <jb@codecorsair.com>",
   "license": "MIT",
   "dependencies": {
+    "@types/node-fetch": "^2.5.7",
     "discord-akairo": "^8.1.0",
     "discord.js": "^12.3.1",
     "forever": "^3.0.2",
@@ -35,6 +36,7 @@
     "lodash": "^4.17.20",
     "moment": "^2.27.0",
     "mongodb": "^3.6.2",
+    "node-fetch": "^2.6.1",
     "numeral": "^2.0.6",
     "svelte": "^3.25.0",
     "watch": "^1.0.2"

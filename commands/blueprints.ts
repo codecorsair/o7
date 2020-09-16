@@ -30,7 +30,7 @@ const fuseOptions = {
   ]
 }
 
-const regex = /^([a-zA-Z0-3 ]+) ([0-5]\/{0,1}[0-5]{0,1}\/{0,1}[0-5]{0,1}){0,1}/;
+const regex = /^(.+) ([0-5]\/{0,1}[0-5]{0,1}\/{0,1}[0-5]{0,1}){0,1}/;
 
 export default class BlueprintCommand extends Command {
 
@@ -38,7 +38,7 @@ export default class BlueprintCommand extends Command {
 
   constructor() {
     super('blueprint', {
-      aliases: ['bp'],
+      aliases: ['bp', 'blueprint'],
       args: [
         {
           id: 'value',
