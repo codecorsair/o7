@@ -1,31 +1,79 @@
 {
-  "title": "o7 Help",
-  "description": "Thank you for taking the time to use my bot. I am always open to suggestions for this bot on my development discord: <https://discord.gg/PfruVg4>\n\nIf you would like to invite this bot to your own discord, please use this link: <https://discord.com/oauth2/authorize?client_id=753820564665270333&scope=bot&permissions=268954688>",
-  "url": "https://discord.gg/PfruVg4",
-  "color": 7506394,
-  "fields": [
+  "embeds": [
     {
-      "name": "Blueprints",
-      "value": "Get information about what it will take to manufacture items.\n\n**bp** _<name>_ - _(<#/#/#>: optional skill levels basic / advanced / expert)_"
+      "title": "o7 Help",
+      "description": "*This documentation assumes commands use the prefix `!` each server may have configured a different prefix for commands.*",
+      "url": "https://discord.gg/PfruVg4",
+      "color": 7506394,
+      "fields": [
+        {
+          "name": "Blueprints",
+          "value": "Get information about what it will take to manufacture items.\n\n**!bp** _<name> (<#/#/#>: optional skill levels basic / advanced / expert)_"
+        },
+        {
+          "name": "Market Prices",
+          "value": "Retrieves market data based on provided search terms.\n\n**!pricecheck** _<item name>_\n_aliases_: **!market** / **!mp** / **!pc** / **!price**/ **!value**"
+        },
+        {
+          "name": "Applications",
+          "value": "Will ask the user questions that have been configured by the server admins and post the users answers in a specified channel.\n\n**!apply** \n_aliases:_ **!app**  / **!application**"
+        },
+        {
+          "name": "Help",
+          "value": "Displays this help text.\n\n**!help**"
+        }
+      ],
+      "thumbnail": {
+        "url": "https://i.imgur.com/kBKDFlS.png"
+      }
     },
     {
-      "name": "Market Prices",
-      "value": "Retrieves market data based on provided search terms.\n\n_Special Thanks to_ <https://www.reddit.com/user/eve-echoes-market/> for creating <https://eve-echoes-market.com> where this bot queries for market data.\n\n**pricecheck** _<item name>_\n_aliases_: **market** / **mp** / **pc** / **price**/ **value**"
+      "title": "Administrative Commands",
+      "description": "These commands require administrator permissions on your server to execute.",
+      "color": 835726,
+      "fields": [
+        {
+          "name": "Prefix",
+          "value": "Set a custom prefix that this bot will respond to on your server.\n\n**!prefix** <prefix>\n_prefix_ can be a single character, emoji, or even a secret word!"
+        },
+        {
+          "name": "Application Configuration",
+          "value": "Used to set the questions the bot will ask a user who uses the `apply` command as well as the channel completed applications will be posted to.\n\n**!appconfig**"
+        },
+        {
+          "name": "Set Role",
+          "value": "A helper to allow a server admin to quickly set a users role.\n\n**!setrole** _<@user>_ _<@role>_\n**!setrole**  _<@role>_ _<@user>_"
+        }
+      ]
     },
     {
-      "name": "Applications",
-      "value": "Will ask the user questions that have been configured by the server admins and post the users answers in a specified channel.\n\n_Admin Configuration_\n**appconfig**\n\n_Start User Application_\n**apply** \n_aliases:_ **app**  / **application**"
+      "title": "Support the developer",
+      "description": "You can support me on Patreon!\n\nYour support will help to keep o7 regularly updated and allow me to spend the time to add new features.\n\nSupporters will receive a unique role on the o7 Dev discord and you can even gain access to the development build of o7 to test out features before they are released!\n\nhttps://www.patreon.com/o7bot",
+      "url": "https://www.patreon.com/o7bot",
+      "color": 16313856,
+      "fields": [
+        {
+          "name": "If you want to support, but don't have the $",
+          "value": "You can send me ISK in Eve Echoes! Time I don't spend farming means more time I can spend adding features to this bot.\n\nSend ISK via contract to `Evelyn Bray` in Eve Echoes. Be sure to tell me your Discord ID on the contract if you'd like the supporter role on the o7 Dev Discord server."
+        }
+      ]
     },
     {
-      "name": "Set Roles",
-      "value": "A helper to allow a server admin to quickly set a users role.\n\n**setrole** _<@user>_ _<@role>_\n**setrole**  _<@role>_ _<@user>_"
-    },
-    {
-      "name": "Help",
-      "value": "Displays this help text.\n\n**help**"
+      "title": "Thanks & Credits",
+      "fields": [
+        {
+          "name": "o7 Dev Discord",
+          "value": "Thank you for taking the time to use my bot. I am always open to suggestions for this bot on my development server.\n<https://discord.gg/PfruVg4>"
+        },
+        {
+          "name": "Invite o7 to your own Discord server",
+          "value": "If you would like to invite this bot to your own discord, you may use this link <https://discord.com/oauth2/authorize?client_id=753820564665270333&scope=bot&permissions=268954688>"
+        },
+        {
+          "name": "Market Data",
+          "value": "\nSpecial Thanks to <https://www.reddit.com/user/eve-echoes-market/> for creating <https://eve-echoes-market.com> where this bot queries for market data.\n"
+        }
+      ]
     }
-  ],
-  "thumbnail": {
-    "url": "https://i.imgur.com/kBKDFlS.png"
-  }
+  ]
 }

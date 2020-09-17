@@ -8,11 +8,10 @@ export default class HelpCommand extends Command {
   constructor() {
     super('help', {
       aliases: ['help', 'h'],
-      channel: 'guild',
     });
   }
 
   exec(message: Message) {
-    return message.reply(new MessageEmbed(help));
+    return message.author.send(help.embeds.map(h => new MessageEmbed(h)));
   }
 }

@@ -27,19 +27,37 @@ const fuseOptions = {
   includeMatches: false,
   findAllMatches: false,
   minMatchCharLength: 1,
-  location: 0,
-  threshold: 0.6,
-  distance: 100,
+  threshold: 0.2,
   useExtendedSearch: false,
-  ignoreFieldNorm: true,
-  sort: (a: { score: number }, b: { score: number }) => a.score - b.score,
+  // ignoreFieldNorm: true,
+  sort: (a: { score: number }, b: { score: number }) => b.score - a.score,
   keys: [
-    'name_en'
+    'name_en',
+    {
+      name: 'keywords',
+      weight: 3,
+    }
   ]
 }
 
-const marketIndex = Fuse.createIndex(fuseOptions.keys, items);
-const fuse = new Fuse(items, fuseOptions, marketIndex);
+const processedItems = items.map(item => {
+  const name = item.name_en;
+  const keywords = name.split(' ');
+  if (name.endsWith(' iii')) {
+    keywords.push('3');
+  } else if (name.endsWith(' ii')) {
+    keywords.push('2');
+  } else if (name.endsWith(' i')) {
+    keywords.push('1');
+  }
+  return  {
+    ...item,
+    keywords,
+  }
+});
+
+const marketIndex = Fuse.createIndex(fuseOptions.keys, processedItems);
+const fuse = new Fuse(processedItems, fuseOptions, marketIndex);
 
 export function searchItem(searchTerms: string) {
   const results = fuse.search(searchTerms);

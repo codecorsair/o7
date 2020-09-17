@@ -22,7 +22,7 @@ const fuseOptions = {
   distance: 100,
   useExtendedSearch: false,
   ignoreFieldNorm: true,
-  sort: (a: { score: number }, b: { score: number }) => a.score - b.score,
+  sort: (a: { score: number }, b: { score: number }) => b.score - a.score,
   keys: [
     'name',
     {
@@ -56,16 +56,21 @@ export default class BlueprintCommand extends Command {
     });
 
     const bps = blueprints.map(bp => {
-      const keywords = bp.name.split(' ');
-      if (bp.name.endsWith(' III')) {
+      const name = bp.name.toLowerCase()
+      const keywords = name.split(' ');
+      if (name.endsWith(' iii')) {
         keywords.push('3');
-      } else if (bp.name.endsWith(' II')) {
+        keywords.push('iii');
+      } else if (name.endsWith(' ii')) {
         keywords.push('2');
-      } else if (bp.name.endsWith(' I')) {
+        keywords.push('ii');
+      } else if (name.endsWith(' i')) {
         keywords.push('1');
+        keywords.push('i')
       }
       return {
         ...bp,
+        name,
         keywords,
       };
     });

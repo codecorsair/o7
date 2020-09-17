@@ -36,27 +36,30 @@ const db = {
         let client;
         try {
           client = await connect();
-          return await client.db(config.mongo.database).collection(name).findOne(query, options);
+          const result = await client.db(config.mongo.database).collection(name).findOne(query, options);
+          return result;
         } catch (err) {
           console.error(err);
         } finally {
           if (client) {
-            await client.close();
+            // await client.close();
           }
         }
         return null;
       },
       // https://docs.mongodb.com/drivers/node/usage-examples/find
-      find: async <T>(query: FilterQuery<T>): Promise<Cursor<T> | null> => {
+      find: async <T>(query: FilterQuery<T>, callback?: (cursor: Cursor<T>) => any): Promise<Cursor<T> | null> => {
         let client;
         try {
           client = await connect();
-          return await client.db(config.mongo.database).collection(name).find(query);
+          const cursor = await client.db(config.mongo.database).collection(name).find(query);
+          if (cursor && callback) callback(cursor);
+          return cursor;
         } catch (err) {
           console.error(err);
         } finally {
           if (client) {
-            await client.close();
+            // await client.close();
           }
         }
         return null;
@@ -71,7 +74,7 @@ const db = {
           console.error(err);
         } finally {
           if (client) {
-            await client.close();
+            // await client.close();
           }
         }
         return null;
@@ -86,7 +89,7 @@ const db = {
           console.error(err);
         } finally {
           if (client) {
-            await client.close();
+            // await client.close();
           }
         }
         return null;
@@ -101,7 +104,7 @@ const db = {
           console.error(err);
         } finally {
           if (client) {
-            await client.close();
+            // await client.close();
           }
         }
         return null;
@@ -116,7 +119,7 @@ const db = {
           console.error(err);
         } finally {
           if (client) {
-            await client.close();
+            // await client.close();
           }
         }
         return null;
@@ -131,7 +134,7 @@ const db = {
           console.error(err);
         } finally {
           if (client) {
-            await client.close();
+            // await client.close();
           }
         }
         return null;
@@ -146,7 +149,7 @@ const db = {
           console.error(err);
         } finally {
           if (client) {
-            await client.close();
+            // await client.close();
           }
         }
         return null;
@@ -161,7 +164,7 @@ const db = {
           console.error(err);
         } finally {
           if (client) {
-            await client.close();
+            // await client.close();
           }
         }
         return null;
@@ -176,7 +179,7 @@ const db = {
           console.error(err);
         } finally {
           if (client) {
-            await client.close();
+            // await client.close();
           }
         }
         return null;

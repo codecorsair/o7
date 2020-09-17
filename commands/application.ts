@@ -1,5 +1,6 @@
 import { Command } from 'discord-akairo';
 import { MessageEmbed, Message } from 'discord.js';
+import { sleep } from '../lib/sleep';
 import { db } from '../db';
 import { AppConfig, APP_CONFIG_COLLECTION } from './appConfig';
 
@@ -37,6 +38,7 @@ export default class ApplicationCommand extends Command {
         question: question,
         answer,
       });
+      await sleep(500);
     }
 
     return {
