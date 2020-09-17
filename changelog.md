@@ -16,4 +16,5 @@
 
 #### Bug Fixes
  * Regex updated thanks to `Stokholm` which removes the requirement to have a hyphen between blueprint name and skill levels as well as fixes bugs with the parsing.
- * 
+ * Blueprint cost calculations take into account quantity of items built, so it's more accurate for drones.
+ 

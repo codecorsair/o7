@@ -5,20 +5,15 @@ import {
 } from 'discord-akairo';
 import { Message } from 'discord.js';
 import config from './config.json';
-import * as settings from './lib/guild-settings';
+import * as settings from './lib/settings';
 
 export class o7Client extends AkairoClient {
-
-  public settings = settings;
 
   constructor() {
     super({
       ownerID: config.owners,
       disableMentions: 'everyone'
     });
-
-    this.settings = settings;
-    this.settings.initSettings();
 
     // I'm being lazy and not writing my own .d.ts just for this...
     (this as any).listenerHandler = new ListenerHandler(this, {
@@ -29,9 +24,9 @@ export class o7Client extends AkairoClient {
       directory: __dirname + '/commands/',
       prefix: (message: Message) => {
         if (message.guild) {
-          return this.settings.getSettings(message.guild.id).prefix;
+          return settings.getSettings(message.guild.id).prefix;
         }
-        return '!'
+        return config.prefix;
       },
     });
 

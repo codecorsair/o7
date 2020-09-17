@@ -1,8 +1,6 @@
 import { Command } from 'discord-akairo';
 import { Message } from 'discord.js';
-import { db } from '../db';
-
-export const APP_CONFIG_COLLECTION = 'appconfig';
+import { getClient, collections } from '../lib/db';
 
 export interface AppConfig {
   id: string,
@@ -41,17 +39,19 @@ export default class AppConfigCommand extends Command {
 
   async exec(message: Message, args: any) {
     if (!message.guild) return;
-    
-    const doc = {
-      id: message.guild.id,
-      appChannel: args.appChannel.id,
-      questions: args.questions,
-    };
-    
+    const client = getClient();
     try {
-      db.collection(APP_CONFIG_COLLECTION)
-        .upsert({ id: doc.id }, { $set: { ...doc } });
-      return message.reply('Applications all set, Thanks!');
+      await client.connect();
+      await client.getDb()
+        .collection(collections.appconfig)
+        .updateOne({ id: message.guild.id },
+                   { $set: {
+                      id: message.guild.id,
+                      appChannel: args.appChannel.id,
+                      questions: args.questions,
+                    } },
+                   { upsert: true });
+      return message.reply('Application configuration complete!');
     } catch (err) {
       return message.reply('I\'m sorry, but there was a problem storing your config to our database.');
     }

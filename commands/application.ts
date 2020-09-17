@@ -1,8 +1,8 @@
 import { Command } from 'discord-akairo';
 import { MessageEmbed, Message } from 'discord.js';
 import { sleep } from '../lib/sleep';
-import { db } from '../db';
-import { AppConfig, APP_CONFIG_COLLECTION } from './appConfig';
+import * as mongo from '../lib/db';
+import { AppConfig } from './appConfig';
 
 export default class ApplicationCommand extends Command {
   constructor() {
@@ -19,7 +19,16 @@ export default class ApplicationCommand extends Command {
   async *args(message: Message) {
     if (!message || !message.guild) return;
 
-    const config = await db.collection(APP_CONFIG_COLLECTION).findOne<AppConfig>({ id: message.guild.id });
+    const client = mongo.getClient();
+    let config: AppConfig | null = null;
+    try {
+      await client.connect();
+      config = await client.getDb()
+        .collection(mongo.collections.appconfig)
+        .findOne<AppConfig>({ id: message.guild.id });
+    } catch (err) {
+      console.error(err);
+    }
 
     if (!config) {
       this.notConfigured(message);
@@ -49,7 +58,16 @@ export default class ApplicationCommand extends Command {
   async exec(message: Message, args: any) {
     if (!message.guild || !args) return;
     
-    const config = await db.collection(APP_CONFIG_COLLECTION).findOne<AppConfig>({ id: message.guild.id });
+    const client = mongo.getClient();
+    let config: AppConfig | null = null;
+    try {
+      await client.connect();
+      config = await client.getDb()
+        .collection(mongo.collections.appconfig)
+        .findOne<AppConfig>({ id: message.guild.id });
+    } catch (err) {
+      console.error(err);
+    }
     
     if (!config) {
       this.notConfigured(message);
@@ -66,6 +84,6 @@ export default class ApplicationCommand extends Command {
         .addField('Channel', message.channel)
       ));
     
-      return message.reply(`Thank you, your application was submitted. Please wait while it is processed someone will get back with you soon.`);
+      return message.reply(`Thank you, your application was submitted! Please wait while it is reviewed someone will get back with you soon.`);
   }
 }

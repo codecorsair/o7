@@ -122,21 +122,24 @@ export default class BlueprintCommand extends Command {
     const itemPrice = await getMarketData(bp.name);
     const bpPrice = await getMarketData(bp.name + ' blueprint');
     if (itemPrice && bpPrice) {
-      embed = embed.addField('Cost', printCosts(itemPrice, bpPrice, total));
+      embed = embed.addField('Cost', printCosts(bp, itemPrice, bpPrice, total));
     }
     return message.reply(embed);
   }
 }
 
-function printCosts(item: MarketItem, blueprint: MarketItem, total: { cost: number }) {
-  let result = '```\n'
+function printCosts(bp: { productionCount: number; }, item: MarketItem, blueprint: MarketItem, total: { cost: number }) {
   const latestPrice = item.prices[0];
   const bpPrice = blueprint.prices[0];
+  const sellOrderLow = latestPrice.lowest_sell * bp.productionCount;
+  const sellOrderMed = latestPrice.median_sell * bp.productionCount;
+
+  let result = '```\n'
   result += alignText('Cost to build', `${numeral(total.cost).format('0[.]0a')} ISK\n`);
   result += alignText('Blueprint Cost', `low ${numeral(bpPrice.lowest_sell).format('0[.]0a')} ISK | median ${numeral(bpPrice.median_sell).format('0[.]0a')} ISK\n`);
-  result += alignText('Market sell', `low ${numeral(latestPrice.lowest_sell).format('0[.]0a')} ISK | median ${numeral(latestPrice.median_sell).format('0[.]0a')} ISK\n`);
-  result += alignText('Profit margin', `low ${numeral(latestPrice.lowest_sell - total.cost).format('0[.]0a')} ISK | median ${numeral(latestPrice.median_sell - total.cost).format('0[.]0a')} ISK\n`);
-  result += alignText('Profit margin (buy BP)', `low ${numeral(latestPrice.lowest_sell - (total.cost + bpPrice.lowest_sell)).format('0[.]0a')} ISK | median ${numeral(latestPrice.median_sell - (total.cost + bpPrice.median_sell)).format('0[.]0a')} ISK\n`);
+  result += alignText('Market sell', `low ${numeral(sellOrderLow).format('0[.]0a')} ISK | median ${numeral(sellOrderMed).format('0[.]0a')} ISK\n`);
+  result += alignText('Profit margin', `low ${numeral(sellOrderLow - total.cost).format('0[.]0a')} ISK | median ${numeral(sellOrderMed - total.cost).format('0[.]0a')} ISK\n`);
+  result += alignText('Profit margin (buy BP)', `low ${numeral(sellOrderLow - (total.cost + bpPrice.lowest_sell)).format('0[.]0a')} ISK | median ${numeral(sellOrderMed - (total.cost + bpPrice.median_sell)).format('0[.]0a')} ISK\n`);
   return result + '```';
 }
 

@@ -3,6 +3,11 @@ import fetch from 'node-fetch';
 import items from '../data/market-items.json';
 
 const MARKET_API = 'https://api.eve-echoes-market.com/market-stats/'
+const CACHE_MAX_AGE = 30 * 60 * 1000; // 30 minute cache age
+const cache: { [id: string]: {
+  item: MarketItem;
+  added: Date;
+}} = {};
 
 export interface MarketItem {
   name_en: string;
@@ -67,10 +72,20 @@ export function searchItem(searchTerms: string) {
     return results[0].item;
 }
 
+export async function cacheAllItems() {
+  for (const item of items) {
+    await getMarketData(item.name_en);
+  }
+}
+
 export async function getMarketData(searchTerms: string): Promise<MarketItem | null> {
   const item = searchItem(searchTerms);
   if (item == null) return null;
 
+  if (cache[item.id] && new Date().getTime() - cache[item.id].added.getTime() < CACHE_MAX_AGE) {
+    return cache[item.id].item;
+  }
+  
   try {
     const response = await fetch(`${MARKET_API}${item.id}`);
 
@@ -80,13 +95,18 @@ export async function getMarketData(searchTerms: string): Promise<MarketItem | n
 
     const prices = await response.json();
     prices.sort((a: { time: number }, b: { time: number}) => b.time - a.time);
-    return {
+    const result = {
       ...item,
       prices,
+    };
+    cache[result.id] = {
+      item: result,
+      added: new Date(),
     };
   } catch (err) {
     console.error(err);
     console.error(`Failed to fetch from Marketplace API`);
-    return null;
+    if (cache[item.id]) return cache[item.id].item;
   }
+  return null;
 }
