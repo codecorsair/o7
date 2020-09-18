@@ -12,6 +12,6 @@ export default class HelpCommand extends Command {
   }
 
   exec(message: Message) {
-    return message.author.send(help.embeds.map(h => new MessageEmbed(h)));
+    help.embeds.forEach(e => message.author.send(new MessageEmbed(e)));
   }
 }

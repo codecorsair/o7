@@ -18,9 +18,9 @@ export interface MarketItem {
 export interface MarketPrice {
   time: number;
   lowest_sell: number;
-  median_sell: number;
+  sell: number;
   highest_buy: number;
-  median_buy: number;
+  buy: number;
   volume: number;
 }
 
@@ -35,7 +35,7 @@ const fuseOptions = {
   threshold: 0.2,
   useExtendedSearch: false,
   // ignoreFieldNorm: true,
-  sort: (a: { score: number }, b: { score: number }) => b.score - a.score,
+  sort: (a: { score: number }, b: { score: number }) => a.score - b.score,
   keys: [
     'name_en',
     {
@@ -78,6 +78,15 @@ export async function cacheAllItems() {
   }
 }
 
+export function getLatestValidPrice(item: MarketItem) {
+  let index = 0;
+  let price = item.prices[index];
+  while (price && (!price.sell || !price.buy) && index < item.prices.length) {
+    price = item.prices[++index];
+  }
+  return price;
+}
+
 export async function getMarketData(searchTerms: string): Promise<MarketItem | null> {
   const item = searchItem(searchTerms);
   if (item == null) return null;
@@ -103,6 +112,7 @@ export async function getMarketData(searchTerms: string): Promise<MarketItem | n
       item: result,
       added: new Date(),
     };
+    return result;
   } catch (err) {
     console.error(err);
     console.error(`Failed to fetch from Marketplace API`);

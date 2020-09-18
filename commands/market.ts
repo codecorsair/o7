@@ -4,7 +4,7 @@ import { Message } from 'discord.js';
 import numeral from 'numeral';
 import moment from 'moment';
 import config from '../config.json';
-import { getMarketData } from '../lib/market-api';
+import { getLatestValidPrice, getMarketData } from '../lib/market-api';
 
 export default class PingCommand extends Command {
   constructor() {
@@ -32,12 +32,18 @@ export default class PingCommand extends Command {
         message.reply(`I'm sorry, I wasn't able to find anything for those search terms.`);
         return;
       }
-      const price = item.prices[0];
+      
+      const price = getLatestValidPrice(item);
+      if (!price) {
+        message.reply(`I'm sorry, I wasn't able to find any prices for ${item.name_en}.`);
+        return;
+      }
+
       message.channel.send(new MessageEmbed()
         .setTitle(item.name_en)
         .setDescription(`\
-          **Buy** ${numeral(price.highest_buy).format('0[.]0a')}
-          **Sell** ${numeral(price.lowest_sell).format('0[.]0a')}
+          **Buy Order** ${numeral(price.buy).format('0[.]0a')}
+          **Sell Order** ${numeral(price.sell).format('0[.]0a')}
           **Volume** ${price.volume || 0}
           _last updated ${moment(price.time * 1000).fromNow()}_`)
       );

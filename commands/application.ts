@@ -19,8 +19,8 @@ export default class ApplicationCommand extends Command {
   async *args(message: Message) {
     if (!message || !message.guild) return;
 
-    const client = mongo.getClient();
     let config: AppConfig | null = null;
+    const client = mongo.getClient();
     try {
       await client.connect();
       config = await client.getDb()

@@ -31,6 +31,17 @@ export class o7Client extends AkairoClient {
     });
 
     (this as any).commandHandler.useListenerHandler((this as any).listenerHandler);
+
+    (this as any).commandHandler.resolver.addType('attachmentOrLink', (message: Message, phrase: any) => {
+      if (phrase) {
+        return phrase;
+      }
+      if (message.attachments) {
+        return message.attachments.first()?.url;
+      }
+      return null;
+    });
+
     (this as any).listenerHandler.loadAll();
     (this as any).commandHandler.loadAll();
 

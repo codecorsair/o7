@@ -5,6 +5,7 @@ import config from '../config.json';
 export const collections = {
   settings: 'guildsettings',
   appconfig: 'appconfig',
+  verification: 'verification',
 }
 
 // Usage guides:

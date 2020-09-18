@@ -4,8 +4,8 @@ import { getResponse } from '../lib/bputils';
 
 export default class BlueprintCommand extends Command {
   constructor() {
-    super('blueprint', {
-      aliases: ['bp', 'blueprint'],
+    super('blueprintm', {
+      aliases: ['bpm', 'blueprintm'],
       args: [
         {
           id: 'value',
@@ -17,7 +17,7 @@ export default class BlueprintCommand extends Command {
   }
 
   async exec(message: Message, args: any) {
-    const response = await getResponse(args.value, false);
+    const response = await getResponse(args.value, true);
     if (!response) {
       return message.reply(`I'm sorry, I couldn't find anything for those search terms.`)
     }
