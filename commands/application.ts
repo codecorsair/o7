@@ -2,7 +2,7 @@ import { Command } from 'discord-akairo';
 import { MessageEmbed, Message } from 'discord.js';
 import { sleep } from '../lib/sleep';
 import * as mongo from '../lib/db';
-import { AppConfig } from './appConfig';
+import { AppConfig } from './appconfig';
 
 export default class ApplicationCommand extends Command {
   constructor() {
