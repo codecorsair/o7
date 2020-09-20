@@ -18,6 +18,6 @@ export default class ChangelogCommand extends Command {
 
   exec(message: Message, args: any) {
     if (args.count < 1) args.count = 1;
-    changelog.embeds.slice(changelog.embeds.length - args.count).forEach(e => message.channel.send(new MessageEmbed(e as any)));
+    changelog.embeds.slice(changelog.embeds.length - args.count).forEach(e => message.author.send(new MessageEmbed(e as any)));
   }
 }

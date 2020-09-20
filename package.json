@@ -9,7 +9,8 @@
     "dev:debug": "nodemon --inspect",
     "build": "rimraf dist/ && tsc && mkdirp dist/cache",
     "forever": "forever start dist/index.js",
-    "stop": "forever stop dist/index.js"
+    "stop": "forever stop dist/index.js",
+    "winauth": "$env:GOOGLE_APPLICATION_CREDENTIALS=./gcloud-auth.json"
   },
   "watch": {
     "build": {
@@ -29,6 +30,7 @@
     "@google-cloud/storage": "^5.3.0",
     "@google-cloud/vision": "^2.1.2",
     "@types/node-fetch": "^2.5.7",
+    "arangojs": "^7.0.1",
     "discord-akairo": "^8.1.0",
     "discord.js": "^12.3.1",
     "forever": "^3.0.2",
@@ -38,6 +40,8 @@
     "lodash": "^4.17.20",
     "moment": "^2.27.0",
     "mongodb": "^3.6.2",
+    "murmurhash": "^1.0.0",
+    "neo4j-driver": "^4.1.2",
     "node-fetch": "^2.6.1",
     "numeral": "^2.0.6",
     "request": "^2.88.2",

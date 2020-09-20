@@ -49,7 +49,9 @@ export default class OCRCommand extends Command {
     }
     message.reply('Exctracting text, please wait...');
     const fileName = 'testname.png';
-    const client = new vision.ImageAnnotatorClient();
+    const client = new vision.ImageAnnotatorClient({
+      credentials: config.gcloud.auth,
+    });
     const [result] = await client.textDetection(`gs://${config.gcloud.bucket}/${fileName}`);
     const detections = result.textAnnotations;
     if (!detections) {

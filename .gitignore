@@ -3,6 +3,5 @@ node_modules/
 dist/
 config.json
 npm-debug.log
-db.json
-.~db.json
 yarn-error.log
+bulk_data/

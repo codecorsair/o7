@@ -35,7 +35,7 @@ export default class ApplicationCommand extends Command {
       return null;
     }
 
-    const answers = [];
+    const answers: any = [];
     for (const question of config.questions) {
       const answer = yield {
         type: 'content',

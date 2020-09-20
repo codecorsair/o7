@@ -1,0 +1,1394 @@
+[
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "M-HU4V II",
+      "Perfect",
+      10.65,
+      {
+        "low": 2,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "M-HU4V V",
+      "Perfect",
+      10.55,
+      {
+        "low": 2,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "M-HU4V VI",
+      "Rich",
+      8.59,
+      {
+        "low": 2,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "M-HU4V VII",
+      "Rich",
+      9.22,
+      {
+        "low": 2,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "O94U-A III",
+      "Rich",
+      9.87,
+      {
+        "low": 2,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "O94U-A VI",
+      "Rich",
+      8.92,
+      {
+        "low": 2,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "XW-JHT VII",
+      "Perfect",
+      10.59,
+      {
+        "low": 2,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "NEH-CS IX",
+      "Perfect",
+      11.11,
+      {
+        "low": 2,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "QXQ-BA VI",
+      "Rich",
+      9.58,
+      {
+        "low": 3,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "W-4FA9 V",
+      "Rich",
+      9.5,
+      {
+        "low": 3,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "2B7A-3 VI",
+      "Rich",
+      9.39,
+      {
+        "low": 3,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "PUWL-4 III",
+      "Rich",
+      10.38,
+      {
+        "low": 4,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "PUWL-4 V",
+      "Rich",
+      9.87,
+      {
+        "low": 4,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "PUWL-4 VI",
+      "Perfect",
+      13.31,
+      {
+        "low": 4,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "ZXA-V6 IV",
+      "Rich",
+      9.36,
+      {
+        "low": 5,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "ZXA-V6 V",
+      "Rich",
+      8.56,
+      {
+        "low": 5,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "Y-1918 VI",
+      "Perfect",
+      14.92,
+      {
+        "low": 5,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "Y-1918 IX",
+      "Perfect",
+      14.35,
+      {
+        "low": 5,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "BKG-Q2 X",
+      "Rich",
+      9.12,
+      {
+        "low": 6,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "RG9-7U III",
+      "Rich",
+      11.66,
+      {
+        "low": 7,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "I1-BE8 XI",
+      "Perfect",
+      9.48,
+      {
+        "low": 7,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "Z-K495 X",
+      "Rich",
+      9.68,
+      {
+        "low": 7,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "LXWN-W X",
+      "Rich",
+      9.87,
+      {
+        "low": 7,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "A4L-A2 VII",
+      "Perfect",
+      11.93,
+      {
+        "low": 8,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "CX-1XF VI",
+      "Perfect",
+      8.73,
+      {
+        "low": 8,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "XM-4L0 VIII",
+      "Rich",
+      9.97,
+      {
+        "low": 8,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "XM-4L0 IX",
+      "Rich",
+      9.54,
+      {
+        "low": 8,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "C-LP3N VI",
+      "Rich",
+      9.74,
+      {
+        "low": 8,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "C-LP3N VIII",
+      "Rich",
+      8.82,
+      {
+        "low": 8,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "RO90-H X",
+      "Perfect",
+      12.53,
+      {
+        "low": 8,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "PNS7-J VI",
+      "Rich",
+      7.61,
+      {
+        "low": 9,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "W8O-19 III",
+      "Rich",
+      7.07,
+      {
+        "low": 9,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "W8O-19 V",
+      "Perfect",
+      8.85,
+      {
+        "low": 9,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "EN-GTB VI",
+      "Rich",
+      7.79,
+      {
+        "low": 9,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "Q-FEEJ II",
+      "Rich",
+      8.97,
+      {
+        "low": 9,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "QCWA-Z V",
+      "Perfect",
+      11.47,
+      {
+        "low": 9,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "QCWA-Z VI",
+      "Rich",
+      9.2,
+      {
+        "low": 9,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "1G-MJE VI",
+      "Rich",
+      10.25,
+      {
+        "low": 9,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "MA-VDX IV",
+      "Rich",
+      10.25,
+      {
+        "low": 9,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "MA-VDX VI",
+      "Perfect",
+      11.47,
+      {
+        "low": 9,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "S-EVIQ VII",
+      "Perfect",
+      8.48,
+      {
+        "low": 10,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "JI-1UQ III",
+      "Rich",
+      8.49,
+      {
+        "low": 10,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "U5-XW7 IV",
+      "Perfect",
+      11.24,
+      {
+        "low": 10,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "T-K10W VI",
+      "Rich",
+      9.97,
+      {
+        "low": 10,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "T-K10W VII",
+      "Rich",
+      10.13,
+      {
+        "low": 10,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "92D-OI V",
+      "Rich",
+      8.69,
+      {
+        "low": 10,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "92D-OI XIII",
+      "Rich",
+      8.49,
+      {
+        "low": 10,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "X3-PBC VI",
+      "Rich",
+      9.98,
+      {
+        "low": 10,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "OJ-A8M VI",
+      "Rich",
+      8.79,
+      {
+        "low": 10,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "NLPB-0 VI",
+      "Rich",
+      7.72,
+      {
+        "low": 10,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "52G-NZ VI",
+      "Rich",
+      9.75,
+      {
+        "low": 10,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "5LJ-MD III",
+      "Rich",
+      11.05,
+      {
+        "low": 10,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "YG-82V V",
+      "Rich",
+      8.99,
+      {
+        "low": 10,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "CS-ZGD VII",
+      "Perfect",
+      10.47,
+      {
+        "low": 10,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "CS-ZGD IX",
+      "Rich",
+      8.46,
+      {
+        "low": 10,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "WO-AIJ III",
+      "Rich",
+      11.15,
+      {
+        "low": 10,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "WO-AIJ IV",
+      "Rich",
+      9.5,
+      {
+        "low": 10,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  },
+  {
+    "keys": [
+      "planet.planetName",
+      "planet.richness",
+      "planet.output",
+      "length(path)"
+    ],
+    "length": 4,
+    "_fields": [
+      "4DTQ-K V",
+      "Rich",
+      8.58,
+      {
+        "low": 10,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "planet.planetName": 0,
+      "planet.richness": 1,
+      "planet.output": 2,
+      "length(path)": 3
+    }
+  }
+]

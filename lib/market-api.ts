@@ -66,10 +66,10 @@ const fuse = new Fuse(processedItems, fuseOptions, marketIndex);
 
 export function searchItem(searchTerms: string) {
   const results = fuse.search(searchTerms);
-    if (results.length == 0) {
-      return null;
-    }
-    return results[0].item;
+  if (results.length == 0) {
+    return null;
+  }
+  return results[0].item;
 }
 
 export async function cacheAllItems() {

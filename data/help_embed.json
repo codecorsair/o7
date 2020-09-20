@@ -19,8 +19,24 @@
           "value": "Retrieves market data based on provided search terms.\n\n**!pricecheck** _<item name>_\n_aliases_: **!market** / **!mp** / **!pc** / **!price**/ **!value**"
         },
         {
-          "name": "Applications",
+          "name": "Planetary Resources",
+          "value": "Discover the location of a desired planetary resource within a number of jumps from any system.\n\n**!pr** <system> <jump range> <resource name>\n*aliases:* **!pi** / **!planetaryresources**\n "
+        },
+        {
+          "name": "Jump Distance",
+          "value": "Find out the shortest path between two systems\n\n**!jumps** <system name> <system name>\n*aliases:* **!distance** / **!shortest**"
+        },
+        {
+          "name": "Jump Distance Prefer Safer",
+          "value": "Find out the distance to travel if using the safer option that prefers hi sec systems over low & null.\n\n**!safest** <system name> <system name>\n*aliases:* **!safejumps**"
+        },
+        {
+          "name": "Applications (beta)",
           "value": "Will ask the user questions that have been configured by the server admins and post the users answers in a specified channel.\n\n**!apply** \n_aliases:_ **!app**  / **!application**"
+        },
+        {
+          "name": "Changelog",
+          "value": "Want to know what the most recent changes are with your favorite Eve Echoes bot? Just ask, and I'll send them to you.\n\n**!changelog** <optional: number of changes (default: 1)>"
         },
         {
           "name": "Help",
@@ -76,6 +92,10 @@
         {
           "name": "Market Data",
           "value": "\nSpecial Thanks to <https://www.reddit.com/user/eve-echoes-market/> for creating <https://eve-echoes-market.com> where this bot queries for market data.\n"
+        },
+        {
+          "name": "And these Amazing o7 Supporters!",
+          "value": "◆ **Trading Tycoon** ◆ **Pluto York** ◆"
         }
       ]
     }

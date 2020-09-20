@@ -29,6 +29,19 @@
         "text": "By JB"
       },
       "timestamp": "2020-09-18T05:00:00.000Z"
+    },
+    {
+      "title": "Did someone ask about Planetary Resources?",
+      "fields": [
+        {
+          "name": "New Features & Updates",
+          "value": " * Added Planetary Resource command! Now you can search for the best locations to set up your mining arrays near your home station.\n* Added jump distance command to quickly let you know how far away any two systems are.\n* Added safer jump distance command to find the distance between two systems if you prefer to stick to hi sec systems."
+        }
+      ],
+      "footer": {
+        "text": "By JB"
+      },
+      "timestamp": "2020-09-20T12:13:00.000Z"
     }
   ]
 }
