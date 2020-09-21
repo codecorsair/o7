@@ -12,11 +12,11 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "moduleResolution": "node",
-    "rootDir": "./",
-    "baseUrl": "./",
+    "rootDir": "./src",
+    "baseUrl": "./src",
     "allowJs": true,
     "noImplicitAny": false,
   },
-  "include": ["**/*"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts", "dist/**/*"]
 }

@@ -8,7 +8,7 @@
  * Set Role command available
  * Help command available
 
-### 17 SEP 2020
+### 17 SEP 2020 - Blueprints go mobile!
 #### New Features & Updates
  * Application system will wait for half a second before asking the next question to prevent message overlaps.
  * New Prefix command available! Set a custom prefix for o7 on your Discord server with the **prefix** command. *note: Only server administrators can use this.*
@@ -28,14 +28,22 @@
 #### Known Issues
  * Some market items are not available and you'll get a different item even when searching the exact name. This is due to the item you're searching for not existing at all in the data set. This will be addressed in a future update.
  
- ### X XXX XXX
- #### New Features & updates
+### 20 SEP 2020 - Did someone ask about Planetary Resources?
+#### New Features & updates
+ * Added Planetary Resource command! Now you can search for the best locations to set up your mining arrays near your home station.
+ * Added jump distance command to quickly let you know how far away any two systems are.
+ * Added safer jump distance command to find the distance between two systems if you prefer to stick to hi sec systems.
+
+### X XXX XXX
+#### New Features & updates
+ * Added new **items** command! This will give you details about any item in game.
+ * Updated **jumps** and **safejumps** commands to include the security of the start & end systems as well as the lowest security that will be traveled through.
+ * Added item icons to market price searces.
  
- 
- #### Bug Fixes
- 
- 
- #### Known Issues
- 
- 
- 
+
+#### Bug Fixes
+ * Added missing market items to the registry.
+
+#### Known Issues
+
+

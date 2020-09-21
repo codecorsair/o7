@@ -1,0 +1,409 @@
+{
+  "ability_list": [
+    4,
+    9
+  ],
+  "base_drop_rate": 1.5820000171661377,
+  "base_price": 753971337,
+  "can_be_jettisoned": false,
+  "capacity": 1100,
+  "faction_id": 500001,
+  "graphic_id": 50,
+  "icon_id": 10500000003,
+  "is_omega": 1,
+  "main_cal_code": "/Ship/BB/Cal/毒蝎级/",
+  "market_group_id": 100005000,
+  "mass": 103600000,
+  "normal_debris": [
+    44010000009,
+    44010000009,
+    44010000009,
+    44010000009,
+    44010000009
+  ],
+  "prefab_id": 10500000101,
+  "race_id": 1,
+  "radius": 250,
+  "ship_bonus_code_list": [
+    "/ShipBonus/毒蝎级1/",
+    "/ShipBonus/毒蝎级2/"
+  ],
+  "ship_bonus_skill_list": [
+    49320000002,
+    49110000013
+  ],
+  "sof_faction_name": "caldaribase",
+  "sound_id": 20068,
+  "volume": 468000,
+  "wreck_id": 50029000004,
+  "zh_desc": "第一艘毒蝎级战列舰的出航只不过是几年前的事情，目前已经造出的一些都被认为是原型机。有关它性能的信息非常少，但已知情报显示，毒蝎级最大限度地装配了几乎无人能敌的高科技装备。",
+  "zh_name": "毒蝎级",
+  "item_id": "10500000101",
+  "name": "Scorpion",
+  "description": "The first Scorpion-class battleship was launched only a couple of years ago, and those that have been built are considered to be prototypes. Little is known of its capabilities, but what has been garnered suggests that the Scorpion is crammed to the brink with sophisticated hi-tech equipment that few can match.",
+  "faction": "Caldari",
+  "attributes": {
+    "1": {
+      "value": 9,
+      "name": "techLevel"
+    },
+    "2": {
+      "value": 5,
+      "name": "shipSize"
+    },
+    "4": {
+      "value": 0,
+      "name": "metaLevel"
+    },
+    "100": {
+      "value": 103600000,
+      "name": "mass"
+    },
+    "105": {
+      "value": 250,
+      "name": "radius"
+    },
+    "106": {
+      "value": 468000,
+      "name": "volume"
+    },
+    "120": {
+      "value": 0.116,
+      "name": "agility"
+    },
+    "130": {
+      "value": 121,
+      "name": "maxVelocity"
+    },
+    "150": {
+      "value": 3,
+      "name": "warpSpeedMultiplier"
+    },
+    "164": {
+      "value": 5,
+      "name": "highSlot"
+    },
+    "166": {
+      "value": 4,
+      "name": "medSlot"
+    },
+    "168": {
+      "value": 5,
+      "name": "lowSlot"
+    },
+    "170": {
+      "value": 3,
+      "name": "mechanicalRigSlots"
+    },
+    "172": {
+      "value": 3,
+      "name": "energyRigSlots"
+    },
+    "180": {
+      "value": 6879,
+      "name": "powerOutput"
+    },
+    "200": {
+      "value": 18617,
+      "name": "shieldCapacity"
+    },
+    "203": {
+      "value": 0,
+      "name": "shieldCharge"
+    },
+    "211": {
+      "value": 1,
+      "name": "shieldEmDamageResonance"
+    },
+    "212": {
+      "value": 0.8,
+      "name": "shieldThermalDamageResonance"
+    },
+    "213": {
+      "value": 0.6000000000000001,
+      "name": "shieldKineticDamageResonance"
+    },
+    "214": {
+      "value": 0.5,
+      "name": "shieldExplosiveDamageResonance"
+    },
+    "228": {
+      "value": 30930000,
+      "name": "shieldRechargeRate"
+    },
+    "230": {
+      "value": 12568,
+      "name": "armorHP"
+    },
+    "233": {
+      "value": 0,
+      "name": "armorDamage"
+    },
+    "241": {
+      "value": 0.5,
+      "name": "armorEmDamageResonance"
+    },
+    "242": {
+      "value": 0.5525,
+      "name": "armorThermalDamageResonance"
+    },
+    "243": {
+      "value": 0.7500000000000001,
+      "name": "armorKineticDamageResonance"
+    },
+    "244": {
+      "value": 0.9,
+      "name": "armorExplosiveDamageResonance"
+    },
+    "260": {
+      "value": 12758,
+      "name": "hp"
+    },
+    "263": {
+      "value": 0,
+      "name": "damage"
+    },
+    "271": {
+      "value": 0.6667000000000001,
+      "name": "emDamageResonance"
+    },
+    "272": {
+      "value": 0.6667000000000001,
+      "name": "thermalDamageResonance"
+    },
+    "273": {
+      "value": 0.6667000000000001,
+      "name": "kineticDamageResonance"
+    },
+    "274": {
+      "value": 0.6667000000000001,
+      "name": "explosiveDamageResonance"
+    },
+    "300": {
+      "value": 7288,
+      "name": "capacitorCapacity"
+    },
+    "303": {
+      "value": 0,
+      "name": "charge"
+    },
+    "304": {
+      "value": 874000,
+      "name": "rechargeRate"
+    },
+    "312": {
+      "value": 3e-7,
+      "name": "warpCapacitorNeed"
+    },
+    "334": {
+      "value": 29.9,
+      "name": "scanRadarStrength"
+    },
+    "350": {
+      "value": 99720,
+      "name": "maxTargetRange"
+    },
+    "352": {
+      "value": 106,
+      "name": "scanResolution"
+    },
+    "354": {
+      "value": 7,
+      "name": "maxLockedTargets"
+    },
+    "360": {
+      "value": 322.5,
+      "name": "signatureRadius"
+    },
+    "480": {
+      "value": 5,
+      "name": "droneBandwidth"
+    },
+    "481": {
+      "value": 500,
+      "name": "droneCapacity"
+    },
+    "511": {
+      "value": 0,
+      "name": "tempHPMaxEnergy"
+    },
+    "512": {
+      "value": 0,
+      "name": "tempHPCurEnergy"
+    },
+    "513": {
+      "value": 0,
+      "name": "tempHPMaxShield"
+    },
+    "514": {
+      "value": 0,
+      "name": "tempHPCurShield"
+    },
+    "515": {
+      "value": 0,
+      "name": "tempHPMaxArmor"
+    },
+    "516": {
+      "value": 0,
+      "name": "tempHPCurArmor"
+    },
+    "620": {
+      "value": 1100,
+      "name": "capacity"
+    },
+    "622": {
+      "value": 0,
+      "name": "specialOreHoldCapacity"
+    },
+    "623": {
+      "value": 0,
+      "name": "specialMineralHoldCapacity"
+    },
+    "624": {
+      "value": 0,
+      "name": "specialFacilityHoldCapacity"
+    },
+    "655": {
+      "value": 0,
+      "name": "FuelRemain"
+    },
+    "10038": {
+      "value": 0,
+      "name": "specialFuelBayCapacity"
+    },
+    "10039": {
+      "value": 0,
+      "name": "shipMaintenanceBayCapacity"
+    },
+    "10040": {
+      "value": 0,
+      "name": "fleetHangarCapacity"
+    },
+    "10042": {
+      "value": 0,
+      "name": "specialGasHoldCapacity"
+    },
+    "10043": {
+      "value": 0,
+      "name": "specialSalvageHoldCapacity"
+    },
+    "10044": {
+      "value": 0,
+      "name": "specialShipHoldCapacity"
+    },
+    "10045": {
+      "value": 0,
+      "name": "specialSmallShipHoldCapacity"
+    },
+    "10046": {
+      "value": 0,
+      "name": "specialMediumShipHoldCapacity"
+    },
+    "10047": {
+      "value": 0,
+      "name": "specialLargeShipHoldCapacity"
+    },
+    "10048": {
+      "value": 0,
+      "name": "specialIndustrialShipHoldCapacity"
+    },
+    "10049": {
+      "value": 0,
+      "name": "specialAmmoHoldCapacity"
+    },
+    "10050": {
+      "value": 0,
+      "name": "specialBoosterHoldCapacity"
+    },
+    "10051": {
+      "value": 0,
+      "name": "specialCorpseHoldCapacity"
+    },
+    "10053": {
+      "value": 0,
+      "name": "specialQuafeHoldCapacity"
+    },
+    "10054": {
+      "value": 0,
+      "name": "specialCommandCenterHoldCapacity"
+    },
+    "10055": {
+      "value": 0,
+      "name": "specialSubsystemHoldCapacity"
+    },
+    "10056": {
+      "value": 0,
+      "name": "specialPlanetaryCommoditiesHoldCapacity"
+    },
+    "10057": {
+      "value": 0,
+      "name": "fighterCapacity"
+    },
+    "10103": {
+      "value": 0,
+      "name": "logisticsCapacity"
+    },
+    "10104": {
+      "value": 2,
+      "name": "droneSlotsLeft"
+    }
+  },
+  "bonus_groups": [
+    {
+      "name": "Advanced Electronic Warfare Bonus per Lv.",
+      "attributes": {
+        "attribute_ids": [
+          2055,
+          2035,
+          2032
+        ],
+        "names": [
+          "Jammer Strength",
+          "Optimal Range",
+          "Scan Resolution"
+        ],
+        "values": [
+          0.15,
+          0.25,
+          0.05
+        ],
+        "units": [
+          "%",
+          "%",
+          "%"
+        ],
+        "formulae": [
+          "A*100",
+          "A*100",
+          "A*100"
+        ]
+      }
+    },
+    {
+      "name": "Battleship Command Bonus per Lv.",
+      "attributes": {
+        "attribute_ids": [
+          2002,
+          2071
+        ],
+        "names": [
+          "Damage",
+          "Damage"
+        ],
+        "values": [
+          0.15,
+          0.15
+        ],
+        "units": [
+          "%",
+          "%"
+        ],
+        "formulae": [
+          "A*100",
+          "A*100"
+        ]
+      }
+    }
+  ],
+  "order": 229
+}
