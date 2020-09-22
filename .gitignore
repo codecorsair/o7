@@ -5,3 +5,4 @@ config.json
 npm-debug.log
 yarn-error.log
 bulk_data/
+deploy
