@@ -53,6 +53,7 @@ const resourceNames = [
   { name: "Nanites" },
   { name: "Silicate Glass" },
   { name: "Smartfab Units" },
+  { name: "Plasmoids" },
 ];
 const fusePR = new Fuse(resourceNames, prFuseOpts);
 

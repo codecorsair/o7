@@ -2,6 +2,7 @@ import { Command } from 'discord-akairo';
 import { Message } from 'discord.js';
 import Fuse from 'fuse.js';
 
+import { isDevModeEnabled } from '../lib/access';
 import lexicon from '../data/lexicon.json';
 
 const fuseOptions = {
@@ -30,6 +31,12 @@ export default class LexiconCommand extends Command {
   constructor() {
     super('lexicon', {
       aliases: ['lexicon', 'lex'],
+      userPermissions: () => {
+        if (!isDevModeEnabled()) {
+          return 'DevModeNotEnabled';
+        }
+        return null;
+      },
       args: [
         {
           id: 'searchTerm',

@@ -14,11 +14,18 @@ import {
   getEHP
 } from '../lib/items';
 import { romanize } from '../lib/romanize';
+import { isDevModeEnabled } from '../lib/access';
 
 export default class ItemCommand extends Command {
   constructor() {
     super('item', {
       aliases: ['item'],
+      userPermissions: () => {
+        if (!isDevModeEnabled()) {
+          return 'DevModeNotEnabled';
+        }
+        return null;
+      },
       args: [
         {
           id: 'name',
