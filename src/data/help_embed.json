@@ -31,6 +31,10 @@
           "value": "Find out the distance to travel if using the safer option that prefers hi sec systems over low & null.\n\n**!safest** <system name> <system name>\n*aliases:* **!safejumps**"
         },
         {
+          "name": "Item Database Search (beta)",
+          "value": "Look up details about any item in game quickly! Get the full stats of any ship! \n*work in progress, not all details are available yet for modules*\n\n**!item** <item name>\n*aliases*: **!i**"
+        },
+        {
           "name": "Applications (beta)",
           "value": "Will ask the user questions that have been configured by the server admins and post the users answers in a specified channel.\n\n**!apply** \n_aliases:_ **!app**  / **!application**"
         },

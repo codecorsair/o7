@@ -19,13 +19,13 @@ import { isDevModeEnabled } from '../lib/access';
 export default class ItemCommand extends Command {
   constructor() {
     super('item', {
-      aliases: ['item'],
-      userPermissions: () => {
-        if (!isDevModeEnabled()) {
-          return 'DevModeNotEnabled';
-        }
-        return null;
-      },
+      aliases: ['item', 'i'],
+      // userPermissions: () => {
+      //   if (!isDevModeEnabled()) {
+      //     return 'DevModeNotEnabled';
+      //   }
+      //   return null;
+      // },
       args: [
         {
           id: 'name',
@@ -47,21 +47,31 @@ export default class ItemCommand extends Command {
 
     const itemInfo = items[id] as Item;
     const embed = new MessageEmbed()
-      .setTitle(itemInfo.name)
       .setThumbnail(`https://storage.googleapis.com/o7-store/icons/${itemInfo.icon_id}.png`)
-      .addField(`${(getAttributeValue(itemInfo, Attributes.techLevel) ? `TECH LEVEL ${romanize(getAttributeValue(itemInfo, Attributes.techLevel) as number)}` : 'Type')}`, `\
-      ${itemInfo.faction && itemInfo.faction.toUpperCase() || ''} ${getItemType(itemInfo).toUpperCase()}
-      `, true)
+
+
+
+      const techLevel = getAttributeValue(itemInfo, Attributes.techLevel);
+      if (techLevel) {
+        embed.setTitle(`TECH LEVEL ${romanize(techLevel)}`);
+      }
+
+      if (itemInfo.is_omega) {
+        embed.setAuthor(itemInfo.name, `https://storage.googleapis.com/o7-store/icons/${omega_icon_id}.png`);
+      } else {
+        embed.setAuthor(itemInfo.name);
+      }
 
       if (isShip(itemInfo)) {
-        embed.addField('Cargo Hold Capacity', `${itemInfo.capacity}m³`, true);
-        embed.addField('Insurance Eligible', itemInfo.is_rookie_insurance ? 'Yes' : 'No', true)
+        embed.addField(`${itemInfo.faction && itemInfo.faction.toUpperCase() || ''} ${getItemType(itemInfo).toUpperCase()}`,
+        `${itemInfo.is_rookie_insurance ? 'Can be insured': 'Insurance ineligible'}`, true);
+        embed.addField('Cargo Capacity', `${itemInfo.capacity}m³`, true);
       }
 
       embed.addField('Description', itemInfo.description);
 
     if (itemInfo.is_omega) {
-      embed.setFooter('Omega', `https://storage.googleapis.com/o7-store/icons/${omega_icon_id}.png`);
+      // embed.setFooter('Omega', `https://storage.googleapis.com/o7-store/icons/${omega_icon_id}.png`);
     }
 
     if (isShip(itemInfo)) {
@@ -101,40 +111,17 @@ Shield recharge time: ${numeral(a[Attributes.shieldRechargeRate].value / 1000).f
       embed.addField('Recharge Time', `${numeral(capacitorRechargeTime).format('0.0')} S`, true);
       embed.addField('Recharge Rate', `${numeral(((10*capacitorCapacity)/capacitorRechargeTime)*.25).format('0.0[0]')} GJ`, true);
 
-      embed.addField(`Max Locked Targets ${a[Attributes.maxLockedTargets].value}`,`\`\`\`\
-Sig Radius  Scan Resolution  Sensor Strength
-${(a[Attributes.signatureRadius].value + ' m').padEnd(10)}  ${(a[Attributes.scanResolution].value + ' km').padEnd(16)}  ${a[Attributes.scanRadarStrength].value}\
-      \`\`\``);
+      embed.addField(`Max Locked Targets`, `${a[Attributes.maxLockedTargets].value}`);
+      embed.addField(`Sig Radius`, `${a[Attributes.signatureRadius].value + ' m'}`, true);
+      embed.addField(`Scan Resolution`,`${(a[Attributes.scanResolution].value + ' km')}`, true);
+      embed.addField(`Sensor Strength`,`${a[Attributes.scanRadarStrength].value}`, true);
 
-      embed.addField(`Flight Velocity ${a[Attributes.maxVelocity].value} m/s`,`\`\`\`\
-Warp Speed  Mass             Inertia Modifer
-${(a[Attributes.warpSpeedMultiplier].value + ' AU/s').padEnd(10)}  ${(numeral(a[Attributes.mass].value).format('0,0') + ' kg').padEnd(15)}  ${a[Attributes.agility].value} x\
-      \`\`\``);
+      embed.addField(`Flight Velocity`,`${a[Attributes.maxVelocity].value} m/s`) 
+      embed.addField(`Warp Speed`,`${a[Attributes.warpSpeedMultiplier].value + ' AU/s'}`, true) 
+      embed.addField(`Mass`,`${(numeral(a[Attributes.mass].value).format('0,0') + ' kg').padEnd(15)}`, true);
+      embed.addField(`Inertia Modifer`,`${a[Attributes.agility].value} x`, true);
     }
 
     return message.channel.send(embed);
-
-    // fs.readFile(`staticdata/items/0.json`, async (err, data) => {
-    //   if (err) {
-    //     console.log(err);
-    //     return message.reply('failed to read items/0.json');
-    //   }
-
-    //   try {
-    //     let json = JSON.parse(data.toString("utf8"));
-    //     const keys = Object.keys(json);
-    //     const item = json[keys[0]] as Item;
-    //     for (const lang of languages) {
-    //       if (item.zh_name) item[`name_${lang}`] = await textlookup(item.zh_name, lang as any);
-    //       if (item.zh_desc) item[`description_${lang}`] = await textlookup(item.zh_desc, lang as any);
-    //     }
-    //     console.log(JSON.stringify(item));
-    //     return message.reply('done');
-
-    //   } catch (ex) {
-    //     console.error(ex);
-    //     return message.reply('failed to parse json');
-    //   }
-    // });
   }
 }

@@ -42,6 +42,23 @@
         "text": "By JB"
       },
       "timestamp": "2020-09-20T12:13:00.000Z"
+    },
+    {
+      "title": "Tell me what this is!",
+      "fields": [
+        {
+          "name": "New Features & updates",
+          "value": " * Added new **item** command! This will give you details about any item in game.\n * Updated **jumps** and **safejumps** commands to include the security of the start & end systems as well as the lowest security that will be traveled through.\n * Added item icons to market price searces."
+        },
+        {
+          "name": "Bug Fixes",
+          "value": " * Added missing market items to the registry.\n * Added Plasmoids to **pr** command which was missing."
+        }
+      ],
+      "footer": {
+        "text": "By JB"
+      },
+      "timestamp": "2020-09-23T01:30:00.000Z"
     }
   ]
 }

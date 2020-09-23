@@ -34,16 +34,15 @@
  * Added jump distance command to quickly let you know how far away any two systems are.
  * Added safer jump distance command to find the distance between two systems if you prefer to stick to hi sec systems.
 
-### X XXX XXX
+### 22 SEP 2020 - Tell me what this is!
 #### New Features & updates
- * Added new **items** command! This will give you details about any item in game.
+ * Added new **item** command! This will give you details about any item in game.
  * Updated **jumps** and **safejumps** commands to include the security of the start & end systems as well as the lowest security that will be traveled through.
  * Added item icons to market price searces.
  
-
 #### Bug Fixes
  * Added missing market items to the registry.
+ * Added Plasmoids to **pr** command which was missing.
 
-#### Known Issues
 
 
