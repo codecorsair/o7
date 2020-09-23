@@ -14,7 +14,7 @@ import {
   getEHP
 } from '../lib/items';
 import { romanize } from '../lib/romanize';
-import { isDevModeEnabled } from '../lib/access';
+// import { isDevModeEnabled } from '../lib/access';
 
 export default class ItemCommand extends Command {
   constructor() {
