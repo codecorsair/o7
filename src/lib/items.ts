@@ -42,7 +42,7 @@ const marketIndex = Fuse.createIndex(fuseOptions.keys, processedItems);
 const fuse = new Fuse(processedItems, fuseOptions, marketIndex);
 
 export function getItemId(searchTerms: string) {
-  const results = fuse.search(searchTerms);
+  const results = fuse.search(searchTerms.toLowerCase());
   if (results.length == 0) {
     return null;
   }

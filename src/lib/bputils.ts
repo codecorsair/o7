@@ -7,20 +7,20 @@ import { getLatestValidPrice, getMarketData } from './market-api';
 import { MarketItem } from './market-api';
 import blueprints from '../data/blueprints.json';
 
-const bpFuseOpts = {
+const fuseOpts = {
   isCaseSensitive: false,
   shouldSort: true,
   includeScore: true,
-  ignoreLocation: true,
-  includeMatches: false,
-  findAllMatches: false,
-  minMatchCharLength: 1,
-  location: 0,
-  threshold: 0.6,
-  distance: 100,
-  useExtendedSearch: false,
-  ignoreFieldNorm: true,
-  sort: (a: { score: number }, b: { score: number }) => a.score - b.score,
+  // ignoreLocation: true,
+  // includeMatches: false,
+  // findAllMatches: false,
+  // minMatchCharLength: 1,
+  // location: 0,
+  threshold: 0.5,
+  // distance: 100,
+  // useExtendedSearch: false,
+  // ignoreFieldNorm: true,
+  // sort: (a: { score: number }, b: { score: number }) => a.score - b.score,
   keys: [
     'name',
     {
@@ -50,18 +50,24 @@ const bps = blueprints.map(bp => {
   };
 });
 
-const fuse = new Fuse(bps, bpFuseOpts);
+const fuseIndex = Fuse.createIndex(fuseOpts.keys, bps);
+const fuse = new Fuse(bps, fuseOpts, fuseIndex);
 const regex = /((?:mk\s?\d)?[a-zA-Z ]+[a-zA-Z](?: [0-9]+(?!\/))?)(?:(?:\s+|\s*-\s*)(\d+(?:\/\d+)*))?/;
 
 export async function getResponse(searchText: string, isMobile: boolean) {
-  const parsedArgs = searchText.match(regex);
+  const parsedArgs = searchText.toLowerCase().match(regex);
   if (!parsedArgs) return null;
+  
   const name = parsedArgs[1].trim();
   
+  console.log(`Search Terms: ${name}`);
   const results = fuse.search(name);
   if (results.length == 0) {
     return null;
   }
+
+  console.log(`matches: ${results?.length}`);
+  results.forEach(r => console.log(`${r.item.name} : ${r.score}`));
   
   const skillLevels = (parsedArgs[2] && parsedArgs[2].split('/').map((s: string) => parseInt(s))) || [0,0,0];
   const mod = skillModifier(skillLevels);

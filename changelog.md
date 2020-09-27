@@ -44,5 +44,10 @@
  * Added missing market items to the registry.
  * Added Plasmoids to **pr** command which was missing.
 
-
+### XX - 
+#### New Features & updates
+ *
+ 
+#### Bug Fixes
+ * Fixed an issue where blueprint searches starting with `MK#` would incorrectly return items.
 

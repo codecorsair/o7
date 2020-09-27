@@ -102,8 +102,8 @@ Thermal   | ${numeral(1-a[Attributes.shieldThermalDamageResonance].value).format
 Kinetic   | ${numeral(1-a[Attributes.shieldKineticDamageResonance].value).format('00.00%')} | ${numeral(1-a[Attributes.armorKineticDamageResonance].value).format('00.00%')} | ${numeral(1-a[Attributes.kineticDamageResonance].value).format('00.00%')}
 Explosive | ${numeral(1-a[Attributes.shieldExplosiveDamageResonance].value).format('00.00%')} | ${numeral(1-a[Attributes.armorExplosiveDamageResonance].value).format('00.00%')} | ${numeral(1-a[Attributes.explosiveDamageResonance].value).format('00.00%')}
 Shield recharge time: ${numeral(a[Attributes.shieldRechargeRate].value / 1000).format('0.0')} seconds\
-        \`\`\`
-      `);
+\`\`\`
+`);
 
       const capacitorCapacity = a[Attributes.capacitorCapacity].value;
       const capacitorRechargeTime = a[Attributes.rechargeRate].value / 1000;
