@@ -29,13 +29,13 @@
  * Some market items are not available and you'll get a different item even when searching the exact name. This is due to the item you're searching for not existing at all in the data set. This will be addressed in a future update.
  
 ### 20 SEP 2020 - Did someone ask about Planetary Resources?
-#### New Features & updates
+#### New Features & Updates
  * Added Planetary Resource command! Now you can search for the best locations to set up your mining arrays near your home station.
  * Added jump distance command to quickly let you know how far away any two systems are.
  * Added safer jump distance command to find the distance between two systems if you prefer to stick to hi sec systems.
 
 ### 22 SEP 2020 - Tell me what this is!
-#### New Features & updates
+#### New Features & Updates
  * Added new **item** command! This will give you details about any item in game.
  * Updated **jumps** and **safejumps** commands to include the security of the start & end systems as well as the lowest security that will be traveled through.
  * Added item icons to market price searces.
@@ -44,11 +44,20 @@
  * Added missing market items to the registry.
  * Added Plasmoids to **pr** command which was missing.
 
-### XX - 
-#### New Features & updates
- *
+### 27 SEP 2020 - It's a team now!
+### New Team Members!
+A couple amazing people have volunteered to join the o7 team! Now that it's not just myself, I can actually call this a team. I am very much looking forward to working with the new team members and seeing what they will contribute. There are quite a lot of features waiting in the queue and these new team members will help me to get those realized much sooner!
+
+#### New Features & Updates
+ * Added icons to blueprints!
+ * Added a **dataretention** to dm the user detailing any data stored by the bot, what it is used for and why.
+ * Server administrators can now delete all data stored by the bot for their server with the command **deleteguilddata**. *Note: You can get more details about what information the bot actually stores on the **dataretention** command*
+ * All users can now delete any data stored by the bot for about their user with the command **deletemydata**. *Note: You can get more details about what information the bot actually stores on the **dataretention** command*
  
 #### Bug Fixes
  * Fixed an issue where blueprint searches starting with `MK#` would incorrectly return items.
+ * Improved blueprint search logic a bit.
  * Added some `.`s to the author field on the !bpm command to expand the width of the embed so code blocks won't get squished on many mobile devices. This should give better readability on mobile.
+ * Added missing planetary resources from the search function
+
 

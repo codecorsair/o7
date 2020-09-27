@@ -43,6 +43,10 @@
           "value": "Want to know what the most recent changes are with your favorite Eve Echoes bot? Just ask, and I'll send them to you.\n\n**!changelog** <optional: number of changes (default: 1)>"
         },
         {
+          "name": "Data Retention Policy",
+          "value": "View the data retention policy for this bot.\n\n**!dataretention**"
+        },
+        {
           "name": "Help",
           "value": "Displays this help text.\n\n**!help**"
         }

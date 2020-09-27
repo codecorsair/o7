@@ -59,6 +59,27 @@
         "text": "By JB"
       },
       "timestamp": "2020-09-23T01:30:00.000Z"
+    },
+    {
+      "title": "It's a team now!",
+      "fields": [
+        {
+          "name": "New Team Members!",
+          "value": "A couple amazing people have volunteered to join the o7 team! Now that it's not just myself, I can actually call this a team. I am very much looking forward to working with the new team members and seeing what they will contribute. There are quite a lot of features waiting in the queue and these new team members will help me to get those realized much sooner!"
+        },
+        {
+          "name": "New Features & Updates",
+          "value": " * Added icons to blueprints!\n * Added a **dataretention** to dm the user detailing any data stored by the bot, what it is used for and why.\n * Server administrators can now delete all data stored by the bot for their server with the command **deleteguilddata**. *Note: You can get more details about what information the bot actually stores on the **dataretention** command*\n * All users can now delete any data stored by the bot for about their user with the command **deletemydata**. *Note: You can get more details about what information the bot actually stores on the **dataretention** command*"
+        },
+        {
+          "name": "Bug Fixes",
+          "value": " * Fixed an issue where blueprint searches starting with `MK#` would incorrectly return items.\n * Improved blueprint search logic a bit.\n * Added some `.`s to the author field on the !bpm command to expand the width of the embed so code blocks won't get squished on many mobile devices. This should give better readability on mobile.\n * Added missing planetary resources from the search function"
+        }
+      ],
+      "footer": {
+        "text": "By JB"
+      },
+      "timestamp": "2020-09-27T22:49:00.000Z"
     }
   ]
 }
