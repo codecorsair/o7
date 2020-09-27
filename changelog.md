@@ -50,4 +50,5 @@
  
 #### Bug Fixes
  * Fixed an issue where blueprint searches starting with `MK#` would incorrectly return items.
+ * Added some `.`s to the author field on the !bpm command to expand the width of the embed so code blocks won't get squished on many mobile devices. This should give better readability on mobile.
 

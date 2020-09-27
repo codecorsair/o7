@@ -6,6 +6,8 @@ import { MessageEmbed } from 'discord.js';
 import { getLatestValidPrice, getMarketData } from './market-api';
 import { MarketItem } from './market-api';
 import blueprints from '../data/blueprints.json';
+import items from '../data/items.json';
+import { Item, getItemId } from './items';
 
 const fuseOpts = {
   isCaseSensitive: false,
@@ -60,46 +62,55 @@ export async function getResponse(searchText: string, isMobile: boolean) {
   
   const name = parsedArgs[1].trim();
   
-  console.log(`Search Terms: ${name}`);
   const results = fuse.search(name);
   if (results.length == 0) {
     return null;
   }
 
-  console.log(`matches: ${results?.length}`);
-  results.forEach(r => console.log(`${r.item.name} : ${r.score}`));
-  
   const skillLevels = (parsedArgs[2] && parsedArgs[2].split('/').map((s: string) => parseInt(s))) || [0,0,0];
   const mod = skillModifier(skillLevels);
   let total = { cost: 0 };
 
   const bp = results[0].item;
-  let embed = new MessageEmbed()
+  const bpName = bp.name + ' Blueprint';
+  const id = getItemId(bpName);
+  const embed = new MessageEmbed()
     .setColor('#0DE1A1')
-    .setTitle(bp.name)
+    .setTitle(bpName)
     .setDescription(`Type **${bp.type}**\nTech Level **${bp.techLevel}**`);
+
+  if (isMobile) {
+    // expand the width of the embed so code blocks aren't squished.
+    embed.setAuthor('. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .');
+  }
+
+  if (id) {
+    const itemInfo = items[id] as Item;
+    embed.setThumbnail(`https://storage.googleapis.com/o7-store/icons/${itemInfo.icon_id}.png`)
+  }
+  
   if (hasAny(bp, mineralKeys)) {
     const description = await printKeys(bp, mineralKeys, mod.material, total, isMobile);
-    embed = embed.addField('Minerals', description);
+    embed.addField('Minerals', description);
   }
 
   if (hasAny(bp, piKeys)) {
     const description = await printKeys(bp, piKeys, mod.material, total, isMobile);
-    embed = embed.addField('Planetary Resources', description);
+    embed.addField('Planetary Resources', description);
   }
 
   if (hasAny(bp, salvageKeys)) {
     const description = await printKeys(bp, salvageKeys, mod.material, total, isMobile);
-    embed = embed.addField('Salvage', description);
+    embed.addField('Salvage', description);
   }
 
-  embed = embed.addField('Production', printProduction(bp, mod.time, isMobile));
+  embed.addField('Production', printProduction(bp, mod.time, isMobile));
   total.cost += bp.productionCost;
 
   const itemPrice = await getMarketData(bp.name);
   const bpPrice = await getMarketData(bp.name + ' blueprint');
   if (itemPrice && bpPrice) {
-    embed = embed.addField('Cost', printCosts(bp, itemPrice, bpPrice, total, isMobile));
+    embed.addField('Cost', printCosts(bp, itemPrice, bpPrice, total, isMobile));
   }
   return embed;
 }
