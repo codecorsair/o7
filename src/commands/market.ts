@@ -81,6 +81,9 @@ const validSearchKeys = [
   'planetary item',
   'pl',
   'pi',
+  'pr',
+  'planetary resource',
+  'planetary resources',
   'ore',
   'ores'
 ];
@@ -123,9 +126,12 @@ export default class PingCommand extends Command {
           case 'planetary items':
           case 'planetary item':
           case 'pl':
-          case 'pi': { 
+          case 'pi':
+          case 'pr':
+          case 'planetary resource':
+          case 'planetary resources: { 
             itemKeys = piKeys;
-            title = 'Planetary Item Prices';
+            title = 'Planetary Resource Prices';
             break; 
           } 
           case 'ore':
@@ -192,10 +198,10 @@ export default class PingCommand extends Command {
           .setTitle(itemInfo.name)
           .setThumbnail(`https://storage.googleapis.com/o7-store/icons/${itemInfo.icon_id}.png`)
           .setDescription(`\
-            **Buy Order** ${numeral(price.buy).format('0[.]0a')}
-            **Sell Order** ${numeral(price.sell).format('0[.]0a')}
-            **Volume** ${price.volume || 0}
-            _last updated ${moment(price.time * 1000).fromNow()}_`)
+**Buy Order** ${numeral(price.buy).format('0[.]0a')}
+**Sell Order** ${numeral(price.sell).format('0[.]0a')}
+**Volume** ${price.volume || 0}
+_last updated ${moment(price.time * 1000).fromNow()}_`)
         );
 
       } catch (err) {
