@@ -129,7 +129,7 @@ export default class PingCommand extends Command {
           case 'pi':
           case 'pr':
           case 'planetary resource':
-          case 'planetary resources: { 
+          case 'planetary resources': { 
             itemKeys = piKeys;
             title = 'Planetary Resource Prices';
             break; 
