@@ -2,53 +2,21 @@
   "embeds": [
     {
       "title": "o7 Help",
-      "description": "*This documentation assumes commands use the prefix `!` each server may have configured a different prefix for commands.*",
+      "description": "**Most all commands have their own help available by sending the word \"help\"  after the command** \nfor example: !bp help\n\n*This documentation assumes commands use the prefix `!` a server may have configured a different prefix for commands.*",
       "url": "https://discord.gg/PfruVg4",
       "color": 7506394,
       "fields": [
         {
-          "name": "Blueprints",
-          "value": "Get information about what it will take to manufacture items.\n\n**!bp** _<name> (<#/#/#>: optional skill levels basic / advanced / expert)_"
+          "name": "Commands",
+          "value": "**!blueprint** or **!bp** - Get information about what it will take to manufacture items.\n\n**!blueprintm** or **!bpm** - Mobile friendly display for blueprints\n\n**!pricecheck** or **!pc** - Retrieves market data based on provided search terms.\n\n**!planetaryresources** or **!pr** - Discover the location of a desired planetary resource within a number of jumps from any system.\n\n**!jumps** or **!j** - Find out the shortest jumps distance between two systems.\n\n**!safejumps** or **!sj** - Find out the distance to travel between two systems if using the safer option that prefers hi sec systems over low & null.\n\n"
         },
         {
-          "name": "Blueprints Mobile Version",
-          "value": "Get information about what it will take to manufacture items formatted to be more mobile friendly!\n\n**!bpm** _<name> (<#/#/#>: optional skill levels basic / advanced / expert)_"
+          "name": "Beta Commands",
+          "value": "*Beta commands are works in progress and may have missing information and/or missing features*\n\n**!item** or **!i** - Look up details about any item in game quickly! Get the full stats of any ship!  *work in progress, not all info is available yet*\n\n**!apply** - Will ask the user questions that have been configured by the server admins and post the users answers in a specified channel. \n"
         },
         {
-          "name": "Market Prices",
-          "value": "Retrieves market data based on provided search terms.\n\n**!pricecheck** _<item name>_\n_aliases_: **!market** / **!mp** / **!pc** / **!price**/ **!value**"
-        },
-        {
-          "name": "Planetary Resources",
-          "value": "Discover the location of a desired planetary resource within a number of jumps from any system.\n\n**!pr** <system> <jump range> <resource name>\n*aliases:* **!pi** / **!planetaryresources**\n "
-        },
-        {
-          "name": "Jump Distance",
-          "value": "Find out the shortest path between two systems\n\n**!jumps** <system name> <system name>\n*aliases:* **!distance** / **!shortest**"
-        },
-        {
-          "name": "Jump Distance Prefer Safer",
-          "value": "Find out the distance to travel if using the safer option that prefers hi sec systems over low & null.\n\n**!safest** <system name> <system name>\n*aliases:* **!safejumps**"
-        },
-        {
-          "name": "Item Database Search (beta)",
-          "value": "Look up details about any item in game quickly! Get the full stats of any ship! \n*work in progress, not all details are available yet for modules*\n\n**!item** <item name>\n*aliases*: **!i**"
-        },
-        {
-          "name": "Applications (beta)",
-          "value": "Will ask the user questions that have been configured by the server admins and post the users answers in a specified channel.\n\n**!apply** \n_aliases:_ **!app**  / **!application**"
-        },
-        {
-          "name": "Changelog",
-          "value": "Want to know what the most recent changes are with your favorite Eve Echoes bot? Just ask, and I'll send them to you.\n\n**!changelog** <optional: number of changes (default: 1)>"
-        },
-        {
-          "name": "Data Retention Policy",
-          "value": "View the data retention policy for this bot.\n\n**!dataretention**"
-        },
-        {
-          "name": "Help",
-          "value": "Displays this help text.\n\n**!help**"
+          "name": "Informational Commands",
+          "value": "**!help** - Displays this help text.\n\n**!changelog** - Want to know what the most recent changes are with your favorite Eve Echoes bot? Just ask, and I'll send them to you.\n\n**!dataretention** - View the data retention policy for this bot.\n\n**!invite** - Get a link you can use to invite this bot to your server."
         }
       ],
       "thumbnail": {
@@ -57,20 +25,12 @@
     },
     {
       "title": "Administrative Commands",
-      "description": "These commands require administrator permissions on your server to execute.",
+      "description": "By default, these commands require administrator permissions on your server to execute.",
       "color": 835726,
       "fields": [
         {
-          "name": "Prefix",
-          "value": "Set a custom prefix that this bot will respond to on your server.\n\n**!prefix** <prefix>\n_prefix_ can be a single character, emoji, or even a secret word!"
-        },
-        {
-          "name": "Application Configuration",
-          "value": "Used to set the questions the bot will ask a user who uses the `apply` command as well as the channel completed applications will be posted to.\n\n**!appconfig**"
-        },
-        {
-          "name": "Set Role",
-          "value": "A helper to allow a server admin to quickly set a users role.\n\n**!setrole** _<@user>_ _<@role>_\n**!setrole**  _<@role>_ _<@user>_"
+          "name": "Commands",
+          "value": "**!prefix** - Set a custom prefix that this bot will respond to on your server.\n\n**!appconfig** - Used to set the questions the bot will ask a user who uses the **!apply** command as well as the channel completed applications will be posted to.\n\n**!setrole** - Assigns discord role to a member."
         }
       ]
     },

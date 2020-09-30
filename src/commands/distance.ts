@@ -1,5 +1,5 @@
 import { Command } from 'discord-akairo';
-import { Message } from 'discord.js';
+import { Message, MessageEmbed } from 'discord.js';
 import Fuse from 'fuse.js';
 import neo4j from 'neo4j-driver';
 import config from '../config.json';
@@ -28,19 +28,34 @@ const fuseSystems = new Fuse(systems, systemFuseOpts);
 export default class PingCommand extends Command {
   constructor() {
     super('distance', {
-      aliases: ['distance', 'shortest', 'jumps'],
+      aliases: ['distance', 'shortest', 'jumps', 'j'],
       args: [
         {
           id: 'start',
         },
         {
           id: 'end',
+        },
+        {
+          id: 'help',
+          match: 'flag',
+          flag: 'help'
         }
       ]
     });
   }
 
   async exec(message: Message, args: any) {
+    if (!args || args.help || !args.start || !args.end) {
+      const prefix = (message as any).prefix;
+      return message.channel.send(new MessageEmbed()
+        .setTitle('Jumps Command Help')
+        .setDescription('This command will return the shortest jump distance to travel between two given systems within New Eden as well as the lowest security rating along the route.')
+        .addField('Usage', `**${prefix}jumps** startSystem endSystem
+
+        *aliases:* **${prefix}j**, **${prefix}distance**, **${prefix}shortest**`));
+    }
+
     if (!args || !args.start || !args.end) {
       return message.channel.send('Invalid args!\nUsage: **jumps** <system> <system>');
     }

@@ -1,5 +1,5 @@
 import { Command } from 'discord-akairo';
-import { Message } from 'discord.js';
+import { Message, MessageEmbed } from 'discord.js';
 import Fuse from 'fuse.js';
 
 import { isDevModeEnabled } from '../lib/access';
@@ -42,6 +42,11 @@ export default class LexiconCommand extends Command {
           id: 'searchTerm',
           match: 'content',
           default: '',
+        },
+        {
+          id: 'help',
+          match: 'flag',
+          flag: 'help'
         }
       ],
     });
@@ -50,6 +55,14 @@ export default class LexiconCommand extends Command {
   }
 
   exec(message: Message, args: any) {
+    if (!args || args.help || !args.searchTerm) {
+      const prefix = (message as any).prefix;
+      return message.channel.send(new MessageEmbed()
+      .setTitle('Lexicon Command Help')
+      .setDescription('This command will return the definition/meaning of a commonly used Eve term / phrase / emoticon.')
+      .addField('Usage', `**${prefix}lexicon** item name
+*aliases:* **${prefix}lex**, **${prefix}ship**, **${prefix}info**`));
+    }
 
     const results = this.fuse.search(args.searchTerm.trim())
     if (results.length == 0) {

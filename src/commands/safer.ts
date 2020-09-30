@@ -1,5 +1,5 @@
 import { Command } from 'discord-akairo';
-import { Message } from 'discord.js';
+import { Message, MessageEmbed } from 'discord.js';
 import Fuse from 'fuse.js';
 import neo4j from 'neo4j-driver';
 import config from '../config.json';
@@ -28,21 +28,32 @@ const fuseSystems = new Fuse(systems, systemFuseOpts);
 export default class PingCommand extends Command {
   constructor() {
     super('safest', {
-      aliases: ['safest', 'safejumps'],
+      aliases: ['safest', 'safejumps', 'sj'],
       args: [
         {
           id: 'start',
         },
         {
           id: 'end',
+        },
+        {
+          id: 'help',
+          match: 'flag',
+          flag: 'help'
         }
       ]
     });
   }
 
   async exec(message: Message, args: any) {
-    if (!args || !args.start || !args.end) {
-      return message.channel.send('Invalid args!\nUsage: **jumps** <system> <system>');
+    if (!args || args.help || !args.start || !args.end) {
+      const prefix = (message as any).prefix;
+      return message.channel.send(new MessageEmbed()
+        .setTitle('Safer Jumps Command Help')
+        .setDescription('This command will return the jump distance to travel between two given systems while preferring to stay within high security systems as well as the lowest security rating along the route.')
+        .addField('Usage', `**${prefix}safejumps** startSystem endSystem
+
+        *aliases:* **${prefix}sj**, **${prefix}safest**`));
     }
 
     const startSearch = fuseSystems.search(args.start);

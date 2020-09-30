@@ -80,6 +80,23 @@
         "text": "By JB"
       },
       "timestamp": "2020-09-27T22:49:00.000Z"
+    },
+    {
+      "title": "Minerals, Resources, and Ores.. Oh My!",
+      "fields": [
+        {
+          "name": "New Features & Updates",
+          "value": " * As the first addition of one our new team members on o7 @Cornexo, The bot will now return market prices grouped by ores, minerals, and planetary resources through specific keywords to the **!market** command. Use **!market help** for more details.\n * Added **invite** command which responds with a link you can use to invite o7 to a new server.\n* Simplified the general **!help** command and added a unique help to most all commands to give help speciifc to that command.  *Try !pc help*"
+        },
+        {
+          "name": "Bug Fixes",
+          "value": " * Removed thumbnail from blueprints for now as they were causing issues on some mobile devices. "
+        }
+      ],
+      "footer": {
+        "text": "By JB & Cornexo"
+      },
+      "timestamp": "2020-10-01T02:27:00.000Z"
     }
   ]
 }

@@ -19,7 +19,7 @@ import { romanize } from '../lib/romanize';
 export default class ItemCommand extends Command {
   constructor() {
     super('item', {
-      aliases: ['item', 'i'],
+      aliases: ['item', 'i', 'ship', 'info'],
       // userPermissions: () => {
       //   if (!isDevModeEnabled()) {
       //     return 'DevModeNotEnabled';
@@ -30,14 +30,24 @@ export default class ItemCommand extends Command {
         {
           id: 'name',
           match: 'content'
+        },
+        {
+          id: 'help',
+          match: 'flag',
+          flag: 'help'
         }
       ]
     });
   }
 
   exec(message: Message, args: any) {
-    if (!args || !args.name) {
-      return message.channel.send(`item name required`);
+    if (!args || args.help || !args.name) {
+      const prefix = (message as any).prefix;
+      return message.channel.send(new MessageEmbed()
+      .setTitle('Item Info Command Help')
+      .setDescription('This command will return information about an item in game.')
+      .addField('Usage', `**${prefix}item** item name
+*aliases:* **${prefix}i**, **${prefix}ship**, **${prefix}info**`));
     }
 
     const id = getItemId(args.name);

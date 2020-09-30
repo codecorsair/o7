@@ -6,8 +6,8 @@ import { MessageEmbed } from 'discord.js';
 import { getLatestValidPrice, getMarketData } from './market-api';
 import { MarketItem } from './market-api';
 import blueprints from '../data/blueprints.json';
-import items from '../data/items.json';
-import { Item, getItemId } from './items';
+// import items from '../data/items.json';
+// import { Item, getItemId } from './items';
 
 const fuseOpts = {
   isCaseSensitive: false,
@@ -73,7 +73,7 @@ export async function getResponse(searchText: string, isMobile: boolean) {
 
   const bp = results[0].item;
   const bpName = bp.name + ' Blueprint';
-  const id = getItemId(bpName);
+  // const id = getItemId(bpName);
   const embed = new MessageEmbed()
     .setColor('#0DE1A1')
     .setTitle(bpName)
@@ -84,10 +84,10 @@ export async function getResponse(searchText: string, isMobile: boolean) {
     embed.setAuthor('. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .');
   }
 
-  if (id) {
-    const itemInfo = items[id] as Item;
-    embed.setThumbnail(`https://storage.googleapis.com/o7-store/icons/${itemInfo.icon_id}.png`)
-  }
+  // if (id) {
+  //   const itemInfo = items[id] as Item;
+  //   embed.setThumbnail(`https://storage.googleapis.com/o7-store/icons/${itemInfo.icon_id}.png`)
+  // }
   
   if (hasAny(bp, mineralKeys)) {
     const description = await printKeys(bp, mineralKeys, mod.material, total, isMobile);

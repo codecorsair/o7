@@ -3,7 +3,6 @@ import { MessageEmbed } from 'discord.js';
 import { Message } from 'discord.js';
 import numeral from 'numeral';
 import moment from 'moment';
-import config from '../config.json';
 import { getLatestValidPrice, getMarketData } from '../lib/market-api';
 import items from '../data/items.json';
 
@@ -11,64 +10,64 @@ import items from '../data/items.json';
 // TODO: centralize and export these
 
 const mineralKeys = [
-  "tritanium",
-  "pyerite",
-  "mexallon",
-  "isogen",
-  "nocxium",
-  "zydrine",
-  "megacyte",
-  "morphite"
+  'tritanium',
+  'pyerite',
+  'mexallon',
+  'isogen',
+  'nocxium',
+  'zydrine',
+  'megacyte',
+  'morphite'
 ];
 
 const piKeys = [
-  "lusteringAlloy",
-  "sheenCompound",
-  "gleamingAlloy",
-  "condensedAlloy",
-  "preciousAlloy",
-  "motleyCompound",
-  "fiberComposite",
-  "lucentCompound",
-  "opulentCompound",
-  "glossyCompound",
-  "crystalCompound",
-  "darkCompound",
-  "baseMetals",
-  "heavyMetals",
-  "reactiveMetals",
-  "nobleMetals",
-  "toxicMetals",
-  "reactiveGas",
-  "nobleGas",
-  "industrialFibers",
-  "supertensilePlastics",
-  "polyaramids",
-  "coolant",
-  "condensates",
-  "constructionBlocks",
-  "nanites",
-  "silicateGlass",
-  "smartfabUnits"
+  'lusteringAlloy',
+  'sheenCompound',
+  'gleamingAlloy',
+  'condensedAlloy',
+  'preciousAlloy',
+  'motleyCompound',
+  'fiberComposite',
+  'lucentCompound',
+  'opulentCompound',
+  'glossyCompound',
+  'crystalCompound',
+  'darkCompound',
+  'baseMetals',
+  'heavyMetals',
+  'reactiveMetals',
+  'nobleMetals',
+  'toxicMetals',
+  'reactiveGas',
+  'nobleGas',
+  'industrialFibers',
+  'supertensilePlastics',
+  'polyaramids',
+  'coolant',
+  'condensates',
+  'constructionBlocks',
+  'nanites',
+  'silicateGlass',
+  'smartfabUnits'
 ];
 
 const oreKeys = [
-  "veldspar",
-  "plagioclase",
-  "scordite",
-  "omber",
-  "pyroxeres",
-  "kernite",
-  "darkOchre",
-  "gneiss",
-  "spodumain",
-  "hemorphite",
-  "hedbergite",
-  "jaspet",
-  "crokite",
-  "bistot",
-  "arkonor",
-  "mercoxet"
+  'veldspar',
+  'plagioclase',
+  'scordite',
+  'omber',
+  'pyroxeres',
+  'kernite',
+  'darkOchre',
+  'gneiss',
+  'spodumain',
+  'hemorphite',
+  'hedbergite',
+  'jaspet',
+  'crokite',
+  'bistot',
+  'arkonor',
+  'mercoxet'
 ];
 
 const validSearchKeys = [
@@ -97,15 +96,34 @@ export default class PingCommand extends Command {
           id: 'searchTerms',
           match: 'content',
           default: '',
+        },
+        {
+          id: 'help',
+          match: 'flag',
+          flag: 'help'
         }
       ],
     });
   }
 
   async exec(message: Message, args: any) {
-    if (!args.searchTerms) {
-      message.reply(`Oops! It looks like you forgot to tell me what you wanted to search for.\n**Market Price Usage**\n${config.prefix}pc item name`);
-      return;
+
+    if (!args || args.help || !args.searchTerms) {
+      const prefix = (message as any).prefix;
+      const helpEmbed = new MessageEmbed()
+        .setTitle('Market Price Command Help')
+        .setDescription('This command will return market price data which is queried from <https://eve-echoes-market.com>.')
+        .addField('Usage', `**${prefix}pc** item name
+*aliases:* **${prefix}mp**, **${prefix}pricecheck**, **${prefix}pc**, **${prefix}price**, **${prefix}value**`)
+        .addField('Special Keywords', `**${prefix}pc** ores
+*Get prices of all ores* - *keyword aliases:* ore
+
+**${prefix}pc** minerals
+*Get prices of all minerals* - *keyword aliases:* mineral, mins, min
+
+**${prefix}pc** pi
+*Get prices of all planetary resources* - *keyword aliases:* pi, pl, planetary, planetary resource, planetary resources, planetary items, planetary item`);
+      return message.channel.send(helpEmbed);
     }
 
     if (validSearchKeys.includes(args.searchTerms)) {
@@ -176,21 +194,20 @@ export default class PingCommand extends Command {
         }
       } catch (err) {
         // oh no
-        message.reply(`Oh No! Something went wrong and I was unable to get market data for ${args.searchTerms}.`);
+        message.channel.send(`Oh No! Something went wrong and I was unable to get market data for ${args.searchTerms}.`);
       }
-    }
-    else {
+    } else {
       try {
         const item = await getMarketData(args.searchTerms);
         if (!item) {
-          message.reply(`I'm sorry, I wasn't able to find anything for those search terms.`);
+          message.channel.send(`I'm sorry, I wasn't able to find anything for those search terms.`);
           return;
         }
 
         const itemInfo = items[item.id];
         const price = getLatestValidPrice(item);
         if (!price) {
-          message.reply(`I'm sorry, I wasn't able to find any prices for ${itemInfo.name}.`);
+          message.channel.send(`I'm sorry, I wasn't able to find any prices for ${itemInfo.name}.`);
           return;
         }
 
@@ -206,7 +223,7 @@ _last updated ${moment(price.time * 1000).fromNow()}_`)
 
       } catch (err) {
         // oh no
-        message.reply(`Oh No! Something went wrong and I was unable to get market data for that item.`);
+        message.channel.send(`Oh No! Something went wrong and I was unable to get market data for that item.`);
       }
     }
   }

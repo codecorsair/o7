@@ -24,8 +24,11 @@ export class o7Client extends AkairoClient {
       directory: __dirname + '/commands/',
       prefix: (message: Message) => {
         if (message.guild) {
-          return settings.getSettings(message.guild.id).prefix;
+          const prefix = settings.getSettings(message.guild.id).prefix;
+          (message as any).prefix = prefix;
+          return prefix;
         }
+        (message as any).prefix = config.prefix;
         return config.prefix;
       },
     });

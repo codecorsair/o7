@@ -1,5 +1,5 @@
 import { Command } from 'discord-akairo';
-import { Message } from 'discord.js';
+import { Message, MessageEmbed } from 'discord.js';
 import Fuse from 'fuse.js';
 import neo4j from 'neo4j-driver';
 import config from '../config.json';
@@ -84,8 +84,8 @@ const fuseSystems = new Fuse(systems, systemFuseOpts);
 
 export default class PRCommand extends Command {
   constructor() {
-    super('pr', {
-      aliases: ['pr', 'planetaryresources', 'pi'],
+    super('planetaryresources', {
+      aliases: ['planetaryresources', 'pr', 'pi'],
       args: [
         {
           id: 'system',
@@ -97,13 +97,26 @@ export default class PRCommand extends Command {
           id: 'resource',
           match: 'restContent',
         },
+        {
+          id: 'help',
+          match: 'flag',
+          flag: 'help'
+        }
       ]
     });
   }
 
   async exec(message: Message, args: any) {
-    if (!args || !args.system || !args.resource || !args.range) {
-      return message.reply('Invalid args!\nUsage: **!pr** <system> <jump range> <resource name>');
+    if (!args || args.help || !args.system || !args.resource || !args.range) {
+      const prefix = (message as any).prefix;
+      return message.channel.send(new MessageEmbed()
+      .setTitle('Planetary Resources Search Command Help')
+      .setDescription('This command will return the locations of perfect and/or rich planetary resources within a specified range of any system. The search range is limited to a maximum of 10 jumps from any system.')
+      .addField('Usage', `**${prefix}planetaryresources** system jumprange planetary resource name
+*aliases:* **${prefix}pr**, **${prefix}pi**
+
+**example**
+**${prefix}pr jita 5 base metals`));
     }
 
     const prSearch = fusePR.search(args.resource);

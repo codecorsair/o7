@@ -60,4 +60,12 @@ A couple amazing people have volunteered to join the o7 team! Now that it's not 
  * Added some `.`s to the author field on the !bpm command to expand the width of the embed so code blocks won't get squished on many mobile devices. This should give better readability on mobile.
  * Added missing planetary resources from the search function
 
+### 30 SEP 2020 - Minerals, Resources, and Ores.. Oh My!
+#### New Features & Updates
+ * As the first addition of one our new team members on o7 @Cornexo, The bot will now return market prices grouped by ores, minerals, and planetary resources through specific keywords to the **!market** command. Use **!market help** for more details.
+ * Added **invite** command which responds with a link you can use to invite o7 to a new server.
+ * Simplified the general **!help** command and added a unique help to most all commands to give help speciifc to that command.  *Try !pc help*
 
+ 
+#### Bug Fixes
+ * Removed thumbnail from blueprints for now as they were causing issues on some mobile devices. 

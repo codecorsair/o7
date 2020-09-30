@@ -1,5 +1,5 @@
 import { Command } from 'discord-akairo';
-import { Message } from 'discord.js';
+import { Message, MessageEmbed } from 'discord.js';
 import { getClient, collections } from '../lib/db';
 
 export interface AppConfig {
@@ -14,31 +14,63 @@ export default class AppConfigCommand extends Command {
       aliases: ['appconfig', 'configapp'],
       channel: 'guild',
       userPermissions: ['ADMINISTRATOR'],
-      args: [
-        {
-          id: 'appChannel',
-          type: 'channel',
-          prompt: {
-            start: 'What channel should I post completed applications to?'
-          }
-        },
-        {
-          id: 'questions',
-          match: 'none',
-          prompt: {
-            start: [
-              'Please type your application questions now with each question in a single message.',
-              'Type `stop` when you are done adding questions.'
-            ],
-            infinite: true,
-          }
-        }
-      ]
     });
   }
 
+  *args(message: Message) {
+    if (!message.guild) {
+      return {
+        help: true,
+      };
+    }
+
+    const help = yield {
+      type: 'flag',
+      flag: 'help'
+    }
+
+    if (help) {
+      return {
+        help
+      };
+    }
+
+    const appChannel = yield {
+      type: 'channel',
+      prompt: {
+        start: 'What channel should I post completed applications to?'
+      }
+    }
+
+    const questions = yield {
+      match: 'none',
+      prompt: {
+        start: [
+          'Please type your application questions now with each question in a single message.',
+          'Type `stop` when you are done adding questions.'
+        ],
+        infinite: true,
+      }
+    }
+
+    return {
+      help,
+      appChannel,
+      questions
+    };
+  }
+
   async exec(message: Message, args: any) {
-    if (!message.guild) return;
+    if (!args || args.help || !message.guild) {
+      const prefix = (message as any).prefix;
+      return message.channel.send(new MessageEmbed()
+          .setTitle('Application Config Command Help')
+          .setDescription('This command is used to configure application questions and the channel to which completed applications are posted.')
+          .addField('Usage', `**${prefix}appconfig**
+
+*aliases:* **${prefix}configapp**`));
+    }
+
     const client = getClient();
     try {
       await client.connect();

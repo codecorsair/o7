@@ -17,7 +17,18 @@ export default class ApplicationCommand extends Command {
   }
 
   async *args(message: Message) {
-    if (!message || !message.guild) return;
+    if (!message || !message.guild) return { help: true };
+
+    const help = yield {
+      type: 'flag',
+      flag: 'help'
+    }
+
+    if (help) {
+      return {
+        help
+      };
+    }
 
     let config: AppConfig | null = null;
     const client = mongo.getClient();
