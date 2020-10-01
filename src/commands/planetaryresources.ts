@@ -116,7 +116,7 @@ export default class PRCommand extends Command {
 *aliases:* **${prefix}pr**, **${prefix}pi**
 
 **example**
-**${prefix}pr jita 5 base metals`));
+**${prefix}pr** jita 5 base metals`));
     }
 
     const prSearch = fusePR.search(args.resource);
