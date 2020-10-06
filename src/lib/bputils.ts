@@ -65,8 +65,8 @@ export async function getResponse(searchText: string, isMobile: boolean) {
   if (!parsedArgs) return null;
   
   const name = parsedArgs[1].trim();
-  const matskills = parsedArgs[2].trim();
-  const acctskills = parsedArgs[3].trim();
+  const matskills = parsedArgs[2];
+  const acctskills = parsedArgs[3];
   
   const results = fuse.search(name);
   if (results.length == 0) {
