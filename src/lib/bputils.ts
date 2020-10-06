@@ -144,8 +144,8 @@ function printCosts(bp: { productionCount: number; }, item: MarketItem, blueprin
   result += alignText(`Cost to build${isMobile ? '\n' : ''}`, `${numeral(total.cost).format('0[.]0a')} ISK\n`, isMobile);
   result += alignText(`Blueprint Cost${isMobile ? '\n' : ''}`, `low ${numeral(bpPrice.lowest_sell).format('0[.]0a')} ISK | median ${numeral(bpPrice.sell).format('0[.]0a')} ISK\n`, isMobile);
   result += alignText(`Market sell${isMobile ? '\n' : ''}`, `low ${numeral(sellOrderLow).format('0[.]0a')} ISK | median ${numeral(sellOrderMed).format('0[.]0a')} ISK\n`, isMobile);
-  result += alignText(`Broker's Fee${isMobile ? '\n' : ''}`, `low ${numeral(brokersFeeLow).format('0[.]0a')} ISK | median ${numeral(brokersFeeMed).format('0[.]0a')} ISK\n`, isMobile);
-  result += alignText(`Transaction Tax${isMobile ? '\n' : ''}`, `low ${numeral(taxFeeLow).format('0[.]0a')} ISK | median ${numeral(taxFeeMed).format('0[.]0a')} ISK\n`, isMobile);
+  result += alignText(`Broker's Fee ${numeral(accountingRates.brokersRate).format('0.0%')}${isMobile ? '\n' : ''}`, `low ${numeral(brokersFeeLow).format('0[.]0a')} ISK | median ${numeral(brokersFeeMed).format('0[.]0a')} ISK\n`, isMobile);
+  result += alignText(`Transaction Tax ${numeral(accountingRates.taxRate).format('0%')}${isMobile ? '\n' : ''}`, `low ${numeral(taxFeeLow).format('0[.]0a')} ISK | median ${numeral(taxFeeMed).format('0[.]0a')} ISK\n`, isMobile);
   result += alignText(`Profit margin${isMobile ? '\n' : ''}`, `low ${numeral(sellOrderLow - total.cost - brokersFeeAndTaxLow).format('0[.]0a')} ISK | median ${numeral(sellOrderMed - total.cost - brokersFeeAndTaxMed).format('0[.]0a')} ISK\n`, isMobile);
   result += alignText(`(If buying BP)${isMobile ? '\n' : ''}`, `low ${numeral(sellOrderLow - (total.cost + bpPrice.lowest_sell) - brokersFeeAndTaxLow).format('0[.]0a')} ISK | median ${numeral(sellOrderMed - (total.cost + bpPrice.sell) - brokersFeeAndTaxMed).format('0[.]0a')} ISK\n`, isMobile);
   return result + '```';
