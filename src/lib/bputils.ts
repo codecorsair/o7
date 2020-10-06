@@ -54,21 +54,29 @@ const bps = blueprints.map(bp => {
 
 const fuseIndex = Fuse.createIndex(fuseOpts.keys, bps);
 const fuse = new Fuse(bps, fuseOpts, fuseIndex);
-const regex = /((?:mk\s?\d)?[a-zA-Z ]+[a-zA-Z](?: [0-9]+(?!\/))?)(?:(?:\s+|\s*-\s*)(\d+(?:\/\d+)*))?/;
+// leaving legacy regex here for fast fallback
+// const regex = /((?:mk\s?\d)?[a-zA-Z ]+[a-zA-Z](?: [0-9]+(?!\/))?)(?:(?:\s+|\s*-\s*)(\d+(?:\/\d+){1,}))?(?:(?:\s+|\s*-\s*)(\d+(?:\/\d+){1,}))?/;
+
+// new regex developed and tested here https://www.typescriptlang.org/play?ts=4.0.2#code/MYewdgzgLgBApgDwIYFsAOAbOBJMaCusAvDAEQoDWA7DABYgBGMATDAKwD0ADDACzekA3AChhoSLABOcAOaIYJDgAoA-AB4GGfHDSSAlmCgA+ANpIAtAC8AguYBaXcwE4YAXQDUZq7buvVALhgTRycPVQBCAB0OAEoYlRiAgMiIACpE9RQkKAgKPQwMCFNHNjCVf2jg81L3GIBvAEYAGgBfeIz-ZLSMtSRgYBy8gqKqmuSOUY965raEjhFxaBg0JEkIOAATa0kZCAV4ZHQsXAIoADooEAAZEAB3OEkAYSR1pRizrKhgWiVpOQQYiIxOAICAsGcMCAZEoVmtNttdjFhEA
+const regex = /([a-zA-Z0-9 ]+[a-zA-Z](?: [0-9]+(?!\/))?)(?:(?:\s*)([0-5]+(?:\/[0-5]+){1,})?)(?:(?:\s*)([0-5]+(?:\/[0-5]+){1,})?)/;
 
 export async function getResponse(searchText: string, isMobile: boolean) {
   const parsedArgs = searchText.toLowerCase().match(regex);
   if (!parsedArgs) return null;
   
   const name = parsedArgs[1].trim();
+  const matskills = parsedArgs[2];
+  const acctskills = parsedArgs[3];
   
   const results = fuse.search(name);
   if (results.length == 0) {
     return null;
   }
 
-  const skillLevels = (parsedArgs[2] && parsedArgs[2].split('/').map((s: string) => parseInt(s))) || [0,0,0];
+  const skillLevels = (matskills && matskills.split('/').map((s: string) => parseInt(s))) || [0,0,0];
+  const accountingLevels = (acctskills && acctskills.split('/').map((s: string) => parseInt(s))) || [0,0,0];
   const mod = skillModifier(skillLevels);
+  const accountingRates = accountingSkillModifier(accountingLevels);
   let total = { cost: 0 };
 
   const bp = results[0].item;
@@ -110,12 +118,12 @@ export async function getResponse(searchText: string, isMobile: boolean) {
   const itemPrice = await getMarketData(bp.name);
   const bpPrice = await getMarketData(bp.name + ' blueprint');
   if (itemPrice && bpPrice) {
-    embed.addField('Cost', printCosts(bp, itemPrice, bpPrice, total, isMobile));
+    embed.addField('Cost', printCosts(bp, itemPrice, bpPrice, total, accountingRates, isMobile));
   }
   return embed;
 }
 
-function printCosts(bp: { productionCount: number; }, item: MarketItem, blueprint: MarketItem, total: { cost: number }, isMobile: boolean) {
+function printCosts(bp: { productionCount: number; }, item: MarketItem, blueprint: MarketItem, total: { cost: number }, accountingRates: { brokersRate: number, taxRate: number}, isMobile: boolean) {
   const latestPrice = getLatestValidPrice(item);
   let bpPrice = getLatestValidPrice(blueprint);
   if (!bpPrice) {
@@ -131,12 +139,21 @@ function printCosts(bp: { productionCount: number; }, item: MarketItem, blueprin
   const sellOrderLow = latestPrice && latestPrice.lowest_sell * bp.productionCount || 0;
   const sellOrderMed = latestPrice && latestPrice.sell * bp.productionCount || 0;
 
+  const brokersFeeLow = accountingRates.brokersRate * sellOrderLow || 0;
+  const brokersFeeMed = accountingRates.brokersRate * sellOrderMed || 0;
+  const taxFeeLow = accountingRates.taxRate * sellOrderLow || 0;
+  const taxFeeMed = accountingRates.taxRate * sellOrderMed || 0;
+  const brokersFeeAndTaxLow = brokersFeeLow + taxFeeLow;
+  const brokersFeeAndTaxMed = brokersFeeMed + taxFeeMed;
+
   let result = '```\n';
   result += alignText(`Cost to build${isMobile ? '\n' : ''}`, `${numeral(total.cost).format('0[.]0a')} ISK\n`, isMobile);
   result += alignText(`Blueprint Cost${isMobile ? '\n' : ''}`, `low ${numeral(bpPrice.lowest_sell).format('0[.]0a')} ISK | median ${numeral(bpPrice.sell).format('0[.]0a')} ISK\n`, isMobile);
   result += alignText(`Market sell${isMobile ? '\n' : ''}`, `low ${numeral(sellOrderLow).format('0[.]0a')} ISK | median ${numeral(sellOrderMed).format('0[.]0a')} ISK\n`, isMobile);
-  result += alignText(`Profit margin${isMobile ? '\n' : ''}`, `low ${numeral(sellOrderLow - total.cost).format('0[.]0a')} ISK | median ${numeral(sellOrderMed - total.cost).format('0[.]0a')} ISK\n`, isMobile);
-  result += alignText(`(If buying BP)${isMobile ? '\n' : ''}`, `low ${numeral(sellOrderLow - (total.cost + bpPrice.lowest_sell)).format('0[.]0a')} ISK | median ${numeral(sellOrderMed - (total.cost + bpPrice.sell)).format('0[.]0a')} ISK\n`, isMobile);
+  result += alignText(`Broker's Fee ${numeral(accountingRates.brokersRate).format('0.0%')}${isMobile ? '\n' : ''}`, `low ${numeral(brokersFeeLow).format('0[.]0a')} ISK | median ${numeral(brokersFeeMed).format('0[.]0a')} ISK\n`, isMobile);
+  result += alignText(`Transaction Tax ${numeral(accountingRates.taxRate).format('0%')}${isMobile ? '\n' : ''}`, `low ${numeral(taxFeeLow).format('0[.]0a')} ISK | median ${numeral(taxFeeMed).format('0[.]0a')} ISK\n`, isMobile);
+  result += alignText(`Profit margin${isMobile ? '\n' : ''}`, `low ${numeral(sellOrderLow - total.cost - brokersFeeAndTaxLow).format('0[.]0a')} ISK | median ${numeral(sellOrderMed - total.cost - brokersFeeAndTaxMed).format('0[.]0a')} ISK\n`, isMobile);
+  result += alignText(`(If buying BP)${isMobile ? '\n' : ''}`, `low ${numeral(sellOrderLow - (total.cost + bpPrice.lowest_sell) - brokersFeeAndTaxLow).format('0[.]0a')} ISK | median ${numeral(sellOrderMed - (total.cost + bpPrice.sell) - brokersFeeAndTaxMed).format('0[.]0a')} ISK\n`, isMobile);
   return result + '```';
 }
 
@@ -275,5 +292,28 @@ function skillModifier(skillLevels: number[]) {
     time: 1 - (stdLvl > 0 && timeModPerLvl[stdLvl - 1] || 0)
       - (advLvl > 0 && timeModPerLvl[advLvl - 1] || 0)
       - (expLvl> 0 && timeModPerLvl[expLvl- 1] || 0),
+  };
+}
+
+const baseBrokersRate = 0.08;
+const baseTaxRate = 0.15;
+const brokerPerLvl = 0.002;
+const stdTaxModPerLvl = [0, 0, 0, 0, 0.01];
+const advTaxModPerLvl = [0, 0, 0, 0.01, 0.02];
+const expTaxModPerLvl = [0, 0, 0, 0.01, 0.02];
+
+function accountingSkillModifier(accountingSkillLevels: number[]) {
+  
+  const stdLvl = accountingSkillLevels[0] || 0;
+  const advLvl = accountingSkillLevels[1] || 0;
+  const expLvl = accountingSkillLevels[2] || 0;
+  
+  return {
+    brokersRate: baseBrokersRate - (stdLvl && stdLvl * brokerPerLvl || 0)
+      - (advLvl && advLvl * brokerPerLvl || 0)
+      - (expLvl && expLvl * brokerPerLvl || 0),
+    taxRate: baseTaxRate - (stdLvl > 0 && stdTaxModPerLvl[stdLvl - 1] || 0)
+      - (advLvl > 0 && advTaxModPerLvl[advLvl - 1] || 0)
+      - (expLvl> 0 && expTaxModPerLvl[expLvl- 1] || 0),
   };
 }
