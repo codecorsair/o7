@@ -54,21 +54,27 @@ const bps = blueprints.map(bp => {
 
 const fuseIndex = Fuse.createIndex(fuseOpts.keys, bps);
 const fuse = new Fuse(bps, fuseOpts, fuseIndex);
-const regex = /((?:mk\s?\d)?[a-zA-Z ]+[a-zA-Z](?: [0-9]+(?!\/))?)(?:(?:\s+|\s*-\s*)(\d+(?:\/\d+)*))?(?:(?:\s+|\s*-\s*)(\d+(?:\/\d+)*))?/;
+// leaving legacy regex here for fast fallback
+// const regex = /((?:mk\s?\d)?[a-zA-Z ]+[a-zA-Z](?: [0-9]+(?!\/))?)(?:(?:\s+|\s*-\s*)(\d+(?:\/\d+){1,}))?(?:(?:\s+|\s*-\s*)(\d+(?:\/\d+){1,}))?/;
+
+// new regex developed and tested here https://www.typescriptlang.org/play?ts=4.0.2#code/MYewdgzgLgBApgDwIYFsAOAbOBJMaCusAvDAEQoDWA7DABYgBGMATDAKwD0ADDACzekA3AChhoSLABOcAOaIYJDgAoA-AB4GGfHDSSAlmCgA+ANpIAtAC8AguYBaXcwE4YAXQDUZq7buvVALhgTRycPVQBCAB0OAEoYlRiAgMiIACpE9RQkKAgKPQwMCFNHNjCVf2jg81L3GIBvAEYAGgBfeIz-ZLSMtSRgYBy8gqKqmuSOUY965raEjhFxaBg0JEkIOAATa0kZCAV4ZHQsXAIoADooEAAZEAB3OEkAYSR1pRizrKhgWiVpOQQYiIxOAICAsGcMCAZEoVmtNttdjFhEA
+const regex = /([a-zA-Z0-9 ]+[a-zA-Z](?: [0-9]+(?!\/))?)(?:(?:\s*)([0-5]+(?:\/[0-5]+){1,})?)(?:(?:\s*)([0-5]+(?:\/[0-5]+){1,})?)/;
 
 export async function getResponse(searchText: string, isMobile: boolean) {
   const parsedArgs = searchText.toLowerCase().match(regex);
   if (!parsedArgs) return null;
   
   const name = parsedArgs[1].trim();
+  const matskills = parsedArgs[2].trim();
+  const acctskills = parsedArgs[3].trim();
   
   const results = fuse.search(name);
   if (results.length == 0) {
     return null;
   }
 
-  const skillLevels = (parsedArgs[2] && parsedArgs[2].split('/').map((s: string) => parseInt(s))) || [0,0,0];
-  const accountingLevels = (parsedArgs[3] && parsedArgs[3].split('/').map((s: string) => parseInt(s))) || [0,0,0];
+  const skillLevels = (matskills && matskills.split('/').map((s: string) => parseInt(s))) || [0,0,0];
+  const accountingLevels = (acctskills && acctskills.split('/').map((s: string) => parseInt(s))) || [0,0,0];
   const mod = skillModifier(skillLevels);
   const accountingRates = accountingSkillModifier(accountingLevels);
   let total = { cost: 0 };
