@@ -8,7 +8,7 @@
       "fields": [
         {
           "name": "Commands",
-          "value": "**!blueprint** or **!bp** - Get information about what it will take to manufacture items.\n\n**!blueprintm** or **!bpm** - Mobile friendly display for blueprints\n\n**!pricecheck** or **!pc** - Retrieves market data based on provided search terms.\n\n**!planetaryresources** or **!pr** - Discover the location of a desired planetary resource within a number of jumps from any system.\n\n**!jumps** or **!j** - Find out the shortest jumps distance between two systems.\n\n**!safejumps** or **!sj** - Find out the distance to travel between two systems if using the safer option that prefers hi sec systems over low & null.\n\n"
+          "value": "**!blueprint** or **!bp** - Get information about what it will take to manufacture items.\n\n**!blueprintm** or **!bpm** - Mobile friendly display for blueprints\n\n**!pricecheck** or **!pc** - Retrieves market data based on provided search terms.\n\n**!planetaryresources** or **!pr** - Discover the location of a desired planetary resource within a number of jumps from any system.\n\n**!jumps** or **!j** - Find out the shortest jumps distance between two systems.\n\n**!safejumps** or **!sj** - Find out the distance to travel between two systems if using the safer option that prefers hi sec systems over low & null.\n\n**!reprocess** or **!rp** - Find out what resources you will get when you reprocess an item / ore."
         },
         {
           "name": "Beta Commands",

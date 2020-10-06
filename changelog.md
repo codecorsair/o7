@@ -69,3 +69,11 @@ A couple amazing people have volunteered to join the o7 team! Now that it's not 
  
 #### Bug Fixes
  * Removed thumbnail from blueprints for now as they were causing issues on some mobile devices. 
+
+
+### XX OCT 2020 - NAME HERE
+#### New Features & Updates
+ * Added **reprocess** command to show what you'll get for reprocessing an item / ore.
+
+ 
+#### Bug Fixes
