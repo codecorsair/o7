@@ -29,7 +29,7 @@ export default class BlueprintCommand extends Command {
       return message.channel.send(new MessageEmbed()
         .setTitle('Blueprint Command Help')
         .setDescription('This command will return a list of all the resources and costs associated to build a given blueprint. Optionally, the resource and time costs will be adjusted based on skill levels, if provided.')
-        .addField('Usage', `**${prefix}blueprint** item name (#/#/# - optional skill levels)
+        .addField('Usage', `**${prefix}blueprint** item name (#/#/# - optional skill levels) (#/#/# - optional accounting skill levels)
 *alias:* **${prefix}bp**
 
 **examples:**
@@ -37,8 +37,11 @@ export default class BlueprintCommand extends Command {
 -> *returns the resources and costs for a MK5 Hobgoblin at base rates for an unskilled character*
 
 \`${prefix}bp caracal navy 5/5/2\`
--> *returns the resources and costs for a Caracal Navy Issue adjusted for a character with Cruiser Manufacturing 5, Advanced Cruiser Manufacturing 5, and Expert Cruiser Manufacturing 2*`));
-    }
+-> *returns the resources and costs for a Caracal Navy Issue adjusted for a character with Cruiser Manufacturing 5, Advanced Cruiser Manufacturing 5, and Expert Cruiser Manufacturing 2*
+
+\`${prefix}bp vexor 5/5/2 4/1/0\`
+-> *returns the resources and costs for a Vexor adjusted for a character with Cruiser Manufacturing 5, Advanced Cruiser Manufacturing 5, and Expert Cruiser Manufacturing 2 and Accounting 4, Advanced Accounting 1, and Expert Accounting 0*`));
+}
 
     const response = await getResponse(args.value, false);
     if (!response) {
