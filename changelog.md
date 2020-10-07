@@ -74,6 +74,7 @@ A couple amazing people have volunteered to join the o7 team! Now that it's not 
 ### XX OCT 2020 - NAME HERE
 #### New Features & Updates
  * Added **reprocess** command to show what you'll get for reprocessing an item / ore.
-
+ * Added Broker's Fees & Transaction Taxes to **blueprint** command. You can optionally provide your accounting skill levels after your manufacturing skill levels to adjust these fees.
+ * Added commas to materal costs on **blueprint**s.
  
 #### Bug Fixes

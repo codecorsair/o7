@@ -173,7 +173,7 @@ async function printKeys(bp: any, keys: string[], valueModifier: number, total: 
     }
     const marketItem = await getMarketData(key);
     const quantity = Math.ceil(bp[key] * valueModifier);
-    result += alignText(startCase(key), quantity, isMobile);
+    result += alignText(startCase(key), numeral(quantity).format('0,0'), isMobile);
     if (!marketItem) {
       result += '\n';
       continue;
