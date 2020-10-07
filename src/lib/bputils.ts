@@ -65,16 +65,17 @@ export async function getResponse(searchText: string, isMobile: boolean) {
   if (!parsedArgs) return null;
   
   const name = parsedArgs[1].trim();
-  const matskills = parsedArgs[2];
-  const acctskills = parsedArgs[3];
+  const matSkills = parsedArgs[2];
+  const acctSkills = parsedArgs[3];
   
   const results = fuse.search(name);
   if (results.length == 0) {
     return null;
   }
 
-  const skillLevels = (matskills && matskills.split('/').map((s: string) => parseInt(s))) || [0,0,0];
-  const accountingLevels = (acctskills && acctskills.split('/').map((s: string) => parseInt(s))) || [0,0,0];
+  const skillLevels = normalizeSkills(matSkills);
+  const accountingLevels = normalizeSkills(acctSkills);
+
   const mod = skillModifier(skillLevels);
   const accountingRates = accountingSkillModifier(accountingLevels);
   let total = { cost: 0 };
@@ -97,6 +98,9 @@ export async function getResponse(searchText: string, isMobile: boolean) {
   //   embed.setThumbnail(`https://storage.googleapis.com/o7-store/icons/${itemInfo.icon_id}.png`)
   // }
   
+  embed.addField(`Manufacture`, `${bp.type} Skills **${skillLevels.join('/')}**\nMaterial Efficiency **${numeral(mod.material).format('0%')}**\nTime Efficiency **${numeral(mod.time).format('0%')}**`, true)
+  embed.addField(`Market`, `Accounting Skills **${accountingLevels.join('/')}**\nBroker's Fee **${numeral(accountingRates.brokersRate).format('0.0%')}**\nTransaction Tax **${numeral(accountingRates.taxRate).format('0%')}**`, true)
+
   if (hasAny(bp, mineralKeys)) {
     const description = await printKeys(bp, mineralKeys, mod.material, total, isMobile);
     embed.addField('Minerals', description);
@@ -150,8 +154,8 @@ function printCosts(bp: { productionCount: number; }, item: MarketItem, blueprin
   result += alignText(`Cost to build${isMobile ? '\n' : ''}`, `${numeral(total.cost).format('0[.]0a')} ISK\n`, isMobile);
   result += alignText(`Blueprint Cost${isMobile ? '\n' : ''}`, `low ${numeral(bpPrice.lowest_sell).format('0[.]0a')} ISK | median ${numeral(bpPrice.sell).format('0[.]0a')} ISK\n`, isMobile);
   result += alignText(`Market sell${isMobile ? '\n' : ''}`, `low ${numeral(sellOrderLow).format('0[.]0a')} ISK | median ${numeral(sellOrderMed).format('0[.]0a')} ISK\n`, isMobile);
-  result += alignText(`Broker's Fee ${numeral(accountingRates.brokersRate).format('0.0%')}${isMobile ? '\n' : ''}`, `low ${numeral(brokersFeeLow).format('0[.]0a')} ISK | median ${numeral(brokersFeeMed).format('0[.]0a')} ISK\n`, isMobile);
-  result += alignText(`Transaction Tax ${numeral(accountingRates.taxRate).format('0%')}${isMobile ? '\n' : ''}`, `low ${numeral(taxFeeLow).format('0[.]0a')} ISK | median ${numeral(taxFeeMed).format('0[.]0a')} ISK\n`, isMobile);
+  result += alignText(`Broker's Fee${isMobile ? '\n' : ''}`, `low ${numeral(brokersFeeLow).format('0[.]0a')} ISK | median ${numeral(brokersFeeMed).format('0[.]0a')} ISK\n`, isMobile);
+  result += alignText(`Transaction Tax${isMobile ? '\n' : ''}`, `low ${numeral(taxFeeLow).format('0[.]0a')} ISK | median ${numeral(taxFeeMed).format('0[.]0a')} ISK\n`, isMobile);
   result += alignText(`Profit margin${isMobile ? '\n' : ''}`, `low ${numeral(sellOrderLow - total.cost - brokersFeeAndTaxLow).format('0[.]0a')} ISK | median ${numeral(sellOrderMed - total.cost - brokersFeeAndTaxMed).format('0[.]0a')} ISK\n`, isMobile);
   result += alignText(`(If buying BP)${isMobile ? '\n' : ''}`, `low ${numeral(sellOrderLow - (total.cost + bpPrice.lowest_sell) - brokersFeeAndTaxLow).format('0[.]0a')} ISK | median ${numeral(sellOrderMed - (total.cost + bpPrice.sell) - brokersFeeAndTaxMed).format('0[.]0a')} ISK\n`, isMobile);
   return result + '```';
@@ -274,6 +278,8 @@ function capitalize(str: string) {
   return '';
 }
 
+const baseMaterialEfficiencyRate = 1.5
+const baseTimeRate = 1.0
 const stdMatPerLvl = 0.06;
 const advMatPerLvl = 0.04;
 const expMatPerLvl = 0.01;
@@ -286,10 +292,10 @@ function skillModifier(skillLevels: number[]) {
   const expLvl = skillLevels[2] || 0;
   
   return {
-    material: 1.5 - (stdLvl && stdLvl * stdMatPerLvl || 0)
+    material: baseMaterialEfficiencyRate - (stdLvl && stdLvl * stdMatPerLvl || 0)
       - (advLvl && advLvl * advMatPerLvl || 0)
       - (expLvl && expLvl * expMatPerLvl || 0),
-    time: 1 - (stdLvl > 0 && timeModPerLvl[stdLvl - 1] || 0)
+    time: baseTimeRate - (stdLvl > 0 && timeModPerLvl[stdLvl - 1] || 0)
       - (advLvl > 0 && timeModPerLvl[advLvl - 1] || 0)
       - (expLvl> 0 && timeModPerLvl[expLvl- 1] || 0),
   };
@@ -316,4 +322,12 @@ function accountingSkillModifier(accountingSkillLevels: number[]) {
       - (advLvl > 0 && advTaxModPerLvl[advLvl - 1] || 0)
       - (expLvl> 0 && expTaxModPerLvl[expLvl- 1] || 0),
   };
+}
+
+function normalizeSkills(skillsToCheck: string ) {
+  const skillLevels = (skillsToCheck && skillsToCheck.split('/').map((s: string) => parseInt(s))) || [0,0,0];
+  const stdLvl = skillLevels[0] || 0;
+  const advLvl = skillLevels[1] || 0;
+  const expLvl = skillLevels[2] || 0;
+  return [stdLvl,advLvl,expLvl];
 }
