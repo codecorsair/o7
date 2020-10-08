@@ -6,10 +6,18 @@ export default class HelpCommand extends Command {
   constructor() {
     super('help', {
       aliases: ['help', 'h'],
+      args: [
+        {
+          id: 'here',
+          match: 'flag',
+          flag: 'here'
+        }
+      ]
     });
   }
 
-  exec(message: Message) {
-    help.embeds.forEach(e => message.author.send(new MessageEmbed(e)));
+  exec(message: Message, args: any) {
+    const destination = args && args.here ? message.channel : message.author;
+    help.embeds.forEach(e => destination.send(new MessageEmbed(e)));
   }
 }
