@@ -77,5 +77,6 @@ A couple amazing people have volunteered to join the o7 team! Now that it's not 
  * Added Broker's Fees & Transaction Taxes to **blueprint** command. You can optionally provide your accounting skill levels after your manufacturing skill levels to adjust these fees.
  * Added commas to materal costs on **blueprint**s.
  * Added new categories on blueprint result to display applied Manufacturing & Accounting skills.
+ * Added a flag to the **help** command `!help here` will respond with the help directly in the channel you've sent the command from instead of a dm.
  
 #### Bug Fixes
