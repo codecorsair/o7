@@ -42,7 +42,8 @@ export default class ReprocessCommand extends Command {
     const percentage = Math.max(.3, Math.min(.615, (parsedArgs[2] ? parseFloat(parsedArgs[2]) : 30) * .01));
 
     const embed = new MessageEmbed()
-      .setTitle(`${reprocItem.name} Reprocess Results`);
+      .setTitle(`${reprocItem.name} Reprocess Results`)
+      .setDescription(`*efficiency ${numeral(percentage).format('0[.]0%')}*`);
 
     for (const key in reprocItem) {
       if (key == 'name') continue;
