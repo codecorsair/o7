@@ -10,19 +10,8 @@ import blueprints from '../data/blueprints.json';
 // import { Item, getItemId } from './items';
 
 const fuseOpts = {
-  isCaseSensitive: false,
-  shouldSort: true,
   includeScore: true,
-  // ignoreLocation: true,
-  // includeMatches: false,
-  // findAllMatches: false,
-  // minMatchCharLength: 1,
-  // location: 0,
   threshold: 0.5,
-  // distance: 100,
-  // useExtendedSearch: false,
-  // ignoreFieldNorm: true,
-  // sort: (a: { score: number }, b: { score: number }) => a.score - b.score,
   keys: [
     'name',
     {
@@ -58,7 +47,7 @@ const fuse = new Fuse(bps, fuseOpts, fuseIndex);
 // const regex = /((?:mk\s?\d)?[a-zA-Z ]+[a-zA-Z](?: [0-9]+(?!\/))?)(?:(?:\s+|\s*-\s*)(\d+(?:\/\d+){1,}))?(?:(?:\s+|\s*-\s*)(\d+(?:\/\d+){1,}))?/;
 
 // new regex developed and tested here https://www.typescriptlang.org/play?ts=4.0.2#code/MYewdgzgLgBApgDwIYFsAOAbOBJMaCusAvDAEQoDWA7DABYgBGMATDAKwD0ADDACzekA3AChhoSLABOcAOaIYJDgAoA-AB4GGfHDSSAlmCgA+ANpIAtAC8AguYBaXcwE4YAXQDUZq7buvVALhgTRycPVQBCAB0OAEoYlRiAgMiIACpE9RQkKAgKPQwMCFNHNjCVf2jg81L3GIBvAEYAGgBfeIz-ZLSMtSRgYBy8gqKqmuSOUY965raEjhFxaBg0JEkIOAATa0kZCAV4ZHQsXAIoADooEAAZEAB3OEkAYSR1pRizrKhgWiVpOQQYiIxOAICAsGcMCAZEoVmtNttdjFhEA
-const regex = /([a-zA-Z0-9 ]+[a-zA-Z](?: [0-9]+(?!\/))?)(?:(?:\s*)([0-5]+(?:\/[0-5]+){1,})?)(?:(?:\s*)([0-5]+(?:\/[0-5]+){1,})?)/;
+const regex = /([a-zA-Z0-9\- ]+[a-zA-Z\-](?: [0-9]+(?!\/))?)(?:(?:\s*)([0-5]+(?:\/[0-5]+){1,})?)(?:(?:\s*)([0-5]+(?:\/[0-5]+){1,})?)/;
 
 export async function getResponse(searchText: string, isMobile: boolean) {
   const parsedArgs = searchText.toLowerCase().match(regex);
