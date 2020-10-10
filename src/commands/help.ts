@@ -15,9 +15,11 @@ export function sendHelp(client: Client, prefix: string, destination: TextChanne
 
 
     let counter = 0;
+    const done: { [id: string]: boolean; } = {};
     client.commands.forEach(command => {
-      if (command.owner || command.disabled) return;
+      if (command.owner || command.disabled || done[command.alias[0]]) return;
       help.addField(`${prefix}${command.alias[0]}`, command.help?.description || startCase(command.name));
+      done[command.alias[0]] = true;
       if (++counter == 25) {
         destination.send(help);
         help = new MessageEmbed();
