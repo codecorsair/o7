@@ -1,26 +1,24 @@
-import { Command } from 'discord-akairo';
-import { Message } from 'discord.js';
+import { Message, Command } from '../lib/types';
 
-export default class DeleteMyDataCommand extends Command {
-  constructor() {
-    super('deletemydata', {
-      aliases: ['deletemydata'],
-      args: [
-        {
-          id: 'confirmation',
-          prompt: {
-            start: '**Warning!** this will delete all saved data for your Discord user.\nThere is no undo.\n\nTo continue reply with "Confirm".',
-          }
-        }
-      ]
-    });
-  }
-
-  async exec(message: Message, args: any) {
-    if (!args || !args.confirmation || args.confirmation !== 'Confirm') {
-      return message.channel.send(`Phew! That was a close one.... delete aborted.`);
+const command: Command = {
+  name: 'deletemydata',
+  alias: ['deletemydata'],
+  args: [{
+    name: 'confirmation',
+    prompt: {
+      start: `**Warning!** this will delete all saved data for your Discord user.\nThere is no undo.\n\nTo confirm click ✅`,
+      reactions: [{
+        emoji: '✅',
+        value: true,
+      }]
+    },
+  }],
+  handler: (message: Message, args: { confirmation: boolean; }) => {
+    if (args.confirmation) {
+      return message.channel.send('This bot does not store any user data at this time, there is nothing to delete!');
     }
-
-    return message.channel.send('This bot does not store any user data at this time, there is nothing to delete!');
+    return message.channel.send(`Phew! That was a close one.... delete aborted. `);
   }
-}
+};
+
+export default command;

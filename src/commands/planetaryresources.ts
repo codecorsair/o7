@@ -1,124 +1,44 @@
-import { Command } from 'discord-akairo';
-import { Message, MessageEmbed } from 'discord.js';
 import Fuse from 'fuse.js';
+import { Message, Command } from '../lib/types';
+import { PlanetaryResources } from '../lib/echoes/constants';
+import systems from '../data/systems.json';
 import neo4j from 'neo4j-driver';
 import config from '../config.json';
-import systems from '../data/systems.json';
 
-const prFuseOpts = {
-  isCaseSensitive: false,
-  shouldSort: true,
-  includeScore: true,
+const prNames = Object.values(PlanetaryResources).map(p => ({ name: p }));
+const fusePR = new Fuse(prNames, {
   ignoreLocation: true,
-  includeMatches: false,
-  findAllMatches: false,
-  minMatchCharLength: 1,
-  location: 0,
-  threshold: 0.6,
-  distance: 100,
-  useExtendedSearch: false,
-  ignoreFieldNorm: true,
-  sort: (a: { score: number }, b: { score: number }) => a.score - b.score,
   keys: [
     'name',
-  ]
-};
+  ],
+});
 
-const resourceNames = [
-  { name: "Lustering Alloy" },
-  { name: "Sheen Compound" },
-  { name: "Gleaming Alloy" },
-  { name: "Condensed Alloy" },
-  { name: "Precious Alloy" },
-  { name: "Motley Compound" },
-  { name: "Fiber Composite" },
-  { name: "Lucent Compound" },
-  { name: "Opulent Compound" },
-  { name: "Glossy Compound" },
-  { name: "Crystal Compound" },
-  { name: "Dark Compound" },
-  { name: "Reactive Gas" },
-  { name: "Noble Gas" },
-  { name: "Base Metals" },
-  { name: "Heavy Metals" },
-  { name: "Noble Metals" },
-  { name: "Reactive Metals" },
-  { name: "Toxic Metals" },
-  { name: "Industrial Fibers" },
-  { name: "Supertensile Plastics" },
-  { name: "Polyaramids" },
-  { name: "Coolant" },
-  { name: "Condensates" },
-  { name: "Construction Blocks" },
-  { name: "Nanites" },
-  { name: "Silicate Glass" },
-  { name: "Smartfab Units" },
-  { name: "Heavy Water" },
-  { name: "Suspended Plasma" },
-  { name: "Liquid Ozone" },
-  { name: "Ionic Solutions" },
-  { name: "Oxygen Isotopes" },
-  { name: "Plasmoids" },
-];
-const fusePR = new Fuse(resourceNames, prFuseOpts);
-
-const systemFuseOpts = {
-  isCaseSensitive: false,
-  shouldSort: true,
-  includeScore: true,
+const fuseSystems = new Fuse(systems, {
   ignoreLocation: true,
-  includeMatches: false,
-  findAllMatches: false,
-  minMatchCharLength: 1,
-  location: 0,
-  threshold: 0.6,
-  distance: 100,
-  useExtendedSearch: false,
-  ignoreFieldNorm: true,
-  sort: (a: { score: number }, b: { score: number }) => a.score - b.score,
   keys: [
     'Name',
-  ]
-};
-const fuseSystems = new Fuse(systems, systemFuseOpts);
+  ],
+});
 
-export default class PRCommand extends Command {
-  constructor() {
-    super('planetaryresources', {
-      aliases: ['planetaryresources', 'pr', 'pi'],
-      args: [
-        {
-          id: 'system',
-        },
-        {
-          id: 'range',
-        },
-        {
-          id: 'resource',
-          match: 'restContent',
-        },
-        {
-          id: 'help',
-          match: 'flag',
-          flag: 'help'
-        }
-      ]
-    });
-  }
-
-  async exec(message: Message, args: any) {
-    if (!args || args.help || !args.system || !args.resource || !args.range) {
-      const prefix = (message as any).prefix;
-      return message.channel.send(new MessageEmbed()
-      .setTitle('Planetary Resources Search Command Help')
-      .setDescription('This command will return the locations of perfect and/or rich planetary resources within a specified range of any system. The search range is limited to a maximum of 10 jumps from any system.')
-      .addField('Usage', `**${prefix}planetaryresources** system jumprange planetary resource name
-*aliases:* **${prefix}pr**, **${prefix}pi**
-
-**example**
-**${prefix}pr** jita 5 base metals`));
-    }
-
+const command: Command = {
+  name: 'planetaryresources',
+  alias: ['planetaryresources', 'pr', 'pi'],
+  args: [{
+      name: 'system',
+    },{
+      name: 'range',
+      type: 'number',
+    },{
+      name: 'resource',
+      type: 'restContent',
+    }],
+  help: {
+    description: 'This command will return the locations of perfect and/or rich planetary resources within a specified range of any system. The search range is limited to a maximum of 10 jumps from any system.',
+    examples: [{
+      args: 'jita 5 base metals',
+    }],
+  },
+  handler: async (message: Message, args: { system: string; range: number; resource: string; }) => {
     const prSearch = fusePR.search(args.resource);
     if (prSearch.length == 0) {
       return message.reply(`Could not find any planetary resources for "${args.resource}"`);
@@ -142,11 +62,9 @@ export default class PRCommand extends Command {
     try {
       const results = await session.run(`
         MATCH (planet:Planet {resource: '${resource}', system: '${startSystem}'})
-        WHERE (planet.richness = "Perfect" OR planet.richness = "Rich")
         RETURN planet.planetName, planet.richness, planet.output, 0 as length
         UNION
         MATCH (a:Planet {resource: '${resource}'})
-        WHERE (a.richness = "Perfect" OR a.richness = "Rich")
         WITH collect(a) as planets
         UNWIND planets as planet
         MATCH (start:System {name: '${startSystem}'}),(end:System {name:planet.system})
@@ -177,7 +95,7 @@ export default class PRCommand extends Command {
         return message.channel.send(`It looks like there is no Rich/Perfect ${resource} within ${range} from ${startSystem}. Try a larger range, or a different system.`);
       }
 
-      let response = `**Rich/Perfect ${resource} within ${range} of ${startSystem}**\n`;
+      let response = `**${resource} within ${range} of ${startSystem}**\n`;
       grouped.forEach(g => {
         if (g.length == 0) return;
         g.sort((a, b) => b.output - a.output);
@@ -196,6 +114,6 @@ export default class PRCommand extends Command {
       await driver.close();
     }
   }
-}
+};
 
-
+export default command;

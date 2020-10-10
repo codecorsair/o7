@@ -1,5 +1,6 @@
-import { o7Client } from './client';
+import { client } from './client';
 import config from './config.json';
 
-const client = new o7Client();
+client.loadCommands(__dirname + '/commands');
+client.owners = config.owners;
 client.login(config.token);

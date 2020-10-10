@@ -1,14 +1,11 @@
-import { Command } from 'discord-akairo';
-import { Message } from 'discord.js';
+import { Message, Command } from '../lib/types';
 
-export default class PingCommand extends Command {
-  constructor() {
-    super('invite', {
-      aliases: ['invite', 'invitelink'],
-    });
-  }
-
-  exec(message: Message) {
+const command: Command = {
+  name: 'invite',
+  alias: ['invite', 'botinvite'],
+  handler: (message: Message) => {
     return message.channel.send('<https://discord.com/oauth2/authorize?client_id=753820564665270333&scope=bot&permissions=3072>');
   }
-}
+};
+
+export default command;

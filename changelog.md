@@ -78,5 +78,10 @@ A couple amazing people have volunteered to join the o7 team! Now that it's not 
  * Added commas to materal costs on **blueprint**s.
  * Added new categories on blueprint result to display applied Manufacturing & Accounting skills.
  * Added a flag to the **help** command `!help here` will respond with the help directly in the channel you've sent the command from instead of a dm.
+ * Updated help again, all commands now have a help feature for them.
+ * The **planetaryresource* command will now respond with all richness levels, instead of just Perfect / Rich.
  
+#### Extra Dev Stuff
+ * o7's bot framework was completely re-written to remove a third-party library it was relying on earlier to allow for faster development of new features that I wanted to add that I was limited with previously. I can't wait to start releasing these new features soon!
+
 #### Bug Fixes

@@ -1,15 +1,12 @@
-import { Command } from 'discord-akairo';
-import { Message } from 'discord.js';
+import { Message, Command } from '../lib/types';
 
-export default class PingCommand extends Command {
-  constructor() {
-    super('ping', {
-      aliases: ['ping'],
-      ownerOnly: true,
-    });
+const command: Command = {
+  name: 'ping',
+  alias: ['ping', 'p'],
+  owner: true,
+  handler: (message: Message) => {
+    return message.channel.send('Pong.');
   }
+};
 
-  exec(message: Message) {
-    return message.reply('Pong!');
-  }
-}
+export default command;

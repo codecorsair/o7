@@ -1,6 +1,7 @@
-import { Command } from 'discord-akairo';
-import { Message, MessageEmbed } from 'discord.js';
+import { Message, Command } from '../lib/types';
 import { getClient, collections } from '../lib/db';
+import { TextChannel } from 'discord.js';
+import { NewsChannel } from 'discord.js';
 
 export interface AppConfig {
   id: string,
@@ -8,69 +9,29 @@ export interface AppConfig {
   questions: string[],
 }
 
-export default class AppConfigCommand extends Command {
-  constructor() {
-    super('appconfig', {
-      aliases: ['appconfig', 'configapp'],
-      channel: 'guild',
-      userPermissions: ['ADMINISTRATOR'],
-    });
-  }
-
-  *args(message: Message) {
-    if (!message.guild) {
-      return {
-        help: true,
-      };
+const command: Command = {
+  name: 'appconfig',
+  alias: ['appconfig'],
+  channel: 'guild',
+  args: [{
+    name: 'channel',
+    type: 'channel',
+    prompt: {
+      start: `What channel should I post completed applications to?`,
+    },
+  },{
+    name: 'questions',
+    type: 'content',
+    prompt: {
+      start: 'Please type your application questions now with each question in a single message.\nType `stop` when you are done adding questions.',
+      infinite: true,
     }
-
-    const help = yield {
-      type: 'flag',
-      flag: 'help'
-    }
-
-    if (help) {
-      return {
-        help
-      };
-    }
-
-    const appChannel = yield {
-      type: 'channel',
-      prompt: {
-        start: 'What channel should I post completed applications to?'
-      }
-    }
-
-    const questions = yield {
-      match: 'none',
-      prompt: {
-        start: [
-          'Please type your application questions now with each question in a single message.',
-          'Type `stop` when you are done adding questions.'
-        ],
-        infinite: true,
-      }
-    }
-
-    return {
-      help,
-      appChannel,
-      questions
-    };
-  }
-
-  async exec(message: Message, args: any) {
-    if (!args || args.help || !message.guild) {
-      const prefix = (message as any).prefix;
-      return message.channel.send(new MessageEmbed()
-          .setTitle('Application Config Command Help')
-          .setDescription('This command is used to configure application questions and the channel to which completed applications are posted.')
-          .addField('Usage', `**${prefix}appconfig**
-
-*aliases:* **${prefix}configapp**`));
-    }
-
+  }],
+  help: {
+    description: 'This command is used to configure application questions and the channel to which completed applications are posted.',
+  },
+  handler: async (message: Message, args: { channel: TextChannel | NewsChannel; questions: string[]; }) => {
+    if (!message.guild) return;
     const client = getClient();
     try {
       await client.connect();
@@ -79,7 +40,7 @@ export default class AppConfigCommand extends Command {
         .updateOne({ id: message.guild.id },
                    { $set: {
                       id: message.guild.id,
-                      appChannel: args.appChannel.id,
+                      appChannel: args.channel.id,
                       questions: args.questions,
                     } },
                    { upsert: true });
@@ -88,4 +49,6 @@ export default class AppConfigCommand extends Command {
       return message.reply('I\'m sorry, but there was a problem storing your config to our database.');
     }
   }
-}
+};
+
+export default command;

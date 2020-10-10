@@ -1,15 +1,13 @@
-import { Command } from 'discord-akairo';
-import { MessageEmbed, Message } from 'discord.js';
+import { Message, Command } from '../lib/types';
+import { MessageEmbed } from 'discord.js';
 import dr from '../data/dataretention.json';
 
-export default class DataRetentionCommand extends Command {
-  constructor() {
-    super('dataretention', {
-      aliases: ['dataretention'],
-    });
-  }
-
-  exec(message: Message) {
+const command: Command = {
+  name: 'dataretention',
+  alias: ['dataretention'],
+  handler: (message: Message) => {
     dr.embeds.forEach(e => message.author.send(new MessageEmbed(e)));
   }
-}
+};
+
+export default command;

@@ -2,8 +2,8 @@ import { Role, GuildMember } from 'discord.js';
 import { Message, Command, DiscordPermissions } from '../lib/types';
 
 const command: Command = {
-  name: 'add role',
-  alias: ['addrole', 'setrole'],
+  name: 'remove role',
+  alias: ['removerole', 'droprole'],
   args: [{
     name: 'member',
     type: 'member'
@@ -12,23 +12,23 @@ const command: Command = {
     type: 'role',
   }],
   help: {
-    description: 'This command will add on or more roles to a member.',
+    description: 'This command will remove one or more roles from a member.',
     examples: [{
       args: '@member @role',
-      description: 'Adds the @role to @member.',
+      description: 'Removes the @role from @member.',
     },{
       args: '@member @role1 @role2 (...any number of roles)',
-      description: 'Adds all the provided roles to @member.'
+      description: 'Removes all the provided roles from @member.'
     }]
   },
   handler: async (message: Message, args: { member: GuildMember; role: Role; }) => {
     message.mentions.roles.forEach(async role => {
       try {
-        await args.member.roles.add(role);
-        message.channel.send(`Successfully added ${role} to ${args.member}`);
+        await args.member.roles.remove(role);
+        message.channel.send(`Successfully removed ${role} from ${args.member}`);
       } catch (err) {
         console.error(err);
-        message.channel.send(`Failed to add ${role} to ${args.member}.`);
+        message.channel.send(`Failed to remove ${role} from ${args.member}.`);
       }
     })
   },

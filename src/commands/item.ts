@@ -1,5 +1,5 @@
-import { Command } from 'discord-akairo';
-import { Message, MessageEmbed } from 'discord.js';
+import { MessageEmbed } from 'discord.js';
+import { Message, Command } from '../lib/types';
 import numeral from 'numeral';
 import items from '../data/items.json';
 import {
@@ -14,45 +14,21 @@ import {
   getEHP
 } from '../lib/items';
 import { romanize } from '../lib/romanize';
-// import { isDevModeEnabled } from '../lib/access';
 
-export default class ItemCommand extends Command {
-  constructor() {
-    super('item', {
-      aliases: ['item', 'i', 'ship', 'info'],
-      // userPermissions: () => {
-      //   if (!isDevModeEnabled()) {
-      //     return 'DevModeNotEnabled';
-      //   }
-      //   return null;
-      // },
-      args: [
-        {
-          id: 'name',
-          match: 'content'
-        },
-        {
-          id: 'help',
-          match: 'flag',
-          flag: 'help'
-        }
-      ]
-    });
-  }
-
-  exec(message: Message, args: any) {
-    if (!args || args.help || !args.name) {
-      const prefix = (message as any).prefix;
-      return message.channel.send(new MessageEmbed()
-      .setTitle('Item Info Command Help')
-      .setDescription('This command will return information about an item in game.')
-      .addField('Usage', `**${prefix}item** item name
-*aliases:* **${prefix}i**, **${prefix}ship**, **${prefix}info**`));
-    }
-
-    const id = getItemId(args.name);
+const command: Command = {
+  name: 'item',
+  alias: ['item', 'i', 'ship', 'info'],
+  args: [{
+    name: 'itemName',
+    type: 'content',
+  }],
+  help: {
+    description: 'This command will return information about an item in game.',
+  },
+  handler: (message: Message, args: { itemName: string; }) => {
+    const id = getItemId(args.itemName);
     if (!id) {
-      return message.channel.send(`I could not find any item for the search term '${args.name}.'`);
+      return message.channel.send(`I could not find any item for the search term '${args.itemName}.'`);
     }
 
     const itemInfo = items[id] as Item;
@@ -134,4 +110,6 @@ Shield recharge time: ${numeral(a[Attributes.shieldRechargeRate].value / 1000).f
 
     return message.channel.send(embed);
   }
-}
+};
+
+export default command;

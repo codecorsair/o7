@@ -1,34 +1,19 @@
-import { Command } from 'discord-akairo';
-import { MessageEmbed, Message } from 'discord.js';
+import { MessageEmbed } from 'discord.js';
+import { Message, Command } from '../lib/types';
 import { sleep } from '../lib/sleep';
 import * as mongo from '../lib/db';
 import { AppConfig } from './appconfig';
+import { askQuestionWithMessageResponse } from '../lib/utils/args';
 
-export default class ApplicationCommand extends Command {
-  constructor() {
-    super('apply', {
-      aliases: ['apply', 'app', 'application'],
-      channel: 'guild',
-    });
-  }
-
-  notConfigured = (message: Message) => {
-    message.reply('The administrators of this discord have not yet configured applications. Please use the `appConfig` command to do so.');
-  }
-
-  async *args(message: Message) {
-    if (!message || !message.guild) return { help: true };
-
-    const help = yield {
-      type: 'flag',
-      flag: 'help'
-    }
-
-    if (help) {
-      return {
-        help
-      };
-    }
+const command: Command = {
+  name: 'apply',
+  alias: ['apply'],
+  channel: 'guild',
+  help: {
+    description: 'This command is used to configure application questions and the channel to which completed applications are posted.',
+  },
+  args: async (message: Message) => {
+    if (!message || !message.guild) return;
 
     let config: AppConfig | null = null;
     const client = mongo.getClient();
@@ -39,22 +24,17 @@ export default class ApplicationCommand extends Command {
         .findOne<AppConfig>({ id: message.guild.id });
     } catch (err) {
       console.error(err);
+      message.channel.send(`I'm sorry, there was a problem with processing this command.`);
+      return;
     }
 
-    if (!config) {
-      this.notConfigured(message);
-      return null;
-    }
+    if (!config) return;
 
-    const answers: any = [];
+    const responses: any = [];
     for (const question of config.questions) {
-      const answer = yield {
-        type: 'content',
-        prompt: {
-          start: question,
-        }
-      };
-      answers.push({
+      const answer = await askQuestionWithMessageResponse(question, message.channel, { name: 'answer', type: 'content' });
+      
+      responses.push({
         question: question,
         answer,
       });
@@ -62,11 +42,10 @@ export default class ApplicationCommand extends Command {
     }
 
     return {
-      answers
+      responses
     }
-  }
-
-  async exec(message: Message, args: any) {
+  },
+  handler: async (message: Message, args: { responses: { question: string; answer: string; }[]; }) => {
     if (!message.guild || !args) return;
     
     const client = mongo.getClient();
@@ -81,20 +60,21 @@ export default class ApplicationCommand extends Command {
     }
     
     if (!config) {
-      this.notConfigured(message);
       return;
     }
     
-    this.client.channels
+    message.client.channels
       .fetch(config.appChannel)
       .then((channel: any) => channel.send(new MessageEmbed()
         .setColor("#FF0000")
         .setTitle(`New Application for ${message.author.username}`)
-        .addFields(args.answers.map((a: { question: string; answer: string}) => ({ name: a.question, value: a.answer })))
+        .addFields(args.responses.map((a: { question: string; answer: string}) => ({ name: a.question, value: a.answer })))
         .addField('ID', message.author)
         .addField('Channel', message.channel)
       ));
     
       return message.reply(`Thank you, your application was submitted! Please wait while it is reviewed someone will get back with you soon.`);
   }
-}
+};
+
+export default command;

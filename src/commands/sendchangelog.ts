@@ -1,36 +1,26 @@
-import { Command, Argument } from 'discord-akairo';
-import { MessageEmbed, Message } from 'discord.js';
+import { MessageEmbed } from 'discord.js';
+import { Message, Command } from '../lib/types';
 import changelog from '../data/changelog.json';
 
-
-
-export default class SendHelpCommand extends Command {
-  constructor() {
-    super('sendchangelog', {
-      aliases: ['sendchangelog'],
-      channel: 'guild',
-      ownerOnly: true,
-      args: [
-        {
-          id: 'destination',
-          type: Argument.union('user', 'channel'),
-        },
-        {
-          id: 'count',
-          type: 'number',
-          default: 1,
-        }
-      ]
-    });
-  }
-
-  exec(message: Message, args: any) {
-    if (args.count < 1) args.count = 1;
-
-    if (!args.destination) {
-      changelog.embeds.slice(changelog.embeds.length - args.count).forEach(e => message.channel.send(new MessageEmbed(e as any)));
-      return;
+const command: Command = {
+  name: 'send changelog',
+  alias: ['sendchangelog'],
+  owner: true,
+  channel: 'guild',
+  args: [{
+    name: 'count',
+    type: 'number',
+    default: 1,
+  }],
+  handler: (message: Message, args: { count: number; }) => {
+    if (message.mentions.channels) {
+      message.mentions.channels.forEach(channel => changelog.embeds.slice(changelog.embeds.length - args.count).forEach(e => channel.send(new MessageEmbed(e as any))));
     }
-    changelog.embeds.slice(changelog.embeds.length - args.count).forEach(e => args.destination.send(new MessageEmbed(e as any)));
+
+    if (message.mentions.users) {
+      message.mentions.users.forEach(user => changelog.embeds.slice(changelog.embeds.length - args.count).forEach(e => user.send(new MessageEmbed(e as any))));
+    }
   }
-}
+};
+
+export default command;

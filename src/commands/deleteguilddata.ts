@@ -1,33 +1,26 @@
-import { Command } from 'discord-akairo';
-import { Message } from 'discord.js';
+import { Message, Command, DiscordPermissions } from '../lib/types';
 import * as mongo from '../lib/db';
 
-export default class DeleteGuildDataCommand extends Command {
-  constructor() {
-    super('deleteguilddata', {
-      aliases: ['deleteguilddata'],
-      channel: 'guild',
-      userPermissions: ['ADMINISTRATOR'],
-      args: [
-        {
-          id: 'confirmation',
-          prompt: {
-            start: '**Warning!** this will delete all saved data for this server (guild).\nThere is no undo.\n\nTo continue reply with "Confirm".',
-          }
-        }
-      ]
-    });
-  }
-
-  async exec(message: Message, args: any) {
-    if (!message.guild) {
-      return message.channel.send('This command can only be sent from within a guild.');
-    }
-
-    if (!args || !args.confirmation || args.confirmation !== 'Confirm') {
+const command: Command = {
+  name: 'deleteguilddata',
+  alias: ['deleteguilddata'],
+  userPermissions: [DiscordPermissions.ADMINISTRATOR],
+  channel: 'guild',
+  args: [{
+    name: 'confirmation',
+    prompt: {
+      start: `**Warning!** this will delete all saved data for this server (guild).\nThere is no undo.\n\nTo confirm click ✅`,
+      reactions: [{
+        emoji: '✅',
+        value: true,
+      }]
+    },
+  }],
+  handler: async (message: Message, args: { confirmation: boolean; }) => {
+    if (!message.guild) return;
+    if (!args.confirmation) {
       return message.channel.send(`Phew! That was a close one.... delete aborted.`);
     }
-
     message.channel.send(`Attempting to delete all data for this guild, please wait...`);
     const guildId = message.guild.id;
     const client = mongo.getClient();
@@ -50,4 +43,6 @@ export default class DeleteGuildDataCommand extends Command {
 
     return message.channel.send('Oh no! something went wrong, please inform a developer!');
   }
-}
+};
+
+export default command;
