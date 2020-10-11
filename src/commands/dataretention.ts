@@ -1,8 +1,8 @@
-import { Message, Command } from '../lib/types';
+import { Message, CommandDef } from '../lib/types';
 import { MessageEmbed } from 'discord.js';
 import dr from '../data/dataretention.json';
 
-const command: Command = {
+const command: CommandDef = {
   name: 'dataretention',
   alias: ['dataretention'],
   handler: (message: Message) => {

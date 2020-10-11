@@ -1,11 +1,11 @@
 import { MessageEmbed } from 'discord.js';
-import { Message, Command } from '../lib/types';
+import { Message, CommandDef } from '../lib/types';
 import { sleep } from '../lib/sleep';
 import * as mongo from '../lib/db';
 import { AppConfig } from './appconfig';
 import { askQuestionWithMessageResponse } from '../lib/utils/args';
 
-const command: Command = {
+const command: CommandDef = {
   name: 'apply',
   alias: ['apply'],
   channel: 'guild',
@@ -26,6 +26,8 @@ const command: Command = {
       console.error(err);
       message.channel.send(`I'm sorry, there was a problem with processing this command.`);
       return;
+    } finally {
+      await client.close();
     }
 
     if (!config) return;
@@ -57,6 +59,8 @@ const command: Command = {
         .findOne<AppConfig>({ id: message.guild.id });
     } catch (err) {
       console.error(err);
+    } finally {
+      await client.close();
     }
     
     if (!config) {

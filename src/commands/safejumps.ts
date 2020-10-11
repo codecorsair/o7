@@ -1,9 +1,9 @@
-import { Message, Command } from '../lib/types';
+import { Message, CommandDef } from '../lib/types';
 import neo4j from 'neo4j-driver';
 import config from '../config.json';
 import { printSecurity, getSystems } from './jumps';
 
-const command: Command = {
+const command: CommandDef = {
   name: 'safe jumps',
   alias: ['safejumps', 'sj'],
   args: [{

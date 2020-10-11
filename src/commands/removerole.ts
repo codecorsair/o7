@@ -1,7 +1,7 @@
 import { Role, GuildMember } from 'discord.js';
-import { Message, Command, DiscordPermissions } from '../lib/types';
+import { Message, CommandDef, DiscordPermissions } from '../lib/types';
 
-const command: Command = {
+const command: CommandDef = {
   name: 'remove role',
   alias: ['removerole', 'droprole'],
   args: [{

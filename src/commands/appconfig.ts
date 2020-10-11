@@ -1,4 +1,4 @@
-import { Message, Command } from '../lib/types';
+import { Message, CommandDef } from '../lib/types';
 import { getClient, collections } from '../lib/db';
 import { TextChannel } from 'discord.js';
 import { NewsChannel } from 'discord.js';
@@ -9,7 +9,7 @@ export interface AppConfig {
   questions: string[],
 }
 
-const command: Command = {
+const command: CommandDef = {
   name: 'appconfig',
   alias: ['appconfig'],
   channel: 'guild',
@@ -47,6 +47,8 @@ const command: Command = {
       return message.reply('Application configuration complete!');
     } catch (err) {
       return message.reply('I\'m sorry, but there was a problem storing your config to our database.');
+    } finally {
+      await client.close();
     }
   }
 };

@@ -1,8 +1,8 @@
-import { Message, Command } from '../lib/types';
+import { Message, CommandDef } from '../lib/types';
 import * as mongo from '../lib/db';
 import * as settings from '../lib/settings';
 
-const command: Command = {
+const command: CommandDef = {
   name: 'initguilds',
   alias: ['initguilds'],
   owner: true,

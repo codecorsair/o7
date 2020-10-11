@@ -1,7 +1,7 @@
-import { Message, Command, DiscordPermissions } from '../lib/types';
+import { Message, CommandDef, DiscordPermissions } from '../lib/types';
 import * as settings from '../lib/settings';
 
-const command: Command = {
+const command: CommandDef = {
   name: 'prefix',
   alias: ['prefix'],
   channel: 'guild',

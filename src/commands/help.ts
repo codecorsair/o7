@@ -1,5 +1,5 @@
 import { MessageEmbed, TextChannel, DMChannel, NewsChannel, User } from 'discord.js';
-import { Message, Command } from '../lib/types';
+import { Message, CommandDef } from '../lib/types';
 import { Client } from '../lib/types/Client';
 import helpEmbeds from '../data/help_embed.json';
 import { startCase } from 'lodash';
@@ -17,6 +17,7 @@ export function sendHelp(client: Client, prefix: string, destination: TextChanne
     let counter = 0;
     const done: { [id: string]: boolean; } = {};
     client.commands.forEach(command => {
+      if (command.type === 'module') return; // TODO: iterate modules for help
       if (command.owner || command.disabled || done[command.alias[0]]) return;
       help.addField(`${prefix}${command.alias[0]}`, command.help?.description || startCase(command.name));
       done[command.alias[0]] = true;
@@ -34,7 +35,7 @@ export function sendHelp(client: Client, prefix: string, destination: TextChanne
     helpEmbeds.embeds.forEach(e => destination.send(new MessageEmbed(e)));
 }
 
-const command: Command = {
+const command: CommandDef = {
   name: 'help',
   alias: ['help'],
   args: [{
@@ -44,6 +45,7 @@ const command: Command = {
   }],
   handler: (message: Message, args: { here?: boolean }) => {
     const client = message.client as Client;
+    console.log(args.here);
     const destination = args && args.here ? message.channel : message.author;
     sendHelp(client, message.prefix, destination);
   }

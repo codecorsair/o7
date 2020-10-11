@@ -1,8 +1,8 @@
 import { MessageEmbed } from 'discord.js';
-import { Message, Command } from '../lib/types';
+import { Message, CommandDef } from '../lib/types';
 import changelog from '../data/changelog.json';
 
-const command: Command = {
+const command: CommandDef = {
   name: 'send changelog',
   alias: ['sendchangelog'],
   owner: true,

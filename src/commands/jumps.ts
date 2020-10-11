@@ -1,4 +1,4 @@
-import { Message, Command } from '../lib/types';
+import { Message, CommandDef } from '../lib/types';
 import Fuse from 'fuse.js';
 import neo4j from 'neo4j-driver';
 import config from '../config.json';
@@ -44,7 +44,7 @@ export function getSystems(message: Message, args: { start: string; end: string 
   }
 }
 
-const command: Command = {
+const command: CommandDef = {
   name: 'jumps',
   alias: ['jumps', 'j'],
   args: [{

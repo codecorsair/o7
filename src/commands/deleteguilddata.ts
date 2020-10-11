@@ -1,7 +1,7 @@
-import { Message, Command, DiscordPermissions } from '../lib/types';
+import { Message, CommandDef, DiscordPermissions } from '../lib/types';
 import * as mongo from '../lib/db';
 
-const command: Command = {
+const command: CommandDef = {
   name: 'deleteguilddata',
   alias: ['deleteguilddata'],
   userPermissions: [DiscordPermissions.ADMINISTRATOR],

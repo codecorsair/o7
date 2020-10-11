@@ -1,4 +1,4 @@
-import { Message, Command } from '../lib/types';
+import { Message, CommandDef } from '../lib/types';
 import { MessageEmbed } from 'discord.js';
 import numeral from 'numeral';
 import moment from 'moment';
@@ -28,7 +28,7 @@ const customKeywords = {
   'ores': { title: 'ore', keys: oreKeys },
 };
 
-const command: Command = {
+const command: CommandDef = {
   name: 'price check',
   alias: ['pricecheck', 'pc', 'price', 'value', 'market'],
   args: [{

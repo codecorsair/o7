@@ -1,53 +1,41 @@
-import fs from 'fs';
 import { isArray, isEmpty, startCase } from 'lodash';
-import { Command } from '../types/Command'
-import { Message as DJSMessage, MessageEmbed } from 'discord.js';
+import { MessageEmbed, Collection } from 'discord.js';
 import { isHelp, parseArgs } from '../utils/args';
-import { Client, Message, DiscordPermissions } from '../types';
-import * as settings from '../settings';
-import config from '../../config.json';
+import { Message, DiscordPermissions, Command, Module } from '../types';
+import { getFiles } from './getFiles';
 
+// Just a quick check, things can still be wrong.
+function isValid(command: Command, path: string) {
+  if (!command.name || typeof command.name !== 'string') {
+    console.error(`Invalid command at ${path}; 'name' is undefined or not a string.`);
+    return false;
+  }
 
-function requireCommandsFromDir(directory: string) {
-  return fs.readdirSync(directory)
-    .filter(file => file.endsWith('.js'))
-    .map(file => ({
-      path: `${directory}/${file}`,
-      command: require(`${directory}/${file}`).default as Command,
-    }));
-}
+  if (!command.alias || !isArray(command.alias) || isEmpty(command.alias)) {
+    console.error(`Invalid command at ${path}; 'alias' is undefined, not an array, or empty.`);
+    return false;
+  }
 
-function isValid(command: Command) {
-  if (!command.name) return false;
-  if (!command.handler) return false;
-  if (!command.alias || !isArray(command.alias) || isEmpty(command.alias)) return false;
+  if (!command.handler || typeof command.handler !== 'function') {
+    console.error(`Invalid command at ${path}; 'handler' is undefined or not a function.`);
+    return false;
+  }
   return true;
 }
 
-function getPrefix(message: DJSMessage) {
-  if (message.guild) {
-    const prefix = settings.getSettings(message.guild.id).prefix;
-    (message as any).prefix = prefix;
-    return prefix;
-  }
-  (message as any).prefix = config.prefix;
-  return config.prefix;
-}
-
-export function loadCommands(directory: string, client: Client) {
-  const pcs = requireCommandsFromDir(directory);
-  for (const pc of pcs) {
-    if (!isValid(pc.command)) {
-      console.error(`Error loading command. ${pc.path} is not a valid Command.`);
-      continue;
-    }
-    for (const alias of pc.command.alias) {
-      const a = alias.toLowerCase();
-      if (client.commands.has(a)) {
-        console.error(`Error loading command. ${pc.path} contains duplicated command '${a}'.`);
-        continue;
-      }
-      client.commands.set(a, pc.command);
+export async function loadCommands(directory: string, target: { commands: Collection<string, Command | Module>; }) {
+  for await (const path of getFiles(directory, 0, 0, fileName => fileName.endsWith('.js'))) {
+    const c = require(path).default as Command;
+    if (isValid(c, path)) {
+      c.type = 'command';
+      c.alias.forEach(a => {
+        const alias = a.toLowerCase();
+        if (target.commands.has(alias)) {
+          console.error(`Error loading command. ${path} comtains duplicate alias '${alias}'.`);
+          return;
+        }
+        target.commands.set(alias, c)
+      });
     }
   }
 }
@@ -66,19 +54,20 @@ ${command.alias.length > 0 ? `*alias:* ${command.alias.slice(1).map(a => `**${pr
   return embed;
 }
 
-export async function processCommand(djsMessage: DJSMessage) {
-  const content = djsMessage.content;
-  const message = djsMessage as Message;
-
-  const prefix = getPrefix(djsMessage);
-  if (djsMessage.author.bot || !content.startsWith(prefix)) return;
-
-  const [c, args] = djsMessage.content.slice(prefix.length).trim().split(/ (.+)/);
+export async function processCommand(
+  message: Message,
+  commandProvider: { commands: Collection<string, Command | Module>; },
+  content: string) {
+  const [c, args] = content.split(/ (.+)/);
   const cmdString = c.toLowerCase();
-  if (!message.client.commands.has(cmdString)) return;
+  if (!commandProvider.commands.has(cmdString)) return;
   try {
-    const command = message.client.commands.get(cmdString);
+    const command = commandProvider.commands.get(cmdString);
     if (!command || command.disabled) return;
+
+    if (command.type === 'module') {
+      return await processCommand(message, command, args);
+    }
 
     if (command.channel) {
       if (command.channel === 'guild' && !message.guild) return;
@@ -86,7 +75,6 @@ export async function processCommand(djsMessage: DJSMessage) {
     }
 
     if (command.owner && !message.client.owners.find(s => s === message.author.id)) return;
-
 
     if (command.userPermissions) {
       if (typeof command.userPermissions === 'function' && !command.userPermissions(message)) return;
@@ -105,9 +93,8 @@ export async function processCommand(djsMessage: DJSMessage) {
       }
     }
 
-    message.prefix = prefix;
-    message.sendHelp = () => message.channel.send(getHelpEmbed(command, prefix));
-    
+    message.sendHelp = () => message.channel.send(getHelpEmbed(command, message.prefix));
+
     if (isHelp(command, args)) {
       return message.sendHelp();
     }
@@ -118,16 +105,18 @@ export async function processCommand(djsMessage: DJSMessage) {
         return message.sendHelp();
       }
       command.handler(message, result);
+      return true;
     } else {
       const parsedArgs = await parseArgs(command, args, message);
       if (parsedArgs?.failed) {
         return message.sendHelp();
       }
       command.handler(message, parsedArgs?.args);
+      return true;
     }
-    
+
   } catch (err) {
     console.error(err);
-    djsMessage.channel.send(`I'm sorry, there was a problem executing that command.`);
+    message.channel.send(`I'm sorry, there was a problem executing that command.`);
   }
 }

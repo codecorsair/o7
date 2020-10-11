@@ -1,9 +1,9 @@
 import Fuse from 'fuse.js';
-import { Message, Command } from '../lib/types';
+import { Message, CommandDef } from '../lib/types';
 import { isDevModeEnabled } from '../lib/access';
 import lexicon from '../data/lexicon.json';
 
-const command: Command = {
+const command: CommandDef = {
   name: 'lexicon',
   alias: ['lexicon', 'lex'],
   userPermissions: isDevModeEnabled,

@@ -1,7 +1,7 @@
-import { Message, Command } from '../lib/types';
+import { Message, CommandDef } from '../lib/types';
 import { getResponse } from '../lib/bputils';
 
-const command: Command = {
+const command: CommandDef = {
   name: 'blueprint',
   alias: ['blueprint', 'bp'],
   args: [{

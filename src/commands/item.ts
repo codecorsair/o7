@@ -1,5 +1,5 @@
 import { MessageEmbed } from 'discord.js';
-import { Message, Command } from '../lib/types';
+import { Message, CommandDef } from '../lib/types';
 import numeral from 'numeral';
 import items from '../data/items.json';
 import {
@@ -15,7 +15,7 @@ import {
 } from '../lib/items';
 import { romanize } from '../lib/romanize';
 
-const command: Command = {
+const command: CommandDef = {
   name: 'item',
   alias: ['item', 'i', 'ship', 'info'],
   args: [{

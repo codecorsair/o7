@@ -1,7 +1,7 @@
 import { MessageEmbed } from 'discord.js';
-import { Message, Command } from '../lib/types';
+import { Message, CommandDef } from '../lib/types';
 
-const command: Command = {
+const command: CommandDef = {
   name: 'status',
   alias: ['status'],
   owner: true,

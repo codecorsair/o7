@@ -1,7 +1,7 @@
-import { Message, Command } from '../lib/types';
+import { Message, CommandDef } from '../lib/types';
 import { sendHelp } from './help';
 
-const command: Command = {
+const command: CommandDef = {
   name: 'send help',
   alias: ['sendhelp'],
   owner: true,

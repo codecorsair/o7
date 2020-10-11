@@ -24,7 +24,7 @@ export interface Arg {
   },
 }
 
-export interface Command {
+export interface CommandDef {
   // Name of the command.
   name: string;
 
@@ -66,4 +66,8 @@ export interface Command {
    * If set, this command will only execution in this channel type.
    */
   channel?: 'guild' | 'dm';
+}
+
+export interface Command extends CommandDef {
+  type: 'command';
 }

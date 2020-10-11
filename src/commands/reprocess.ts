@@ -1,4 +1,4 @@
-import { Message, Command } from '../lib/types';
+import { Message, CommandDef } from '../lib/types';
 import { MessageEmbed } from 'discord.js';
 import Fuse from 'fuse.js';
 import numeral from 'numeral';
@@ -14,7 +14,7 @@ const fuse = new Fuse(reproc, {
   keys: ['name'],
 });
 
-const command: Command = {
+const command: CommandDef = {
   name: 'reprocess',
   alias: ['reprocess', 'rp'],
   args: [{

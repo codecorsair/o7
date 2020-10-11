@@ -6,6 +6,8 @@ export const collections = {
   settings: 'guildsettings',
   appconfig: 'appconfig',
   verification: 'verification',
+  autovoiceconfig: 'autovoiceconfig',
+  autovoicecreatedchannels: 'autovoicecreatedchannels',
 }
 
 // Usage guides:

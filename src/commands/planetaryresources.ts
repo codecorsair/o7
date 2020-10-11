@@ -1,5 +1,5 @@
 import Fuse from 'fuse.js';
-import { Message, Command } from '../lib/types';
+import { Message, CommandDef } from '../lib/types';
 import { PlanetaryResources } from '../lib/echoes/constants';
 import systems from '../data/systems.json';
 import neo4j from 'neo4j-driver';
@@ -20,7 +20,7 @@ const fuseSystems = new Fuse(systems, {
   ],
 });
 
-const command: Command = {
+const command: CommandDef = {
   name: 'planetaryresources',
   alias: ['planetaryresources', 'pr', 'pi'],
   args: [{

@@ -1,7 +1,7 @@
-import { Message, Command } from '../lib/types';
+import { Message, CommandDef } from '../lib/types';
 import blueprint from './blueprint';
 
-const command: Command = {
+const command: CommandDef = {
   ...blueprint,
   name: 'blueprint mobile',
   alias: ['blueprintm', 'bpm'],
