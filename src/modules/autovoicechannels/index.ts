@@ -1,6 +1,6 @@
 import { MessageEmbed } from 'discord.js';
 import { VoiceState } from 'discord.js';
-import { Client, ModuleDef, Message } from '../../lib/types';
+import { Client, ModuleDef, Message, DiscordPermissions } from '../../lib/types';
 import * as db from './lib/db';
 
 const moduleDef: ModuleDef = {
@@ -16,6 +16,7 @@ export default moduleDef;
 async function initialize(client: Client) {
   client.on('voiceStateUpdate', onVoiceStateUpdate);
   await db.initCaches();
+  await db.cleanupEmptyChannels(client);
 }
 
 function getHelp(message: Message) {
@@ -33,7 +34,7 @@ async function deleteUserData() {
 }
 
 async function onVoiceStateUpdate(oldMember: VoiceState, newMember: VoiceState) {
-  const leftCreatedChannel = db.createdChannelsCache[oldMember.channel?.id || ''];
+  const leftCreatedChannel = db.getCreatedChannel(oldMember.channel?.id || '');
   if (leftCreatedChannel && oldMember.channel) {
     // user left an auto channel, check if channel is empty and delete
     if (oldMember.channel.members.size === 0) {
@@ -47,19 +48,43 @@ async function onVoiceStateUpdate(oldMember: VoiceState, newMember: VoiceState) 
     }
   }
 
-  const newChannelConfig = db.autoChannelsCache[newMember.channel?.id || '']
+  if (!newMember.channel) return;
+
+  const newChannelConfig = db.getAutoChannelConfig(newMember.channel.id);
   if (newChannelConfig) {
     // user joined an auto channel - make a new channel
     switch(newChannelConfig.type) {
       case 'standard': {
-        const ch = await newMember.guild.channels.create(`${newMember.member?.displayName}'s Room`, { type: 'voice', parent: newMember.channel?.parent || undefined });
+        const ch = await newMember.guild.channels.create(`${newMember.member?.displayName}'s Room`, 
+          {
+            type: 'voice',
+            parent: newMember.channel?.parent || undefined,
+            permissionOverwrites: [
+              ...newMember.channel.permissionOverwrites.map(po => po),
+              {
+                id: newMember.client.user?.id || '',
+                allow: [DiscordPermissions.VIEW_CHANNEL, DiscordPermissions.MANAGE_CHANNELS, DiscordPermissions.MOVE_MEMBERS]
+              }
+            ]
+        });
         newMember.member?.voice.setChannel(ch);
         db.saveCreatedChannel({ id: ch.id, from: newChannelConfig.id });
         break;
       }
       case 'sequential':
         const num = (newMember.channel?.parent?.children.filter(c => !!c.name.match(`${newChannelConfig.name} #[0-9]+`)).size || 0) + 1;
-        const ch = await newMember.guild.channels.create(`${newChannelConfig.name} #${num}`, { type: 'voice', parent: newMember.channel?.parent || undefined });
+        const ch = await newMember.guild.channels.create(`${newChannelConfig.name} #${num}`, 
+          {
+            type: 'voice',
+            parent: newMember.channel?.parent || undefined,
+            permissionOverwrites: [
+              ...newMember.channel.permissionOverwrites.map(po => po),
+              {
+                id: newMember.client.user?.id || '',
+                allow: [DiscordPermissions.VIEW_CHANNEL, DiscordPermissions.MANAGE_CHANNELS, DiscordPermissions.MOVE_MEMBERS]
+              }
+            ]
+        });
         newMember.member?.voice.setChannel(ch);
         db.saveCreatedChannel({ id: ch.id, from: newChannelConfig.id });
         break;

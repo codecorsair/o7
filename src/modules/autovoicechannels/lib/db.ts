@@ -1,9 +1,10 @@
+import { Client, VoiceChannel } from 'discord.js';
 import * as mongo from '../../../lib/db';
 import { GuildVoiceConfig, ChannelConfig, CreatedChannel } from './types';
 
-let configCache: {[id: string]: GuildVoiceConfig} = {};
-export let autoChannelsCache: {[id: string]: ChannelConfig} = {};
-export let createdChannelsCache: {[id: string]: CreatedChannel} = {};
+const configCache: {[id: string]: GuildVoiceConfig} = {};
+const autoChannelsCache: {[id: string]: ChannelConfig} = {};
+const createdChannelsCache: {[id: string]: CreatedChannel} = {};
 
 export async function getGuildVoiceConfig(guildId: string) {
   if (configCache[guildId]) return configCache;
@@ -95,9 +96,6 @@ export async function initCaches() {
         return false;
       }
 
-      autoChannelsCache = {};
-      configCache = {};
-
       await cursor.forEach(config => {
         configCache[config.id] = config;
         Object.values(config.channels).forEach(channel => autoChannelsCache[channel.id] = channel);
@@ -112,9 +110,6 @@ export async function initCaches() {
       if ((await cursor.count()) === 0) {
         return false;
       }
-
-      autoChannelsCache = {};
-      configCache = {};
 
       await cursor.forEach(cc => {
         createdChannelsCache[cc.id] = cc;
@@ -168,4 +163,27 @@ export async function deleteCreatedChannel(id: string) {
     await client.close();
   }
   return false;
+}
+
+export function getAutoChannelConfig(channelId: string) {
+  return autoChannelsCache[channelId];
+}
+
+export function getCreatedChannel(channelId: string) {
+  return createdChannelsCache[channelId];
+}
+
+export async function cleanupEmptyChannels(client: Client) {
+  for (const id in createdChannelsCache) {
+    const channel = client.channels.cache.get(id);
+    if (!channel) continue;
+    const vc = channel as VoiceChannel;
+    if (vc.members.size === 0) {
+      try {
+        vc.delete();
+      } catch(err) {
+        console.error(`Failed to delete voice channel ${id}`);
+      }
+    }
+  }
 }
