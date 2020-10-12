@@ -2,7 +2,7 @@ export interface GuildVoiceConfig {
   // guild id
   id: string;
   // voice channels -> channel id: config
-  channels: {[id: string]: ChannelConfig};
+  channels: { [id: string]: ChannelConfig; };
 }
 
 export interface BaseChannelConfig {

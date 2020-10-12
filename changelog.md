@@ -71,9 +71,10 @@ A couple amazing people have volunteered to join the o7 team! Now that it's not 
  * Removed thumbnail from blueprints for now as they were causing issues on some mobile devices. 
 
 
-### XX OCT 2020 - NAME HERE
+### 11 OCT 2020 - Reprocessing, Auto Voice Channels, and more!
 #### New Features & Updates
  * Added **reprocess** command to show what you'll get for reprocessing an item / ore.
+ * Added **Auto Voice Channels** module which will let you create a voice channel that will create temporary voice channels automatically whenever a user choice the auto channel.
  * Added Broker's Fees & Transaction Taxes to **blueprint** command. You can optionally provide your accounting skill levels after your manufacturing skill levels to adjust these fees.
  * Added commas to materal costs on **blueprint**s.
  * Added new categories on blueprint result to display applied Manufacturing & Accounting skills.
@@ -81,7 +82,7 @@ A couple amazing people have volunteered to join the o7 team! Now that it's not 
  * Updated help again, all commands now have a help feature for them.
  * The **planetaryresource* command will now respond with all richness levels, instead of just Perfect / Rich.
  
-#### Extra Dev Stuff
- * o7's bot framework was completely re-written to remove a third-party library it was relying on earlier to allow for faster development of new features that I wanted to add that I was limited with previously. I can't wait to start releasing these new features soon!
-
-#### Bug Fixes
+#### Extra Dev Notes
+It's been a bit longer than usual without a changelog post, but not without good reason! I completely re-wrote the framework o7 is built on from scratch. Previously, the bot was built on top of a third-party library, however o7 has outgrown this framework and the rebuild will allow for more features with less work overall. This means faster development and more features faster for you! 
+ 
+One of the new features enabled by this change is the **Auto Voice Channel** module which is a great tool to help reduce the clutter of too many voice channels in your communities! Check it out with the `!voice create` command on your server! *note: use of this command requires the user to have the `MANAGE_CHANNELS` permission, and o7 will need the `MANAGE_CHANNELS` permission in any category in which you wish to use the auto vhoice channels*

@@ -6,8 +6,8 @@ const configCache: {[id: string]: GuildVoiceConfig} = {};
 const autoChannelsCache: {[id: string]: ChannelConfig} = {};
 const createdChannelsCache: {[id: string]: CreatedChannel} = {};
 
-export async function getGuildVoiceConfig(guildId: string) {
-  if (configCache[guildId]) return configCache;
+export async function getGuildVoiceConfig(guildId: string, nocache?: boolean) {
+  if (!nocache && configCache[guildId]) return configCache[guildId];
   const client = mongo.getClient();
   try {
     await client.connect();

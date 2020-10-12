@@ -43,6 +43,10 @@ export interface ModuleDef {
 
   // If true, no comamnds will be processed from this module
   disabled?: boolean;
+
+  help?: {
+    description: string;
+  }
 }
 
 type defAndProvider = ModuleDef & CMProvider;

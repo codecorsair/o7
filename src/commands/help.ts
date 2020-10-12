@@ -1,5 +1,5 @@
 import { MessageEmbed, TextChannel, DMChannel, NewsChannel, User } from 'discord.js';
-import { Message, CommandDef } from '../lib/types';
+import { Message, CommandDef, CMProvider } from '../lib/types';
 import { Client } from '../lib/types/Client';
 import helpEmbeds from '../data/help_embed.json';
 import { startCase } from 'lodash';
@@ -13,26 +13,44 @@ export function sendHelp(client: Client, prefix: string, destination: TextChanne
       .setURL('https://discord.gg/PfruVg4')
       .setThumbnail('https://i.imgur.com/kBKDFlS.png');
 
-
-    let counter = 0;
-    const done: { [id: string]: boolean; } = {};
-    client.commands.forEach(command => {
-      if (command.type === 'module') return; // TODO: iterate modules for help
-      if (command.owner || command.disabled || done[command.alias[0]]) return;
-      help.addField(`${prefix}${command.alias[0]}`, command.help?.description || startCase(command.name));
-      done[command.alias[0]] = true;
-      if (++counter == 25) {
-        destination.send(help);
-        help = new MessageEmbed();
-        counter = 0;
-      }
-    });
-
-    if (counter > 0) {
-      destination.send(help);
-    }
-
+    const embeds = getHelpEmbeds(prefix, client, help);
+    embeds.forEach(e => destination.send(e));
     helpEmbeds.embeds.forEach(e => destination.send(new MessageEmbed(e)));
+}
+
+function getHelpEmbeds(prefix: string, provider: CMProvider, initialEmbed: MessageEmbed): MessageEmbed[] {
+  const embeds: MessageEmbed[] = [];
+  let counter = 0;
+  const done: { [id: string]: boolean; } = {};
+  let embed = initialEmbed;
+  provider.commands.forEach(command => {
+    if (command.type === 'module') return; // TODO: iterate modules for help
+    if (command.owner || command.disabled || done[command.alias[0]]) return;
+    embed.addField(`${prefix}${command.alias[0]}`, command.help?.description || startCase(command.name));
+    done[command.alias[0]] = true;
+    if (++counter == 25) {
+      embeds.push(embed);
+      embed = new MessageEmbed().setColor(7506394);
+      counter = 0;
+    }
+  });
+
+  if (counter > 0) {
+    embeds.push(embed);
+    embed = new MessageEmbed().setColor(7506394);
+  }
+
+  provider.modules.forEach(module => {
+    if (!module.commandGroup) return;
+    embed.setTitle(`${startCase(module.name)}`);
+    if (module.help) {
+      embed.setDescription(module.help.description);
+    }
+    const moduledEmbeds = getHelpEmbeds(`${prefix}${module.commandGroup[0]} `, module, embed);
+    embeds.push(...moduledEmbeds);
+    embed = new MessageEmbed().setColor(7506394);
+  });
+  return embeds;
 }
 
 const command: CommandDef = {
@@ -40,13 +58,11 @@ const command: CommandDef = {
   alias: ['help'],
   args: [{
     name: 'here',
-    type: 'flag',
     optional: true,
   }],
-  handler: (message: Message, args: { here?: boolean }) => {
+  handler: (message: Message, args: { here?: string }) => {
     const client = message.client as Client;
-    console.log(args.here);
-    const destination = args && args.here ? message.channel : message.author;
+    const destination = args && args.here?.toLowerCase() === 'here' ? message.channel : message.author;
     sendHelp(client, message.prefix, destination);
   }
 }

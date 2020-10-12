@@ -11,6 +11,7 @@ export async function loadModules(directory: string, client: Client, cmp: CMProv
     if (isValid(m, path)) {
       m.type = 'module';
       m.commands = new Collection<string, Command | Module>();
+      m.modules = new Collection<string, Module>();
       cmp.modules.set(m.name.toLowerCase(), m);
       m.initialize(client);
       if (m.commandGroup) {

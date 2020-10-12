@@ -6,6 +6,9 @@ import * as db from './lib/db';
 const moduleDef: ModuleDef = {
   name: 'auto voice channels',
   commandGroup: ['voice', 'v'],
+  help: {
+    description: 'Create voice channels that will automatically create new voice channels when joined.'
+  },
   initialize,
   getHelp,
   deleteGuildData,
@@ -58,7 +61,9 @@ async function onVoiceStateUpdate(oldMember: VoiceState, newMember: VoiceState) 
         const ch = await newMember.guild.channels.create(`${newMember.member?.displayName}'s Room`, 
           {
             type: 'voice',
-            parent: newMember.channel?.parent || undefined,
+            parent: newMember.channel.parent || undefined,
+            bitrate: newMember.channel.bitrate,
+            userLimit: newMember.channel.userLimit,
             permissionOverwrites: [
               ...newMember.channel.permissionOverwrites.map(po => po),
               {
@@ -77,6 +82,8 @@ async function onVoiceStateUpdate(oldMember: VoiceState, newMember: VoiceState) 
           {
             type: 'voice',
             parent: newMember.channel?.parent || undefined,
+            bitrate: newMember.channel.bitrate,
+            userLimit: newMember.channel.userLimit,
             permissionOverwrites: [
               ...newMember.channel.permissionOverwrites.map(po => po),
               {
