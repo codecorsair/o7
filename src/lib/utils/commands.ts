@@ -57,7 +57,8 @@ ${command.alias.length > 0 ? `*alias:* ${command.alias.slice(1).map(a => `**${pr
 export async function processCommand(
   message: Message,
   commandProvider: { commands: Collection<string, Command | Module>; },
-  content: string) {
+  content: string,
+  prefix: string) {
   const [c, args] = content.split(/ (.+)/);
   const cmdString = c.toLowerCase();
   if (!commandProvider.commands.has(cmdString)) return;
@@ -66,7 +67,7 @@ export async function processCommand(
     if (!command || command.disabled) return;
 
     if (command.type === 'module') {
-      return await processCommand(message, command, args);
+      return await processCommand(message, command, args, `${prefix}${(command.commandGroup as any)[0]} `);
     }
 
     if (command.channel) {
@@ -93,7 +94,7 @@ export async function processCommand(
       }
     }
 
-    message.sendHelp = () => message.channel.send(getHelpEmbed(command, message.prefix));
+    message.sendHelp = () => message.channel.send(getHelpEmbed(command, prefix));
 
     if (isHelp(command, args)) {
       return message.sendHelp();

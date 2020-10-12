@@ -17,7 +17,7 @@ client.on('message', async (djsMessage: DJSMessage) => {
   if (djsMessage.author.bot || !message.content.startsWith(prefix)) return;
   message.prefix = prefix;
   const content = message.content.slice(message.prefix.length).trim();
-  if (await processCommand(message, client, content)) return;
+  if (await processCommand(message, client, content, message.prefix)) return;
 });
 
 function getPrefix(message: DJSMessage) {

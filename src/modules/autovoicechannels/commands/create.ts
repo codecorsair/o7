@@ -14,7 +14,7 @@ export interface AppConfig {
 const MAX_CHANNELS_PER_GUILD = 5;
 
 const command: CommandDef = {
-  name: 'create',
+  name: 'voice create',
   alias: ['create'],
   channel: 'guild',
   userPermissions: [DiscordPermissions.MANAGE_CHANNELS],
