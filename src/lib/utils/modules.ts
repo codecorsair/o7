@@ -1,7 +1,4 @@
-import { 
-  Collection,
-} from 'discord.js';
-import { Module, Client, Command, CMProvider } from '../types';
+import { Module, Client, CMProvider, ModuleDef } from '../types';
 import { loadCommands } from './commands';
 import { getFiles } from './getFiles';
 
@@ -10,12 +7,12 @@ export async function loadModules(directory: string, client: Client, cmp: CMProv
     const m = require(path).default as Module;
     if (isValid(m, path)) {
       m.type = 'module';
-      m.commands = new Collection<string, Command | Module>();
-      m.modules = new Collection<string, Module>();
-      cmp.modules.set(m.name.toLowerCase(), m);
+      m.commands = {};
+      m.modules = {};
+      cmp.modules[m.name.toLowerCase()] = m;
       m.initialize(client);
       if (m.commandGroup) {
-        m.commandGroup.forEach(a => cmp.commands.set(a.toLowerCase(), m));
+        m.commandGroup.forEach(a => cmp.commands[a.toLowerCase()] = m);
       }
       await loadModuleCommands(path.replace('index.js', 'commands'), m, cmp);
       await loadModules(path.replace('index.js', 'modules'), client, m.commandGroup ? m : client);
@@ -23,7 +20,7 @@ export async function loadModules(directory: string, client: Client, cmp: CMProv
   }
 }
 
-function isValid(module: Module, path: string) {
+function isValid(module: ModuleDef, path: string) {
   if (!module.name || typeof module.name !== 'string') {
     console.error(`Invalid module at ${path}; 'name' is undefined or not a string.`);
     return false;

@@ -1,12 +1,11 @@
-import { Collection } from "discord.js";
 import { Command, Module } from './'
 
 export interface CommandProvider {
-  commands: Collection<string, Command | Module>;
+  commands: { [alias: string]: Command | Module; };
 }
 
 export interface ModuleProvider {
-  modules: Collection<string, Module>;
+  modules: { [commandGroup: string]: Module};
 }
 
 export type CMProvider = CommandProvider & ModuleProvider;

@@ -5,7 +5,7 @@ import numeral from 'numeral';
 import { startCase } from 'lodash';
 import reproc from '../data/reproc.json';
 
-// const regex = /((?:mk\s?\d)?[a-zA-Z ]+) ?([0-9.]*)/;
+const regex = /((?:mk\s?\d)?[a-zA-Z ]+) ?([0-9.]*)/;
 
 const fuse = new Fuse(reproc, {
   isCaseSensitive: false,
@@ -32,7 +32,7 @@ const command: CommandDef = {
     }]
   },
   handler: (message: Message, args: { itemName: string; }) => {
-    const parsedArgs = args.itemName.toLowerCase().match(/((?:mk\s?\d)?[a-zA-Z ]+) ?([0-9.]*)/);
+    const parsedArgs = args.itemName.toLowerCase().match(regex);
     if (!parsedArgs) {
       return message.channel.send(`Sorry, I couldn't understand that.`);
     }

@@ -1,0 +1,29 @@
+{
+  "help_command_help": {
+    "en": "Command Help",
+    "ru": "Справка по командам"
+  },
+  "help_alias": {
+    "en": "alias",
+    "ru": "псевдоним"
+  },
+  "command_name_ping": {
+    "en": "ping",
+    "ru": "пинг"
+  },
+  "command_alias_ping": {
+    "en": "ping",
+    "ru": "пинг"
+  },
+  "command_alias_p": {
+    "en": "p"
+  },
+  "command_help_description_ping": {
+    "en": "Replies with Pong!",
+    "ru": "Отвечает понгом"
+  },
+  "command_ping_response": {
+    "en": "Pong!",
+    "ru": "понг"
+  }
+}

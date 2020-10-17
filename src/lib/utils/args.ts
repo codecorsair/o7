@@ -2,10 +2,10 @@ import { TextChannel } from 'discord.js';
 import { DMChannel } from 'discord.js';
 import { NewsChannel } from 'discord.js';
 import { MessageReaction, Message } from 'discord.js';
-import { Arg, Command, CommonEmojis } from '../types';
+import { Arg, CommandDef, CommonEmojis } from '../types';
 import { collectMessages, collectReactions } from './collectors';
 
-export function isHelp(command: Command, args?: string) {
+export function isHelp(command: CommandDef, args?: string) {
   if (!args && (typeof command.args !== 'function' && command.args && command.args.filter(a => !a.default && !a.optional && !a.prompt).length > 0)) return true;
   return args && (args === 'help' || args.indexOf('-h') > -1 || args.indexOf('--help') > -1);
 }
@@ -64,7 +64,7 @@ export function parseType(arg: Arg, args: string, msg: Message, state: { channel
   }
 }
 
-export async function parseArgs(command: Command, args: string, message: Message) {
+export async function parseArgs(command: CommandDef, args: string, message: Message) {
   if (typeof command.args === 'function') return;
   if (!args && (!command.args || (!command.args.some(a => a.prompt) && !command.args.some(a => a.default)))) {
     return;

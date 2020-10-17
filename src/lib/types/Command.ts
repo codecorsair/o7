@@ -1,4 +1,5 @@
 import { Message as DJSMessage } from 'discord.js';
+import { LANG } from '../localize';
 import { Message, DiscordPermissions } from './';
 
 export interface Arg {
@@ -33,7 +34,7 @@ export interface CommandDef {
 
   handler: (message: Message, args: any) => any;
 
-  args?: Arg[] | ((message: Message, command: Command) => any);
+  args?: Arg[] | ((message: Message, command: CommandDef) => any);
 
   help?: {
     description: string;
@@ -68,6 +69,9 @@ export interface CommandDef {
   channel?: 'guild' | 'dm';
 }
 
-export interface Command extends CommandDef {
+export interface Command {
   type: 'command';
+  def: CommandDef;
+  lang: LANG;
+  disabled: boolean;
 }

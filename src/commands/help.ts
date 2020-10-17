@@ -23,11 +23,11 @@ function getHelpEmbeds(prefix: string, provider: CMProvider, initialEmbed: Messa
   let counter = 0;
   const done: { [id: string]: boolean; } = {};
   let embed = initialEmbed;
-  provider.commands.forEach(command => {
+  Object.values(provider.commands).forEach(command => {
     if (command.type === 'module') return; // TODO: iterate modules for help
-    if (command.owner || command.disabled || done[command.alias[0]]) return;
-    embed.addField(`${prefix}${command.alias[0]}`, command.help?.description || startCase(command.name));
-    done[command.alias[0]] = true;
+    if (command.def.owner || command.disabled || done[command.def.alias[0]]) return;
+    embed.addField(`${prefix}${command.def.alias[0]}`, command.def.help?.description || startCase(command.def.name));
+    done[command.def.alias[0]] = true;
     if (++counter == 25) {
       embeds.push(embed);
       embed = new MessageEmbed().setColor(7506394);
@@ -40,7 +40,7 @@ function getHelpEmbeds(prefix: string, provider: CMProvider, initialEmbed: Messa
     embed = new MessageEmbed().setColor(7506394);
   }
 
-  provider.modules.forEach(module => {
+  Object.values(provider.modules).forEach(module => {
     if (!module.commandGroup) return;
     embed.setTitle(`${startCase(module.name)}`);
     if (module.help) {

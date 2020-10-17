@@ -1,7 +1,6 @@
 import { 
   Client as DJSClient,
   ClientOptions,
-  Collection,
 } from 'discord.js';
 import { Command, Module } from './';
 import { loadCommands } from '../utils/commands';
@@ -9,8 +8,8 @@ import { loadModules } from '../utils/modules';
 
 export class Client extends DJSClient {
 
-  public commands: Collection<string, Command | Module> = new Collection();
-  public modules: Collection<string, Module> = new Collection();
+  public commands: { [alias: string]: Command | Module; } = {};
+  public modules: { [commandGroup: string]: Module} = {};
   public owners: string[] = [];
 
   constructor(options?: ClientOptions) {
