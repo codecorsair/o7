@@ -46,6 +46,7 @@ const command: CommandDef = {
                    { upsert: true });
       return message.reply('Application configuration complete!');
     } catch (err) {
+      console.error(err);
       return message.reply('I\'m sorry, but there was a problem storing your config to our database.');
     } finally {
       await client.close();

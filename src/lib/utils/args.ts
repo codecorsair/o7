@@ -66,7 +66,7 @@ export function parseType(arg: Arg, args: string, msg: Message, state: { channel
 
 export async function parseArgs(command: Command, args: string, message: Message) {
   if (typeof command.args === 'function') return;
-  if (!args && (!command.args || !command.args.some(a => a.prompt) || !command.args.some(a => a.default))) {
+  if (!args && (!command.args || (!command.args.some(a => a.prompt) && !command.args.some(a => a.default)))) {
     return;
   } else if (!command.args) {
     return;
@@ -83,6 +83,7 @@ export async function parseArgs(command: Command, args: string, message: Message
   }
   for (const arg of command.args) {
     if (arg.prompt) {
+      console.log('prompt arg')
       const startMessage = typeof arg.prompt.start === 'function' ? arg.prompt.start(message) : arg.prompt.start;
       let response: any;
       if (arg.prompt.reactions) {
