@@ -6,8 +6,7 @@ import { MessageEmbed } from 'discord.js';
 import { getLatestValidPrice, getMarketData } from './market-api';
 import { MarketItem } from './market-api';
 import blueprints from '../data/blueprints.json';
-// import items from '../data/items.json';
-// import { Item, getItemId } from './items';
+import { LANG, localize } from './localize';
 
 const fuseOpts = {
   includeScore: true,
@@ -49,7 +48,7 @@ const fuse = new Fuse(bps, fuseOpts, fuseIndex);
 // new regex developed and tested here https://www.typescriptlang.org/play?ts=4.0.2#code/MYewdgzgLgBApgDwIYFsAOAbOBJMaCusAvDAEQoDWA7DABYgBGMATDAKwD0ADDACzekA3AChhoSLABOcAOaIYJDgAoA-AB4GGfHDSSAlmCgA+ANpIAtAC8AguYBaXcwE4YAXQDUZq7buvVALhgTRycPVQBCAB0OAEoYlRiAgMiIACpE9RQkKAgKPQwMCFNHNjCVf2jg81L3GIBvAEYAGgBfeIz-ZLSMtSRgYBy8gqKqmuSOUY965raEjhFxaBg0JEkIOAATa0kZCAV4ZHQsXAIoADooEAAZEAB3OEkAYSR1pRizrKhgWiVpOQQYiIxOAICAsGcMCAZEoVmtNttdjFhEA
 const regex = /([a-zA-Z0-9\- ]+[a-zA-Z\-](?: [0-9]+(?!\/))?)(?:(?:\s*)([0-5]+(?:\/[0-5]+){1,})?)(?:(?:\s*)([0-5]+(?:\/[0-5]+){1,})?)/;
 
-export async function getResponse(searchText: string, isMobile: boolean) {
+export async function getResponse(searchText: string, isMobile: boolean, prefix: string, lang: LANG) {
   const parsedArgs = searchText.toLowerCase().match(regex);
   if (!parsedArgs) return null;
   
@@ -70,7 +69,7 @@ export async function getResponse(searchText: string, isMobile: boolean) {
   let total = { cost: 0 };
 
   const bp = results[0].item;
-  const bpName = bp.name + ' Blueprint';
+  const bpName = bp.name;
   // const id = getItemId(bpName);
   const embed = new MessageEmbed()
     .setColor('#0DE1A1')
@@ -87,36 +86,44 @@ export async function getResponse(searchText: string, isMobile: boolean) {
   //   embed.setThumbnail(`https://storage.googleapis.com/o7-store/icons/${itemInfo.icon_id}.png`)
   // }
   
-  embed.addField(`Manufacture`, `${bp.type} Skills **${skillLevels.join('/')}**\nMaterial Efficiency **${numeral(mod.material).format('0%')}**\nTime Efficiency **${numeral(mod.time).format('0%')}**`, true)
-  embed.addField(`Market`, `Accounting Skills **${accountingLevels.join('/')}**\nBroker's Fee **${numeral(accountingRates.brokersRate).format('0.0%')}**\nTransaction Tax **${numeral(accountingRates.taxRate).format('0%')}**`, true)
+  embed.addField(localize('manufacture', prefix, lang), `${bp.type} ${localize('skills', prefix, lang)} **${skillLevels.join('/')}**\n${localize('material_efficiency', prefix, lang)} **${numeral(mod.material).format('0%')}**\n${localize('time_efficiency', prefix, lang)} **${numeral(mod.time).format('0%')}**`, true)
+  embed.addField(localize('market', prefix, lang), `${localize('accounting_skills', prefix, lang)} **${accountingLevels.join('/')}**\n${localize('brokers_fee', prefix, lang)} **${numeral(accountingRates.brokersRate).format('0.0%')}**\n${localize('transaction_tax', prefix, lang)} **${numeral(accountingRates.taxRate).format('0%')}**`, true)
 
   if (hasAny(bp, mineralKeys)) {
-    const description = await printKeys(bp, mineralKeys, mod.material, total, isMobile);
-    embed.addField('Minerals', description);
+    const description = await printKeys(bp, mineralKeys, mod.material, total, isMobile, prefix, lang);
+    embed.addField(localize('minerals', prefix, lang), description);
   }
 
   if (hasAny(bp, piKeys)) {
-    const description = await printKeys(bp, piKeys, mod.material, total, isMobile);
-    embed.addField('Planetary Resources', description);
+    const description = await printKeys(bp, piKeys, mod.material, total, isMobile, prefix, lang);
+    embed.addField(localize('planetary_resources', prefix, lang), description);
   }
 
   if (hasAny(bp, salvageKeys)) {
-    const description = await printKeys(bp, salvageKeys, mod.material, total, isMobile);
-    embed.addField('Salvage', description);
+    const description = await printKeys(bp, salvageKeys, mod.material, total, isMobile, prefix, lang);
+    embed.addField(localize('salvage', prefix, lang), description);
   }
 
-  embed.addField('Production', printProduction(bp, mod.time, isMobile));
+  embed.addField(localize('production', prefix, lang), printProduction(bp, mod.time, isMobile, prefix, lang));
   total.cost += bp.productionCost;
 
   const itemPrice = await getMarketData(bp.name);
   const bpPrice = await getMarketData(bp.name + ' blueprint');
   if (itemPrice && bpPrice) {
-    embed.addField('Cost', printCosts(bp, itemPrice, bpPrice, total, accountingRates, isMobile));
+    embed.addField(localize('cost', prefix, lang), printCosts(bp, itemPrice, bpPrice, total, accountingRates, isMobile, prefix, lang));
   }
   return embed;
 }
 
-function printCosts(bp: { productionCount: number; }, item: MarketItem, blueprint: MarketItem, total: { cost: number }, accountingRates: { brokersRate: number, taxRate: number}, isMobile: boolean) {
+function printCosts(bp: { productionCount: number; },
+  item: MarketItem,
+  blueprint: MarketItem,
+  total: { cost: number },
+  accountingRates: { brokersRate: number, taxRate: number},
+  isMobile: boolean,
+  prefix: string,
+  lang: LANG,
+  ) {
   const latestPrice = getLatestValidPrice(item);
   let bpPrice = getLatestValidPrice(blueprint);
   if (!bpPrice) {
@@ -140,13 +147,13 @@ function printCosts(bp: { productionCount: number; }, item: MarketItem, blueprin
   const brokersFeeAndTaxMed = brokersFeeMed + taxFeeMed;
 
   let result = '```\n';
-  result += alignText(`Cost to build${isMobile ? '\n' : ''}`, `${numeral(total.cost).format('0[.]0a')} ISK\n`, isMobile);
-  result += alignText(`Blueprint Cost${isMobile ? '\n' : ''}`, `low ${numeral(bpPrice.lowest_sell).format('0[.]0a')} ISK | median ${numeral(bpPrice.sell).format('0[.]0a')} ISK\n`, isMobile);
-  result += alignText(`Market sell${isMobile ? '\n' : ''}`, `low ${numeral(sellOrderLow).format('0[.]0a')} ISK | median ${numeral(sellOrderMed).format('0[.]0a')} ISK\n`, isMobile);
-  result += alignText(`Broker's Fee${isMobile ? '\n' : ''}`, `low ${numeral(brokersFeeLow).format('0[.]0a')} ISK | median ${numeral(brokersFeeMed).format('0[.]0a')} ISK\n`, isMobile);
-  result += alignText(`Transaction Tax${isMobile ? '\n' : ''}`, `low ${numeral(taxFeeLow).format('0[.]0a')} ISK | median ${numeral(taxFeeMed).format('0[.]0a')} ISK\n`, isMobile);
-  result += alignText(`Profit margin${isMobile ? '\n' : ''}`, `low ${numeral(sellOrderLow - total.cost - brokersFeeAndTaxLow).format('0[.]0a')} ISK | median ${numeral(sellOrderMed - total.cost - brokersFeeAndTaxMed).format('0[.]0a')} ISK\n`, isMobile);
-  result += alignText(`(If buying BP)${isMobile ? '\n' : ''}`, `low ${numeral(sellOrderLow - (total.cost + bpPrice.lowest_sell) - brokersFeeAndTaxLow).format('0[.]0a')} ISK | median ${numeral(sellOrderMed - (total.cost + bpPrice.sell) - brokersFeeAndTaxMed).format('0[.]0a')} ISK\n`, isMobile);
+  result += alignText(`${localize('cost_to_build', prefix, lang)}${isMobile ? '\n' : ''}`, `${numeral(total.cost).format('0[.]0a')} ISK\n`, isMobile);
+  result += alignText(`${localize('blueprint_cost', prefix, lang)}${isMobile ? '\n' : ''}`, `${localize('price_low', prefix, lang)} ${numeral(bpPrice.lowest_sell).format('0[.]0a')} ISK | ${localize('price_median', prefix, lang)} ${numeral(bpPrice.sell).format('0[.]0a')} ISK\n`, isMobile);
+  result += alignText(`${localize('market_sell', prefix, lang)}${isMobile ? '\n' : ''}`, `${localize('price_low', prefix, lang)} ${numeral(sellOrderLow).format('0[.]0a')} ISK | ${localize('price_median', prefix, lang)} ${numeral(sellOrderMed).format('0[.]0a')} ISK\n`, isMobile);
+  result += alignText(`${localize('brokers_fee', prefix, lang)}${isMobile ? '\n' : ''}`, `${localize('price_low', prefix, lang)} ${numeral(brokersFeeLow).format('0[.]0a')} ISK | ${localize('price_median', prefix, lang)} ${numeral(brokersFeeMed).format('0[.]0a')} ISK\n`, isMobile);
+  result += alignText(`${localize('transaction_tax', prefix, lang)}${isMobile ? '\n' : ''}`, `${localize('price_low', prefix, lang)} ${numeral(taxFeeLow).format('0[.]0a')} ISK | ${localize('price_median', prefix, lang)} ${numeral(taxFeeMed).format('0[.]0a')} ISK\n`, isMobile);
+  result += alignText(`${localize('profit_margin', prefix, lang)}${isMobile ? '\n' : ''}`, `${localize('price_low', prefix, lang)} ${numeral(sellOrderLow - total.cost - brokersFeeAndTaxLow).format('0[.]0a')} ISK | ${localize('price_median', prefix, lang)} ${numeral(sellOrderMed - total.cost - brokersFeeAndTaxMed).format('0[.]0a')} ISK\n`, isMobile);
+  result += alignText(`(${localize('if_buying_bp', prefix, lang)})${isMobile ? '\n' : ''}`, `${localize('price_low', prefix, lang)} ${numeral(sellOrderLow - (total.cost + bpPrice.lowest_sell) - brokersFeeAndTaxLow).format('0[.]0a')} ISK | ${localize('price_median', prefix, lang)} ${numeral(sellOrderMed - (total.cost + bpPrice.sell) - brokersFeeAndTaxMed).format('0[.]0a')} ISK\n`, isMobile);
   return result + '```';
 }
 
@@ -157,7 +164,14 @@ function hasAny(bp: any, keys: string[]) {
   return false;
 }
 
-async function printKeys(bp: any, keys: string[], valueModifier: number, total: { cost: number; }, isMobile: boolean) {
+async function printKeys(bp: any,
+  keys: string[],
+  valueModifier: number,
+  total: { cost: number; },
+  isMobile: boolean,
+  prefix: string,
+  lang: LANG,
+  ) {
   let result = '```\n';
   let groupCost = 0;
   for (const key of keys) {
@@ -176,7 +190,7 @@ async function printKeys(bp: any, keys: string[], valueModifier: number, total: 
     groupCost += cost;
     result += `${(isMobile ? '\n' : '')} [${numeral(price.buy).format('0[.]0a')} ISK > ${numeral(cost).format('0[.]0a')} ISK]\n`;
   }
-  result += `\n${alignText('Total Cost', (`${numeral(groupCost).format('0[.]0a')} ISK`), isMobile)}`;
+  result += `\n${alignText(localize('total_cost', prefix, lang), (`${numeral(groupCost).format('0[.]0a')} ISK`), isMobile)}`;
   total.cost += groupCost;
   return result + '```';
 }
@@ -236,11 +250,11 @@ const salvageKeys = [
   "defectiveCurrentPump",
 ];
 
-function printProduction(bp: any, timeMod: number, isMobile: boolean) {
+function printProduction(bp: any, timeMod: number, isMobile: boolean, prefix: string, lang: LANG) {
   let result = '```\n';
-  result += alignText('Manufacturing cost', numeral(bp.productionCost).format('0[.]0a') + ' ISK\n', isMobile);
-  result += alignText('Manufacturing time ', printDuration(moment.duration(Math.ceil(bp.productionTime * 1000 * timeMod))) + '\n', isMobile);
-  result += alignText('Runs available',  `${bp.productionCount}\n`, isMobile);
+  result += alignText(localize('manufacturing_cost', prefix, lang), numeral(bp.productionCost).format('0[.]0a') + ' ISK\n', isMobile);
+  result += alignText(localize('manufacturing_time', prefix, lang) + ' ', printDuration(moment.duration(Math.ceil(bp.productionTime * 1000 * timeMod))) + '\n', isMobile);
+  result += alignText(localize('bp_runs_available', prefix, lang), `${bp.productionCount}\n`, isMobile);
   return result + '```';
 }
 

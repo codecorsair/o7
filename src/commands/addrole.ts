@@ -2,23 +2,25 @@ import { Role, GuildMember } from 'discord.js';
 import { Message, CommandDef, DiscordPermissions } from '../lib/types';
 
 const command: CommandDef = {
-  name: 'add role',
+  name: 'command_addrole_name',
   alias: ['addrole', 'setrole'],
   args: [{
-    name: 'member',
+    key: 'member',
+    name: 'command_addrole_arg_member',
     type: 'member'
   },{
-    name: 'role',
+    key: 'member',
+    name: 'command_addrole_arg_role',
     type: 'role',
   }],
   help: {
-    description: 'This command will add on or more roles to a member.',
+    description: 'command_addrole_help_description',
     examples: [{
-      args: '@member @role',
-      description: 'Adds the @role to @member.',
+      args: 'command_addrole_help_example_one_args',
+      description: 'command_addrole_help_example_one_description',
     },{
-      args: '@member @role1 @role2 (...any number of roles)',
-      description: 'Adds all the provided roles to @member.'
+      args: 'command_addrole_help_example_two_args',
+      description: 'command_addrole_help_example_two_description'
     }]
   },
   handler: async (message: Message, args: { member: GuildMember; role: Role; }) => {

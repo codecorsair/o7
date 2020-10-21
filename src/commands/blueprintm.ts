@@ -3,7 +3,7 @@ import blueprint from './blueprint';
 
 const command: CommandDef = {
   ...blueprint,
-  name: 'blueprint mobile',
+  name: 'command_blueprintm_name',
   alias: ['blueprintm', 'bpm'],
   handler: (message: Message, args: { searchTerm: string; }) => blueprint.handler(message, {...args, mobile: true}),
 };

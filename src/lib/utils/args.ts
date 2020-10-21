@@ -17,50 +17,50 @@ export function parseType(arg: Arg, args: string, msg: Message, state: { channel
 
   switch (arg.type) {
     case 'content':
-      state.parsedArgs[arg.name] = args || arg.default;
-      if (!arg.optional && !state.parsedArgs[arg.name]) return;
-      return state.parsedArgs[arg.name];
+      state.parsedArgs[arg.key] = args || arg.default;
+      if (!arg.optional && !state.parsedArgs[arg.key]) return;
+      return state.parsedArgs[arg.key];
     default:
     case 'phrase':
-      state.parsedArgs[arg.name] = state.splitArgs[0] || arg.default;
+      state.parsedArgs[arg.key] = state.splitArgs[0] || arg.default;
       state.splitArgs.splice(0, 1);
-      if (!arg.optional && !state.parsedArgs[arg.name]) return;
-      return state.parsedArgs[arg.name];
+      if (!arg.optional && !state.parsedArgs[arg.key]) return;
+      return state.parsedArgs[arg.key];
     case 'number':
-      state.parsedArgs[arg.name] = parseFloat(state.splitArgs[0]) || arg.default;
+      state.parsedArgs[arg.key] = parseFloat(state.splitArgs[0]) || arg.default;
       state.splitArgs.splice(0, 1);
-      if (!arg.optional && !state.parsedArgs[arg.name]) return;
-      return state.parsedArgs[arg.name];
+      if (!arg.optional && !state.parsedArgs[arg.key]) return;
+      return state.parsedArgs[arg.key];
     case 'channel':
-      state.parsedArgs[arg.name] = channels[state.channel] && channels[state.channel][1] || arg.default;
+      state.parsedArgs[arg.key] = channels[state.channel] && channels[state.channel][1] || arg.default;
       state.channel++;
-      if (!arg.optional && !state.parsedArgs[arg.name]) return;
-      return state.parsedArgs[arg.name];
+      if (!arg.optional && !state.parsedArgs[arg.key]) return;
+      return state.parsedArgs[arg.key];
     case 'member':
-      state.parsedArgs[arg.name] = members[state.member] && members[state.member][1] || arg.default;
+      state.parsedArgs[arg.key] = members[state.member] && members[state.member][1] || arg.default;
       state.member++;
-      if (!arg.optional && !state.parsedArgs[arg.name]) return;
-      return state.parsedArgs[arg.name];
+      if (!arg.optional && !state.parsedArgs[arg.key]) return;
+      return state.parsedArgs[arg.key];
     case 'role':
-      state.parsedArgs[arg.name] = roles[state.role] && roles[state.role][1] || arg.default;
+      state.parsedArgs[arg.key] = roles[state.role] && roles[state.role][1] || arg.default;
       state.role++;
-      if (!arg.optional && !state.parsedArgs[arg.name]) return;
-      return state.parsedArgs[arg.name];
+      if (!arg.optional && !state.parsedArgs[arg.key]) return;
+      return state.parsedArgs[arg.key];
     case 'flag':
-      const index = state.splitArgs.findIndex(s => s === (arg.flag || arg.name));
+      const index = state.splitArgs.findIndex(s => s === (arg.flag || arg.key));
       if (index > 0) {
-        state.parsedArgs[arg.name] = state.splitArgs[index];
+        state.parsedArgs[arg.key] = state.splitArgs[index];
         state.splitArgs.splice(index, 1);
       } else if (arg.default) {
-        state.parsedArgs[arg.name] = arg.default;
+        state.parsedArgs[arg.key] = arg.default;
       }
-      if (!arg.optional && !state.parsedArgs[arg.name]) return;
-      return state.parsedArgs[arg.name];
+      if (!arg.optional && !state.parsedArgs[arg.key]) return;
+      return state.parsedArgs[arg.key];
     case 'restContent':
-      state.parsedArgs[arg.name] = state.splitArgs.join(' ');
+      state.parsedArgs[arg.key] = state.splitArgs.join(' ');
       state.splitArgs.splice(0, state.splitArgs.length);
-      if (!arg.optional && !state.parsedArgs[arg.name]) return;
-      return state.parsedArgs[arg.name];
+      if (!arg.optional && !state.parsedArgs[arg.key]) return;
+      return state.parsedArgs[arg.key];
   }
 }
 
@@ -122,7 +122,7 @@ export async function parseArgs(command: CommandDef, args: string, message: Mess
           return { failed: true };
         }
       }
-      argsState.parsedArgs[arg.name] = response;
+      argsState.parsedArgs[arg.key] = response;
     } else {
       if (!parseType(arg, args, message, argsState)) {
         return { failed: true };
@@ -154,5 +154,5 @@ export async function askQuestionWithMessageResponse(question: string, channel: 
     m => arg.prompt?.choices ? [...arg.prompt.choices, arg.prompt?.stop || 'stop'].some(c => c.toLowerCase() === m.content.toLowerCase()) : true,
     m => m.content === (arg.prompt?.stop || 'stop'),
     { max: arg.prompt?.infinite ? undefined : 1, time: arg.prompt?.timeout || 60_000, resetTimerOnMessage: true},
-    m => parseType(arg, m.content, m, { channel: 0, member: 0, role: 0, splitArgs: m.content.split(/ +/), parsedArgs: {}}));
+    m => parseType(arg, m.content, m, { channel: 0, member: 0, role: 0, splitArgs: m.content.split(/ +/), parsedArgs: {} }));
 }

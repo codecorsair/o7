@@ -1,7 +1,7 @@
 import { isArray, isEmpty, startCase } from 'lodash';
 import { MessageEmbed } from 'discord.js';
 import { isHelp, parseArgs } from '../utils/args';
-import { Message, DiscordPermissions, CommandDef, CommandProvider, Command } from '../types';
+import { Message, DiscordPermissions, CommandProvider, Command, CommandDef } from '../types';
 import { getFiles } from './getFiles';
 import { LANG, localize, _localize } from '../localize';
 
@@ -26,48 +26,36 @@ function isValid(command: CommandDef, path: string) {
 
 export async function loadCommands(directory: string, target: CommandProvider) {
   for await (const path of getFiles(directory, 0, 0, fileName => fileName.endsWith('.js'))) {
-    const def = require(path).default as CommandDef;
+    const def = require(path).default as Command;
     if (isValid(def, path)) {
       def.alias.forEach(a => {
-        const alias_en = _localize(a, 'en');
-        if (alias_en) {
-          registerAlias(path, alias_en, 'en', def, target);
-        } else {
-          registerAlias(path, a, 'en', def, target);
-        }
-
-        const alias_ru = _localize(a, 'ru');
-        if (alias_ru) {
-          registerAlias(path, alias_ru, 'ru', def, target);
-        }
+        registerAlias(path, a, def, target);
       });
     }
   }
 }
 
-function registerAlias(path: string, alias: string, lang: LANG, def: CommandDef, target: CommandProvider) {
+function registerAlias(path: string, alias: string, def: CommandDef, target: CommandProvider) {
   if (target.commands[alias]) {
     console.error(`Error loading command. ${path} comtains duplicate alias '${alias}'.`);
     return;
   }
   target.commands[alias] = {
     type: 'command',
-    def,
-    lang,
-    disabled: !!def.disabled,
+    ...def,
   };
 }
 
-export function getHelpEmbed(command: Command, prefix: string) {
-  const name = _localize(command.def.name, command.lang) || command.def.name;
-  const embed = new MessageEmbed().setTitle(`${name} ${localize("help_command_help", command.lang)}`)
-    .setColor(command.def.help?.color || '#fff500');
-  embed.addField('Usage', `**${prefix}${command.def.alias[0]}** ${command.def.args && typeof command.def.args !== 'function' ? command.def.args.map(arg => arg.optional ? `(${arg.name} *optional)` : arg.name).join(' ') : ''}
-${command.def.alias.length > 0 ? `*alias:* ${command.def.alias.slice(1).map(a => `**${prefix}${a}**`).join(', ')}` : ''}`);
-  if (command.def.help) {
-    embed.setDescription(command.def.help?.description);
-    if (command.def.help.examples) {
-      embed.addField('Examples:', command.def.help.examples.map(e => `\`${prefix}${command.def.alias[0]} ${e.args}\`${e.description ? `\n->${e.description}` : ''}`).join('\n\n'));
+export function getHelpEmbed(command: Command, prefix: string, lang: LANG) {
+  const name = localize(command.name, prefix, lang) || command.name;
+  const embed = new MessageEmbed().setTitle(`${name} ${localize('command_help', prefix, lang)}`)
+    .setColor(command.help?.color || '#fff500');
+  embed.addField(localize('usage', prefix, lang), `**${prefix}${command.alias[0]}** ${command.args && typeof command.args !== 'function' ? command.args.map(arg => arg.optional ? `(${localize(arg.name, prefix, lang)} ${localize('optional', prefix, lang)})` : arg.name).join(' ') : ''}
+${command.alias.length > 0 ? `*alias:* ${command.alias.slice(1).map(a => `**${prefix}${a}**`).join(', ')}` : ''}`);
+  if (command.help) {
+    embed.setDescription(localize(command.help.description, prefix, lang));
+    if (command.help.examples) {
+      embed.addField(localize('examples', prefix, lang), command.help.examples.map(e => `\`${prefix}${command.alias[0]} ${localize(e.args, prefix, lang)}\`${e.description ? `\n->${localize(e.description, prefix, lang)}` : ''}`).join('\n\n'));
     }
   }
   return embed;
@@ -88,52 +76,50 @@ export async function processCommand(
       return await processCommand(message, commandOrModule, args, `${prefix}${cmdString} `);
     }
 
-    const commandDef = commandOrModule.def;
-    if (!message.lang) message.lang = commandOrModule.lang;
-
-    if (commandDef.channel) {
-      if (commandDef.channel === 'guild' && !message.guild) return;
-      if (commandDef.channel === 'dm' && message.guild) return;
+    const command = commandOrModule;
+    if (command.channel) {
+      if (command.channel === 'guild' && !message.guild) return;
+      if (command.channel === 'dm' && message.guild) return;
     }
 
-    if (commandDef.owner && !message.client.owners.find(s => s === message.author.id)) return;
+    if (command.owner && !message.client.owners.find(s => s === message.author.id)) return;
 
-    if (commandDef.userPermissions) {
-      if (typeof commandDef.userPermissions === 'function' && !commandDef.userPermissions(message)) return;
-      for (const permission of commandDef.userPermissions as DiscordPermissions[]) {
+    if (command.userPermissions) {
+      if (typeof command.userPermissions === 'function' && !command.userPermissions(message)) return;
+      for (const permission of command.userPermissions as DiscordPermissions[]) {
         if (!message.member?.hasPermission(permission)) {
           return;
         }
       }
     }
 
-    if (commandDef.clientPermissions) {
-      for (const permission of commandDef.clientPermissions) {
+    if (command.clientPermissions) {
+      for (const permission of command.clientPermissions) {
         if (!message.guild?.me?.hasPermission(permission)) {
-          return message.author.send(`It looks like I don't have the required permissions for the **${startCase(commandDef.name)}** command on **${message.guild?.name}**.\nI need the following permission${commandDef.clientPermissions.length > 1 ? 's' : ''} ${commandDef.clientPermissions.map(p => `\`${p}\``).join(' ')}.`);
+          return message.author.send(`It looks like I don't have the required permissions for the **${startCase(command.name)}** command on **${message.guild?.name}**.\nI need the following permission${command.clientPermissions.length > 1 ? 's' : ''} ${command.clientPermissions.map(p => `\`${p}\``).join(' ')}.`);
         }
       }
     }
 
-    message.sendHelp = () => message.channel.send(getHelpEmbed(commandOrModule, prefix));
+    message.sendHelp = () => message.channel.send(getHelpEmbed(commandOrModule, prefix, message.lang));
 
-    if (isHelp(commandDef, args)) {
+    if (isHelp(command, args)) {
       return message.sendHelp();
     }
 
-    if (typeof commandDef.args === 'function') {
-      const result = await commandDef.args(message, commandDef);
+    if (typeof command.args === 'function') {
+      const result = await command.args(message, command);
       if (!result) {
         return message.sendHelp();
       }
-      commandDef.handler(message, result);
+      command.handler(message, result);
       return true;
     } else {
-      const parsedArgs = await parseArgs(commandDef, args, message);
+      const parsedArgs = await parseArgs(command, args, message);
       if (parsedArgs?.failed) {
         return message.sendHelp();
       }
-      commandDef.handler(message, parsedArgs?.args);
+      command.handler(message, parsedArgs?.args);
       return true;
     }
 

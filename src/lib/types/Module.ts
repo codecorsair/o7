@@ -1,4 +1,5 @@
 import { MessageEmbed } from 'discord.js';
+import { LocalizeKey } from '../localize';
 import { Client, Message, CMProvider } from './';
 
 /**
@@ -23,7 +24,7 @@ import { Client, Message, CMProvider } from './';
  *  */ 
 export interface ModuleDef {
   // Name of the module, used as the key for the Client module collection.
-  name: string;
+  name: LocalizeKey;
   // initialize is called when the module is loaded
   initialize: (client: Client) => any;
   // getHelp is called when generating global help messages
@@ -45,7 +46,7 @@ export interface ModuleDef {
   disabled?: boolean;
 
   help?: {
-    description: string;
+    description: LocalizeKey;
   }
 }
 

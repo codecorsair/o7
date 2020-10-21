@@ -3,12 +3,13 @@ import { Message, CommandDef, CMProvider } from '../lib/types';
 import { Client } from '../lib/types/Client';
 import helpEmbeds from '../data/help_embed.json';
 import { startCase } from 'lodash';
+import { LANG, localize } from '../lib/localize';
 
 
-export function sendHelp(client: Client, prefix: string, destination: TextChannel | DMChannel | NewsChannel | User) {
+export function sendHelp(client: Client, prefix: string, destination: TextChannel | DMChannel | NewsChannel | User, lang: LANG) {
   let help = new MessageEmbed()
-      .setTitle('o7 Help')
-      .setDescription(`All commands have their own help available by sending the word \"help\"  after the command.\n*for example: ${prefix}bp help*`)
+      .setTitle(localize('help_title', prefix, lang))
+      .setDescription(localize('help_description', prefix, lang))
       .setColor(7506394)
       .setURL('https://discord.gg/PfruVg4')
       .setThumbnail('https://i.imgur.com/kBKDFlS.png');
@@ -25,9 +26,9 @@ function getHelpEmbeds(prefix: string, provider: CMProvider, initialEmbed: Messa
   let embed = initialEmbed;
   Object.values(provider.commands).forEach(command => {
     if (command.type === 'module') return; // TODO: iterate modules for help
-    if (command.def.owner || command.disabled || done[command.def.alias[0]]) return;
-    embed.addField(`${prefix}${command.def.alias[0]}`, command.def.help?.description || startCase(command.def.name));
-    done[command.def.alias[0]] = true;
+    if (command.owner || command.disabled || done[command.alias[0]]) return;
+    embed.addField(`${prefix}${command.alias[0]}`, command.help?.description || startCase(command.name));
+    done[command.alias[0]] = true;
     if (++counter == 25) {
       embeds.push(embed);
       embed = new MessageEmbed().setColor(7506394);
@@ -63,7 +64,7 @@ const command: CommandDef = {
   handler: (message: Message, args: { here?: string }) => {
     const client = message.client as Client;
     const destination = args && args.here?.toLowerCase() === 'here' ? message.channel : message.author;
-    sendHelp(client, message.prefix, destination);
+    sendHelp(client, message.prefix, destination, message.lang);
   }
 }
 

@@ -2,6 +2,7 @@ import { Message, CommandDef } from '../lib/types';
 import { getClient, collections } from '../lib/db';
 import { TextChannel } from 'discord.js';
 import { NewsChannel } from 'discord.js';
+import { localize } from '../lib/localize';
 
 export interface AppConfig {
   id: string,
@@ -10,25 +11,27 @@ export interface AppConfig {
 }
 
 const command: CommandDef = {
-  name: 'appconfig',
+  name: 'command_appconfig_name',
   alias: ['appconfig'],
   channel: 'guild',
   args: [{
-    name: 'channel',
+    key: 'channel',
+    name: 'command_appconfig_arg_channel',
     type: 'channel',
     prompt: {
-      start: `What channel should I post completed applications to?`,
+      start: 'command_appconfig_arg_channel_prompt',
     },
   },{
-    name: 'questions',
+    key: 'questions',
+    name: 'command_appconfig_arg_questions',
     type: 'content',
     prompt: {
-      start: 'Please type your application questions now with each question in a single message.\nType `stop` when you are done adding questions.',
+      start: 'command_appconfig_arg_questions_prompt',
       infinite: true,
     }
   }],
   help: {
-    description: 'This command is used to configure application questions and the channel to which completed applications are posted.',
+    description: 'command_appconfig_help_description',
   },
   handler: async (message: Message, args: { channel: TextChannel | NewsChannel; questions: string[]; }) => {
     if (!message.guild) return;
@@ -44,10 +47,10 @@ const command: CommandDef = {
                       questions: args.questions,
                     } },
                    { upsert: true });
-      return message.reply('Application configuration complete!');
+      return message.reply(localize('command_appconfig_response_complete', message.prefix, message.lang));
     } catch (err) {
       console.error(err);
-      return message.reply('I\'m sorry, but there was a problem storing your config to our database.');
+      return message.reply(localize('command_appconfig_response_error', message.prefix, message.lang));
     } finally {
       await client.close();
     }

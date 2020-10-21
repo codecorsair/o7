@@ -4,7 +4,7 @@ import { Client } from './'
 
 export interface Message extends DJSMessage {
   prefix: string;
-  lang: LANG;
   sendHelp: () => any;
   client: Client;
+  lang: LANG;
 }

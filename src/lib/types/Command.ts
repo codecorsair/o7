@@ -1,15 +1,16 @@
 import { Message as DJSMessage } from 'discord.js';
-import { LANG } from '../localize';
+import { LocalizeKey } from '../localize';
 import { Message, DiscordPermissions } from './';
 
 export interface Arg {
-  name: string;
+  key: string;
+  name: LocalizeKey;
   type?: 'content' | 'phrase' | 'channel' | 'member' | 'role' | 'flag' | 'number' | 'restContent';
   optional?: boolean;
   default?: any;
   flag?: string;
   prompt?: {
-    start: string | ((message: DJSMessage) => any);
+    start: LocalizeKey | ((message: DJSMessage) => any);
     timeout?: number;
     infinite?: boolean;
     stop?: string;
@@ -27,7 +28,7 @@ export interface Arg {
 
 export interface CommandDef {
   // Name of the command.
-  name: string;
+  name: LocalizeKey;
 
   // Command name & aliases used to execute this command 
   alias: string[];
@@ -37,11 +38,11 @@ export interface CommandDef {
   args?: Arg[] | ((message: Message, command: CommandDef) => any);
 
   help?: {
-    description: string;
+    description: LocalizeKey;
     color?: string;
     examples?: {
-      args: string;
-      description?: string;
+      args: LocalizeKey;
+      description?: LocalizeKey;
     }[];
   };
 
@@ -69,9 +70,6 @@ export interface CommandDef {
   channel?: 'guild' | 'dm';
 }
 
-export interface Command {
+export interface Command extends CommandDef {
   type: 'command';
-  def: CommandDef;
-  lang: LANG;
-  disabled: boolean;
 }

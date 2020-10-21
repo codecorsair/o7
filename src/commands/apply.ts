@@ -1,16 +1,17 @@
 import { MessageEmbed } from 'discord.js';
-import { Message, CommandDef } from '../lib/types';
+import { Message, CommandDef, Arg } from '../lib/types';
 import { sleep } from '../lib/sleep';
 import * as mongo from '../lib/db';
 import { AppConfig } from './appconfig';
 import { askQuestionWithMessageResponse } from '../lib/utils/args';
+import { localize } from '../lib/localize';
 
 const command: CommandDef = {
-  name: 'apply',
+  name: 'command_apply_name',
   alias: ['apply'],
   channel: 'guild',
   help: {
-    description: 'This command is used to configure application questions and the channel to which completed applications are posted.',
+    description: 'command_apply_help_description',
   },
   args: async (message: Message) => {
     if (!message || !message.guild) return;
@@ -24,7 +25,7 @@ const command: CommandDef = {
         .findOne<AppConfig>({ id: message.guild.id });
     } catch (err) {
       console.error(err);
-      message.channel.send(`I'm sorry, there was a problem with processing this command.`);
+      message.channel.send(localize('command_apply_response_error', message.prefix, message.lang));
       return;
     } finally {
       await client.close();
@@ -34,7 +35,7 @@ const command: CommandDef = {
 
     const responses: any = [];
     for (const question of config.questions) {
-      const answer = await askQuestionWithMessageResponse(question, message.channel, { name: 'answer', type: 'content' });
+      const answer = await askQuestionWithMessageResponse(question, message.channel, { key: 'answer', type: 'content' } as Arg);
       
       responses.push({
         question: question,
@@ -77,7 +78,7 @@ const command: CommandDef = {
         .addField('Channel', message.channel)
       ));
     
-      return message.reply(`Thank you, your application was submitted! Please wait while it is reviewed someone will get back with you soon.`);
+      return message.reply(localize('command_apply_response_success', message.prefix, message.lang));
   }
 };
 

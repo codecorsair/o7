@@ -1,15 +1,17 @@
 import { Message, CommandDef, DiscordPermissions } from '../lib/types';
 import * as mongo from '../lib/db';
+import { localize } from '../lib/localize';
 
 const command: CommandDef = {
-  name: 'deleteguilddata',
+  name: 'command_deleteguilddata_name',
   alias: ['deleteguilddata'],
   userPermissions: [DiscordPermissions.ADMINISTRATOR],
   channel: 'guild',
   args: [{
-    name: 'confirmation',
+    key: 'confirmation',
+    name: 'command_deleteguilddata_arg_confirmation_name',
     prompt: {
-      start: `**Warning!** this will delete all saved data for this server (guild).\nThere is no undo.\n\nTo confirm click ✅`,
+      start: 'command_deleteguilddata_arg_confirmation_prompt',
       reactions: [{
         emoji: '✅',
         value: true,
@@ -19,7 +21,7 @@ const command: CommandDef = {
   handler: async (message: Message, args: { confirmation: boolean; }) => {
     if (!message.guild) return;
     if (!args.confirmation) {
-      return message.channel.send(`Phew! That was a close one.... delete aborted.`);
+      return message.channel.send(localize('command_deleteguilddata_delete_aborted', message.prefix, message.lang));
     }
     message.channel.send(`Attempting to delete all data for this guild, please wait...`);
     const guildId = message.guild.id;

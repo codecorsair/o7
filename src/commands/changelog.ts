@@ -3,11 +3,11 @@ import { Message, CommandDef } from '../lib/types';
 import changelog from '../data/changelog.json';
 
 const command: CommandDef = {
-  name: 'changelog',
+  name: 'command_changelog_name',
   alias: ['changelog'],
-  owner: true,
   args: [{
-    name: 'count',
+    key: 'count',
+    name: 'command_changelog_arg_count',
     type: 'number',
   }],
   handler: (message: Message, args: { count: number }) => {
