@@ -43,6 +43,12 @@ export default class OCRCommand extends Command {
   }
 
   async exec(message: Message, args: any) {
+
+    if (!config.gcloud) {
+      message.reply('Google cloud configuration is not enabled for this bot. This command is disabled');
+      return;
+    }
+
     if (!args || !args.imgUrl || !args.name) {
       message.reply('Please supply a url to an image to this command.')
       return;

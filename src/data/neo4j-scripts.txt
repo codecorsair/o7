@@ -1,3 +1,5 @@
+// Some scripts used when setting up Neo4j
+
 LOAD CSV WITH HEADERS FROM "http://metrics.ninja/systems.csv" AS row
 CREATE (n:System)
 SET n = row,
