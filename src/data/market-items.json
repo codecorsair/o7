@@ -84,12 +84,24 @@
       "name": "Slasher II"
   },
   {
+      "id": 10100000209,
+      "name": "Slasher Interceptor"
+  }, 
+  {
+      "id": 10100000210,
+      "name": "Slasher II Interceptor"
+  },
+  {
       "id": 10100000212,
       "name": "Breacher Assault"
   },
   {
       "id": 10100000213,
       "name": "Hound"
+  },
+  {
+      "id": 10100000214,
+      "name": "Hound II"
   },
   {
       "id": 10100000216,
@@ -128,12 +140,24 @@
       "name": "Executioner II"
   },
   {
+      "id": 10100000309,
+      "name": "Executioner I Interceptor"
+  },
+  {
+      "id": 10100000310,
+      "name": "Executioner II Interceptor"
+  },
+  {
       "id": 10100000312,
       "name": "Punisher Assault"
   },
   {
       "id": 10100000313,
       "name": "Purifier"
+  },
+  {
+      "id": 10100000314,
+      "name": "Purifier II"
   },
   {
       "id": 10100000316,
@@ -170,6 +194,10 @@
   {
       "id": 10100000408,
       "name": "Atron II"
+  },
+  {
+	  "id": 10100000409,
+	  "name": "Atron Interceptor"
   },
   {
       "id": 10100000410,
@@ -462,6 +490,70 @@
   {
       "id": 10300000303,
       "name": "Arbitrator"
+  },
+    {
+      "id": 10200000102,
+      "name": "Cormorant Interdictor"
+  },  
+  {
+      "id": 10200000103,
+      "name": "Cormorant II Interdictor"
+  },  
+  {
+      "id": 10200000202,
+      "name": "Thrasher Interdictor"
+  },  
+  {
+      "id": 10200000203,
+      "name": "Thrasher II Interdictor"
+  },  
+  {
+      "id": 10200000302,
+      "name": "Coercer Interdictor"
+  },  
+  {
+      "id": 10200000303,
+      "name": "Coercer II Interdictor"
+  },  
+  {
+      "id": 10200000402,
+      "name": "Catalyst Interdictor"
+  },  
+  {
+      "id": 10200000403,
+      "name": "Catalyst II Interdictor"
+  },  
+  {
+      "id": 10300000206,
+      "name": "Rupture Interdictor"
+  },  
+  {
+      "id": 10300000207,
+      "name": "Bellicose Interdictor"
+  },  
+  {
+      "id": 10300000306,
+      "name": "Maller Interdictor"
+  },  
+  {
+      "id": 10300000307,
+      "name": "Arbitrator Interdictor"
+  },  
+  {
+      "id": 10300000406,
+      "name": "Thorax Interdictor"
+  },  
+  {
+      "id": 10300000407,
+      "name": "Celestis Interdictor"
+  },  
+  {
+      "id": 10300000106,
+      "name": "Moa Interdictor"
+  },  
+  {
+      "id": 10300000107,
+      "name": "Blackbird Interdictor"
   },
   {
       "id": 10300000305,
@@ -6423,6 +6515,70 @@
       "id": 60600001408,
       "name": "Venture III Blueprint"
   },
+  {
+      "id": 60300000306,
+      "name": "Maller Interdictor Blueprint"
+  },
+  {
+	  "id": 60300000407,
+      "name": "Celestis Interdictor Blueprint"
+  },
+  {
+	  "id": 60300000206,
+      "name": "Rupture Interdictor Blueprint"
+  },
+  {
+	  "id": 60300000300,
+      "name": "Arbitrator Interdictor Blueprint"
+  },
+  {
+	  "id": 60300000106,
+      "name": "Moa Interdictor Blueprint"
+  },
+  {
+	  "id": 60300000207,
+      "name": "Bellicose Interdictor Blueprint"
+  },
+  {
+	  "id": 60300000107,
+      "name": "Blackbird Interdictor Blueprint"
+  },
+  {
+	  "id": 60200000402,
+      "name": "Catalyst Interdictor Blueprint"
+  },
+  {
+	  "id": 60200000302,
+      "name": "Coercer Interdictor Blueprint"
+  },
+  {
+	  "id": 60200000403,
+      "name": "Catalyst II Interdictor Blueprint"
+  },
+  {
+	  "id": 60200000202,
+      "name": "Thrasher Interdictor Blueprint"
+  },
+  {
+	  "id": 60200000303,
+      "name": "Coercer II Interdictor Blueprint"
+  },
+  {
+	  "id": 60200000102,
+      "name": "Cormorant Interdictor Blueprint"
+  },
+  {
+	  "id": 60200000203,
+      "name": "Thrasher II Interdictor Blueprint"
+  },
+  {
+	  "id": 60200000103,
+      "name": "Cormorant II Interdictor Blueprint"
+  },
+  {
+	  "id": 60300000406,
+      "name": "Thorax Interdictor Blueprint"
+  },	
   {
       "id": 61108000006,
       "name": "MK5 Cloaking Device Blueprint"
