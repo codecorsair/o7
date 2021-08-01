@@ -47,10 +47,21 @@ export async function getMarketData(searchTerms: string): Promise<MarketItem | n
   }
   
   try {
-    const response = await fetch(`${MARKET_API}${id}`);
+    let response;
+    let handle;
 
-    if (!response.ok) {
+    Promise.race([
+      async () => response = await fetch(`${MARKET_API}${id}`),
+      new Promise((_, reject) => handle = setTimeout(() => reject(new Error('timeout getting market data')), 5000))
+    ]).then(response => {
+      clearTimeout(handle);
+      return response;
+    })
+    ;
+
+    if (!response || !response.ok) {
       console.error(`Failed to fetch from Marketplace API with response: ${JSON.stringify(response)}`);
+      return null;
     }
 
     const prices = await response.json();
