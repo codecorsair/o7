@@ -1,6 +1,7 @@
 import fetch from 'node-fetch';
 import { getItemId } from './items';
 import items from '../data/market-items.json';
+import { timeoutPromise } from './timeout-promise';
 
 const MARKET_API = 'https://api.eve-echoes-market.com/market-stats/'
 const CACHE_MAX_AGE = 30 * 60 * 1000; // 30 minute cache age
@@ -47,17 +48,7 @@ export async function getMarketData(searchTerms: string): Promise<MarketItem | n
   }
   
   try {
-    let response;
-    let handle;
-
-    Promise.race([
-      async () => response = await fetch(`${MARKET_API}${id}`),
-      new Promise((_, reject) => handle = setTimeout(() => reject(new Error('timeout getting market data')), 5000))
-    ]).then(response => {
-      clearTimeout(handle);
-      return response;
-    })
-    ;
+    const response = await timeoutPromise(10000, fetch(`${MARKET_API}${id}`));
 
     if (!response || !response.ok) {
       console.error(`Failed to fetch from Marketplace API with response: ${JSON.stringify(response)}`);
