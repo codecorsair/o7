@@ -1,4 +1,25 @@
 {
-  "TOKEN": "xxx",
-  "PREFIX": "!"
+  "dev": true,
+  "owners": [
+    "153194420215218176"
+  ],
+  "token": "---",
+  "prefix": "!",
+  "mongo": {
+    "connectionString": "---",
+    "database": "---"
+  },
+  "neo4j": {
+    "uri": "---",
+    "database": "---",
+    "username": "---",
+    "password": "---"
+  },
+  "gcloud": {
+      "auth": {
+          "client_email": "---",
+          "private_key": "---"
+      },
+      "bucket": "---"
+  }
 }
