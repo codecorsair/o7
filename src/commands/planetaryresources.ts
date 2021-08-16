@@ -101,7 +101,7 @@ const command: CommandDef = {
         if (g.length == 0) return;
         g.sort((a, b) => b.output - a.output);
         const title = g[0].distance === 0 ? '**In System**\n' : g[0].distance === 1 ? '**1 Jump**\n' : `**${g[0].distance} Jumps**\n`;
-        const next = title + '```' + g.map(s => `${s.system} | ${s.constellation} | ${s.richness.padStart(s.richness.length, '')} | ${(s.output + '').padStart(8 - s.richness.length + (s.output + '').length, ' ')}`).join('\n') + '```';
+        const next = title + '```' + g.map(s => `${s.system} ${s.constellation.padStart(15 - s.system.length + s.constellation.length)} ${s.richness.padStart(20 - s.constellation.length + s.richness.length, ' ')} ${(s.output + '').padStart(8 - s.richness.length + (s.output + '').length, ' ')}`).join('\n') + '```';
         if (response.length + next.length >= 2000) {
           message.channel.send(response);
           response = '';
