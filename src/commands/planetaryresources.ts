@@ -62,7 +62,7 @@ const command: CommandDef = {
     try {
       const results = await session.run(`
         MATCH (planet:Planet {resource: '${resource}', system: '${startSystem}'})
-        RETURN planet.planetName, planet.richness, planet.output, 0 as length
+        RETURN planet.planetName, planet.constellation, planet.richness, planet.output, 0 as length
         UNION
         MATCH (a:Planet {resource: '${resource}'})
         WITH collect(a) as planets
@@ -70,7 +70,7 @@ const command: CommandDef = {
         MATCH (start:System {name: '${startSystem}'}),(end:System {name:planet.system})
         WHERE start.id <> end.id
         MATCH path = shortestPath((start)-[:GATES_TO*..${range}]-(end))
-        RETURN planet.planetName, planet.richness, planet.output, length(path) as length
+        RETURN planet.planetName, planet.constellation, planet.richness, planet.output, length(path) as length
         ORDER BY length(path)
       `);
       await session.close();
@@ -85,11 +85,12 @@ const command: CommandDef = {
         ++count;
         return {
           system: fields[0],
-          richness: fields[1],
-          output: fields[2],
-          distance: fields[3].low as number,
+          constellation: fields[1],
+          richness: fields[2],
+          output: fields[3],
+          distance: fields[4].low as number,
         };
-      }).forEach(r => grouped[r.distance].push(r))
+      }).forEach(r => grouped[r.distance].push(r));
 
       if (count == 0) {
         return message.channel.send(`It looks like there is no Rich/Perfect ${resource} within ${range} from ${startSystem}. Try a larger range, or a different system.`);
@@ -100,7 +101,7 @@ const command: CommandDef = {
         if (g.length == 0) return;
         g.sort((a, b) => b.output - a.output);
         const title = g[0].distance === 0 ? '**In System**\n' : g[0].distance === 1 ? '**1 Jump**\n' : `**${g[0].distance} Jumps**\n`;
-        const next = title + '```' + g.map(s => `${s.system} ${s.richness.padStart(15 - s.system.length + s.richness.length, ' ')} ${(s.output + '').padStart(8 - s.richness.length + (s.output + '').length, ' ')}`).join('\n') + '```';
+        const next = title + '```' + g.map(s => `${s.system} | ${s.constellation} | ${s.richness.padStart(s.richness.length, '')} | ${(s.output + '').padStart(8 - s.richness.length + (s.output + '').length, ' ')}`).join('\n') + '```';
         if (response.length + next.length >= 2000) {
           message.channel.send(response);
           response = '';
@@ -117,3 +118,4 @@ const command: CommandDef = {
 };
 
 export default command;
+
