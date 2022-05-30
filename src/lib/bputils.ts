@@ -24,7 +24,10 @@ const fuseOpts = {
 const bps = blueprints.map(bp => {
   const name = bp.name;
   const keywords = name.split(' ');
-  if (name.endsWith(' iii')) {
+  if (name.endsWith(' iv')) {
+    keywords.push('4');
+    keywords.push('iv');
+  } else if (name.endsWith(' iii')) {
     keywords.push('3');
     keywords.push('iii');
   } else if (name.endsWith(' ii')) {
@@ -49,17 +52,112 @@ const fuse = new Fuse(bps, fuseOpts, fuseIndex);
 // new regex developed and tested here https://www.typescriptlang.org/play?ts=4.0.2#code/MYewdgzgLgBApgDwIYFsAOAbOBJMaCusAvDAEQoDWA7DABYgBGMATDAKwD0ADDACzekA3AChhoSLABOcAOaIYJDgAoA-AB4GGfHDSSAlmCgA+ANpIAtAC8AguYBaXcwE4YAXQDUZq7buvVALhgTRycPVQBCAB0OAEoYlRiAgMiIACpE9RQkKAgKPQwMCFNHNjCVf2jg81L3GIBvAEYAGgBfeIz-ZLSMtSRgYBy8gqKqmuSOUY965raEjhFxaBg0JEkIOAATa0kZCAV4ZHQsXAIoADooEAAZEAB3OEkAYSR1pRizrKhgWiVpOQQYiIxOAICAsGcMCAZEoVmtNttdjFhEA
 const regex = /([a-zA-Z0-9\- ]+[a-zA-Z\-](?: [0-9]+(?!\/))?)(?:(?:\s*)([0-5]+(?:\/[0-5]+){1,})?)(?:(?:\s*)([0-5]+(?:\/[0-5]+){1,})?)/;
 
+
+export async function getResponseList(searchText: string): Promise<string[] | null> {
+  const parsedArgs = searchText.toLowerCase().match(regex);
+  if (!parsedArgs) return null;
+
+  var name = parsedArgs[1].trim();
+
+  const resultsFuse = fuse.search(name);
+  if (resultsFuse.length == 0) {
+    return null;
+  }
+
+  let results: string[] = [];
+  let nameMulti: string[] = name.split(' ');
+
+  for (let i = 0; i < resultsFuse.length; i++) {
+    for (let j = 0; j < nameMulti.length; j++) {
+      if (resultsFuse[i].item.name.toLowerCase().includes(nameMulti[j])) {
+        results.push(resultsFuse[i].item.name);
+      }
+    }
+  }
+
+  if (results.length == 0) {
+    return null;
+  }
+
+  return (results);
+
+}
+
+
 export async function getResponse(searchText: string, isMobile: boolean) {
   const parsedArgs = searchText.toLowerCase().match(regex);
   if (!parsedArgs) return null;
   
-  const name = parsedArgs[1].trim();
+  let name = parsedArgs[1].trim();
   const matSkills = parsedArgs[2];
   const acctSkills = parsedArgs[3];
-  
-  const results = fuse.search(name);
-  if (results.length == 0) {
+  // Convert decimal number to roman number
+  let nameSplitter = name.split(' ') ;
+  name = "" ;
+
+  nameSplitter.forEach(item =>
+    {
+      item = convertNumberToRoman(item) ;
+      if (name != "")
+      {
+        name += " " ;
+      }
+
+      name += item.toLocaleLowerCase() ;
+    })
+
+  const resultsFuse = fuse.search(name);
+
+  // No results
+  if (resultsFuse.length == 0) {
     return null;
+  }
+
+  let results: any[] = [];
+  let nameMulti: string[] = name.split(' ');
+
+  for (let i = 0; i < resultsFuse.length; i++) {
+    let numberofValidArgs = 0;
+
+    for (let j = 0; j < nameMulti.length; j++) {
+      if (resultsFuse[i].item.name.toLowerCase().includes(nameMulti[j])) {
+        numberofValidArgs++;
+      }
+    }
+
+    if (numberofValidArgs >= nameMulti.length) {
+      results.push(resultsFuse[i].item);
+    }
+
+    if (resultsFuse[i].item.name.toLowerCase() == name.toLowerCase())
+    {
+      results = [] ;
+      results.push(resultsFuse[i].item) ;
+      break ;
+    }
+  }
+
+
+
+
+  // No results
+  if (results.length == 0) {
+    console.log("Not found");
+    return null;
+  }
+  // Too many results
+  else if (results.length > 10) {
+    let listItem = "";
+
+    results.forEach(item => {
+      listItem += "- " + item.name + "\n";
+    });
+
+    const embed = new MessageEmbed()
+      .setTitle(`Too many results ...`)
+      .setDescription(`I don't found any item with this word ... Did you mean :` + "\n" + listItem);
+
+    return embed;
   }
 
   const skillLevels = normalizeSkills(matSkills);
@@ -69,7 +167,8 @@ export async function getResponse(searchText: string, isMobile: boolean) {
   const accountingRates = accountingSkillModifier(accountingLevels);
   let total = { cost: 0 };
 
-  const bp = results[0].item;
+  const bp = results[0];
+
   const bpName = bp.name + ' Blueprint';
   // const id = getItemId(bpName);
   const embed = new MessageEmbed()
@@ -319,4 +418,58 @@ function normalizeSkills(skillsToCheck: string ) {
   const advLvl = skillLevels[1] || 0;
   const expLvl = skillLevels[2] || 0;
   return [stdLvl,advLvl,expLvl];
+}
+
+function convertNumberToRoman(decimalNumber: string) : string
+{
+  let romanNumber = "" ;
+
+  switch (decimalNumber)
+  {
+    default:
+      romanNumber = decimalNumber;
+      break;
+
+    case '1':
+      romanNumber = 'I'
+      break;
+
+    case '2':
+      romanNumber = 'II'
+      break;
+
+    case '3':
+      romanNumber = 'III'
+      break;
+
+    case '4':
+      romanNumber = 'IV'
+      break;
+
+    case '5':
+      romanNumber = 'V'
+      break;
+
+    case '6':
+      romanNumber = 'VI'
+      break;
+
+    case '7':
+      romanNumber = 'VII'
+      break;
+
+    case '8':
+      romanNumber = 'VIII'
+      break;
+
+    case '9':
+      romanNumber = 'IX'
+      break;
+
+    case '10':
+      romanNumber = 'X'
+      break;
+  }
+
+  return romanNumber ;
 }
