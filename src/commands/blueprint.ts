@@ -37,7 +37,7 @@ const command: CommandDef = {
           listItem += "- " + item + "\n";
         });
 
-        return message.channel.send(`I don't found any item with this word ... Did you mean :` + "\n" + listItem);
+        return message.channel.send(`I could not find an exact match... Did you mean?` + "\n" + listItem);
       }
     }
     return message.channel.send(response);

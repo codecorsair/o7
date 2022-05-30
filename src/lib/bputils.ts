@@ -155,7 +155,7 @@ export async function getResponse(searchText: string, isMobile: boolean) {
 
     const embed = new MessageEmbed()
       .setTitle(`Too many results ...`)
-      .setDescription(`I don't found any item with this word ... Did you mean :` + "\n" + listItem);
+      .setDescription(`I could not find an exact match... Did you mean?` + "\n" + listItem);
 
     return embed;
   }
