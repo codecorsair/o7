@@ -1,5 +1,5 @@
 import { Message, CommandDef } from '../lib/types';
-import { getResponse } from '../lib/bputils';
+import { getResponse, getResponseList } from '../lib/bputils';
 
 const command: CommandDef = {
   name: 'blueprint',
@@ -24,7 +24,21 @@ const command: CommandDef = {
   handler: async (message: Message, args: { searchTerm: string; mobile?: boolean; }) => {
     const response = await getResponse(args.searchTerm, !!args.mobile);
     if (!response) {
-      return message.channel.send(`I'm sorry, I couldn't find anything for those search terms.`)
+
+      const lst = await getResponseList(args.searchTerm);
+
+      if (lst == null) {
+        return message.channel.send(`I'm sorry, I couldn't find anything for those search terms.`)
+      }
+      else {
+        let listItem = "";
+
+        lst.forEach(item => {
+          listItem += "- " + item + "\n";
+        });
+
+        return message.channel.send(`I don't found any item with this word ... Did you mean :` + "\n" + listItem);
+      }
     }
     return message.channel.send(response);
   }
