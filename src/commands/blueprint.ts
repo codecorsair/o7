@@ -1,5 +1,6 @@
 import { Message, CommandDef } from '../lib/types';
 import { getResponse, getResponseList } from '../lib/bputils';
+import { getCapitalResponseList, getResponseCapital } from '../lib/bputils_capital';
 
 const command: CommandDef = {
   name: 'blueprint',
@@ -22,10 +23,33 @@ const command: CommandDef = {
     }]
   },
   handler: async (message: Message, args: { searchTerm: string; mobile?: boolean; }) => {
-    const response = await getResponse(args.searchTerm, !!args.mobile);
-    if (!response) {
+    
+    // Looking for standards chips
+    let response = await getResponse(args.searchTerm, !!args.mobile);
+    let lst :any ;
+    let bCapitalSearch = false;
 
-      const lst = await getResponseList(args.searchTerm);
+    if (!response)
+    {
+      lst = await getResponseList(args.searchTerm);
+
+      if (lst == null) {
+        bCapitalSearch = true ;
+      }
+    }
+
+    // Looking for capitals chips
+    if (bCapitalSearch)
+    {
+      response = await getResponseCapital(args.searchTerm, !!args.mobile);
+
+      if (!response) {
+        lst = await getCapitalResponseList(args.searchTerm);
+      }
+    }
+
+    // No ships found
+    if (!response) {
 
       if (lst == null) {
         return message.channel.send(`I'm sorry, I couldn't find anything for those search terms.`)
@@ -40,6 +64,7 @@ const command: CommandDef = {
         return message.channel.send(`I don't found any item with this word ... Did you mean :` + "\n" + listItem);
       }
     }
+    
     return message.channel.send(response);
   }
 };

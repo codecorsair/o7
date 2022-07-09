@@ -5,7 +5,7 @@ import Fuse from 'fuse.js';
 import { MessageEmbed } from 'discord.js';
 import { getLatestValidPrice, getMarketData } from './market-api';
 import { MarketItem } from './market-api';
-import blueprints from '../data/blueprints.json';
+import blueprints_capital from '../data/blueprints_capital.json';
 // import items from '../data/items.json';
 // import { Item, getItemId } from './items';
 
@@ -21,7 +21,7 @@ const fuseOpts = {
   ]
 };
 
-const bps = blueprints.map(bp => {
+const bps_capital = blueprints_capital.map(bp => {
   const name = bp.name;
   const keywords = name.split(' ');
   if (name.endsWith(' iv')) {
@@ -44,8 +44,8 @@ const bps = blueprints.map(bp => {
   };
 });
 
-const fuseIndex = Fuse.createIndex(fuseOpts.keys, bps);
-const fuse = new Fuse(bps, fuseOpts, fuseIndex);
+const fuseCapitalIndex = Fuse.createIndex(fuseOpts.keys, bps_capital);
+const fuseCapital = new Fuse(bps_capital, fuseOpts, fuseCapitalIndex);
 // leaving legacy regex here for fast fallback
 // const regex = /((?:mk\s?\d)?[a-zA-Z ]+[a-zA-Z](?: [0-9]+(?!\/))?)(?:(?:\s+|\s*-\s*)(\d+(?:\/\d+){1,}))?(?:(?:\s+|\s*-\s*)(\d+(?:\/\d+){1,}))?/;
 
@@ -53,13 +53,14 @@ const fuse = new Fuse(bps, fuseOpts, fuseIndex);
 const regex = /([a-zA-Z0-9\- ]+[a-zA-Z\-](?: [0-9]+(?!\/))?)(?:(?:\s*)([0-5]+(?:\/[0-5]+){1,})?)(?:(?:\s*)([0-5]+(?:\/[0-5]+){1,})?)/;
 
 
-export async function getResponseList(searchText: string): Promise<string[] | null> {
+export async function getCapitalResponseList(searchText: string): Promise<string[] | null> {
   const parsedArgs = searchText.toLowerCase().match(regex);
   if (!parsedArgs) return null;
 
   var name = parsedArgs[1].trim();
 
-  const resultsFuse = fuse.search(name);
+  const resultsFuse = fuseCapital.search(name);
+
   if (resultsFuse.length == 0) {
     return null;
   }
@@ -84,7 +85,7 @@ export async function getResponseList(searchText: string): Promise<string[] | nu
 }
 
 
-export async function getResponse(searchText: string, isMobile: boolean) {
+export async function getResponseCapital(searchText: string, isMobile: boolean) {
   const parsedArgs = searchText.toLowerCase().match(regex);
   if (!parsedArgs) return null;
   
@@ -106,7 +107,7 @@ export async function getResponse(searchText: string, isMobile: boolean) {
       name += item.toLocaleLowerCase() ;
     })
 
-  const resultsFuse = fuse.search(name);
+  const resultsFuse = fuseCapital.search(name);
 
   // No results
   if (resultsFuse.length == 0) {
@@ -142,7 +143,7 @@ export async function getResponse(searchText: string, isMobile: boolean) {
 
   // No results
   if (results.length == 0) {
-    console.log("Not found standard ships ...");
+    console.log("Not found capital ship ...");
     return null;
   }
   // Too many results
@@ -189,19 +190,9 @@ export async function getResponse(searchText: string, isMobile: boolean) {
   embed.addField(`Manufacture`, `${bp.type} Skills **${skillLevels.join('/')}**\nMaterial Efficiency **${numeral(mod.material).format('0%')}**\nTime Efficiency **${numeral(mod.time).format('0%')}**`, true)
   embed.addField(`Market`, `Accounting Skills **${accountingLevels.join('/')}**\nBroker's Fee **${numeral(accountingRates.brokersRate).format('0.0%')}**\nTransaction Tax **${numeral(accountingRates.taxRate).format('0%')}**`, true)
 
-  if (hasAny(bp, mineralKeys)) {
-    const description = await printKeys(bp, mineralKeys, mod.material, total, isMobile);
-    embed.addField('Minerals', description);
-  }
-
-  if (hasAny(bp, piKeys)) {
-    const description = await printKeys(bp, piKeys, mod.material, total, isMobile);
-    embed.addField('Planetary Resources', description);
-  }
-
-  if (hasAny(bp, salvageKeys)) {
-    const description = await printKeys(bp, salvageKeys, mod.material, total, isMobile);
-    embed.addField('Salvage', description);
+  if (hasAny(bp, componentKeys)) {
+    const description = await printKeys(bp, componentKeys, mod.material, total, isMobile);
+    embed.addField('Components', description);
   }
 
   embed.addField('Production', printProduction(bp, mod.time, isMobile));
@@ -280,59 +271,27 @@ async function printKeys(bp: any, keys: string[], valueModifier: number, total: 
   return result + '```';
 }
 
-const mineralKeys = [
-  "tritanium",
-  "pyerite",
-  "mexallon",
-  "isogen",
-  "nocxium",
-  "zydrine",
-  "megacyte",
-  "morphite"
-];
 
-const piKeys = [
-  "lusteringAlloy",
-  "sheenCompound",
-  "gleamingAlloy",
-  "condensedAlloy",
-  "preciousAlloy",
-  "motleyCompound",
-  "fiberComposite",
-  "lucentCompound",
-  "opulentCompound",
-  "glossyCompound",
-  "crystalCompound",
-  "darkCompound",
-  "baseMetals",
-  "heavyMetals",
-  "reactiveMetals",
-  "nobleMetals",
-  "toxicMetals",
-  "reactiveGas",
-  "nobleGas",
-  "industrialFibers",
-  "supertensilePlastics",
-  "polyaramids",
-  "coolant",
-  "condensates",
-  "constructionBlocks",
-  "nanites",
-  "silicateGlass",
-  "smartfabUnits"
-];
-
-const salvageKeys = [
-  "charredMicroCircuit",
-  "friedInterfaceCircuit",
-  "trippedPowerCircuit",
-  "smashedTriggerUnit",
-  "damagedCloseinWeaponSystem",
-  "scorchedTelemetryProcessor",
-  "contaminatedLorentzFluid",
-  "conductivePolymer",
-  "contaminatedNaniteCompound",
-  "defectiveCurrentPump",
+const componentKeys = [
+  "capitalShipMaintenanceBay",
+  "capitalCapacitorBattery",
+  "capitalPowerGenerator",
+  "capitalLauncherHardpoint",
+  "capitalArmorPlates",
+  "capitalSensorCluster",
+  "capitalShieldEmitter",
+  "capitalSiegeArray",
+  "capitalCargoBay",
+  "capitalComputerSystem",
+  "capitalConstructionParts",
+  "capitalCloneVatBay",
+  "capitalCorporateHangarBay",
+  "capitalDoomsdayWeaponMount",
+  "capitalTurretHardpoint",
+  "capitalJumpBridgeArray",
+  "capitalJumpDrive",
+  "capitalPropulsionEngine",
+  "capitalDroneBay"
 ];
 
 function printProduction(bp: any, timeMod: number, isMobile: boolean) {
@@ -350,7 +309,7 @@ function printDuration(duration: any) {
       (duration.seconds()).toLocaleString(undefined, {minimumIntegerDigits: 2})}`;
 }
 
-const column = 20;
+const column = 30;
 function alignText(key: string, value: any, isMobile: boolean) {
   if (isMobile) {
     return capitalize(key) + ' ' + value;
