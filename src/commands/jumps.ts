@@ -3,6 +3,7 @@ import Fuse from 'fuse.js';
 import neo4j from 'neo4j-driver';
 import config from '../config.json';
 import systems from '../data/systems.json';
+import { CommandInteraction } from 'discord.js';
 
 export function printSecurity(system: { Security: number }) {
   if (system.Security >= 0.5) {
@@ -19,23 +20,23 @@ export const fuse = new Fuse(systems, {
   ],
 });
 
-export function getSystems(message: Message, args: { start: string; end: string }) {
+export function getSystems(interaction: CommandInteraction, args: { start: string; end: string }) {
   const startSearch = fuse.search(args.start);
   if (startSearch.length == 0) {
-    message.channel.send(`Could not find any system matching '${args.start}'`);
+    interaction.reply(`Could not find any system matching '${args.start}'`);
     return;
   }
   const start = startSearch[0].item.Name;
 
   const endSearch = fuse.search(args.end);
   if (endSearch.length == 0) {
-    message.channel.send(`Could not find any system matching '${args.end}'`);
+    interaction.reply(`Could not find any system matching '${args.end}'`);
     return;
   }
   const end = endSearch[0].item.Name;
 
   if (start === end) {
-    message.channel.send(`That's the same system!`);
+    interaction.reply(`That's the same system!`);
     return;
   }
   return {

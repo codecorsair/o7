@@ -1,8 +1,9 @@
 import { isArray, isEmpty, startCase } from 'lodash';
-import { MessageEmbed, Collection } from 'discord.js';
+import { Collection } from 'discord.js';
 import { isHelp, parseArgs } from '../utils/args';
 import { Message, DiscordPermissions, Command, Module } from '../types';
 import { getFiles } from './getFiles';
+import { EmbedBuilder } from '@discordjs/builders';
 
 // Just a quick check, things can still be wrong.
 function isValid(command: Command, path: string) {
@@ -41,14 +42,18 @@ export async function loadCommands(directory: string, target: { commands: Collec
 }
 
 export function getHelpEmbed(command: Command, prefix: string) {
-  const embed = new MessageEmbed().setTitle(`${startCase(command.name)} Command Help`)
-    .setColor(command.help?.color || '#fff500');
-  embed.addField('Usage', `**${prefix}${command.alias[0]}** ${command.args && typeof command.args !== 'function' ? command.args.map(arg => arg.optional ? `(${arg.name} *optional)` : arg.name).join(' ') : ''}
-${command.alias.length > 0 ? `*alias:* ${command.alias.slice(1).map(a => `**${prefix}${a}**`).join(', ')}` : ''}`);
+  const embed = new EmbedBuilder().setTitle(`${startCase(command.name)} Command Help`)
+    .setColor( 0xfff500);
+  embed.addFields([
+    {name: 'Usage', value: `**${prefix}${command.alias[0]}** ${command.args && typeof command.args !== 'function' ? command.args.map(arg => arg.optional ? `(${arg.name} *optional)` : arg.name).join(' ') : ''}
+    ${command.alias.length > 0 ? `*alias:* ${command.alias.slice(1).map(a => `**${prefix}${a}**`).join(', ')}` : ''}`
+  }]);
   if (command.help) {
     embed.setDescription(command.help?.description);
     if (command.help.examples) {
-      embed.addField('Examples:', command.help.examples.map(e => `\`${prefix}${command.alias[0]} ${e.args}\`${e.description ? `\n->${e.description}` : ''}`).join('\n\n'));
+      embed.addFields([{
+        name: 'Examples:', value: command.help.examples.map(e => `\`${prefix}${command.alias[0]} ${e.args}\`${e.description ? `\n->${e.description}` : ''}`).join('\n\n')
+      }]);
     }
   }
   return embed;

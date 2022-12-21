@@ -1,5 +1,5 @@
 import { Message, CommandDef } from '../lib/types';
-import blueprint from './blueprint';
+import blueprint from './blueprint.ts.disabled';
 
 const command: CommandDef = {
   ...blueprint,

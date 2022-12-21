@@ -89,7 +89,7 @@ export async function initCaches() {
     {
       const cursor = client.getDb()
         .collection(mongo.collections.autovoiceconfig)
-        .find<GuildVoiceConfig>({});
+        .find<GuildVoiceConfig>({}, {} );
 
       if ((await cursor.count()) === 0) {
         console.warn('initCaches: No auto voice channel configs were found.');
@@ -105,7 +105,7 @@ export async function initCaches() {
     {
       const cursor = client.getDb()
         .collection(mongo.collections.autovoicecreatedchannels)
-        .find<CreatedChannel>({});
+        .find<CreatedChannel>({}, {});
 
       if ((await cursor.count()) === 0) {
         return false;
