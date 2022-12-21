@@ -27,12 +27,19 @@ services:
       - mongodb
       - neo4j
     environment:
-      MONGODB_CONNECTION: mongodb://mongo:password1@mongodb:27017
-      NEO4J_CONNECTION: bolt://neo4j:password1@neo4j:7687
+      NODE_ENV: dev
+      OWNERS: 123456789012345678,987654321098765432
       DISCORD_TOKEN: ODE0NDM1NTM3ODg4MzQ2MTEy.GawLaw.YtMR9TsTAcMhqy8423nf987D2HTAR3Mgnw
-      GCLOUD_CLIENT_EMAIL:
-      GCLOUD_PRIVATE_KEY:
-      GCLOUD_BUCKET_NAME:
+      PREFIX: !
+      MONGO_CONNECTION_STRING: mongodb://mongo:password1@mongodb:27017
+      MONGO_DATABASE: o7-bot
+      NEO4J_URI: bolt://neo4j:password1@neo4j:7687
+      NEO4J_DATABASE: o7-bot
+      NEO4J_USERNAME: neo4j
+      NEO4J_PASSWORD: password1
+      GCLOUD_AUTH_CLIENT_EMAIL:
+      GCLOUD_AUTH_PRIVATE_KEY:
+      GCLOUD_BUCKET:
 
   watchtower:
     image: containrrr/watchtower
