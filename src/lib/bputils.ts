@@ -2,10 +2,10 @@ import numeral from 'numeral';
 import moment from 'moment';
 import { startCase } from 'lodash';
 import Fuse from 'fuse.js';
-import { MessageEmbed } from 'discord.js';
 import { getLatestValidPrice, getMarketData } from './market-api';
 import { MarketItem } from './market-api';
 import blueprints from '../data/blueprints.json';
+import { EmbedBuilder } from '@discordjs/builders';
 // import items from '../data/items.json';
 // import { Item, getItemId } from './items';
 
@@ -153,7 +153,7 @@ export async function getResponse(searchText: string, isMobile: boolean) {
       listItem += "- " + item.name + "\n";
     });
 
-    const embed = new MessageEmbed()
+    const embed = new EmbedBuilder()
       .setTitle(`Too many results ...`)
       .setDescription(`I could not find an exact match... Did you mean?` + "\n" + listItem);
 
@@ -171,8 +171,8 @@ export async function getResponse(searchText: string, isMobile: boolean) {
 
   const bpName = bp.name + ' Blueprint';
   // const id = getItemId(bpName);
-  const embed = new MessageEmbed()
-    .setColor('#0DE1A1')
+  const embed = new EmbedBuilder()
+    .setColor(0x0DE1A1)
     .setTitle(bpName)
     .setDescription(`Type **${bp.type}**\nTech Level **${bp.techLevel}**`);
 

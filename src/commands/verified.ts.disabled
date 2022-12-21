@@ -1,6 +1,6 @@
 import { Command } from 'discord-akairo';
 import { Message } from 'discord.js';
-import { Verified } from './verifynow';
+import { Verified } from './verifynow.ts.disabled';
 import * as mongo from '../lib/db';
 
 export default class VerifiedCommand extends Command {

@@ -16,7 +16,7 @@ export default {
     .setDefaultMemberPermissions(PermissionsFlagsBits.MANAGE_ROLES),
   async execute(interaction: CommandInteraction) {
     const member = interaction.options.getMember('member');
-    const roles = interaction.options.getRole('roles');
+    const roles = interaction.options.get('roles');
 
     roles.forEach(async role => {
       try {
