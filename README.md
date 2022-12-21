@@ -6,6 +6,12 @@ o7 is a hosted bot that is available free for anyone to add to their server. Jus
 
 You are welcome to self-host **o7**, however I can not fully support self-hosted installations. I will try and answer any questions on the official Discord, but I am not available for 24/7 bot support.
 
+## Setup
+1. Install docker & docker-compose
+2. Edit environment variables docker-compose.yml
+3. Run `docker-compose up`
+4. Invite bot to server `https://discord.com/api/oauth2/authorize?client_id=<application id>&permissions=0&scope=bot%20applications.commands`
+
 ## Contributing
 Great! You'd like to add a feature to **o7**? I am happy to accept contributions via pull request. 
 

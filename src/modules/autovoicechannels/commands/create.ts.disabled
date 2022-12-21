@@ -2,7 +2,7 @@ import { NewsChannel } from 'discord.js';
 import { TextChannel } from 'discord.js';
 import { Message, CommandDef, DiscordPermissions } from '../../../lib/types';
 import { askQuestionWithMessageResponse } from '../../../lib/utils/args';
-import * as db from '../lib/db';
+import * as db from '../lib/db.ts.disabled';
 import config from '../../../config.json';
 
 export interface AppConfig {

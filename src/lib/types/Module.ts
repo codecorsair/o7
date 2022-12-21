@@ -1,4 +1,4 @@
-import { MessageEmbed } from 'discord.js';
+import { EmbedBuilder } from '@discordjs/builders';
 import { Client, Message, CMProvider } from './';
 
 /**
@@ -27,7 +27,7 @@ export interface ModuleDef {
   // initialize is called when the module is loaded
   initialize: (client: Client) => any;
   // getHelp is called when generating global help messages
-  getHelp: (message: Message) => MessageEmbed[] | Promise<MessageEmbed[]>;
+  getHelp: (message: Message) => EmbedBuilder[] | Promise<EmbedBuilder[]>;
   // required to delete any guild data stored by this module
   deleteGuildData: (guildId: string) => Promise<boolean>;
   // required to delete any user data stored by this module
