@@ -31,7 +31,7 @@ export async function loadCommands(directory: string, target: { commands: Collec
       c.alias.forEach(a => {
         const alias = a.toLowerCase();
         if (target.commands.has(alias)) {
-          console.error(`Error loading command. ${path} comtains duplicate alias '${alias}'.`);
+          console.error(`Error loading command. ${path} contains duplicate alias '${alias}'.`);
           return;
         }
         target.commands.set(alias, c)
