@@ -20,7 +20,7 @@ services:
       - ./data/neo4j:/data
 
   o7-bot:
-#    image: o7bot/o7-bot:latest
+#    image: ghcr.io/ralphschuler/o7:latest
     build: .
     restart: always
     links:
