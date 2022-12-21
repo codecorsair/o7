@@ -26,7 +26,7 @@ export async function initSettings() {
       .createIndex({ guildId: 1 });
     const cursor = await client.getDb()
       .collection(collections.settings)
-      .find<Settings>({});
+      .find<Settings>({}, {});
     if (await cursor.count() === 0) {
       console.error('No guild settings documents were found!');
     }

@@ -1,7 +1,7 @@
 import { SlashCommandBuilder, CommandInteraction } from "discord.js";
 import config from "../config";
-import { getSystems, printSecurity } from "./jumps";
 import neo4j from "neo4j-driver";
+import { printSecurity, getSystems } from './jumps_new';
 
 export default {
   data: new SlashCommandBuilder()

@@ -2,7 +2,7 @@ import { MessageEmbed } from 'discord.js';
 import { Message, CommandDef } from '../lib/types';
 import { sleep } from '../lib/sleep';
 import * as mongo from '../lib/db';
-import { AppConfig } from './appconfig';
+import { AppConfig } from './appconfig.ts.disabled';
 import { askQuestionWithMessageResponse } from '../lib/utils/args';
 
 const command: CommandDef = {

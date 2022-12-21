@@ -16,7 +16,7 @@ export default {
     .setDefaultMemberPermissions(PermissionFlagsBits.ManageRoles),
   async execute(interaction: CommandInteraction) {
     const member = interaction.options.getMember('member');
-    const roleName = interaction.options.get('role')?.value as string;
+    const roleName = interaction.options.get('role')?.name as string;
     if (!interaction.guild) {
       return interaction.reply('This command can only be used in a server.');
     }

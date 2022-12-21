@@ -21,7 +21,10 @@ export function collectMessages(
   onTimeout?: () => any) {
 
   return new Promise(async resolve => {
-    const collector = channel.createMessageCollector(filter, options);
+    const collector = channel.createMessageCollector({
+      ...options,
+      filter
+    });
     const results: string[] = [];
 
     collector.on('collect', async message => {
@@ -64,7 +67,10 @@ export function collectReactions(
   onTimeout?: () => any) {
 
   return new Promise(async resolve => {
-    const collector = sourceMessage.createReactionCollector(filter, options);
+    const collector = sourceMessage.createReactionCollector({
+      ...options,
+      filter
+    });
 
     collector.on('collect', async (reaction, reactor) => {
       const results: string[] = [];
@@ -80,7 +86,7 @@ export function collectReactions(
           results.push(processed);
         }
       } else {
-        results.push(reaction.emoji.name);
+        results.push(reaction.emoji.name as string);
       }
 
       if (results.length === options.max) {

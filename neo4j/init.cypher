@@ -1,3 +1,13 @@
+LOAD CSV WITH HEADERS FROM 'file:///systems.csv' AS row
+CREATE (n:System)
+SET n = row
+n.security = toFloat(n.security)
+
+LOAD CSV WITH HEADERS FROM 'file:///pplanetary-production.csv' AS row
+CREATE (n:Planet)
+SET n = row
+n.output = toFloat(n.output)
+
 CREATE INDEX ON :System(id)
 CREATE INDEX ON :System(name)
 

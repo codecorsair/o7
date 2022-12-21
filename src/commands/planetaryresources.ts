@@ -109,7 +109,7 @@ const command: CommandDef = {
         response += next;
       });
       message.channel.send(response);
-    } catch (err) {
+    } catch (err: any) {
       console.error(err.message);
     } finally {
       await driver.close();

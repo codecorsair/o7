@@ -178,7 +178,11 @@ export async function getResponse(searchText: string, isMobile: boolean) {
 
   if (isMobile) {
     // expand the width of the embed so code blocks aren't squished.
-    embed.setAuthor('. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .');
+    embed.addFields({
+      name: '\u200b',
+      value: '. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .',
+      inline: true
+    });
   }
 
   // if (id) {
@@ -186,31 +190,41 @@ export async function getResponse(searchText: string, isMobile: boolean) {
   //   embed.setThumbnail(`https://storage.googleapis.com/o7-store/icons/${itemInfo.icon_id}.png`)
   // }
   
-  embed.addField(`Manufacture`, `${bp.type} Skills **${skillLevels.join('/')}**\nMaterial Efficiency **${numeral(mod.material).format('0%')}**\nTime Efficiency **${numeral(mod.time).format('0%')}**`, true)
-  embed.addField(`Market`, `Accounting Skills **${accountingLevels.join('/')}**\nBroker's Fee **${numeral(accountingRates.brokersRate).format('0.0%')}**\nTransaction Tax **${numeral(accountingRates.taxRate).format('0%')}**`, true)
+  embed.addFields([{ name: `Manufacture`, value: `${bp.type} Skills **${skillLevels.join('/')}**\nMaterial Efficiency **${numeral(mod.material).format('0%')}**\nTime Efficiency **${numeral(mod.time).format('0%')}**`, inline: true}])
+  embed.addFields([{ name: `Market`, value: `Accounting Skills **${accountingLevels.join('/')}**\nBroker's Fee **${numeral(accountingRates.brokersRate).format('0.0%')}**\nTransaction Tax **${numeral(accountingRates.taxRate).format('0%')}**`, inline: true}])
 
   if (hasAny(bp, mineralKeys)) {
     const description = await printKeys(bp, mineralKeys, mod.material, total, isMobile);
-    embed.addField('Minerals', description);
+    embed.addFields([{
+      name: 'Minerals', value: description, inline: false
+    }]);
   }
 
   if (hasAny(bp, piKeys)) {
     const description = await printKeys(bp, piKeys, mod.material, total, isMobile);
-    embed.addField('Planetary Resources', description);
+    embed.addFields([{
+      name: 'Planetary Resources', value: description, inline: false
+    }]);
   }
 
   if (hasAny(bp, salvageKeys)) {
     const description = await printKeys(bp, salvageKeys, mod.material, total, isMobile);
-    embed.addField('Salvage', description);
+    embed.addFields([{
+      name: 'Salvage', value: description, inline: false
+    }]);
   }
 
-  embed.addField('Production', printProduction(bp, mod.time, isMobile));
+  embed.addFields([{
+    name: 'Production', value: printProduction(bp, mod.time, isMobile), inline: false
+  }]);
   total.cost += bp.productionCost;
 
   const itemPrice = await getMarketData(bp.name);
   const bpPrice = await getMarketData(bp.name + ' blueprint');
   if (itemPrice && bpPrice) {
-    embed.addField('Cost', printCosts(bp, itemPrice, bpPrice, total, accountingRates, isMobile));
+    embed.addFields([{
+      name: 'Cost', value: printCosts(bp, itemPrice, bpPrice, total, accountingRates, isMobile), inline: false
+    }]);
   }
   return embed;
 }
