@@ -24,7 +24,8 @@ services:
       - 7474:7474
       - 7687:7687
     environment:
-      NEO4J_AUTH: neo4j/password1
+      NEO4J_USERNAME: neo4j
+      NEO4J_PASSWORD: password1
     volumes:
       - ./data/neo4j:/data
 

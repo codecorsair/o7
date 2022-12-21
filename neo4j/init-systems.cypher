@@ -1,29 +1,14 @@
-LOAD CSV WITH HEADERS FROM 'file:///systems.csv' AS row
-CREATE (n:System)
-SET n = row
-n.security = toFloat(n.security)
+LOAD CSV WITH HEADERS FROM 'file:///systems.csv' AS systems_row
+WITH systems_row WHERE systems_row.id IS NOT NULL
+CREATE (s:System)
+SET s = systems_row
+SET s.planets = split(s.planets, ',')
 
-LOAD CSV WITH HEADERS FROM 'file:///pplanetary-production.csv' AS row
-CREATE (n:Planet)
-SET n = row
-n.output = toFloat(n.output)
+// CREATE TEXT INDEX system_id ON :System(id)
 
-CREATE INDEX ON :System(id)
-CREATE INDEX ON :System(name)
-
-CREATE INDEX ON :Planet(planetId)
-CREATE INDEX ON :Planet(resource)
-CREATE INDEX ON :Planet(richness)
-
-MATCH (p:Planet),(c:System)
-WHERE c.planets CONTAINS p.planetId
-CREATE (p)-[:WITHIN]->(c)
-
-MATCH (a:System),(b:System)
-WHERE b.neighbors CONTAINS a.id
-CREATE (a)-[r:GATES_TO { name: a.name + '<->' + b.name }]->(b)
-
-
+// CREATE TEXT INDEX planet_planetId ON :Planet(planetId)
+// CREATE TEXT INDEX planet_resource ON :Planet(resource)
+// CREATE TEXT INDEX planet_richness ON :Planet(richness)
 
 // // DUMP DB
 // MATCH (n)
