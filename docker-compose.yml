@@ -33,3 +33,11 @@ services:
       GCLOUD_CLIENT_EMAIL:
       GCLOUD_PRIVATE_KEY:
       GCLOUD_BUCKET_NAME:
+
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --cleanup --interval 30
