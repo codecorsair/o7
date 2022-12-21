@@ -4,6 +4,10 @@ services:
   mongodb:
     image: mongo:latest
     restart: always
+    networks:
+      - default
+    ports:
+      - 27017:27017
     environment:
       MONGO_INITDB_ROOT_USERNAME: mongo
       MONGO_INITDB_ROOT_PASSWORD: password1
@@ -14,6 +18,11 @@ services:
 #    image: neo4j:latest
     build: ./neo4j
     restart: always
+    networks:
+      - default
+    ports:
+      - 7474:7474
+      - 7687:7687
     environment:
       NEO4J_AUTH: neo4j/password1
     volumes:
@@ -23,7 +32,9 @@ services:
 #    image: ghcr.io/ralphschuler/o7:latest
     build: .
     restart: always
-    links:
+    networks:
+      - default
+    depends_on:
       - mongodb
       - neo4j
     environment:
@@ -48,3 +59,6 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     command: --cleanup --interval 30
+
+networks:
+  default:

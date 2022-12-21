@@ -1,5 +1,5 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
-import { CommandInteraction, PermissionFlagsBits } from 'discord.js';
+import { CommandInteraction, GuildMemberRoleManager, PermissionFlagsBits } from 'discord.js';
 
 export default {
   data: new SlashCommandBuilder()
@@ -16,7 +16,11 @@ export default {
     .setDefaultMemberPermissions(PermissionFlagsBits.ManageRoles),
   async execute(interaction: CommandInteraction) {
     const member = interaction.options.getMember('member');
-    const role = interaction.options.get('role');
+    const roleName = interaction.options.get('role')?.value as string;
+    if (!interaction.guild) {
+      return interaction.reply('This command can only be used in a server.');
+    }
+    const role = interaction.guild.roles.cache.find(role => role.name === roleName);
 
     if (!member || !role) {
       return interaction.reply('You must provide a member and a role.');
@@ -24,7 +28,7 @@ export default {
 
     try {
       // TODO: Find out how to add a role to a member.
-      await member.roles.add(role);
+      (member.roles as GuildMemberRoleManager).add(role);
       interaction.reply(`Successfully added ${role} to ${member}`);
     } catch (err) {
       console.error(err);
