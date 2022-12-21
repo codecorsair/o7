@@ -1,9 +1,9 @@
-import { SlashCommandBuilder, CommandInteraction, PermissionsFlagsBits } from 'discord.js';
+import { SlashCommandBuilder } from '@discordjs/builders';
+import { CommandInteraction, PermissionsFlagsBits } from 'discord.js';
 
 export default {
   data: new SlashCommandBuilder()
-    .setName('add role')
-    .addAlias('addrole', 'setrole')
+    .setName('addrole')
     .setDescription('Add a role to a member.')
     .addUserOption(option =>
       option.setName('member')
