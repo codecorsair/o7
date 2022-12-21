@@ -11,7 +11,8 @@ services:
       - ./data/db:/data/db
 
   neo4j:
-    image: neo4j:latest
+#    image: neo4j:latest
+    build: ./neo4j
     restart: always
     environment:
       NEO4J_AUTH: neo4j/password1
