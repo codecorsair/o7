@@ -22,10 +22,13 @@ export default {
   async execute(interaction: CommandInteraction) {
     const id = interaction.options.get('item');
     if (!id) {
-      return interaction.reply(`I could not find any item for the search term '${args.itemName}.'`)
+      return interaction.reply('You must provide an item to search for.')
+    }
+    const itemInfo = items[id.value as number] as Item;
+    if (!itemInfo) {
+      return interaction.reply(`I could not find any item for the search term`)
     }
 
-    const itemInfo = items[id.value as number] as Item;
     const embed = new EmbedBuilder()
       .setThumbnail(`https://storage.googleapis.com/o7-store/icons/${itemInfo.icon_id}.png`)
 
@@ -37,9 +40,10 @@ export default {
     }
 
     if (itemInfo.is_omega) {
-      embed.setAuthor(itemInfo.name, `https://storage.googleapis.com/o7-store/icons/${omega_icon_id}.png`);
+      embed.setTitle(itemInfo.name);
+      embed.setImage(`https://storage.googleapis.com/o7-store/icons/${omega_icon_id}.png`)
     } else {
-      embed.setAuthor(itemInfo.name);
+      embed.setTitle(itemInfo.name);
     }
 
     if (isShip(itemInfo)) {
@@ -76,14 +80,14 @@ export default {
       const capacitorRechargeTime = a[Attributes.rechargeRate].value / 1000;
 
       embed.addFields([
-        { name: 'High Slots', value: a[Attributes.highSlot].value, inline: true },
-        { name: 'Mid Slots', value: a[Attributes.medSlot].value, inline: true },
-        { name: 'Low Slots', value: a[Attributes.lowSlot].value, inline: true },
+        { name: 'High Slots', value: String(a[Attributes.highSlot].value), inline: true },
+        { name: 'Mid Slots', value: String(a[Attributes.medSlot].value), inline: true },
+        { name: 'Low Slots', value: String(a[Attributes.lowSlot].value), inline: true },
         { name: 'Rigs', value: `${a[Attributes.energyRigSlots].value}/${a[Attributes.mechanicalRigSlots].value}`, inline: true },
-        { name: 'Drones', value: a[Attributes.droneSlotsLeft].value, inline: true },
+        { name: 'Drones', value: String(a[Attributes.droneSlotsLeft].value), inline: true },
         { name: 'Powergrid Output', value: `${a[Attributes.powerOutput].value} MW`, inline: true },
-
-        //       embed.addField(`DEFENSE ${numeral(getEHP(itemInfo)).format('0,0')}`, `\
+        {
+          name: `DEFENSE ${numeral(getEHP(itemInfo)).format('0,0')}`, value: `\
         //         \`\`\`
         //           | Shield |  Armor |   Hull 
         // Hitpoints | ${numeral(a[Attributes.shieldCapacity].value).format('0,0').padStart(6)} | ${numeral(a[Attributes.armorHP].value).format('0,0').padStart(6)} | ${numeral(a[Attributes.hp].value).format('0,0').padStart(6)}
@@ -93,7 +97,8 @@ export default {
         // Explosive | ${numeral(1-a[Attributes.shieldExplosiveDamageResonance].value).format('00.00%')} | ${numeral(1-a[Attributes.armorExplosiveDamageResonance].value).format('00.00%')} | ${numeral(1-a[Attributes.explosiveDamageResonance].value).format('00.00%')}
         // Shield recharge time: ${numeral(a[Attributes.shieldRechargeRate].value / 1000).format('0.0')} seconds\
         // \`\`\`
-        // `);
+        // `, inline: false
+        },
         { name: 'Capacitor', value: `${numeral(capacitorCapacity).format('0.0')} GJ`, inline: true },
         { name: 'Recharge Time', value: `${numeral(capacitorRechargeTime).format('0.0')} S`, inline: true },
         { name: 'Recharge Rate', value: `${numeral(((10 * capacitorCapacity) / capacitorRechargeTime) * .25).format('0.0[0]')} GJ`, inline: true },
@@ -104,8 +109,8 @@ export default {
         { name: 'Flight Velocity', value: `${a[Attributes.maxVelocity].value} m/s`, inline: true },
         { name: 'Warp Speed', value: `${a[Attributes.warpSpeedMultiplier].value} AU/s`, inline: true },
         { name: 'Mass', value: `${a[Attributes.mass].value} kg`, inline: true },
-        { name: 'Inertia Modifier', value: `${a[Attributes.inertiaModifier].value}`, inline: true }
-      });
+        { name: 'Inertia Modifier', value: `${a[Attributes.agility].value}`, inline: true }
+      ]);
   }
 
     return interaction.reply({ embeds: [embed] });
