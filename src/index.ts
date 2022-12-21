@@ -1,5 +1,5 @@
 import { client } from './client';
-import config from './config.json';
+import config from './config';
 
 client.loadCommands(__dirname + '/commands')
   .then(() => client.loadModules(__dirname + '/modules'));
