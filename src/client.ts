@@ -8,21 +8,7 @@ import { Client } from './lib/types';
 const client = new Client();
 
 client.once('ready', async () => {
-  const registeredCommands = await client.application?.commands.fetch();
-
-  for (const command of client.commands.values()) {
-    console.log(command.data.name);
-    if (!registeredCommands?.has(command.data.name)) {
-      const response = await client.application?.commands.create(command.data);
-      console.log(response);
-    } else {
-      const registeredCommand = registeredCommands.get(command.data.name);
-      if (!registeredCommand) continue;
-      const response = await client.application?.commands.edit(registeredCommand?.id, command.data);
-      console.log(response);
-    }
-  }
-  console.log('ready');
+  console.log(`Logged in as ${client.user?.tag}!`);
 });
 
 client.on('interactionCreate', async interaction => {

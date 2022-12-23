@@ -5,7 +5,7 @@ import {
 GatewayIntentBits,
 } from 'discord.js';
 import { Command/*, Module*/ } from './';
-import { loadCommands } from '../utils/commands';
+import { loadCommands, registerCommands } from '../utils/commands';
 // import { loadModules } from '../utils/modules.ts';
 
 export class Client extends DJSClient {
@@ -41,5 +41,6 @@ export class Client extends DJSClient {
   }
 
   public loadCommands = (directory: string) => loadCommands(directory, this);
+  public registerCommands = () => registerCommands(this);
   // public loadModules = (directory: string) => loadModules(directory, this, this);
 }

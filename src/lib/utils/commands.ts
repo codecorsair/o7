@@ -42,12 +42,30 @@ import { getFiles } from './getFiles';
 //   }
 // }
 
+export async function registerCommands(client: Client) {
+  const registeredCommands = await client.application?.commands.fetch();
+  if (!registeredCommands) return console.error('Failed to fetch registered commands.');
+  console.log(`Registered commands: ${registeredCommands?.size}`);
+
+  for (const command of client.commands.values()) {
+    if (!registeredCommands?.has(command.data.name)) {
+      const response = await client.application?.commands.create(command.data);
+      console.log(`Registered command: ${response?.name}`)
+    } else {
+      const registeredCommand = registeredCommands.get(command.data.name);
+      if (!registeredCommand) continue;
+      const response = await client.application?.commands.edit(registeredCommand?.id, command.data);
+      console.log(`Updated command: ${response?.name}`)
+    }
+  }
+}
+
 export async function loadCommands(directory: string, client: Client) {
   for await (const path of getFiles(directory, 0, 0, fileName => fileName.endsWith('.js'))) {
     const command = require(path).default;
     if ('data' in command && 'execute' in command) {
       console.log(`Loaded command ${command.data.name}`);
-      client.application?.commands.set(command.data.name, command);
+      client.commands.set(command.data.name, command);
     } else {
       console.error(`Invalid command at ${path}; 'data' or 'execute' is undefined.`);
     }
