@@ -1,9 +1,14 @@
-import { CommandInteraction, SlashCommandBuilder } from "discord.js";
+import { AutocompleteInteraction, CommandInteraction, SlashCommandBuilder } from "discord.js";
 import Fuse from "fuse.js";
 import neo4j from 'neo4j-driver';
 import systems from '../data/systems.json';
 import config from "../config";
 import { Command } from "../lib/types/Command";
+
+const SYSTEM_CHOICES = systems.map(s => ({
+  name: String(s.Name),
+  value: String(s.Name),
+}));
 
 export function printSecurity(system: { Security: number }) {
   if (system.Security >= 0.5) {
@@ -52,13 +57,22 @@ export default {
     .addStringOption(option =>
       option.setName('start')
         .setDescription('The starting system.')
-        .setRequired(true))
+        .setRequired(true)
+        .setAutocomplete(true))
     .addStringOption(option =>
       option.setName('end')
         .setDescription('The ending system.')
-        .setRequired(true)),
+        .setRequired(true)
+        .setAutocomplete(true)),
   help: {
     description: 'This command will return the shortest jump distance to travel between two given systems within New Eden as well as the lowest security rating along the route.',
+  },
+  async autocomplete(interaction: AutocompleteInteraction) {
+    const systemName = interaction.options.getFocused(true).value as string;
+
+    const choices = SYSTEM_CHOICES.filter(s => s.name.toLowerCase().includes(systemName.toLowerCase()));
+
+    await interaction.respond(systemName !== "" ? choices.slice(0, 25) : SYSTEM_CHOICES.slice(0, 25));
   },
   async execute(interaction: CommandInteraction) {
     await interaction.deferReply();

@@ -17,7 +17,7 @@ import { AutocompleteInteraction, CommandInteraction } from "discord.js";
 import { Command } from "../lib/types/Command";
 
 const ITEM_CHOICES = marketItems.map((item) => ({
-  name: item.name,
+  name: String(item.name),
   value: String(item.id),
 }));
 
@@ -29,7 +29,7 @@ export default {
       option
         .setName("item")
         .setDescription("The item to get information about.")
-        // .setAutocomplete(true)
+        .setAutocomplete(true)
         .setRequired(true)),
   help: {
     description: "This command will return information about an item in game.",
@@ -37,10 +37,9 @@ export default {
   async autocomplete(interaction: AutocompleteInteraction) {
     const itemName = interaction.options.getFocused(true);
 
-    const choices = ITEM_CHOICES.filter((choice) => choice.name.includes(itemName.value));
+    const choices = ITEM_CHOICES.filter((choice) => choice.name.toLowerCase().indexOf(itemName.value.toLowerCase()) !== -1);
 
-    console.log(choices);
-    await interaction.respond(choices.slice(0, 25));
+    await interaction.respond(itemName.value !== "" ? choices.slice(0, 25) : ITEM_CHOICES.slice(0, 25));
   },
   async execute(interaction: CommandInteraction) {
     await interaction.deferReply();

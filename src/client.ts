@@ -17,10 +17,8 @@ client.on('interactionCreate', async interaction => {
   if (!command) return;
   try {
     if (interaction.isChatInputCommand()) {
-      console.log('chat input command');
       return await command.execute(interaction);
     } else if (interaction.isAutocomplete() && command.autocomplete) {
-      console.log('autocomplete command');
       return await command.autocomplete(interaction);
     }
   } catch (error) {

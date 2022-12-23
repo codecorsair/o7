@@ -10,11 +10,8 @@ echo Wait for the primary process to start up
 /wait-for-neo4j.sh
 
 echo Start the helper process
-cypher-shell -u ${NEO4J_USERNAME:-neo4j} -p ${NEO4J_PASSWORD:-neo4j_password} -f /init-systems.cypher
-cypher-shell -u ${NEO4J_USERNAME:-neo4j} -p ${NEO4J_PASSWORD:-neo4j_password} -f /init-planetary-production.cypher
 
-cypher-shell -u ${NEO4J_USERNAME:-neo4j} -p ${NEO4J_PASSWORD:-neo4j_password} -f /migrate-systems.cypher
-cypher-shell -u ${NEO4J_USERNAME:-neo4j} -p ${NEO4J_PASSWORD:-neo4j_password} -f /migrate-planetary-production.cypher
+cypher-shell -u neo4j -p neo4j -f /init.cypher
 
 if [ $? -ne 0 ]; then
   echo "Error: cypher-shell failed"

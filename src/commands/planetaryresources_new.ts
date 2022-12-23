@@ -3,7 +3,7 @@ import { PlanetaryResources } from '../lib/echoes/constants';
 import systems from '../data/systems.json';
 import neo4j from 'neo4j-driver';
 import config from '../config';
-import { SlashCommandBuilder, CommandInteraction } from 'discord.js';
+import { SlashCommandBuilder, CommandInteraction, AutocompleteInteraction } from 'discord.js';
 import { Command } from '../lib/types/Command';
 
 const RESOURCE_CHOICES = Object.values(PlanetaryResources).map(p => ({
@@ -39,7 +39,7 @@ export default {
       option.setName('system')
         .setDescription('The system to search around')
         .setRequired(true)
-        .addChoices(...SYSTEM_CHOICES.slice(0, 25)))
+        .setAutocomplete(true))
     .addIntegerOption(option =>
       option.setName('range')
         .setDescription('The range to search in jumps')
@@ -48,12 +48,22 @@ export default {
       option.setName('resource')
         .setDescription('The resource to search for')
         .setRequired(true)
-        .addChoices(...RESOURCE_CHOICES.slice(0, 25))),
+        .setAutocomplete(true)),
   help: {
     description: 'This command will return the locations of perfect and/or rich planetary resources within a specified range of any system.',
     examples: [{
       args: 'jita 5 base metals',
     }],
+  },
+  async autocomplete(interaction: AutocompleteInteraction) {
+    const focusedValue = interaction.options.getFocused(true);
+    if (focusedValue.name === 'system') {
+      const choices = SYSTEM_CHOICES.filter(choice => choice.name.toLowerCase().indexOf(focusedValue.value.toLowerCase()) !== -1);
+      await interaction.respond(focusedValue.value !== '' ? choices.slice(0, 25) : SYSTEM_CHOICES.slice(0, 25));
+    } else if (focusedValue.name === 'resource') {
+      const choices = RESOURCE_CHOICES.filter(choice => choice.name.toLowerCase().indexOf(focusedValue.value.toLowerCase()) !== -1);
+      await interaction.respond(focusedValue.value !== '' ? choices.slice(0, 25) : RESOURCE_CHOICES.slice(0, 25));
+    }
   },
   async execute(interaction: CommandInteraction) {
     await interaction.deferReply();

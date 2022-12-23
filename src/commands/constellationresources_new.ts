@@ -1,10 +1,20 @@
-import { SlashCommandBuilder, CommandInteraction } from "discord.js";
+import { SlashCommandBuilder, CommandInteraction, AutocompleteInteraction } from "discord.js";
 import Fuse from 'fuse.js';
 import config from '../config';
 import systems from '../data/systems.json';
 import neo4j from 'neo4j-driver';
 import { PlanetaryResources } from '../lib/echoes/constants';
 import { Command } from "../lib/types/Command";
+
+const RESOURCE_CHOICES = Object.values(PlanetaryResources).map(p => ({
+  name: String(p),
+  value: String(p),
+}));
+
+const SYSTEM_CHOICES = systems.map(s => ({
+  name: String(s.Name),
+  value: String(s.ID),
+}));
 
 const prNames = Object.values(PlanetaryResources).map(p => ({ name: p }));
 const fusePR = new Fuse(prNames, {
@@ -29,16 +39,28 @@ export default {
     .addStringOption(option =>
       option.setName('system')
         .setDescription('The system to search for.')
-        .setRequired(true))
+        .setRequired(true)
+        .setAutocomplete(true))
     .addStringOption(option =>
       option.setName('resource')
         .setDescription('The resource to search for.')
-        .setRequired(true)),
+        .setRequired(true)
+        .setAutocomplete(true)),
   help: {
     description: 'This command will return the planet/system(s) of perfect and/or rich planetary resources within the constellation of the system entered. This can be useful to decide decide the best Capsuleer Outpost placement.',
     examples: [{
       args: 'jita reactive metals',
     }],
+  },
+  async autocomplete(interaction: AutocompleteInteraction) {
+    const focusedValue = interaction.options.getFocused(true);
+    if (focusedValue.name === 'system') {
+      const choices = SYSTEM_CHOICES.filter(s => s.name.toLowerCase().startsWith(focusedValue.value.toLowerCase()));
+      return interaction.respond(focusedValue.value !== "" ? choices.slice(0, 25) : SYSTEM_CHOICES.slice(0, 25));
+    } else if (focusedValue.name === 'resource') {
+      const choices = RESOURCE_CHOICES.filter(s => s.name.toLowerCase().startsWith(focusedValue.value.toLowerCase()));
+      return interaction.respond(focusedValue.value !== "" ? choices.slice(0, 25) : RESOURCE_CHOICES.slice(0, 25));
+    }
   },
   async execute(interaction: CommandInteraction) {
     await interaction.deferReply();
