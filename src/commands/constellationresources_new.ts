@@ -4,6 +4,7 @@ import config from '../config';
 import systems from '../data/systems.json';
 import neo4j from 'neo4j-driver';
 import { PlanetaryResources } from '../lib/echoes/constants';
+import { Command } from "../lib/types/Command";
 
 const prNames = Object.values(PlanetaryResources).map(p => ({ name: p }));
 const fusePR = new Fuse(prNames, {
@@ -33,19 +34,26 @@ export default {
       option.setName('resource')
         .setDescription('The resource to search for.')
         .setRequired(true)),
+  help: {
+    description: 'This command will return the planet/system(s) of perfect and/or rich planetary resources within the constellation of the system entered. This can be useful to decide decide the best Capsuleer Outpost placement.',
+    examples: [{
+      args: 'jita reactive metals',
+    }],
+  },
   async execute(interaction: CommandInteraction) {
+    await interaction.deferReply();
     const systemName = interaction.options.get('system')?.value as string;
     const resourceName = interaction.options.get('resource')?.value as string;
     const prSearch = fusePR.search(resourceName)
     console.log(prSearch)
-    if(prSearch.length == 0) {
-      return interaction.reply(`Could not find any planetary resources for "${resourceName}" in "${systemName}"`);
+    if (prSearch.length == 0) {
+      return interaction.editReply(`Could not find any planetary resources for "${resourceName}" in "${systemName}"`);
     }
 
     let resource = prSearch[0].item.name;
     const constSearch = fuseSystems.search(systemName);
     if (constSearch.length == 0) {
-      return interaction.reply(`Could not find any constellation for '${systemName}'`);
+      return interaction.editReply(`Could not find any constellation for '${systemName}'`);
     }
 
     const constellation = constSearch[0].item.Constellation;
@@ -70,7 +78,7 @@ export default {
       const rich = 1;
       const medium = 2;
       const poor = 3;
-      results.records.map((record:any) => {
+      results.records.map((record: any) => {
         const fields = record._fields;
         ++count;
         return {
@@ -79,7 +87,7 @@ export default {
           output: fields[3],
         };
       }).forEach(r => {
-        switch(r.richness.toLowerCase()) {
+        switch (r.richness.toLowerCase()) {
           case 'perfect':
             grouped[perfect].push(r);
             break;
@@ -96,7 +104,7 @@ export default {
       });
 
       if (count == 0) {
-        return interaction.reply(`It looks like there is no Rich/Perfect ${resource} in ${constellation}. Please try a different constellation.`);
+        return interaction.editReply(`It looks like there is no Rich/Perfect ${resource} in ${constellation}. Please try a different constellation.`);
       }
 
       let response = `**${resource} within ${constellation}**\n`;
@@ -105,16 +113,16 @@ export default {
         g.sort((a, b) => b.output - a.output);
         const next = '```' + g.map(s => `${s.system} ${s.richness.padStart(15 - s.system.length + s.richness.length, ' ')} ${(s.output + '').padStart(8 - s.richness.length + (s.output + '').length, ' ')}`).join('\n') + '```';
         if (response.length + next.length >= 2000) {
-          interaction.reply(response);
+          interaction.editReply(response);
           response = '';
         }
         response += next;
       });
-      interaction.reply(response);
+      interaction.editReply(response);
     } catch (err: any) {
       console.error(err.message);
     } finally {
       await driver.close();
     }
   }
-}
+} as Command;

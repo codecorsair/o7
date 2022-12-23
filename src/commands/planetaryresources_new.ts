@@ -4,6 +4,7 @@ import systems from '../data/systems.json';
 import neo4j from 'neo4j-driver';
 import config from '../config';
 import { SlashCommandBuilder, CommandInteraction } from 'discord.js';
+import { Command } from '../lib/types/Command';
 
 const RESOURCE_CHOICES = Object.values(PlanetaryResources).map(p => ({
   name: String(p),
@@ -48,24 +49,31 @@ export default {
         .setDescription('The resource to search for')
         .setRequired(true)
         .addChoices(...RESOURCE_CHOICES.slice(0, 25))),
+  help: {
+    description: 'This command will return the locations of perfect and/or rich planetary resources within a specified range of any system.',
+    examples: [{
+      args: 'jita 5 base metals',
+    }],
+  },
   async execute(interaction: CommandInteraction) {
+    await interaction.deferReply();
     const systemName = interaction.options.get('system')?.value as string;
     let range = interaction.options.get('range')?.value as number;
     const resourceName = interaction.options.get('resource')?.value as string;
 
     const prSearch = fusePR.search(resourceName);
     if (prSearch.length == 0) {
-      return interaction.reply(`Could not find any planetary resources for "${resourceName}"`);
+      return interaction.editReply(`Could not find any planetary resources for "${resourceName}"`);
     }
 
     const resource = prSearch[0].item.name;
     const sysSearch = fuseSystems.search(systemName);
     if (sysSearch.length == 0) {
-      return interaction.reply(`Could not find any system for '${systemName}'`);
+      return interaction.editReply(`Could not find any system for '${systemName}'`);
     }
 
     if (range > 10) {
-      interaction.reply(`*Max range for this command is 10 jumps, I've reduced the range to 10 and will continue with the search...*`)
+      return interaction.editReply(`*Max range for this command is 10 jumps, I've reduced the range to 10 and will continue with the search...*`)
     }
 
     const startSystem = sysSearch[0].item.Name;
@@ -96,7 +104,7 @@ export default {
       for (let i = 0; i < range + 1; ++i) {
         grouped[i] = [];
       }
-      results.records.map((record:any) => {
+      results.records.map((record: any) => {
         const fields = record._fields;
         ++count;
         return {
@@ -109,7 +117,7 @@ export default {
       }).forEach(r => grouped[r.distance].push(r));
 
       if (count == 0) {
-        return interaction.reply(`It looks like there is no Rich/Perfect ${resource} within ${range} from ${startSystem}. Try a larger range, or a different system.`);
+        return interaction.editReply(`It looks like there is no Rich/Perfect ${resource} within ${range} from ${startSystem}. Try a larger range, or a different system.`);
       }
 
       let response = `**${resource} within ${range} of ${startSystem}**\n`;
@@ -119,16 +127,16 @@ export default {
         const title = g[0].distance === 0 ? '**In System**\n' : g[0].distance === 1 ? '**1 Jump**\n' : `**${g[0].distance} Jumps**\n`;
         const next = title + '```' + g.map(s => `${s.system} ${s.constellation.padStart(15 - s.system.length + s.constellation.length)} ${s.richness.padStart(20 - s.constellation.length + s.richness.length, ' ')} ${(s.output + '').padStart(8 - s.richness.length + (s.output + '').length, ' ')}`).join('\n') + '```';
         if (response.length + next.length >= 2000) {
-          interaction.reply(response);
+          interaction.editReply(response);
           response = '';
         }
         response += next;
       });
-      interaction.reply(response);
+      return interaction.editReply(response);
     } catch (err: any) {
       console.error(err.message);
     } finally {
       await driver.close();
     }
   },
-}
+} as Command;

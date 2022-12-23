@@ -2,6 +2,7 @@ import { SlashCommandBuilder, CommandInteraction } from "discord.js";
 import config from "../config";
 import neo4j from "neo4j-driver";
 import { printSecurity, getSystems } from './jumps_new';
+import { Command } from "../lib/types";
 
 export default {
   data: new SlashCommandBuilder()
@@ -15,7 +16,11 @@ export default {
       option.setName('end')
         .setDescription('The ending system.')
         .setRequired(true)),
+  help: {
+    description: 'This command will return the jump distance to travel between two given systems while preferring to stay within high security systems.',
+  },
   async execute(interaction: CommandInteraction) {
+    await interaction.deferReply();
     const start = interaction.options.get('start')?.value as string;
     const end = interaction.options.get('end')?.value as string;
 
@@ -51,10 +56,10 @@ export default {
           lowest = record._fields[0].properties.security;
         }
       }
-      return interaction.reply(`**${(results.records as any).length}** ${systems.start.Name}${printSecurity(systems.start)} - ${systems.end}${printSecurity(systems.end)} travels through ${printSecurity({Security:lowest})}`);
+      return interaction.editReply(`**${(results.records as any).length}** ${systems.start.Name}${printSecurity(systems.start)} - ${systems.end}${printSecurity(systems.end)} travels through ${printSecurity({ Security: lowest })}`);
     } finally {
       await session.close();
       await driver.close();
     }
   },
-}
+} as Command

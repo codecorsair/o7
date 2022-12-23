@@ -3,6 +3,7 @@ import Fuse from "fuse.js";
 import neo4j from 'neo4j-driver';
 import systems from '../data/systems.json';
 import config from "../config";
+import { Command } from "../lib/types/Command";
 
 export function printSecurity(system: { Security: number }) {
   if (system.Security >= 0.5) {
@@ -56,10 +57,14 @@ export default {
       option.setName('end')
         .setDescription('The ending system.')
         .setRequired(true)),
+  help: {
+    description: 'This command will return the shortest jump distance to travel between two given systems within New Eden as well as the lowest security rating along the route.',
+  },
   async execute(interaction: CommandInteraction) {
+    await interaction.deferReply();
     const start = interaction.options.get('start')?.value as string;
     const end = interaction.options.get('end')?.value as string;
-    const systems = getSystems(interaction, { start, end});
+    const systems = getSystems(interaction, { start, end });
     if (!systems) return;
 
     const driver = neo4j.driver(config.neo4j.uri,
@@ -80,10 +85,10 @@ export default {
           lowest = segment.end.properties.security;
         }
       }
-      return interaction.reply(`**${(results.records[0] as any)._fields[0].low}** ${systems.start.Name}${printSecurity(systems.start)} - ${systems.end.Name}${printSecurity(systems.end)} travels through ${printSecurity({Security: lowest})}`);
+      return interaction.editReply(`**${(results.records[0] as any)._fields[0].low}** ${systems.start.Name}${printSecurity(systems.start)} - ${systems.end.Name}${printSecurity(systems.end)} travels through ${printSecurity({ Security: lowest })}`);
     } finally {
       await session.close();
       await driver.close();
     }
   }
-};
+} as Command;
