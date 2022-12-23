@@ -46,6 +46,7 @@ export async function loadCommands(directory: string, client: Client) {
   for await (const path of getFiles(directory, 0, 0, fileName => fileName.endsWith('.js'))) {
     const command = require(path).default;
     if ('data' in command && 'execute' in command) {
+      console.log(`Loaded command ${command.data.name}`);
       client.commands.set(command.data.name, command);
     } else {
       console.error(`Invalid command at ${path}; 'data' or 'execute' is undefined.`);

@@ -47,7 +47,7 @@ export function getSystems(interaction: CommandInteraction, args: { start: strin
 export default {
   data: new SlashCommandBuilder()
     .setName('jumps')
-    .setDescription('This command will return the shortest jump distance to travel between two given systems within New Eden as well as the lowest security rating along the route.')
+    .setDescription('This command will return the shortest jump distance to travel between two given systems.')
     .addStringOption(option =>
       option.setName('start')
         .setDescription('The starting system.')

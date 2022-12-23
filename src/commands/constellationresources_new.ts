@@ -24,7 +24,7 @@ const fuseSystems = new Fuse(systems, {
 export default {
   data: new SlashCommandBuilder()
     .setName('constellationresources')
-    .setDescription('This command will return the planet/system(s) of perfect and/or rich planetary resources within the constellation of the system entered. This can be useful to decide decide the best Capsuleer Outpost placement.')
+    .setDescription('This command will return the locations of perfect and/or rich planetary resources.')
     .addStringOption(option =>
       option.setName('system')
         .setDescription('The system to search for.')

@@ -18,7 +18,7 @@ export default {
       option.setName('item')
         .setDescription('The item to get information about.')
         .setRequired(true)
-        .addChoices(...ITEM_CHOICES)),
+        .addChoices(...ITEM_CHOICES.slice(0, 25))),
   async execute(interaction: CommandInteraction) {
     const id = interaction.options.get('item');
     if (!id) {

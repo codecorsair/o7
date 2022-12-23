@@ -11,11 +11,11 @@ RUN chmod +x /wait-for-neo4j.sh
 COPY ./planetary-production.csv /planetary-production.csv
 COPY ./systems.csv /systems.csv
 
-COPY ./init-systems.cypher /init-systems.cypher
-COPY ./init-planetary-production.cypher /init-planetary-production.cypher
-COPY ./migrate-systems.cypher /migrate-systems.cypher
-COPY ./migrate-planetary-production.cypher /migrate-planetary-production.cypher
+COPY ./init.cypher /init.cypher
 
+ENV NEO4J_PLUGINS='["graph-data-science"]'
+ENV NEO4J_dbms_security_procedures_allowlist=gds.,apoc.
+ENV NEO4J_dbms_security_procedures_unrestricted=gds.,apoc.
 ENV NEO4J_AUTH=${NEO4J_USERNAME:-neo4j}/${NEO4J_PASSWORD:-neo4j_password}
 
 ENTRYPOINT [ "./entrypoint-wrapper.sh" ]

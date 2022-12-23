@@ -13,7 +13,7 @@ const fuse = new Fuse(reproc, {
 export default {
   data: new SlashCommandBuilder()
     .setName('reprocess')
-    .setDescription('This command will return the resources given when reprocessing an item. Default value returned assumes no skills trained, meaning 30% efficiency. Optionally, providing your reprocessing percentage will adjust the returned value based on the given value.')
+    .setDescription('This command will return the reprocessing results for a given item.')
     .addStringOption(option =>
       option.setName('item')
         .setDescription('The item to reprocess.')

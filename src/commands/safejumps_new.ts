@@ -6,7 +6,7 @@ import { printSecurity, getSystems } from './jumps_new';
 export default {
   data: new SlashCommandBuilder()
     .setName('safejumps')
-    .setDescription('This command will return the jump distance to travel between two given systems while preferring to stay within high security systems.')
+    .setDescription('This command will return the jump distance to travel between two given systems.')
     .addStringOption(option =>
       option.setName('start')
         .setDescription('The starting system.')

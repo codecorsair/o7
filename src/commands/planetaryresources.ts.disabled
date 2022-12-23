@@ -33,7 +33,7 @@ const command: CommandDef = {
       type: 'restContent',
     }],
   help: {
-    description: 'This command will return the locations of perfect and/or rich planetary resources within a specified range of any system. The search range is limited to a maximum of 10 jumps from any system.',
+    description: 'This command will return the locations of perfect and/or rich planetary resources within a specified range of any system.',
     examples: [{
       args: 'jita 5 base metals',
     }],

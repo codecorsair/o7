@@ -5,7 +5,7 @@ import { getResponseCapital, getCapitalResponseList } from "../lib/bputils_capit
 export default {
   data: new SlashCommandBuilder()
     .setName('blueprint')
-    .setDescription('This command will return a list of all the resources and costs associated to build a given blueprint. Optionally, the resource and time costs will be adjusted based on skill levels, if provided.')
+    .setDescription('This command will return the blueprint for a given ship.')
     .addStringOption(option =>
       option.setName('search')
         .setDescription('The search term to use.')
