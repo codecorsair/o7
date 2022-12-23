@@ -29,6 +29,7 @@ export default {
       option
         .setName("item")
         .setDescription("The item to get information about.")
+        // .setAutocomplete(true)
         .setRequired(true)),
   help: {
     description: "This command will return information about an item in game.",
