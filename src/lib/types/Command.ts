@@ -1,4 +1,4 @@
-import { CommandInteraction, SlashCommandBuilder } from 'discord.js';
+import { AutocompleteInteraction, CommandInteraction, SlashCommandBuilder } from 'discord.js';
 export interface Command {
   data: SlashCommandBuilder;
   help?: {
@@ -9,5 +9,6 @@ export interface Command {
       description?: string;
     }[];
   };
+  autocomplete?: (interaction: AutocompleteInteraction) => Promise<any>;
   execute: (interaction: CommandInteraction) => Promise<any>;
 }

@@ -12,14 +12,22 @@ client.once('ready', () => {
   console.log('ready');
 });
 
-client.on('interactionCreate', async interaction => {
-  if (!interaction.isCommand()) return;
-  const command = client.commands.get(interaction.commandName);
-  if (!command) return;
+client.on('interactionCreate', async (interaction) => {
   try {
-    await command.execute(interaction);
+    if (interaction.isChatInputCommand()) {
+      const command = client.commands.get(interaction.commandName);
+      if (command) {
+        await command.execute(interaction);
+      }
+    } else if (interaction.isAutocomplete()) {
+      const command = client.commands.get(interaction.commandName);
+      if (command && command.autocomplete) {
+        await command.autocomplete(interaction);
+      }
+    }
   } catch (error) {
     console.error(error);
+    if (!interaction.isCommand()) return;
     await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
   }
 });

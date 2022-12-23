@@ -13,7 +13,7 @@ import {
 } from "../lib/items";
 import { romanize } from "../lib/romanize";
 import { SlashCommandBuilder, EmbedBuilder } from "@discordjs/builders";
-import { CommandInteraction } from "discord.js";
+import { AutocompleteInteraction, CommandInteraction } from "discord.js";
 import { Command } from "../lib/types/Command";
 
 const ITEM_CHOICES = marketItems.map((item) => ({
@@ -29,21 +29,27 @@ export default {
       option
         .setName("item")
         .setDescription("The item to get information about.")
-        .setRequired(true)
-        .addChoices(...ITEM_CHOICES.slice(0, 25))
-    ),
+        .setRequired(true)),
   help: {
     description: "This command will return information about an item in game.",
+  },
+  async autocomplete(interaction: AutocompleteInteraction) {
+    const itemName = interaction.options.getFocused(true);
+
+    const choices = ITEM_CHOICES.filter((choice) => choice.name.includes(itemName.value));
+
+    console.log(choices);
+    await interaction.respond(choices.slice(0, 25));
   },
   async execute(interaction: CommandInteraction) {
     await interaction.deferReply();
     const id = interaction.options.get("item");
     if (!id) {
-      return interaction.reply("You must provide an item to search for.");
+      return interaction.editReply("You must provide an item to search for.");
     }
     const itemInfo = items[id.value as number] as Item;
     if (!itemInfo) {
-      return interaction.reply(`I could not find any item for the search term`);
+      return interaction.editReply(`I could not find any item for the search term`);
     }
 
     const embed = new EmbedBuilder().setThumbnail(
@@ -150,48 +156,48 @@ export default {
         {
           name: `DEFENSE ${numeral(getEHP(itemInfo)).format("0,0")}`,
           value: `\
-        //         \`\`\`
-        //           | Shield |  Armor |   Hull 
-        // Hitpoints | ${numeral(a[Attributes.shieldCapacity].value)
+                 \`\`\`
+                  | Shield |  Armor |   Hull 
+        Hitpoints | ${numeral(a[Attributes.shieldCapacity].value)
           .format("0,0")
           .padStart(6)} | ${numeral(a[Attributes.armorHP].value)
             .format("0,0")
             .padStart(6)} | ${numeral(a[Attributes.hp].value)
             .format("0,0")
             .padStart(6)}
-        // EM        | ${numeral(
+        EM        | ${numeral(
           1 - a[Attributes.shieldEmDamageResonance].value
         ).format("00.00%")} | ${numeral(
             1 - a[Attributes.armorEmDamageResonance].value
           ).format("00.00%")} | ${numeral(
             1 - a[Attributes.emDamageResonance].value
           ).format("00.00%")}
-        // Thermal   | ${numeral(
+        Thermal   | ${numeral(
           1 - a[Attributes.shieldThermalDamageResonance].value
         ).format("00.00%")} | ${numeral(
             1 - a[Attributes.armorThermalDamageResonance].value
           ).format("00.00%")} | ${numeral(
             1 - a[Attributes.thermalDamageResonance].value
           ).format("00.00%")}
-        // Kinetic   | ${numeral(
+        Kinetic   | ${numeral(
           1 - a[Attributes.shieldKineticDamageResonance].value
         ).format("00.00%")} | ${numeral(
             1 - a[Attributes.armorKineticDamageResonance].value
           ).format("00.00%")} | ${numeral(
             1 - a[Attributes.kineticDamageResonance].value
           ).format("00.00%")}
-        // Explosive | ${numeral(
+        Explosive | ${numeral(
           1 - a[Attributes.shieldExplosiveDamageResonance].value
         ).format("00.00%")} | ${numeral(
             1 - a[Attributes.armorExplosiveDamageResonance].value
           ).format("00.00%")} | ${numeral(
             1 - a[Attributes.explosiveDamageResonance].value
           ).format("00.00%")}
-        // Shield recharge time: ${numeral(
+        Shield recharge time: ${numeral(
           a[Attributes.shieldRechargeRate].value / 1000
         ).format("0.0")} seconds\
-        // \`\`\`
-        // `,
+        \`\`\`
+        `,
           inline: false,
         },
         {
