@@ -1,6 +1,6 @@
 import { Message, CommandDef } from '../lib/types';
 import neo4j from 'neo4j-driver';
-import config from '../config.json';
+import config from '../config';
 import { printSecurity, getSystems } from './jumps';
 
 const command: CommandDef = {

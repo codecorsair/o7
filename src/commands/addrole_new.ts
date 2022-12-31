@@ -3,9 +3,11 @@ import { CommandInteraction, GuildMemberRoleManager, PermissionFlagsBits } from 
 import { Command } from '../lib/types/Command';
 
 export default {
-  data: new SlashCommandBuilder()
-    .setName('addrole')
-    .setDescription('Add a role to a member.')
+  aliases: ['addrole', 'addroles'],
+  data: (alias: string) => new SlashCommandBuilder()
+    .setName(alias)
+    .setDescription('Help: /help addrole')
+    .setDMPermission(false)
     .addUserOption(option =>
       option.setName('member')
         .setDescription('The member to add the role to.')

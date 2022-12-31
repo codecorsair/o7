@@ -1,5 +1,5 @@
 import { MongoClient, Db } from 'mongodb';
-import config from '../config.json';
+import config from '../config';
 
 // keep these here to maintain a single list of collections
 export const collections = {

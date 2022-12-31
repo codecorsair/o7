@@ -3,7 +3,7 @@ import { Message, CommandDef } from '../lib/types';
 import { PlanetaryResources } from '../lib/echoes/constants';
 import systems from '../data/systems.json';
 import neo4j from 'neo4j-driver';
-import config from '../config.json';
+import config from '../config';
 
 const prNames = Object.values(PlanetaryResources).map(p => ({ name: p }));
 const fusePR = new Fuse(prNames, {
@@ -118,4 +118,3 @@ const command: CommandDef = {
 };
 
 export default command;
-

@@ -8,9 +8,13 @@ You are welcome to self-host **o7**, however I can not fully support self-hosted
 
 ## Setup
 1. Install docker & docker-compose
-2. Edit environment variables docker-compose.yml
+2. Edit environment variables docker-compose.yml or rename the `example.config.json` to `config.json` and edit the setting there.
+  > NOTE: Environment variables take priority over the variables from the `config.json`
 3. Run `docker-compose up`
 4. Invite bot to server `https://discord.com/api/oauth2/authorize?client_id=<application id>&permissions=0&scope=bot%20applications.commands`
+
+## Planed Features
+- [ ] Prometheus Metrics endpoint.
 
 ## Contributing
 Great! You'd like to add a feature to **o7**? I am happy to accept contributions via pull request. 

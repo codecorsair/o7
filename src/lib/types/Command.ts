@@ -1,6 +1,7 @@
 import { AutocompleteInteraction, CommandInteraction, SlashCommandBuilder } from 'discord.js';
 export interface Command {
-  data: SlashCommandBuilder;
+  aliases: string[];
+  data: (alias: string) => SlashCommandBuilder;
   help?: {
     description: string;
     color?: string;
@@ -9,6 +10,8 @@ export interface Command {
       description?: string;
     }[];
   };
+  owner?: boolean;
+  disabled?: boolean;
   autocomplete?: (interaction: AutocompleteInteraction) => Promise<any>;
   execute: (interaction: CommandInteraction) => Promise<any>;
 }

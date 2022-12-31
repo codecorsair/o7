@@ -3,7 +3,7 @@ import { Message } from 'discord.js';
 // import { extractText } from '../lib/tesseract';
 // import Fuse from 'fuse.js';
 import vision from '@google-cloud/vision';
-import config from '../config.json';
+import config from '../config';
 
 
 // Creates a client
@@ -38,7 +38,7 @@ export default class OCRCommand extends Command {
             start: 'Please enter your character name as displayed in the image. (Include your corporation tag if it shows in the image)',
           }
         }
-      ] 
+      ]
     });
   }
 
@@ -67,7 +67,7 @@ export default class OCRCommand extends Command {
     console.log('Text:');
     detections.forEach(text => console.log(text));
     message.reply(detections.join('\n'))
-    
+
 //     const fuse = new Fuse([args.name], {
 //       includeScore: true,
 //       threshold: 0.3,

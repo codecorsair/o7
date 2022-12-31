@@ -7,21 +7,22 @@ import {
 import { Command } from "../lib/types/Command";
 
 export default {
-  data: new SlashCommandBuilder()
-    .setName("blueprint")
-    .setDescription("This command will return the blueprint for a given ship.")
-    .addStringOption((option) =>
-      option
-        .setName("search")
-        .setDescription("The search term to use.")
-        .setRequired(true)
-    )
-    .addBooleanOption((option) =>
-      option
-        .setName("mobile")
-        .setDescription("Whether to use the mobile version of the response.")
-        .setRequired(false)
-    ),
+  aliases: ["bp", "blueprint"],
+  data: (alias: string) =>  new SlashCommandBuilder()
+  .setName(alias)
+  .setDescription("This command will return the blueprint for a given ship.")
+  .addStringOption((option) =>
+    option
+      .setName("search")
+      .setDescription("The search term to use.")
+      .setRequired(true)
+  )
+  .addBooleanOption((option) =>
+    option
+      .setName("mobile")
+      .setDescription("Whether to use the mobile version of the response.")
+      .setRequired(false)
+  ),
   help: {
     description:
       "This command will return a list of all the resources and costs associated to build a given blueprint. Optionally, the resource and time costs will be adjusted based on skill levels, if provided.",

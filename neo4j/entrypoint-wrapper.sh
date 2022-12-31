@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# turn on bash's job control
 set -m
+echo "Starting Neo4j..."
 /startup/docker-entrypoint.sh neo4j &
-/wait-for-neo4j.sh
 
 if [ ! -f "/data/.initialized" ]; then
+  /wait-for-neo4j.sh
   echo "Initializing database..."
 
   cypher-shell -f /init.cypher

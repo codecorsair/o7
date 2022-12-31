@@ -43,47 +43,52 @@ import { getFiles } from './getFiles';
 // }
 
 export async function registerCommands(client: Client) {
-  const registeredCommands = await client.application?.commands.fetch();
-  if (!registeredCommands) return console.error('Failed to fetch registered commands.');
-  console.log(`Registered commands: ${registeredCommands?.size}`);
-
-  for (const command of client.commands.values()) {
-    if (!registeredCommands?.has(command.data.name)) {
-      const response = await client.application?.commands.create(command.data);
-      console.log(`Registered command: ${response?.name}`)
-    } else {
-      const registeredCommand = registeredCommands.get(command.data.name);
-      if (!registeredCommand) continue;
-      const response = await client.application?.commands.edit(registeredCommand?.id, command.data);
-      console.log(`Updated command: ${response?.name}`)
-    }
+  for (const [commandName, command] of client.commands.entries()) {
+    client.application?.commands.create(command.data(commandName));
+    console.log(`Registered command ${commandName}`);
   }
 }
 
 export async function loadCommands(directory: string, client: Client) {
   for await (const path of getFiles(directory, 0, 0, fileName => fileName.endsWith('.js'))) {
     const command = require(path).default;
-    if ('data' in command && 'execute' in command) {
-      console.log(`Loaded command ${command.data.name}`);
-      client.commands.set(command.data.name, command);
-    } else {
-      console.error(`Invalid command at ${path}; 'data' or 'execute' is undefined.`);
-    }
+    console.log(`Command ${command.aliases[0]} loaded from ${path} (${command.aliases.join()})`);
+    command.aliases.forEach(a => {
+      const alias = a.toLowerCase();
+      if (client.commands.has(alias) && !command.disabled) {
+        console.error(`Error loading command. ${command.aliases[0]} contains duplicate alias '${alias}'.`);
+        return
+      }
+      console.log(`Loaded command ${alias}`);
+      client.commands.set(alias, command);
+    });
   }
 }
 
 // export function getHelpEmbed(command: Command, prefix: string) {
-//   const embed = new EmbedBuilder().setTitle(`${startCase(command.name)} Command Help`)
+//   const embed = new EmbedBuilder().setTitle(`${startCase(command.data.name)} Command Help`)
 //     .setColor( 0xfff500);
 //   embed.addFields([
-//     {name: 'Usage', value: `**${prefix}${command.alias[0]}** ${command.args && typeof command.args !== 'function' ? command.args.map(arg => arg.optional ? `(${arg.name} *optional)` : arg.name).join(' ') : ''}
-//     ${command.alias.length > 0 ? `*alias:* ${command.alias.slice(1).map(a => `**${prefix}${a}**`).join(', ')}` : ''}`
-//   }]);
+//     {
+//       name: "Usage",
+//       value: `**${prefix}${command.data.name}** ${
+//         command.data.options
+//           ? command.data.options
+//               .map((arg) =>
+//                 arg.toJSON().required
+//                   ? `(${arg.toJSON().name} *optional)`
+//                   : arg.toJSON().name
+//               )
+//               .join(" ")
+//           : ""
+//       }`,
+//     },
+//   ]);
 //   if (command.help) {
 //     embed.setDescription(command.help?.description);
 //     if (command.help.examples) {
 //       embed.addFields([{
-//         name: 'Examples:', value: command.help.examples.map(e => `\`${prefix}${command.alias[0]} ${e.args}\`${e.description ? `\n->${e.description}` : ''}`).join('\n\n')
+//         name: 'Examples:', value: command.help.examples.map(e => `\`${prefix}${command.data.name} ${e.args}\`${e.description ? `\n->${e.description}` : ''}`).join('\n\n')
 //       }]);
 //     }
 //   }
@@ -91,8 +96,8 @@ export async function loadCommands(directory: string, client: Client) {
 // }
 
 // export async function processCommand(
-//   message: Message,
-//   commandProvider: { commands: Collection<string, Command | Module>; },
+//   interaction: CommandInteraction,
+//   commandProvider: { commands: Collection<string, Command /*| Module*/>; },
 //   content: string,
 //   prefix: string) {
 //   const [c, args] = content.split(/ (.+)/);
@@ -102,38 +107,38 @@ export async function loadCommands(directory: string, client: Client) {
 //     const command = commandProvider.commands.get(cmdString);
 //     if (!command || command.disabled) return;
 
-//     if (command.type === 'module') {
-//       return await processCommand(message, command, args, `${prefix}${(command.commandGroup as any)[0]} `);
-//     }
+//     // if (command.type === 'module') {
+//     //   return await processCommand(message, command, args, `${prefix}${(command.commandGroup as any)[0]} `);
+//     // }
 
 //     if (command.channel) {
-//       if (command.channel === 'guild' && !message.guild) return;
-//       if (command.channel === 'dm' && message.guild) return;
+//       if (command.channel === "guild" && !interaction.guild) return;
+//       if (command.channel === "dm" && interaction.guild) return;
 //     }
 
-//     if (command.owner && !message.client.owners.find(s => s === message.author.id)) return;
+//     // if (command.owner && !message.client.owners.find(s => s === message.author.id)) return;
 
-//     if (command.userPermissions) {
-//       if (typeof command.userPermissions === 'function' && !command.userPermissions(message)) return;
-//       for (const permission of command.userPermissions as DiscordPermissions[]) {
-//         if (!message.member?.hasPermission(permission)) {
-//           return;
-//         }
-//       }
-//     }
+//     // if (command.userPermissions) {
+//     //   if (typeof command.userPermissions === 'function' && !command.userPermissions(message)) return;
+//     //   for (const permission of command.userPermissions as DiscordPermissions[]) {
+//     //     if (!message.member?.hasPermission(permission)) {
+//     //       return;
+//     //     }
+//     //   }
+//     // }
 
-//     if (command.clientPermissions) {
-//       for (const permission of command.clientPermissions) {
-//         if (!message.guild?.me?.hasPermission(permission)) {
-//           return message.author.send(`It looks like I don't have the required permissions for the **${startCase(command.name)}** command on **${message.guild?.name}**.\nI need the following permission${command.clientPermissions.length > 1 ? 's' : ''} ${command.clientPermissions.map(p => `\`${p}\``).join(' ')}.`);
-//         }
-//       }
-//     }
+//     // if (command.clientPermissions) {
+//     //   for (const permission of command.clientPermissions) {
+//     //     if (!message.guild?.me?.hasPermission(permission)) {
+//     //       return message.author.send(`It looks like I don't have the required permissions for the **${startCase(command.name)}** command on **${message.guild?.name}**.\nI need the following permission${command.clientPermissions.length > 1 ? 's' : ''} ${command.clientPermissions.map(p => `\`${p}\``).join(' ')}.`);
+//     //     }
+//     //   }
+//     // }
 
-//     message.sendHelp = () => message.channel.send(getHelpEmbed(command, prefix));
+//     const sendHelp = () => interaction.reply(`${getHelpEmbed(command, prefix)}`);
 
 //     if (isHelp(command, args)) {
-//       return message.sendHelp();
+//       return sendHelp();
 //     }
 
 //     if (typeof command.args === 'function') {

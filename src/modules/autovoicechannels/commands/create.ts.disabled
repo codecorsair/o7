@@ -3,7 +3,7 @@ import { TextChannel } from 'discord.js';
 import { Message, CommandDef, DiscordPermissions } from '../../../lib/types';
 import { askQuestionWithMessageResponse } from '../../../lib/utils/args';
 import * as db from '../lib/db.ts.disabled';
-import config from '../../../config.json';
+import config from '../../config';
 
 export interface AppConfig {
   id: string,
@@ -63,7 +63,7 @@ const command: CommandDef = {
 
     const messageChannel = message.channel as TextChannel | NewsChannel;
     try {
-      const created = await message.guild.channels.create('Join To Create', 
+      const created = await message.guild.channels.create('Join To Create',
         {
           type: 'voice',
           parent: messageChannel.parent || undefined,

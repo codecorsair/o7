@@ -2,9 +2,11 @@ import { SlashCommandBuilder, CommandInteraction, GuildMemberRoleManager } from 
 import { Command } from "../lib/types/Command";
 
 export default {
-  data: new SlashCommandBuilder()
-    .setName('removerole')
+  aliases: ["removerole"],
+  data: (alias: string) => new SlashCommandBuilder()
+    .setName(alias)
     .setDescription('Remove a role from a member.')
+    .setDMPermission(false)
     .addUserOption(option =>
       option.setName('member')
         .setDescription('The member to remove the role from.')

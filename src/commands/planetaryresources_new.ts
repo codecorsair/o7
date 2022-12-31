@@ -32,8 +32,9 @@ const fuseSystems = new Fuse(systems, {
 });
 
 export default {
-  data: new SlashCommandBuilder()
-    .setName('planetaryresources')
+  aliases: ['planetaryresources', 'pr'],
+  data: (alias: string) => new SlashCommandBuilder()
+    .setName(alias)
     .setDescription('This command will return the locations of perfect and/or rich planetary resources.')
     .addStringOption(option =>
       option.setName('system')

@@ -13,8 +13,9 @@ const fuse = new Fuse(reproc, {
 });
 
 export default {
-  data: new SlashCommandBuilder()
-    .setName('reprocess')
+  aliases: ['reproc', 'r'],
+  data: (alias: string) => new SlashCommandBuilder()
+    .setName(alias)
     .setDescription('This command will return the reprocessing results for a given item.')
     .addStringOption(option =>
       option.setName('item')

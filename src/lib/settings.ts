@@ -1,5 +1,5 @@
 import { getClient, collections } from './db';
-import config from '../config.json';
+import config from '../config';
 
 interface Settings {
   guildId: string;

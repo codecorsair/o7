@@ -11,8 +11,9 @@ const SYSTEM_CHOICES = systems.map((system) => ({
 }));
 
 export default {
-  data: new SlashCommandBuilder()
-    .setName('safejumps')
+  aliases: ['safejumps', 'sj'],
+  data: (alias: string) => new SlashCommandBuilder()
+    .setName(alias)
     .setDescription('This command will return the jump distance to travel between two given systems.')
     .addStringOption(option =>
       option.setName('start')
@@ -48,19 +49,19 @@ export default {
     try {
       const results = await session.run(`
         MATCH (start:System {name: '${systems.start.Name}'}),(end:System {name:'${systems.end.Name}'})
-        CALL gds.alpha.shortestPath.stream({
+        CALL gds.shortestPath.yens.stream("someGraph", {
           nodeProjection: 'System',
-            relationshipProjection: {
-              GATES_TO: {
-                  type: 'GATES_TO',
-                    properties: 'cost',
-                    orientation: 'UNDIRECTED'
-                }
-            },
-            startNode: start,
-            endNode: end,
-            relationshipWeightProperty: 'cost',
-            writeProperty: 'sssp'
+          relationshipProjection: {
+            GATES_TO: {
+                type: 'GATES_TO',
+                  properties: 'cost',
+                  orientation: 'UNDIRECTED'
+              }
+          },
+          sourceNode: start,
+          targetNode: end,
+          relationshipWeightProperty: 'cost',
+          writeProperty: 'sssp'
         })
         YIELD nodeId, cost
         RETURN gds.util.asNode(nodeId) AS system, cost

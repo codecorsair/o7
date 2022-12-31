@@ -1,7 +1,7 @@
 import { Message, CommandDef } from '../lib/types';
 import Fuse from 'fuse.js';
 import neo4j from 'neo4j-driver';
-import config from '../config.json';
+import config from '../config';
 import systems from '../data/systems.json';
 import { CommandInteraction } from 'discord.js';
 

@@ -22,8 +22,9 @@ const ITEM_CHOICES = marketItems.map((item) => ({
 }));
 
 export default {
-  data: new SlashCommandBuilder()
-    .setName("item")
+  aliases: ["item"],
+  data: (alias: string) => new SlashCommandBuilder()
+    .setName(alias)
     .setDescription("Get information about an item in game.")
     .addStringOption((option) =>
       option

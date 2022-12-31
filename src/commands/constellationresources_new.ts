@@ -13,7 +13,7 @@ const RESOURCE_CHOICES = Object.values(PlanetaryResources).map(p => ({
 
 const SYSTEM_CHOICES = systems.map(s => ({
   name: String(s.Name),
-  value: String(s.ID),
+  value: String(s.Name),
 }));
 
 const prNames = Object.values(PlanetaryResources).map(p => ({ name: p }));
@@ -33,19 +33,20 @@ const fuseSystems = new Fuse(systems, {
 });
 
 export default {
-  data: new SlashCommandBuilder()
-    .setName('constellationresources')
-    .setDescription('This command will return the locations of perfect and/or rich planetary resources.')
-    .addStringOption(option =>
-      option.setName('system')
-        .setDescription('The system to search for.')
-        .setRequired(true)
-        .setAutocomplete(true))
-    .addStringOption(option =>
-      option.setName('resource')
-        .setDescription('The resource to search for.')
-        .setRequired(true)
-        .setAutocomplete(true)),
+  aliases: ['constellationresources', 'cr'],
+  data: (alias: string) => new SlashCommandBuilder()
+  .setName(alias)
+  .setDescription('This command will return the locations of perfect and/or rich planetary resources.')
+  .addStringOption(option =>
+    option.setName('system')
+      .setDescription('The system to search for.')
+      .setRequired(true)
+      .setAutocomplete(true))
+  .addStringOption(option =>
+    option.setName('resource')
+      .setDescription('The resource to search for.')
+      .setRequired(true)
+      .setAutocomplete(true)),
   help: {
     description: 'This command will return the planet/system(s) of perfect and/or rich planetary resources within the constellation of the system entered. This can be useful to decide decide the best Capsuleer Outpost placement.',
     examples: [{

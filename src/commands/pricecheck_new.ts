@@ -29,8 +29,9 @@ const customKeywords = {
 };
 
 export default {
-  data: new SlashCommandBuilder()
-    .setName('pricecheck')
+  aliases: ['pricecheck', 'pc'],
+  data: (alias: string) => new SlashCommandBuilder()
+    .setName(alias)
     .setDescription('This command will return market price data which is queried from <https://eve-echoes-market.com>.')
     .addStringOption(option =>
       option.setName('item')
