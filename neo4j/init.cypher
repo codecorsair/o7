@@ -13,8 +13,14 @@ SET p.output = toFloat(p.output);
 CREATE INDEX system_id_index IF NOT EXISTS
 FOR (s:System) ON (s.id);
 
+CREATE INDEX system_name_index IF NOT EXISTS
+FOR (s:System) ON (s.name);
+
 CREATE INDEX planet_planetId_index IF NOT EXISTS
 FOR (p:Planet) ON (p.planetId);
+
+CREATE INDEX planet_nam_index IF NOT EXISTS
+FOR (p:Planet) ON (p.name);
 
 CREATE INDEX planet_resource_index IF NOT EXISTS
 FOR (p:Planet) ON (p.resource);

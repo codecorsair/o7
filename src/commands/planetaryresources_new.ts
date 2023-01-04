@@ -13,7 +13,7 @@ const RESOURCE_CHOICES = Object.values(PlanetaryResources).map(p => ({
 
 const SYSTEM_CHOICES = systems.map(s => ({
   name: String(s.Name),
-  value: String(s.ID),
+  value: String(s.Name),
 }));
 
 const prNames = Object.values(PlanetaryResources).map(p => ({ name: p }));

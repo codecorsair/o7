@@ -1,9 +1,10 @@
-import { SlashCommandBuilder, CommandInteraction, EmbedBuilder } from "discord.js";
+import { SlashCommandBuilder, CommandInteraction, EmbedBuilder, AutocompleteInteraction } from "discord.js";
 import Fuse from "fuse.js";
 import { startCase } from "lodash";
 import reproc from '../data/reproc.json';
 import { Command } from "../lib/types/Command";
 import numeral from "numeral";
+import marketItems from "../data/market-items.json";
 
 const fuse = new Fuse(reproc, {
   isCaseSensitive: false,
@@ -11,6 +12,11 @@ const fuse = new Fuse(reproc, {
   shouldSort: true,
   keys: ['name'],
 });
+
+const ITEM_CHOICES = marketItems.map((item) => ({
+  name: String(item.name),
+  value: String(item.id),
+}));
 
 export default {
   aliases: ['reproc', 'r'],
@@ -20,6 +26,7 @@ export default {
     .addStringOption(option =>
       option.setName('item')
         .setDescription('The item to reprocess.')
+        .setAutocomplete(true)
         .setRequired(true)),
   help: {
     description: 'This command will return the resources given when reprocessing an item. Default value returned assumes no skills trained, meaning 30% efficiency. Optionally, providing your reprocessing percentage will adjust the returned value based on the given value.',
@@ -30,6 +37,13 @@ export default {
       args: 'mk5 stasis web 50',
       description: 'Returns the resources given when reprocessing a MK5 Stasis Webifier at 50% efficiency.',
     }]
+  },
+  async autocomplete(interaction: AutocompleteInteraction) {
+    const itemName = interaction.options.getFocused(true);
+
+    const choices = ITEM_CHOICES.filter((choice) => choice.name.toLowerCase().indexOf(itemName.value.toLowerCase()) !== -1);
+
+    await interaction.respond(itemName.value !== "" ? choices.slice(0, 25) : ITEM_CHOICES.slice(0, 25));
   },
   async execute(interaction: CommandInteraction) {
     await interaction.deferReply();

@@ -52,14 +52,12 @@ export async function registerCommands(client: Client) {
 export async function loadCommands(directory: string, client: Client) {
   for await (const path of getFiles(directory, 0, 0, fileName => fileName.endsWith('.js'))) {
     const command = require(path).default;
-    console.log(`Command ${command.aliases[0]} loaded from ${path} (${command.aliases.join()})`);
     command.aliases.forEach(a => {
       const alias = a.toLowerCase();
       if (client.commands.has(alias) && !command.disabled) {
         console.error(`Error loading command. ${command.aliases[0]} contains duplicate alias '${alias}'.`);
         return
       }
-      console.log(`Loaded command ${alias}`);
       client.commands.set(alias, command);
     });
   }
