@@ -7,4 +7,4 @@ if [ ! -f "/data/.initialized" ]; then
   /init.sh &
 fi
 
-/startup/docker-entrypoint.sh neo4j
+tini -g -- /startup/docker-entrypoint.sh neo4j
