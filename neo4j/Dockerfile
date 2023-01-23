@@ -8,6 +8,9 @@ RUN chmod +x /entrypoint-wrapper.sh
 COPY ./wait-for-neo4j.sh /wait-for-neo4j.sh
 RUN chmod +x /wait-for-neo4j.sh
 
+COPY ./init.sh /init.sh
+RUN chmod +x /init.sh
+
 COPY ./planetary-production.csv /var/lib/neo4j/import/planetary-production.csv
 COPY ./systems.csv /var/lib/neo4j/import/systems.csv
 

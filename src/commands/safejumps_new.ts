@@ -49,19 +49,10 @@ export default {
     try {
       const results = await session.run(`
         MATCH (start:System {name: '${systems.start.Name}'}),(end:System {name:'${systems.end.Name}'})
-        CALL gds.shortestPath.yens.stream("someGraph", {
-          nodeProjection: 'System',
-          relationshipProjection: {
-            GATES_TO: {
-                type: 'GATES_TO',
-                  properties: 'cost',
-                  orientation: 'UNDIRECTED'
-              }
-          },
+        CALL gds.shortestPath.dijkstra.stream("safejumps", {
           sourceNode: start,
           targetNode: end,
           relationshipWeightProperty: 'cost',
-          writeProperty: 'sssp'
         })
         YIELD nodeId, cost
         RETURN gds.util.asNode(nodeId) AS system, cost

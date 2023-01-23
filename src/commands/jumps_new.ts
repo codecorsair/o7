@@ -28,20 +28,20 @@ export const fuse = new Fuse(systems, {
 export function getSystems(interaction: CommandInteraction, args: { start: string; end: string }) {
   const startSearch = fuse.search(args.start);
   if (startSearch.length == 0) {
-    interaction.reply(`Could not find any system matching '${args.start}'`);
+    interaction.editReply(`Could not find any system matching '${args.start}'`);
     return;
   }
   const start = startSearch[0].item.Name;
 
   const endSearch = fuse.search(args.end);
   if (endSearch.length == 0) {
-    interaction.reply(`Could not find any system matching '${args.end}'`);
+    interaction.editReply(`Could not find any system matching '${args.end}'`);
     return;
   }
   const end = endSearch[0].item.Name;
 
   if (start === end) {
-    interaction.reply(`That's the same system!`);
+    interaction.editReply(`That's the same system!`);
     return;
   }
   return {
