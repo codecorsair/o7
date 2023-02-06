@@ -38,7 +38,7 @@ services:
     environment:
       NODE_ENV: dev
       OWNERS: 123456789012345678,987654321098765432
-      DISCORD_TOKEN: 
+      DISCORD_TOKEN: ODE0NDM1NTM3ODg4MzQ2MTEy.G2pWDT.BKhtXhfGgm7JKfd3yCXX003A7ziW3DLyUkwBhc
       PREFIX: !
       MONGO_CONNECTION_STRING: mongodb://mongo:password1@mongodb:27017
       MONGO_DATABASE: o7-bot

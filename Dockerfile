@@ -12,9 +12,12 @@ RUN yarn build
 
 FROM node:lts-alpine
 
-WORKDIR /app
+USER container
+ENV  USER=container HOME=/home/container
 
-COPY --from=build /app/dist /app/dist
-COPY --from=build /app/node_modules  /app/node_modules
+WORKDIR /home/container/app
 
-CMD ["node", "/app/dist/index.js"]
+COPY --from=build /app/dist /home/container/app/dist
+COPY --from=build /app/node_modules  /home/container/app/node_modules
+
+CMD ["node", "/home/container/app/dist/index.js"]
