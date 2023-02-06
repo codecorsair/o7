@@ -31,7 +31,7 @@ export default {
   },
 }
 
-function asset(msg: string, ...args: any[]) {
+function asset(msg: string, ...args: any[]): any {
   const arg = args.find(arg => arg !== undefined && arg !== null && arg !== '');
   if (arg) {
     return arg;
