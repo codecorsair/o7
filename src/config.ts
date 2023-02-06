@@ -1,4 +1,3 @@
-import { assert } from "console";
 import { existsSync } from "fs";
 
 let config: {
@@ -30,19 +29,19 @@ if (existsSync('../config.json')) {
 }
 
 export default {
-  dev: assert("Config variable DEV is not set", process.env.NODE_ENV ,config?.dev),
-  owners: asset("Config variable OWNERS is not set", process.env.OWNERS, config?.owners),
-  token: assert("Config variable TOKEN is not set", process.env.TOKEN, config?.token),
-  prefix: assert("Config variable PREFIX is not set", process.env.PREFIX, config?.prefix),
+  dev: assert<boolean>("Config variable DEV is not set", process.env.NODE_ENV ,config?.dev),
+  owners: assert<string[]>("Config variable OWNERS is not set", process.env.OWNERS, config?.owners),
+  token: assert<string>("Config variable TOKEN is not set", process.env.TOKEN, config?.token),
+  prefix: assert<string>("Config variable PREFIX is not set", process.env.PREFIX, config?.prefix),
   mongo: {
-    connectionString: assert("Config variable MONGO_CONNECTION_STRING is not set", process.env.MONGO_CONNECTION_STRING, config?.mongo?.connectionString),
-    "database": assert("Config variable MONGO_DATABASE is not set", process.env.MONGO_DATABASE, config?.mongo?.database),
+    connectionString: assert<string>("Config variable MONGO_CONNECTION_STRING is not set", process.env.MONGO_CONNECTION_STRING, config?.mongo?.connectionString),
+    "database": assert<string>("Config variable MONGO_DATABASE is not set", process.env.MONGO_DATABASE, config?.mongo?.database),
   },
   neo4j: {
-    uri: assert("Config variable NEO4J_URI is not set", process.env.NEO4J_URI, config?.neo4j?.uri),
-    database: assert("Config variable NEO4J_DATABASE is not set", process.env.NEO4J_DATABASE, config?.neo4j?.database),
-    username: assert("Config variable NEO4J_USERNAME is not set", process.env.NEO4J_USERNAME, config?.neo4j?.username),
-    password: assert("Config variable NEO4J_PASSWORD is not set", process.env.NEO4J_PASSWORD, config?.neo4j?.password),
+    uri: assert<string>("Config variable NEO4J_URI is not set", process.env.NEO4J_URI, config?.neo4j?.uri),
+    database: assert<string>("Config variable NEO4J_DATABASE is not set", process.env.NEO4J_DATABASE, config?.neo4j?.database),
+    username: assert<string>("Config variable NEO4J_USERNAME is not set", process.env.NEO4J_USERNAME, config?.neo4j?.username),
+    password: assert<string>("Config variable NEO4J_PASSWORD is not set", process.env.NEO4J_PASSWORD, config?.neo4j?.password),
   },
   gcloud: {
     auth: {
@@ -53,8 +52,8 @@ export default {
   },
 }
 
-function asset(msg: string, ...args: any[]): any {
-  const arg = args.find(arg => arg !== undefined && arg !== null && arg !== '');
+function assert<T>(msg: string, ...args: any[]): T {
+  const arg: T|undefined = args.find(arg => arg !== undefined && arg !== null && arg !== '')
   if (arg) {
     return arg;
   }
