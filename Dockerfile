@@ -12,9 +12,6 @@ RUN yarn build
 
 FROM node:lts-alpine
 
-USER container
-ENV  USER=container HOME=/home/container
-
 WORKDIR /home/container/app
 
 COPY --from=build /app/dist /home/container/app/dist
