@@ -22,7 +22,7 @@ let config: {
     };
     bucket: string;
   };
-} = {};
+} = {} as any;
 
 if (existsSync('../config.json')) {
   config = require('../config.json');
