@@ -1,7 +1,29 @@
 import { assert } from "console";
 import { existsSync } from "fs";
 
-let config: any = {};
+let config: {
+  dev: boolean;
+  owners: string[];
+  token: string;
+  prefix: string;
+  mongo: {
+    connectionString: string;
+    database: string;
+  };
+  neo4j: {
+    uri: string;
+    database: string;
+    username: string;
+    password: string;
+  };
+  gcloud: {
+    auth: {
+      client_email: string;
+      private_key: string;
+    };
+    bucket: string;
+  };
+} = {};
 
 if (existsSync('../config.json')) {
   config = require('../config.json');
