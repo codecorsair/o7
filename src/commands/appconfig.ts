@@ -31,7 +31,7 @@ export default {
     }]
   },
   async execute(interaction: CommandInteraction) {
-    await interaction.deferReply();
+    await interaction.deferReply({ ephemeral: true });
     const channel = interaction.options.get("channel")?.channel?.id;
     const questions = interaction.options.get("questions")?.value as string;
 

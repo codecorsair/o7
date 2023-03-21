@@ -10,7 +10,7 @@ export default {
     description: 'Get the invite link for the bot',
   },
   execute: async (interaction: CommandInteraction) => {
-    await interaction.deferReply();
+    await interaction.deferReply({ ephemeral: true });
 
     await interaction.editReply({ 
       embeds: [

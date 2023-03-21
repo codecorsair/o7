@@ -27,7 +27,7 @@ export default {
     return interaction.respond(commands.length > 25 ? commands.slice(0, 25) : commands);
   },
   async execute(interaction: CommandInteraction) {
-    await interaction.deferReply();
+    await interaction.deferReply({ ephemeral: true });
     const search = interaction.options.get("search")?.value as string;
 
     const client = interaction.client as Client

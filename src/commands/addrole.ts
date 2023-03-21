@@ -28,7 +28,7 @@ export default {
     }]
   },
   async execute(interaction: CommandInteraction) {
-    await interaction.deferReply();
+    await interaction.deferReply({ ephemeral: true });
     const member = interaction.options.getMember('member');
     const roleName = interaction.options.get('role')?.name as string;
     if (!interaction.guild) {
