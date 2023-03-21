@@ -1,5 +1,5 @@
 import marketItems from "../data/market-items.json";
-import numeral from 'numeral';
+import numeral from "numeral";
 import items from "../data/items.json";
 import {
   Attributes,
@@ -23,24 +23,31 @@ const ITEM_CHOICES = marketItems.map((item) => ({
 
 export default {
   aliases: ["item"],
-  data: (alias: string) => new SlashCommandBuilder()
-    .setName(alias)
-    .setDescription("Get information about an item in game.")
-    .addStringOption((option) =>
-      option
-        .setName("item")
-        .setDescription("The item to get information about.")
-        .setAutocomplete(true)
-        .setRequired(true)),
+  data: (alias: string) =>
+    new SlashCommandBuilder()
+      .setName(alias)
+      .setDescription("Get information about an item in game.")
+      .addStringOption((option) =>
+        option
+          .setName("item")
+          .setDescription("The item to get information about.")
+          .setAutocomplete(true)
+          .setRequired(true)
+      ),
   help: {
     description: "This command will return information about an item in game.",
   },
   async autocomplete(interaction: AutocompleteInteraction) {
     const itemName = interaction.options.getFocused(true);
 
-    const choices = ITEM_CHOICES.filter((choice) => choice.name.toLowerCase().indexOf(itemName.value.toLowerCase()) !== -1);
+    const choices = ITEM_CHOICES.filter(
+      (choice) =>
+        choice.name.toLowerCase().indexOf(itemName.value.toLowerCase()) !== -1
+    );
 
-    await interaction.respond(itemName.value !== "" ? choices.slice(0, 25) : ITEM_CHOICES.slice(0, 25));
+    await interaction.respond(
+      itemName.value !== "" ? choices.slice(0, 25) : ITEM_CHOICES.slice(0, 25)
+    );
   },
   async execute(interaction: CommandInteraction) {
     await interaction.deferReply();
@@ -50,7 +57,9 @@ export default {
     }
     const itemInfo = items[id.value as number] as Item;
     if (!itemInfo) {
-      return interaction.editReply(`I could not find any item for the search term`);
+      return interaction.editReply(
+        `I could not find any item for the search term`
+      );
     }
 
     const embed = new EmbedBuilder().setThumbnail(

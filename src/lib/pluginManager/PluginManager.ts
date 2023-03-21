@@ -8,7 +8,6 @@ export interface PluginManagerSettings {
 }
 
 export class PluginManager {
-
   private plugins: Map<string, IPluginWrapper>;
   private settings: PluginManagerSettings;
 
@@ -34,11 +33,15 @@ export class PluginManager {
     }
 
     try {
-      const pluginInstance = plugin.isRelative ? 
-        this.requireModule(join(this.settings.pluginsPath, plugin.packageName)) :
-        this.requireModule(join(process.cwd(), "node_modules", plugin.packageName));
+      const pluginInstance = plugin.isRelative
+        ? this.requireModule(
+            join(this.settings.pluginsPath, plugin.packageName)
+          )
+        : this.requireModule(
+            join(process.cwd(), "node_modules", plugin.packageName)
+          );
 
-        this.addPlugin(plugin, pluginInstance);
+      this.addPlugin(plugin, pluginInstance);
     } catch (error) {
       throw new Error(`Error loading plugin ${plugin.name}: ${error.message}`);
     }
@@ -61,5 +64,4 @@ export class PluginManager {
     const pluginInstance = plugin.instance as IPlugin;
     return new pluginInstance(plugin.settings);
   }
-
 }

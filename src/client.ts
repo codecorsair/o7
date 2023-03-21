@@ -1,23 +1,26 @@
 // import { Message as DJSMessage } from 'discord.js';
 // import { processCommand } from './lib/utils/commands';
-import { Client } from './lib/types';
+import { Client } from "./lib/types";
 // import { Message } from './lib/types';
 // import * as settings from './lib/settings';
 // import config from './config.json';
 
 const client = new Client();
 
-client.once('ready', async () => {
+client.once("ready", async () => {
   console.log(`Logged in as ${client.user?.tag}!`);
 });
 
-client.on('guildCreate', async (guild) => {
-  const guildCount = await client.shard.fetchClientValues('guilds.cache.size');
-  console.log(`Joined guild ${guild.name} (${guild.id}) [Total: ${guildCount}]`);
+client.on("guildCreate", async (guild) => {
+  const guildCount = await client.shard.fetchClientValues("guilds.cache.size");
+  console.log(
+    `Joined guild ${guild.name} (${guild.id}) [Total: ${guildCount}]`
+  );
 });
 
-client.on('interactionCreate', async interaction => {
-  if (!interaction.isChatInputCommand() && !interaction.isAutocomplete()) return;
+client.on("interactionCreate", async (interaction) => {
+  if (!interaction.isChatInputCommand() && !interaction.isAutocomplete())
+    return;
   const command = client.commands.get(interaction.commandName);
   if (!command) return;
   try {
@@ -51,6 +54,4 @@ client.on('interactionCreate', async interaction => {
 //   return config.prefix;
 // }
 
-export {
-  client,
-}
+export { client };
