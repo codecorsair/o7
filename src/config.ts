@@ -1,4 +1,5 @@
 import { existsSync } from "fs";
+import { join } from "path";
 
 let config: {
   dev: boolean;
@@ -24,15 +25,18 @@ let config: {
   };
 } = {} as any;
 
-if (existsSync('../config.json')) {
-  config = require('../config.json');
+if (existsSync(join(__dirname, '../config.json'))) {
+  console.log(`Config found at '${join(__dirname, '../config.json')}'`);
+  config = require(join(__dirname, '../config.json'));
+} else {
+  console.log(`No config found at '${join(__dirname, '../config.json')}'`);
 }
 
 export default {
-  dev: assert<boolean>("Config variable DEV is not set", process.env.NODE_ENV ,config?.dev),
-  owners: assert<string[]>("Config variable OWNERS is not set", process.env.OWNERS, config?.owners),
+  dev: assert<boolean>("Config variable DEV is not set", process.env.NODE_ENV, config?.dev),
+  owners: assert<string[]>("Config variable OWNERS is not set", process.env.OWNERS, config?.owners, 'none'),
   token: assert<string>("Config variable TOKEN is not set", process.env.TOKEN, config?.token),
-  prefix: assert<string>("Config variable PREFIX is not set", process.env.PREFIX, config?.prefix),
+  prefix: assert<string>("Config variable PREFIX is not set", process.env.PREFIX, config?.prefix, '!'),
   mongo: {
     connectionString: assert<string>("Config variable MONGO_CONNECTION_STRING is not set", process.env.MONGO_CONNECTION_STRING, config?.mongo?.connectionString),
     "database": assert<string>("Config variable MONGO_DATABASE is not set", process.env.MONGO_DATABASE, config?.mongo?.database),
@@ -45,10 +49,10 @@ export default {
   },
   gcloud: {
     auth: {
-      client_email: process.env.GCLOUD_AUTH_CLIENT_EMAIL || config.gcloud.auth.client_email,
-      private_key: process.env.GCLOUD_AUTH_PRIVATE_KEY || config.gcloud.auth.private_key,
+      client_email: process.env.GCLOUD_AUTH_CLIENT_EMAIL || config?.gcloud?.auth?.client_email,
+      private_key: process.env.GCLOUD_AUTH_PRIVATE_KEY || config?.gcloud?.auth?.private_key,
     },
-    bucket: process.env.GCLOUD_BUCKET || config.gcloud.bucket,
+    bucket: process.env.GCLOUD_BUCKET || config?.gcloud?.bucket,
   },
 }
 

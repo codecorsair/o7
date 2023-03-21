@@ -5,45 +5,47 @@ services:
     image: mongo:latest
     restart: always
     networks:
-      - default
+      - internal
     ports:
       - 27017:27017
     environment:
       MONGO_INITDB_ROOT_USERNAME: mongo
       MONGO_INITDB_ROOT_PASSWORD: password1
     volumes:
-      - ./data/db:/data/db
+      - mongodb_data:/data/db
 
   neo4j:
-#    image: neo4j:latest
     build: ./neo4j
     restart: always
     networks:
-      - default
+      - internal
     ports:
       - 7474:7474
       - 7687:7687
     volumes:
-      - ./data/neo4j:/data
+      - neo4j_data:/data
 
   o7-bot:
-#    image: ghcr.io/ralphschuler/o7:latest
     build: .
     restart: always
     networks:
-      - default
+      - internal
+    volumes:
+      - ./config.json:/home/container/app/config.json:rw
     depends_on:
       - mongodb
       - neo4j
     environment:
       NODE_ENV: dev
-      OWNERS: 123456789012345678,987654321098765432
-      DISCORD_TOKEN: ODE0NDM1NTM3ODg4MzQ2MTEy.G2pWDT.BKhtXhfGgm7JKfd3yCXX003A7ziW3DLyUkwBhc
-      PREFIX: !
+      OWNERS: <discord user id>
+      TOKEN: <discord bot token>
+      PREFIX: ! # obsolete in favor of slash commands
       MONGO_CONNECTION_STRING: mongodb://mongo:password1@mongodb:27017
       MONGO_DATABASE: o7-bot
       NEO4J_URI: neo4j://neo4j:7687
       NEO4J_DATABASE: o7-bot
+      NEO4J_USERNAME: neo4j
+      NEO4J_PASSWORD: neo4j
       GCLOUD_AUTH_CLIENT_EMAIL:
       GCLOUD_AUTH_PRIVATE_KEY:
       GCLOUD_BUCKET:
@@ -57,4 +59,8 @@ services:
   #   command: --cleanup --interval 30
 
 networks:
-  default:
+  internal:
+
+volumes:
+  neo4j_data:
+  mongodb_data:

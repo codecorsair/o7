@@ -11,6 +11,11 @@ client.once('ready', async () => {
   console.log(`Logged in as ${client.user?.tag}!`);
 });
 
+client.on('guildCreate', async (guild) => {
+  const guildCount = client.guilds.cache.size;
+  console.log(`Joined guild ${guild.name} (${guild.id}) [Total: ${guildCount}]`);
+});
+
 client.on('interactionCreate', async interaction => {
   if (!interaction.isChatInputCommand() && !interaction.isAutocomplete()) return;
   const command = client.commands.get(interaction.commandName);
