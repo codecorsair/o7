@@ -12,7 +12,7 @@ client.once('ready', async () => {
 });
 
 client.on('guildCreate', async (guild) => {
-  const guildCount = client.guilds.cache.size;
+  const guildCount = await client.shard.fetchClientValues('guilds.cache.size');
   console.log(`Joined guild ${guild.name} (${guild.id}) [Total: ${guildCount}]`);
 });
 

@@ -1,11 +1,7 @@
-import { client } from './client';
-import config from './config';
+import { ShardingManager } from 'discord.js';
+import { config } from './config';
 
-client.once('ready', async () => {
-  client.loadCommands(__dirname + '/commands')
-    .then(() => client.registerCommands())
-  // .then(() => client.loadModules(__dirname + '/modules'));
-});
+const manager = new ShardingManager('./bot.js', { token: config.token });
+manager.on('shardCreate', shard => console.log(`Launched shard ${shard.id}`));
 
-client.owners = config.owners;
-client.login(config.token);
+manager.spawn();

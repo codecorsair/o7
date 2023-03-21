@@ -15,6 +15,6 @@
     "allowJs": true,
     "noImplicitAny": false,
   },
-  "include": ["src/index.ts", "src/commands/**/*"],
+  "include": ["src/bot.ts", "src/commands/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts", "dist/**/*"]
 }
