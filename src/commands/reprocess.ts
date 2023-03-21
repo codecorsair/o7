@@ -15,7 +15,7 @@ const fuse = new Fuse(reproc, {
 
 const ITEM_CHOICES = marketItems.map((item) => ({
   name: String(item.name),
-  value: String(item.id),
+  value: String(item.name),
 }));
 
 export default {
