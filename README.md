@@ -6,15 +6,31 @@ o7 is a hosted bot that is available free for anyone to add to their server. Jus
 
 You are welcome to self-host **o7**, however I can not fully support self-hosted installations. I will try and answer any questions on the official Discord, but I am not available for 24/7 bot support.
 
-## Setup
-1. Install docker & docker-compose
-2. Edit environment variables docker-compose.yml or rename the `example.config.json` to `config.json` and edit the setting there.
-  > NOTE: Environment variables take priority over the variables from the `config.json`
-3. Run `docker-compose up`
-4. Invite bot to server `https://discord.com/api/oauth2/authorize?client_id=<application id>&permissions=0&scope=bot%20applications.commands`
-
 ## Planed Features
-- [ ] Prometheus Metrics endpoint.
+- [ ] Prometheus Metrics endpoint. ([prom-client](https://github.com/siimon/prom-client))
+
+## Project Structure
+- **/data** - Data for the bot
+- **/example** - Example setup using docker compose
+  - **/configs** - Example configs
+    - **/bridge.json** - Example bridge config
+    - **/cluster.json** - Example cluster config
+    - **/bot.json** - Example bot config
+    - **/shared.json** - Example shared config
+  - **/docker-compose.yml** - Example docker compose file
+- **/src** - Source code for the bot
+  - **/shared** - Shared code
+  - **/bridge** - Bridge between cluster bots
+  - **/plugins** - Plugins for the bot
+    - **/eve_echoes** - Plugin related to Eve echoes
+    - **/system** - Required plugin for the bot (help, about, invite)
+  - **/cluster** - Cluster bot
+  - **/bot** - Discord bot instance
+    - **/core** - Core libraries
+      - **/pluginManager** - Plugin manager
+    - **/helpers** - Helper functions
+    - **/services** - Services for interacting with external APIs
+    - **/utils** - Utility functions
 
 ## Contributing
 Great! You'd like to add a feature to **o7**? I am happy to accept contributions via pull request. 

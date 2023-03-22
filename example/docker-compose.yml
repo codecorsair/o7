@@ -1,0 +1,82 @@
+version: '3'
+
+services:
+  mongodb:
+    image: mongo:latest
+    restart: always
+    networks:
+      - internal
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: o7
+      MONGO_INITDB_ROOT_PASSWORD: <a strong password>
+    volumes:
+      - mongodb_data:/data/db
+
+  neo4j:
+    image: o7_neo4j
+    restart: always
+    networks:
+      - internal
+    volumes:
+      - neo4j_data:/data
+
+  bridge:
+    image: o7_bridge
+    restart: always
+    environment:
+      PORT: 4444
+      AUTH_TOKEN: <a shared secret between the bridge and the cluster>
+      TOTAL_SHARDS: 40
+      TOTAL_MASHINES: 2
+      SHARDS_PER_CLUSTER: 10
+      TOKEN: <your bot token>
+    networks:
+      - internal
+    secrets:
+      - source: bridge_config
+        target: /home/container/app/configs/bridge.json
+
+  cluster:
+    image: o7_cluster
+    restart: always
+    environment:
+      AGENT: bot
+      HOST: bridge
+      PORT: 4444
+      HANDSHAKE: false
+      AUTH_TOKEN: <a shared secret between the bridge and the cluster>
+      ROLLING_RESTARTS: false
+    networks:
+      - internal
+    secrets:
+      - source: cluster_config
+        target: /home/container/app/configs/cluster.json
+      - source: bot_config
+        target: /home/container/app/configs/bot.json
+    depends_on:
+      - mongodb
+      - neo4j
+      - bridge
+
+  # watchtower:
+  #   image: containrrr/watchtower
+  #   container_name: watchtower
+  #   restart: always
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   command: --cleanup --interval 30
+
+secrets:
+  bridge_config:
+    file: ./configs/bridge.json
+  cluster_config:
+    file: ./configs/cluster.json
+  bot_config:
+    file: ./configs/bot.json
+
+networks:
+  internal:
+
+volumes:
+  neo4j_data:
+  mongodb_data:

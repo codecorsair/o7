@@ -1,7 +1,4 @@
-import { ShardingManager } from "discord.js";
-import { config } from "./config";
-
-const manager = new ShardingManager("./bot.js", { token: config.token });
-manager.on("shardCreate", (shard) => console.log(`Launched shard ${shard.id}`));
-
-manager.spawn();
+export * as Bot from "./bot"
+export * as Bridge from "./bridge"
+export * as Cluster from "./cluster"
+export * as Plugins from "./plugins"
