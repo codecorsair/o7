@@ -6,6 +6,10 @@ on:
     branches:
       - main
       - master
+  push:
+    branches:
+      - main
+      - master
 
 concurrency:
   group: test-${{ github.event.pull_request.number }}
