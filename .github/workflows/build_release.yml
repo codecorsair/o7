@@ -42,30 +42,30 @@ jobs:
 
       - name: Build Docker Images
         run: |
-          docker build -t ${{ github.repository }}/o7_neo4j:latest -f docker/neo4j.dockerfile
-          docker build -t ${{ github.repository }}/o7_bridge:latest -f docker/bridge.dockerfile
-          docker build -t ${{ github.repository }}/o7_cluster:latest -f docker/cluster.dockerfile
+          docker build -t ${{ github.repository }}_neo4j:latest -f docker/neo4j.dockerfile
+          docker build -t ${{ github.repository }}_bridge:latest -f docker/bridge.dockerfile
+          docker build -t ${{ github.repository }}_cluster:latest -f docker/cluster.dockerfile
 
       - name: Tag Docker Images
         run: |
-          docker tag ${{ github.repository }}/o7_neo4j:latest ${{ github.repository }}/o7_neo4j:release-${{ github.event.release.tag_name }}
-          docker tag ${{ github.repository }}/o7_bridge:latest ${{ github.repository }}/o7_bridge:release-${{ github.event.release.tag_name }}
-          docker tag ${{ github.repository }}/o7_cluster:latest ${{ github.repository }}/o7_cluster:release-${{ github.event.release.tag_name }}
+          docker tag ${{ github.repository }}_neo4j:latest ${{ github.repository }}_neo4j:release-${{ github.event.release.tag_name }}
+          docker tag ${{ github.repository }}_bridge:latest ${{ github.repository }}_bridge:release-${{ github.event.release.tag_name }}
+          docker tag ${{ github.repository }}_cluster:latest ${{ github.repository }}_cluster:release-${{ github.event.release.tag_name }}
 
-          docker tag ${{ github.repository }}/o7_neo4j:latest ${{ github.repository }}/o7_neo4j:release-${{ github.ref }}
-          docker tag ${{ github.repository }}/o7_bridge:latest ${{ github.repository }}/o7_bridge:release-${{ github.ref }}
-          docker tag ${{ github.repository }}/o7_cluster:latest ${{ github.repository }}/o7_cluster:release-${{ github.ref }}
+          docker tag ${{ github.repository }}_neo4j:latest ${{ github.repository }}_neo4j:release-${{ github.ref }}
+          docker tag ${{ github.repository }}_bridge:latest ${{ github.repository }}_bridge:release-${{ github.ref }}
+          docker tag ${{ github.repository }}_cluster:latest ${{ github.repository }}_cluster:release-${{ github.ref }}
 
       - name: Push Docker Images
         run: |
-          docker push ${{ github.repository }}/o7_neo4j:latest
-          docker push ${{ github.repository }}/o7_bridge:latest
-          docker push ${{ github.repository }}/o7_cluster:latest
+          docker push ${{ github.repository }}_neo4j:latest
+          docker push ${{ github.repository }}_bridge:latest
+          docker push ${{ github.repository }}_cluster:latest
 
-          docker push ${{ github.repository }}/o7_neo4j:release-${{ github.event.release.tag_name }}
-          docker push ${{ github.repository }}/o7_bridge:release-${{ github.event.release.tag_name }}
-          docker push ${{ github.repository }}/o7_cluster:release-${{ github.event.release.tag_name }}
+          docker push ${{ github.repository }}_neo4j:release-${{ github.event.release.tag_name }}
+          docker push ${{ github.repository }}_bridge:release-${{ github.event.release.tag_name }}
+          docker push ${{ github.repository }}_cluster:release-${{ github.event.release.tag_name }}
 
-          docker push ${{ github.repository }}/o7_neo4j:release-${{ github.ref }}
-          docker push ${{ github.repository }}/o7_bridge:release-${{ github.ref }}
-          docker push ${{ github.repository }}/o7_cluster:release-${{ github.ref }}
+          docker push ${{ github.repository }}_neo4j:release-${{ github.ref }}
+          docker push ${{ github.repository }}_bridge:release-${{ github.ref }}
+          docker push ${{ github.repository }}_cluster:release-${{ github.ref }}
