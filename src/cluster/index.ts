@@ -33,6 +33,7 @@ const restart = () => {
   .then((e: any) => {
     if (!e) return;
     if (!e.shardList) return;
+    console.log(`Shard data: ${JSON.stringify(e)}`);
     clusterManager.totalShards = e.totalShards;
     clusterManager.totalClusters = e.shardList.length;
     clusterManager.shardList = e.shardList;
