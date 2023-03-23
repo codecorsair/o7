@@ -3,6 +3,8 @@ import { ClusterManager } from 'discord-hybrid-sharding';
 import { createLogger } from '@/shared/utils/logger';
 import Config from "./Config";
 
+const ONE_MINUTE = 60 * 1000;
+
 const logger = createLogger();
 
 const client = new Client({
@@ -37,6 +39,6 @@ client
     clusterManager.totalClusters = e.shardList.length;
     clusterManager.shardList = e.shardList;
     clusterManager.clusterList = e.clusterList;
-    clusterManager.spawn({ timeout: -1 });
+    clusterManager.spawn({ timeout: ONE_MINUTE });
   })
   .catch((err: any) => logger.error(`Error while fetching shard data: ${err}`));
