@@ -42,9 +42,9 @@ jobs:
 
       - name: Build Docker Images
         run: |
-          docker build -t ${{ github.repository }}_neo4j:latest docker/neo4j.dockerfile
-          docker build -t ${{ github.repository }}_bridge:latest docker/bridge.dockerfile
-          docker build -t ${{ github.repository }}_cluster:latest docker/cluster.dockerfile
+          docker build -t ${{ github.repository }}_neo4j:latest -f docker/neo4j.dockerfile .
+          docker build -t ${{ github.repository }}_bridge:latest -f docker/bridge.dockerfile .
+          docker build -t ${{ github.repository }}_cluster:latest -f docker/cluster.dockerfile .
 
       - name: Tag Docker Images
         run: |
