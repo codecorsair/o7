@@ -16,7 +16,7 @@ const Config = new GenericConfig<IConfig>('bot.json');
 export default {
   intents: assert<string[]>(
     `Configure bot intents using the "intents" key in the config file or the "BOT_INTENTS" environment variable.`,
-    String(BOT_INTENTS).split(',')),
+    String(BOT_INTENTS).split(','),
     Config.get('intents')
   ),
   pluginsPath: assert<string>(
