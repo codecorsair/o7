@@ -4,7 +4,7 @@ import {
   getResponseCapital,
   getCapitalResponseList,
 } from "../libs/bputils_capital";
-import { ICommand } from "@/src/shared/interfaces/ICommand";
+import { ICommand } from "@/shared/interfaces/ICommand";
 
 export default {
   aliases: ["bp", "blueprint"],

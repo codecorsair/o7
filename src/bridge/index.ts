@@ -1,6 +1,6 @@
 import { Bridge } from 'discord-cross-hosting';
 import { RatelimitManager } from 'discord-cross-ratelimit';
-import { createLogger } from '@/src/shared/utils/logger';
+import { createLogger } from '@/shared/utils/logger';
 
 const logger = createLogger();
 

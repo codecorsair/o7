@@ -1,5 +1,5 @@
 import Fuse from 'fuse.js';
-import items from '@/data/bot/market-items.json';
+import items from '@/data/market-items.json';
 
 const fuseOptions = {
   isCaseSensitive: false,

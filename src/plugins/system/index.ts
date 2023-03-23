@@ -1,4 +1,4 @@
-import { IPlugin } from '@/src/shared/interfaces/IPlugin';
+import { IPlugin } from '@/shared/interfaces/IPlugin';
 
 import COMMAND_APPCONFIG from './commands/appconfig';
 //import COMMAND_CHANGELOG from "./commands/changelog";

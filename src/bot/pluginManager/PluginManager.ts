@@ -6,7 +6,7 @@ import {
   PluginInstance
 } from './IPluginWrapper';
 import { IClient } from '@/src/shared/interfaces/IClient';
-import { createLogger } from '@/src/shared/utils/logger';
+import { createLogger } from '@/shared/utils/logger';
 import Config from '../Config';
 
 const logger = createLogger();

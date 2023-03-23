@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 import { getItemId } from './items';
-import items from '@/data/bot/market-items.json';
+import items from '@/data/market-items.json';
 import { timeoutPromise } from './timeout-promise';
 
 const MARKET_API = 'https://api.eve-echoes-market.com/market-stats/'

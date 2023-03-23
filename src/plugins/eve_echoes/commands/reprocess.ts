@@ -6,10 +6,10 @@ import {
 } from "discord.js";
 import Fuse from "fuse.js";
 import { startCase } from "lodash";
-import reproc from "@/data/bot/reproc.json";
-import { ICommand } from "@/src/shared/interfaces/ICommand";
+import reproc from "@/data/reproc.json";
+import { ICommand } from "@/shared/interfaces/ICommand";
 import numeral from "numeral";
-import marketItems from "@/data/bot/market-items.json";
+import marketItems from "@/data/market-items.json";
 
 const fuse = new Fuse(reproc, {
   isCaseSensitive: false,
