@@ -44,7 +44,7 @@ client.on('interactionCreate', async (interaction) => {
     if (!command) return
     try {
         if (interaction.isChatInputCommand()) {
-            const limited = rateLimiter.take(interaction.author.id);
+            const limited = rateLimiter.take(interaction.user.id);
             if (limited) {
                 await interaction.reply({ content: 'You are being ratelimited!', ephemeral: true });
                 return;
