@@ -29,6 +29,7 @@ clusterManager.on('clusterCreate', (cluster) =>
 );
 clusterManager.on('debug', (message) => logger.debug(message));
 client.on('ready', () => {
+  client.listen(clusterManager);
   client
   .requestShardData()
   .then((e: any) => {
@@ -47,4 +48,3 @@ client.on('ready', () => {
 });
 
 client.connect();
-client.listen(clusterManager);
