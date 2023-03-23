@@ -23,7 +23,7 @@ client.connect();
 const clusterManager = new ClusterManager(`${__dirname}/../bot/index.js`, {
   totalShards: 1,
   totalClusters: 'auto',
-  mode: 'process'
+  mode: 'worker'
 }); // Some dummy Data
 clusterManager.on('clusterCreate', (cluster) =>
   logger.info(`Cluster ${cluster.id} created`)
