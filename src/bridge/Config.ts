@@ -1,6 +1,5 @@
 import { GenericConfig } from '@/shared/GenericConfig';
 import { assert } from '@/shared/utils/assert';
-import { resolve } from '@/shared/utils/resolve'
 
 const {
   BRIDGE_PORT,
