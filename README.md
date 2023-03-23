@@ -10,7 +10,6 @@ You are welcome to self-host **o7**, however I can not fully support self-hosted
 - [ ] Prometheus Metrics endpoint. ([prom-client](https://github.com/siimon/prom-client))
 
 ## Project Structure
-- **/data** - Data for the bot
 - **/example** - Example setup using docker compose
   - **/configs** - Example configs
     - **/bridge.json** - Example bridge config
@@ -18,6 +17,7 @@ You are welcome to self-host **o7**, however I can not fully support self-hosted
     - **/bot.json** - Example bot config
   - **/docker-compose.yml** - Example docker compose file
 - **/src** - Source code for the bot
+  - **/data** - Data for the bot
   - **/shared** - Shared code
     - **/interfaces** - Interfaces for the bot
     - **/utils** - Utilities for the bot

@@ -17,8 +17,7 @@
     "allowJs": true,
     "noImplicitAny": false,
     "paths": {
-      "@/data/*": ["./data/*"],
-      "@/src/*": ["./src/*"]
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src/**/*", "data/**/*"],
