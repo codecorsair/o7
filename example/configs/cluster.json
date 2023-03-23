@@ -4,5 +4,6 @@
   "port": 4444,
   "handshake": false,
   "authToken": "<a shared secret between the bridge and the cluster>",
-  "rollingRestarts": false
+  "rollingRestarts": false,
+  "token": "<your bot token>"
 }

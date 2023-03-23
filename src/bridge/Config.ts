@@ -7,7 +7,6 @@ const {
   BRIDGE_TOTAL_SHARDS,
   BRIDGE_TOTAL_MACHINES,
   BRIDGE_SHARDS_PER_CLUSTER,
-  BRIDGE_TOKEN
 } = process.env;
 
 export interface IConfig {
@@ -16,7 +15,6 @@ export interface IConfig {
   totalShards: number;
   totalMachines: number;
   shardsPerCluster: number;
-  token: string;
 }
 
 const Config = new GenericConfig<IConfig>('bridge.json');
@@ -47,10 +45,5 @@ export default {
     `Configure bridge shards per cluster using the "shardsPerCluster" key in the config file or the "BRIDGE_SHARDS_PER_CLUSTER" environment variable.`,
     BRIDGE_SHARDS_PER_CLUSTER,
     Config.get('shardsPerCluster')
-  ),
-  token: assert<string>(
-    `Configure bridge token using the "token" key in the config file or the "BRIDGE_TOKEN" environment variable.`,
-    BRIDGE_TOKEN,
-    Config.get('token')
   )
 } as IConfig;

@@ -46,6 +46,7 @@ services:
       CLUSTER_HANDSHAKE: "false"
       CLUSTER_AUTH_TOKEN: <a shared secret between the bridge and the cluster>
       CLUSTER_ROLLING_RESTARTS: "false"
+      CLUSTER_TOKEN: <your bot token>
       BOT_INTENTS: Guilds
       BOT_PLUGINS_PATH: /usr/src/app/plugins
       BOT_TOKEN: <your bot token>
