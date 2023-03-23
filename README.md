@@ -16,6 +16,7 @@ You are welcome to self-host **o7**, however I can not fully support self-hosted
     - **/bridge.json** - Example bridge config
     - **/cluster.json** - Example cluster config
     - **/bot.json** - Example bot config
+    - **/<plugin name>.json** - Plugin config
   - **/docker-compose.yml** - Example docker compose file
 - **/src** - Source code for the bot
   - **/data** - Data for the bot
