@@ -14,11 +14,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  build-code:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        tags: [neo4j, bridge, cluster]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -37,6 +34,20 @@ jobs:
           node-version: "18"
           cache: "yarn"
 
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile --cache-folder ~/.yarn-cache
+
+      - name: Build Code
+        run: yarn build
+
+  build-docker:
+    needs: build-code
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tags: [neo4j, bridge, cluster]
+    steps:
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
 
@@ -49,12 +60,6 @@ jobs:
           registry: https://ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Install Dependencies
-        run: yarn install --frozen-lockfile --cache-folder ~/.yarn-cache
-
-      - name: Build Code
-        run: yarn build
 
       - name: Build and Push Docker Images
         uses: docker/build-push-action@v2
