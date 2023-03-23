@@ -40,26 +40,26 @@ jobs:
 
       - name: Build Docker Images
         run: |
-          docker build -t ${{ github.username }}/o7_neo4j:test -f docker/neo4j.dockerfile
-          docker build -t ${{ github.username }}/o7_bridge:test -f docker/bridge.dockerfile
-          docker build -t ${{ github.username }}/o7_cluster:test -f docker/cluster.dockerfile
+          docker build -t ${{ github.repository }}/o7_neo4j:test -f docker/neo4j.dockerfile
+          docker build -t ${{ github.repository }}/o7_bridge:test -f docker/bridge.dockerfile
+          docker build -t ${{ github.repository }}/o7_cluster:test -f docker/cluster.dockerfile
 
       - name: Tag Docker Images
         run: |
-          docker tag ${{ github.username }}/o7_neo4j:test ${{ github.username }}/o7_neo4j:test-${{ github.event.pull_request.number }}
-          docker tag ${{ github.username }}/o7_bridge:test ${{ github.username }}/o7_bridge:test-${{ github.event.pull_request.number }}
-          docker tag ${{ github.username }}/o7_cluster:test ${{ github.username }}/o7_cluster:test-${{ github.event.pull_request.number }}
+          docker tag ${{ github.repository }}/o7_neo4j:test ${{ github.repository }}/o7_neo4j:test-${{ github.event.pull_request.number }}
+          docker tag ${{ github.repository }}/o7_bridge:test ${{ github.repository }}/o7_bridge:test-${{ github.event.pull_request.number }}
+          docker tag ${{ github.repository }}/o7_cluster:test ${{ github.repository }}/o7_cluster:test-${{ github.event.pull_request.number }}
 
-          docker tag ${{ github.username }}/o7_neo4j:test ${{ github.username }}/o7_neo4j:test-${{ github.sha }}
-          docker tag ${{ github.username }}/o7_bridge:test ${{ github.username }}/o7_bridge:test-${{ github.sha }}
-          docker tag ${{ github.username }}/o7_cluster:test ${{ github.username }}/o7_cluster:test-${{ github.sha }}
+          docker tag ${{ github.repository }}/o7_neo4j:test ${{ github.repository }}/o7_neo4j:test-${{ github.sha }}
+          docker tag ${{ github.repository }}/o7_bridge:test ${{ github.repository }}/o7_bridge:test-${{ github.sha }}
+          docker tag ${{ github.repository }}/o7_cluster:test ${{ github.repository }}/o7_cluster:test-${{ github.sha }}
 
       - name: Push Docker Images
         run: |
-          docker push ${{ github.username }}/o7_neo4j:test-${{ github.event.pull_request.number }}
-          docker push ${{ github.username }}/o7_bridge:test-${{ github.event.pull_request.number }}
-          docker push ${{ github.username }}/o7_cluster:test-${{ github.event.pull_request.number }}
+          docker push ${{ github.repository }}/o7_neo4j:test-${{ github.event.pull_request.number }}
+          docker push ${{ github.repository }}/o7_bridge:test-${{ github.event.pull_request.number }}
+          docker push ${{ github.repository }}/o7_cluster:test-${{ github.event.pull_request.number }}
 
-          docker push ${{ github.username }}/o7_neo4j:test-${{ github.sha }}
-          docker push ${{ github.username }}/o7_bridge:test-${{ github.sha }}
-          docker push ${{ github.username }}/o7_cluster:test-${{ github.sha }}
+          docker push ${{ github.repository }}/o7_neo4j:test-${{ github.sha }}
+          docker push ${{ github.repository }}/o7_bridge:test-${{ github.sha }}
+          docker push ${{ github.repository }}/o7_cluster:test-${{ github.sha }}
