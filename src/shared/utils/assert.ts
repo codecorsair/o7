@@ -3,6 +3,9 @@ export function assert<T>(msg: string, ...args: any[]): T {
     (arg) => arg !== undefined && arg !== null && arg !== ''
   );
   if (arg !== undefined) {
+    if (arg instanceof Array && arg.length === 0) {
+      throw new Error(`${msg}: '${args.join("', '")}'`);
+    }
     return arg;
   }
 
