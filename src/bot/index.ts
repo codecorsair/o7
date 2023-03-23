@@ -78,8 +78,6 @@ client.on('interactionCreate', async (interaction) => {
                     ephemeral: true,
                 })
             }
-        } else if (interaction.isAutocomplete()) {
-            await interaction.cancel()
         }
         return;
     }
