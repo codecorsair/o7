@@ -27,14 +27,15 @@ clusterManager.on('clusterCreate', (cluster) =>
 clusterManager.on('debug', (message) => logger.debug(message));
 
 client.listen(clusterManager);
+console.log(`Requesting shard data from ${Config.host}:${Config.port}`);
 client
   .requestShardData()
-  .then((e) => {
+  .then((e: any) => {
     if (!e) return;
     if (!e.shardList) return;
     clusterManager.totalShards = e.totalShards;
     clusterManager.totalClusters = e.shardList.length;
-    // clusterManager.shardList = e.shardList;
+    clusterManager.shardList = e.shardList;
     clusterManager.clusterList = e.clusterList;
     clusterManager.spawn({ timeout: -1 });
   })

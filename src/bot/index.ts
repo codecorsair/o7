@@ -1,11 +1,8 @@
 import { Shard } from 'discord-cross-hosting';
 import { ClusterClient, getInfo } from 'discord-hybrid-sharding';
-import { RateLimiter } from 'discord.js-rate-limiter';
-import { RequestManager } from 'discord-cross-ratelimit';
 import { Client } from './Client';
 import Config from './Config';
 
-const rateLimiter = new RateLimiter(1, 2000);
 const client = new Client({
   intents: ['Guilds'], // Your Intents
   shards: getInfo().SHARD_LIST, // An Array of Shard list, which will get spawned
@@ -14,7 +11,6 @@ const client = new Client({
 
 client.cluster = new ClusterClient(client);
 client.machine = new Shard(client.cluster); // Initialize Cluster
-client.rest = new RequestManager(client, client.machine); //Init the Request Manager
 client.on('ready', () => {
   console.log(`Logged in as ${client.user?.tag}!`);
   client.machine
@@ -43,14 +39,6 @@ client.on('interactionCreate', async (interaction) => {
   if (!command) return;
   try {
     if (interaction.isChatInputCommand()) {
-      const limited = rateLimiter.take(interaction.user.id);
-      if (limited) {
-        await interaction.reply({
-          content: 'You are being ratelimited!',
-          ephemeral: true
-        });
-        return;
-      }
       console.log(
         `Command ${interaction.commandName} used by ${interaction.user.tag} (${interaction.user.id}) in ${interaction.guild?.name} (${interaction.guild?.id})`
       );
