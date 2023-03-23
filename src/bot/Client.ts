@@ -79,7 +79,7 @@ export class Client extends DJSClient implements IClient {
                 isRelative: true,
             }
 
-            logger.info(`Loading plugin ${plugin.name}`)
+            logger.info(`Loading plugin ${plugin}`)
             this.pluginManager.registerPlugin(pluginWrapper)
             this.pluginManager.loadPlugin(plugin)
         }
