@@ -10,6 +10,7 @@
   "scripts": {
     "clean": "rimraf dist && mkdirp dist",
     "build": "yarn clean && tsc -p tsconfig.json && tsc-alias -p tsconfig.json",
+    "build:watch": "yarn tsc -p tsconfig.json --watch",
     "lint": "eslint src --ext .ts",
     "format": "prettier --write src/**/*.ts"
   },

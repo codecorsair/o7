@@ -4,5 +4,7 @@ export enum IMiddlewareType {
 }
 
 export interface IMiddleware {
+  disabled?: boolean;
+  type: IMiddlewareType;
   intercept: (...args: any[]) => Promise<any>;
 }
