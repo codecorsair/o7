@@ -47,26 +47,26 @@ jobs:
 
       - name: Build Docker Images
         run: |
-          docker build -t ${{ github.repository }}_neo4j:test -f docker/neo4j.dockerfile .
-          docker build -t ${{ github.repository }}_bridge:test -f docker/bridge.dockerfile .
-          docker build -t ${{ github.repository }}_cluster:test -f docker/cluster.dockerfile .
+          docker build -t https://ghcr.io/${{ github.repository }}_neo4j:test -f docker/neo4j.dockerfile .
+          docker build -t https://ghcr.io/${{ github.repository }}_bridge:test -f docker/bridge.dockerfile .
+          docker build -t https://ghcr.io/${{ github.repository }}_cluster:test -f docker/cluster.dockerfile .
 
       - name: Tag Docker Images
         run: |
-          docker tag ${{ github.repository }}_neo4j:test ${{ github.repository }}_neo4j:test-${{ github.event.pull_request.number }}
-          docker tag ${{ github.repository }}_bridge:test ${{ github.repository }}_bridge:test-${{ github.event.pull_request.number }}
-          docker tag ${{ github.repository }}_cluster:test ${{ github.repository }}_cluster:test-${{ github.event.pull_request.number }}
+          docker tag https://ghcr.io/${{ github.repository }}_neo4j:test https://ghcr.io/${{ github.repository }}_neo4j:test-${{ github.event.pull_request.number }}
+          docker tag https://ghcr.io/${{ github.repository }}_bridge:test https://ghcr.io/${{ github.repository }}_bridge:test-${{ github.event.pull_request.number }}
+          docker tag https://ghcr.io/${{ github.repository }}_cluster:test https://ghcr.io/${{ github.repository }}_cluster:test-${{ github.event.pull_request.number }}
 
-          docker tag ${{ github.repository }}_neo4j:test ${{ github.repository }}_neo4j:test-${{ github.sha }}
-          docker tag ${{ github.repository }}_bridge:test ${{ github.repository }}_bridge:test-${{ github.sha }}
-          docker tag ${{ github.repository }}_cluster:test ${{ github.repository }}_cluster:test-${{ github.sha }}
+          docker tag https://ghcr.io/${{ github.repository }}_neo4j:test https://ghcr.io/${{ github.repository }}_neo4j:test-${{ github.sha }}
+          docker tag https://ghcr.io/${{ github.repository }}_bridge:test https://ghcr.io/${{ github.repository }}_bridge:test-${{ github.sha }}
+          docker tag https://ghcr.io/${{ github.repository }}_cluster:test https://ghcr.io/${{ github.repository }}_cluster:test-${{ github.sha }}
 
       - name: Push Docker Images
         run: |
-          docker push ${{ github.repository }}_neo4j:test-${{ github.event.pull_request.number }}
-          docker push ${{ github.repository }}_bridge:test-${{ github.event.pull_request.number }}
-          docker push ${{ github.repository }}_cluster:test-${{ github.event.pull_request.number }}
+          docker push https://ghcr.io/${{ github.repository }}_neo4j:test-${{ github.event.pull_request.number }}
+          docker push https://ghcr.io/${{ github.repository }}_bridge:test-${{ github.event.pull_request.number }}
+          docker push https://ghcr.io/${{ github.repository }}_cluster:test-${{ github.event.pull_request.number }}
 
-          docker push ${{ github.repository }}_neo4j:test-${{ github.sha }}
-          docker push ${{ github.repository }}_bridge:test-${{ github.sha }}
-          docker push ${{ github.repository }}_cluster:test-${{ github.sha }}
+          docker push https://ghcr.io/${{ github.repository }}_neo4j:test-${{ github.sha }}
+          docker push https://ghcr.io/${{ github.repository }}_bridge:test-${{ github.sha }}
+          docker push https://ghcr.io/${{ github.repository }}_cluster:test-${{ github.sha }}
