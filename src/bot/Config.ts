@@ -16,18 +16,18 @@ const Config = new GenericConfig<IConfig>('bot.json');
 export default {
   intents: assert<string[]>(
     `Configure bot intents using the "intents" key in the config file or the "BOT_INTENTS" environment variable.`,
-    BOT_INTENTS
+    BOT_INTENTS,
     Config.get('intents')
   ),
   pluginsPath: assert<string>(
     `Configure bot plugins path using the "pluginsPath" key in the config file or the "BOT_PLUGINS_PATH" environment variable.`,
-    BOT_PLUGINS_PATH
+    BOT_PLUGINS_PATH,
     Config.get('pluginsPath'),
     resolve('./plugins')
   ),
   token: assert<string>(
     `Configure bot token using the "token" key in the config file or the "BOT_TOKEN" environment variable.`,
-    BOT_TOKEN
+    BOT_TOKEN,
     Config.get('token')
   ),
   plugins: assert<string[]>(

@@ -24,12 +24,12 @@ const Config = new GenericConfig<IConfig>('cluster.json');
 export default {
   agent: assert<string>(
     `Configure cluster agent using the "agent" key in the config file or the "CLUSTER_AGENT" environment variable.`,
-    CLUSTER_AGENT
+    CLUSTER_AGENT,
     Config.get('agent')
   ),
   host: assert<string>(
     `Configure cluster host using the "host" key in the config file or the "CLUSTER_HOST" environment variable.`,
-    CLUSTER_HOST
+    CLUSTER_HOST,
     Config.get('host'),
     '127.0.0.1'
   ),
@@ -47,7 +47,7 @@ export default {
   ),
   authToken: assert<string>(
     `Configure cluster auth token using the "authToken" key in the config file or the "CLUSTER_AUTH_TOKEN" environment variable.`,
-    CLUSTER_AUTH_TOKEN
+    CLUSTER_AUTH_TOKEN,
     Config.get('authToken')
   ),
   rollingRestarts: assert<boolean>(
