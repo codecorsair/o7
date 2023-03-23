@@ -1,17 +1,16 @@
-import { IPlugin } from "@/src/shared/interfaces/IPlugin";
+import { IPlugin } from '@/src/shared/interfaces/IPlugin';
 
-import COMMAND_SAFEJUMPS from "./commands/safejumps";
-import COMMAND_REPROCESS from "./commands/reprocess";
-import COMMAND_PRICECHECK from "./commands/pricecheck";
-import COMMAND_PLANETARYRESOURCES from "./commands/planetaryresources";
+import COMMAND_SAFEJUMPS from './commands/safejumps';
+import COMMAND_REPROCESS from './commands/reprocess';
+import COMMAND_PRICECHECK from './commands/pricecheck';
+import COMMAND_PLANETARYRESOURCES from './commands/planetaryresources';
 //import COMMAND_LEXICON from "./commands/lexicon";
-import COMMAND_JUMPS from "./commands/jumps";
-import COMMAND_ITEM from "./commands/item";
-import COMMAND_CONSTELLATIONRESOURCES from "./commands/constellationresources";
-import COMMAND_BLUEPRINT from "./commands/blueprint";
+import COMMAND_JUMPS from './commands/jumps';
+import COMMAND_ITEM from './commands/item';
+import COMMAND_CONSTELLATIONRESOURCES from './commands/constellationresources';
+import COMMAND_BLUEPRINT from './commands/blueprint';
 
 export default class extends IPlugin {
-
   private registerCommands(): void {
     this.protocol.registerCommand(COMMAND_SAFEJUMPS);
     this.protocol.registerCommand(COMMAND_REPROCESS);
@@ -27,7 +26,5 @@ export default class extends IPlugin {
   onInit(): void {
     this.registerCommands();
   }
-  onDispose(): void {
-      
-  }
+  onDispose(): void {}
 }

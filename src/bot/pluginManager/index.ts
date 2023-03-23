@@ -1,2 +1,2 @@
-export { IPluginWrapper } from "./IPluginWrapper";
-export { PluginManager } from "./PluginManager";
+export { IPluginWrapper } from './IPluginWrapper';
+export { PluginManager } from './PluginManager';

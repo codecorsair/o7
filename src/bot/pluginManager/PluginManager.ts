@@ -1,14 +1,17 @@
-import { existsSync } from "fs";
-import { join } from "path";
-import { IPluginWrapper, IInitializedPluginWrapper, PluginInstance } from "./IPluginWrapper";
-import { IClient } from "@/src/shared/interfaces/IClient";
-import { createLogger } from "@/src/shared/logger";
-import Config from "../Config"
+import { existsSync } from 'fs';
+import { join } from 'path';
+import {
+  IPluginWrapper,
+  IInitializedPluginWrapper,
+  PluginInstance
+} from './IPluginWrapper';
+import { IClient } from '@/src/shared/interfaces/IClient';
+import { createLogger } from '@/src/shared/logger';
+import Config from '../Config';
 
 const logger = createLogger();
 
 export class PluginManager {
-
   private client: IClient;
   private plugins: Map<string, IInitializedPluginWrapper> = new Map();
 
@@ -36,16 +39,16 @@ export class PluginManager {
 
     try {
       const pluginInstance = plugin.isRelative
-        ? this.requireModule(
-            join(Config.pluginsPath, plugin.packageName)
-          )
+        ? this.requireModule(join(Config.pluginsPath, plugin.packageName))
         : this.requireModule(
-            join(process.cwd(), "node_modules", plugin.packageName)
+            join(process.cwd(), 'node_modules', plugin.packageName)
           );
 
       this.addPlugin(plugin, pluginInstance);
     } catch (error: any) {
-      logger.error(`Plugin with name ${plugin.name} failed to load: ${error.message}`);
+      logger.error(
+        `Plugin with name ${plugin.name} failed to load: ${error.message}`
+      );
     }
   }
 
@@ -53,7 +56,10 @@ export class PluginManager {
     return this.plugins.has(name);
   }
 
-  private addPlugin(plugin: IPluginWrapper, pluginInstance: PluginInstance): void {
+  private addPlugin(
+    plugin: IPluginWrapper,
+    pluginInstance: PluginInstance
+  ): void {
     this.plugins.set(plugin.name, { ...plugin, instance: pluginInstance });
   }
 
@@ -68,8 +74,8 @@ export class PluginManager {
       logger: logger.child({ plugin: plugin.name }),
       client: this.client,
       registerCommand: this.client.registerCommand,
-      registerCronjob: this.client.registerCronjob,
-    }
+      registerCronjob: this.client.registerCronjob
+    };
     return new pluginInstance(protocol);
   }
 }
