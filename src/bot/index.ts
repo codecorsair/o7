@@ -79,11 +79,9 @@ client.on('interactionCreate', async (interaction) => {
   }
 });
 
-client.cluster.on('clusterReady', () => {
-  client
-    .login(Config.token)
-    .catch((e) => console.error(`Error while logging in: ${e}`))
-    .then(() => {
-      console.log('Logged in');
-    });
-});
+client
+  .login(Config.token)
+  .catch((e) => console.error(`Error while logging in: ${e}`))
+  .then(() => {
+    console.log('Logged in');
+  });
