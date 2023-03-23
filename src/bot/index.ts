@@ -19,9 +19,9 @@ client.on('ready', () => {
     client.machine
         .broadcastEval(`this.guilds.cache.size`)
         .then((results) => {
-            console.log(results)
+            console.log(`Total Guilds: ${results.reduce((prev, val) => prev + val, 0)}`)
         })
-        .catch((e) => console.log(e)) // broadcastEval() over all cross-hosted clients
+        .catch((e: any) => console.error(`Error while fetching guild count: ${e}`))
 })
 
 client.once('ready', async () => {
