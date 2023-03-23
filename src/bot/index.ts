@@ -9,8 +9,14 @@ const client = new Client({
   shardCount: getInfo().TOTAL_SHARDS // The Number of Total Shards
 });
 
-client.cluster = new ClusterClient(client);
-client.machine = new Shard(client.cluster); // Initialize Cluster
+try {
+  client.cluster = new ClusterClient(client);
+  client.machine = new Shard(client.cluster); // Initialize Cluster
+} catch (error: any) {
+  console.error(`Error while initializing cluster: ${error}`);
+  process.exit(1);
+}
+
 client.on('ready', () => {
   console.log(`Logged in as ${client.user?.tag}!`);
   client.machine
