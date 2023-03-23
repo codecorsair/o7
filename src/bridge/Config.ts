@@ -36,17 +36,20 @@ export default {
   totalShards: assert<number | 'auto'>(
     `Configure bridge total shards using the "totalShards" key in the config file or the "BRIDGE_TOTAL_SHARDS" environment variable.`,
     BRIDGE_TOTAL_SHARDS && BRIDGE_TOTAL_SHARDS === 'auto' ? 'auto' : parseInt(BRIDGE_TOTAL_SHARDS as string),
-    Config.get('totalShards')
+    Config.get('totalShards'),
+    40
   ),
   totalMachines: assert<number>(
     `Configure bridge total machines using the "totalMachines" key in the config file or the "BRIDGE_TOTAL_MACHINES" environment variable.`,
     BRIDGE_TOTAL_MACHINES && parseInt(BRIDGE_TOTAL_MACHINES as string),
-    Config.get('totalMachines')
+    Config.get('totalMachines'),
+    2
   ),
   shardsPerCluster: assert<number>(
     `Configure bridge shards per cluster using the "shardsPerCluster" key in the config file or the "BRIDGE_SHARDS_PER_CLUSTER" environment variable.`,
     BRIDGE_SHARDS_PER_CLUSTER && parseInt(BRIDGE_SHARDS_PER_CLUSTER as string),
-    Config.get('shardsPerCluster')
+    Config.get('shardsPerCluster'),
+    10
   ),
   token: assert<string>(
     `Configure bridge token using the "token" key in the config file.`,
