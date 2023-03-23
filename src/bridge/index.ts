@@ -5,7 +5,6 @@ import Config from './Config';
 const logger = createLogger();
 
 const server = new Bridge({
-  host: Config.host, // The Host of the Server | Proxy Connection (Replit) needs Domain without https
   port: Config.port, // The Port of the Server | Proxy Connection (Replit) needs Port 443
   authToken: Config.authToken,
   totalShards: Config.totalShards, // The Total Shards of the Bot or 'auto'
