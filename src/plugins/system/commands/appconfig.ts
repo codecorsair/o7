@@ -71,9 +71,8 @@ export default {
       await interaction.editReply(`Successfully configured the application.`);
       return;
     } catch (err) {
-      console.error(err);
       await interaction.editReply(`Failed to configure the application.`);
-      return;
+      throw err;
     }
   }
 } as ICommand;

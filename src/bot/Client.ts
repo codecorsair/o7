@@ -9,7 +9,10 @@ import { ICronjob } from '@/src/shared/interfaces/ICronjob'
 import { IClient } from '@/src/shared/interfaces/IClient'
 import { PluginManager } from './pluginManager/PluginManager'
 import { IPluginWrapper } from './pluginManager/IPluginWrapper'
+import { createLogger } from '@/src/shared/logger'
 import * as fs from 'fs'
+
+const logger = createLogger()
 
 export class Client extends DJSClient implements IClient {
     private pluginManager: PluginManager;
@@ -58,9 +61,8 @@ export class Client extends DJSClient implements IClient {
 
     private loadPlugins(): void {
         if (!fs.existsSync(__dirname + '/plugins')) {
-            throw new Error(
-                `Plugins path ${__dirname + '/plugins'} does not exist`,
-            )
+            logger.error('Plugins folder does not exist')
+            return
         }
 
         const plugins = fs
@@ -85,8 +87,8 @@ export class Client extends DJSClient implements IClient {
         command?.aliases.forEach((a) => {
             const alias = a.toLowerCase()
             if (this.commands.has(alias) && !command?.disabled) {
-                console.error(
-                    `Error loading command. ${command.aliases[0]} contains duplicate alias '${alias}'.`,
+                logger.error(
+                    `Command with alias ${alias} already exists, skipping...`,
                 )
                 return
             }

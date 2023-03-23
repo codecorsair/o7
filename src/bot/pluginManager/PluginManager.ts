@@ -2,7 +2,10 @@ import { existsSync } from "fs";
 import { join } from "path";
 import { IPluginWrapper, IInitializedPluginWrapper, PluginInstance } from "./IPluginWrapper";
 import { IClient } from "@/src/shared/interfaces/IClient";
+import { createLogger } from "@/src/shared/logger";
 import Config from "../Config"
+
+const logger = createLogger();
 
 export class PluginManager {
 
@@ -15,7 +18,8 @@ export class PluginManager {
 
   private requireModule(path: string): PluginInstance {
     if (!existsSync(path)) {
-      throw new Error(`Module ${path} does not exist`);
+      logger.error(`Plugin path ${path} does not exist`);
+      return;
     }
 
     return require(path).default as PluginInstance;
@@ -23,11 +27,11 @@ export class PluginManager {
 
   public registerPlugin(plugin: IPluginWrapper): void {
     if (!plugin.name || !plugin.packageName) {
-      throw new Error("Plugin must have a name and a packageName");
+      logger.error(`Plugin name or package name is not defined`);
     }
 
     if (this.pluginExists(plugin.name)) {
-      throw new Error(`Plugin with name ${plugin.name} already exists`);
+      logger.error(`Plugin with name ${plugin.name} already exists`);
     }
 
     try {
@@ -41,7 +45,7 @@ export class PluginManager {
 
       this.addPlugin(plugin, pluginInstance);
     } catch (error: any) {
-      throw new Error(`Error loading plugin ${plugin.name}: ${error.message}`);
+      logger.error(`Plugin with name ${plugin.name} failed to load: ${error.message}`);
     }
   }
 
@@ -55,13 +59,13 @@ export class PluginManager {
 
   public loadPlugin(name: string): any {
     if (!this.pluginExists(name)) {
-      throw new Error(`Plugin with name ${name} does not exist`);
+      logger.error(`Plugin with name ${name} does not exist`);
     }
 
     const plugin = this.plugins.get(name) as IInitializedPluginWrapper;
     const pluginInstance = plugin.instance as PluginInstance;
     const protocol = {
-      logger: console,
+      logger: logger.child({ plugin: plugin.name }),
       client: this.client,
       registerCommand: this.client.registerCommand,
       registerCronjob: this.client.registerCronjob,

@@ -13,11 +13,21 @@
     "clean:cluster": "rimraf dist/cluster && mkdirp dist/cluster",
     "clean:bot": "rimraf dist/bot && mkdirp dist/bot",
     "clean:plugins": "rimraf dist/plugins && mkdirp dist/plugins",
+
     "build": "yarn build:bridge && yarn build:cluster && yarn build:bot && yarn build:plugins",
     "build:bridge": "tsc -p tsconfig.bridge.json",
     "build:cluster": "tsc -p tsconfig.cluster.json",
     "build:bot": "tsc -p tsconfig.bot.json",
-    "build:plugins": "tsc -p tsconfig.plugins.json"
+    "build:plugins": "tsc -p tsconfig.plugins.json",
+
+    "lint": "yarn lint:bridge && yarn lint:cluster && yarn lint:bot && yarn lint:plugins",
+    "lint:bridge": "eslint --ext .ts src/bridge",
+    "lint:cluster": "eslint --ext .ts src/cluster",
+    "lint:bot": "eslint --ext .ts src/bot",
+    "lint:plugins": "eslint --ext .ts src/plugins",
+
+    "start:bridge": "yarn clean:bridge && yarn build:bridge && node dist/bridge/index.js",
+    "start:cluster": "yarn clean:cluster && yarn clean:bot && yarn build:cluster && yarn build:bot && node dist/cluster/index.js"
   },
   "devDependencies": {
     "@types/mongodb": "^4.0.7",
@@ -41,6 +51,7 @@
     "mongodb": "^5.1.0",
     "neo4j-driver": "^5.6.0",
     "node-fetch": "^3.3.1",
-    "numeral": "^2.0.6"
+    "numeral": "^2.0.6",
+    "pino": "^8.11.0"
   }
 }

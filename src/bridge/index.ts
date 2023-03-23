@@ -1,5 +1,8 @@
 import { Bridge } from 'discord-cross-hosting';
 import { RatelimitManager } from "discord-cross-ratelimit";
+import { createLogger } from '@/src/shared/utils/logger';
+
+const logger = createLogger();
 
 const server = new Bridge({
     port: 4444, // The Port of the Server | Proxy Connection (Replit) needs Port 443
@@ -10,11 +13,11 @@ const server = new Bridge({
     token: 'Your_Bot_Token',
 });
 new RatelimitManager(server);
-server.on('debug', console.log);
+server.on('debug', logger.debug);
 server.start();
 server.on('ready', url => {
-    console.log('Server is ready' + url);
+    logger.info(`Bridge is ready at ${url}`);
     setInterval(() => {
-        server.broadcastEval('this.guilds.cache.size').then(console.log).catch(console.log);
+        server.broadcastEval('this.guilds.cache.size').then(logger.info).catch(logger.error);
     }, 10000);
 });

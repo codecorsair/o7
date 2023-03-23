@@ -142,7 +142,6 @@ export async function getResponse(searchText: string, isMobile: boolean) {
 
   // No results
   if (results.length == 0) {
-    console.log("Not found standard ships ...");
     return null;
   }
   // Too many results

@@ -219,7 +219,7 @@ export default {
       await interaction.editReply(
         `There was an error processing your request: ${err.message}`
       );
-      console.error(err);
+      throw err;
       return;
     } finally {
       await driver.close();

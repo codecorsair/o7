@@ -131,11 +131,11 @@ export default {
       );
       return;
     } catch (error) {
-      console.error(error);
       await interaction.editReply(
         `There was an error while trying to find the shortest route between ${systems.start.Name} and ${systems.end.Name}`
       );
-      return;
+      throw error;
+      
     }
     finally {
       await session.close();
