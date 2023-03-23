@@ -5,7 +5,7 @@ import Fuse from 'fuse.js';
 import { EmbedBuilder } from 'discord.js';
 import { getLatestValidPrice, getMarketData } from './market-api';
 import { MarketItem } from './market-api';
-import blueprints_capital from '../data/blueprints_capital.json';
+import blueprints_capital from '@/data/bot/blueprints_capital.json';
 // import items from '../data/items.json';
 // import { Item, getItemId } from './items';
 

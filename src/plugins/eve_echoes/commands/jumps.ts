@@ -5,9 +5,9 @@ import {
 } from "discord.js";
 import Fuse from "fuse.js";
 import neo4j from "neo4j-driver";
-import systems from "../data/systems.json";
+import systems from "@/data/bot/systems.json";
 import Config from "../Config";
-import { ICommand } from "../../../shared/interfaces/ICommand";
+import { ICommand } from "@/src/shared/interfaces/ICommand";
 
 const SYSTEM_CHOICES = systems.map((s) => ({
   name: String(s.Name),

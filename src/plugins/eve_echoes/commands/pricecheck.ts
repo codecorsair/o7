@@ -1,11 +1,12 @@
 import { SlashCommandBuilder, CommandInteraction } from "discord.js";
 import { startCase } from "lodash";
 import moment from "moment";
+import numeral from "numeral";
 import { getMarketData, getLatestValidPrice } from "../libs/market-api";
-import items from "../data/items.json";
+import items from "@/data/bot/items.json";
 import { Ores, PlanetaryResources, Minerals } from "../constants";
 import { EmbedBuilder } from "@discordjs/builders";
-import { ICommand } from "../../../shared/interfaces/ICommand";
+import { ICommand } from "@/src/shared/interfaces/ICommand";
 
 const oreKeys = Object.values(Ores).map((_) => _.toLowerCase());
 const mineralKeys = Object.values(Minerals).map((_) => _.toLowerCase());
@@ -49,19 +50,19 @@ export default {
       "This command will return market price data which is queried from <https://eve-echoes-market.com>.",
     examples: [
       {
-        args: "caracal navy",
+        args: ["caracal navy"],
         description: "Get the price details for a Caracal Navy Issue.",
       },
       {
-        args: "minerals",
+        args: ["minerals"],
         description: "Get the prices of all minerals",
       },
       {
-        args: "ore",
+        args: ["ore"],
         description: "Get the prices of all ore.",
       },
       {
-        args: "planetary",
+        args: ["planetary"],
         description: "Get the prices of all planetary resources.",
       },
     ],

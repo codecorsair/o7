@@ -4,7 +4,7 @@ import { startCase } from 'lodash';
 import Fuse from 'fuse.js';
 import { getLatestValidPrice, getMarketData } from './market-api';
 import { MarketItem } from './market-api';
-import blueprints from '../data/blueprints.json';
+import blueprints from '@/data/bot/blueprints.json';
 import { EmbedBuilder } from '@discordjs/builders';
 // import items from '../data/items.json';
 // import { Item, getItemId } from './items';

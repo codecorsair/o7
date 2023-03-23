@@ -24,12 +24,12 @@ services:
     image: o7_bridge
     restart: always
     environment:
-      PORT: 4444
-      AUTH_TOKEN: <a shared secret between the bridge and the cluster>
-      TOTAL_SHARDS: 40
-      TOTAL_MASHINES: 2
-      SHARDS_PER_CLUSTER: 10
-      TOKEN: <your bot token>
+      BRIDGE_PORT: 4444
+      BRIDGE_AUTH_TOKEN: <a shared secret between the bridge and the cluster>
+      BRIDGE_TOTAL_SHARDS: 1
+      BRIDGE_TOTAL_MACHINES: 1
+      BRIDGE_SHARDS_PER_CLUSTER: 1
+      BRIDGE_TOKEN: <your bot token>
     networks:
       - internal
     secrets:
@@ -40,12 +40,15 @@ services:
     image: o7_cluster
     restart: always
     environment:
-      AGENT: bot
-      HOST: bridge
-      PORT: 4444
-      HANDSHAKE: false
-      AUTH_TOKEN: <a shared secret between the bridge and the cluster>
-      ROLLING_RESTARTS: false
+      CLUSTER_AGENT: bot
+      CLUSTER_HOST: bridge
+      CLUSTER_PORT: 4444
+      CLUSTER_HANDSHAKE: false
+      CLUSTER_AUTH_TOKEN: <a shared secret between the bridge and the cluster>
+      CLUSTER_ROLLING_RESTARTS: false
+      BOT_INTENTS: Guilds
+      BOT_PLUGINS_PATH: /home/container/app/plugins
+      BOT_TOKEN: <your bot token>
     networks:
       - internal
     secrets:

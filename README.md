@@ -16,21 +16,22 @@ You are welcome to self-host **o7**, however I can not fully support self-hosted
     - **/bridge.json** - Example bridge config
     - **/cluster.json** - Example cluster config
     - **/bot.json** - Example bot config
-    - **/shared.json** - Example shared config
   - **/docker-compose.yml** - Example docker compose file
 - **/src** - Source code for the bot
   - **/shared** - Shared code
+    - **/interfaces** - Interfaces for the bot
+    - **/utils** - Utilities for the bot
   - **/bridge** - Bridge between cluster bots
   - **/plugins** - Plugins for the bot
     - **/eve_echoes** - Plugin related to Eve echoes
+      - **/commands** - Commands for the eve echoes plugin
+      - **/libs** - Libraries for the eve echoes plugin
     - **/system** - Required plugin for the bot (help, about, invite)
+      - **/commands** - Commands for the system plugin
+      - **/libs** - Libraries for the system plugin
   - **/cluster** - Cluster bot
   - **/bot** - Discord bot instance
-    - **/core** - Core libraries
-      - **/pluginManager** - Plugin manager
-    - **/helpers** - Helper functions
-    - **/services** - Services for interacting with external APIs
-    - **/utils** - Utility functions
+    - **/pluginManager** - Plugin manager
 
 ## Contributing
 Great! You'd like to add a feature to **o7**? I am happy to accept contributions via pull request. 

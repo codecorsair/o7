@@ -1,22 +1,9 @@
 {
+  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
-    "outDir": "./dist/bridge",
-    "strict": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "moduleResolution": "node",
-    "allowJs": true,
-    "noImplicitAny": false,
+    "outDir": "./dist/bridge"
   },
   "include": [
     "src/bridge/**/*"
-  ],
-  "exclude": ["node_modules", "**/*.spec.ts", "dist/**/*", "**/*.disabled"]
+  ]
 }

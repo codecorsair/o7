@@ -1,5 +1,5 @@
-import { GenericConfig } from '../shared/GenericConfig';
-import { assert } from '../shared/Utils/assert';
+import { GenericConfig } from '@/src/shared/GenericConfig';
+import { assert } from '@/src/shared/Utils/assert';
 
 const {
   PLUGIN_EVE_ECHOES_NEO4J_URI,

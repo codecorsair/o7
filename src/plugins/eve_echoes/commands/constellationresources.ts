@@ -5,10 +5,10 @@ import {
 } from "discord.js";
 import Fuse from "fuse.js";
 import Config from "../Config"
-import systems from "../data/systems.json";
+import systems from "@/data/bot/systems.json";
 import neo4j from "neo4j-driver";
 import { PlanetaryResources } from "../constants";
-import { ICommand } from "../../../shared/interfaces/ICommand";
+import { ICommand } from "@/src/shared/interfaces/ICommand";
 
 const RESOURCE_CHOICES = Object.values(PlanetaryResources).map((p) => ({
   name: String(p),
@@ -60,7 +60,8 @@ export default {
       "This command will return the planet/system(s) of perfect and/or rich planetary resources within the constellation of the system entered. This can be useful to decide decide the best Capsuleer Outpost placement.",
     examples: [
       {
-        args: "jita reactive metals",
+        args: ["jita reactive metals"],
+        description: "Returns the planet/system(s) of perfect and/or rich reactive metals within the constellation of Jita.",
       },
     ],
   },
@@ -110,8 +111,8 @@ export default {
 
     const constellation = constSearch[0].item.Constellation;
     const driver = neo4j.driver(
-      Config.neo4j_uri,
-      neo4j.auth.basic(Config.neo4j_username, Config.neo4j_password)
+      Config.neo4j.uri,
+      neo4j.auth.basic(Config.neo4j.username, Config.neo4j.password)
     );
     const session = driver.session();
     // const startSystem = 'Jita';

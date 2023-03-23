@@ -1,6 +1,6 @@
-import marketItems from "../data/market-items.json";
+import marketItems from "@/data/bot/market-items.json";
 import numeral from "numeral";
-import items from "../data/items.json";
+import items from "@/data/bot/items.json";
 import {
   Attributes,
   evalFormulae,
@@ -14,7 +14,7 @@ import {
 import { romanize } from "../libs/romanize";
 import { SlashCommandBuilder, EmbedBuilder } from "@discordjs/builders";
 import { AutocompleteInteraction, CommandInteraction } from "discord.js";
-import { ICommand } from "../../../shared/interfaces/ICommand";
+import { ICommand } from "@/src/shared/interfaces/ICommand";
 
 const ITEM_CHOICES = marketItems.map((item) => ({
   name: String(item.name),

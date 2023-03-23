@@ -1,14 +1,14 @@
 import Fuse from "fuse.js";
 import { PlanetaryResources } from "../constants";
-import systems from "../data/systems.json";
+import systems from "@/data/bot/systems.json";
 import neo4j from "neo4j-driver";
-import config from "../config";
+import Config from "../Config";
 import {
   SlashCommandBuilder,
   CommandInteraction,
   AutocompleteInteraction,
 } from "discord.js";
-import { ICommand } from "../../../shared/interfaces/ICommand";
+import { ICommand } from "@/src/shared/interfaces/ICommand";
 
 const RESOURCE_CHOICES = Object.values(PlanetaryResources).map((p) => ({
   name: String(p),
@@ -66,7 +66,8 @@ export default {
       "This command will return the locations of perfect and/or rich planetary resources within a specified range of any system.",
     examples: [
       {
-        args: "jita 5 base metals",
+        args: ["jita 5 base metals"],
+        description: "Returns the locations of perfect and/or rich base metals within 5 jumps of Jita.",
       },
     ],
   },
@@ -131,8 +132,8 @@ export default {
     range = Math.min(Math.abs(range), 10);
 
     const driver = neo4j.driver(
-      config.neo4j.uri,
-      neo4j.auth.basic(config.neo4j.username, config.neo4j.password)
+      Config.neo4j.uri,
+      neo4j.auth.basic(Config.neo4j.username, Config.neo4j.password)
     );
     const session = driver.session();
 
@@ -207,7 +208,7 @@ export default {
             .join("\n") +
           "```";
         if (response.length + next.length >= 2000) {
-          await interaction.editReply(response);
+          interaction.editReply(response);
           response = "";
         }
         response += next;

@@ -10,10 +10,10 @@ export interface ICommand {
   help?: {
     title: string;
     description: string;
-    examples?: [{
-      args: string []
+    examples?: {
+      args: string[]
       description: string
-    }]
+    }[]
   },
   commandBuilder: (commandName: string) => any;
   commandInteraction: (interaction: CommandInteraction) => Promise<void>;

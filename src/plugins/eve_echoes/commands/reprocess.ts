@@ -6,10 +6,10 @@ import {
 } from "discord.js";
 import Fuse from "fuse.js";
 import { startCase } from "lodash";
-import reproc from "../data/reproc.json";
-import { ICommand } from "../../../shared/interfaces/ICommand";
+import reproc from "@/data/bot/reproc.json";
+import { ICommand } from "@/src/shared/interfaces/ICommand";
 import numeral from "numeral";
-import marketItems from "../data/market-items.json";
+import marketItems from "@/data/bot/market-items.json";
 
 const fuse = new Fuse(reproc, {
   isCaseSensitive: false,
@@ -45,12 +45,12 @@ export default {
       "This command will return the resources given when reprocessing an item. Default value returned assumes no skills trained, meaning 30% efficiency. Optionally, providing your reprocessing percentage will adjust the returned value based on the given value.",
     examples: [
       {
-        args: "spod",
+        args: ["spod"],
         description:
           "Returns the resources given when reprocessing Spodumain at 30% efficiency.",
       },
       {
-        args: "mk5 stasis web 50",
+        args: ["mk5", "stasis", "web", "50"],
         description:
           "Returns the resources given when reprocessing a MK5 Stasis Webifier at 50% efficiency.",
       },

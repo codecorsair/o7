@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 import { getItemId } from './items';
-import items from '../data/market-items.json';
+import items from '@/data/bot/market-items.json';
 import { timeoutPromise } from './timeout-promise';
 
 const MARKET_API = 'https://api.eve-echoes-market.com/market-stats/'
@@ -55,17 +55,17 @@ export async function getMarketData(searchTerms: string): Promise<MarketItem | n
       return null;
     }
 
-    const prices = await response.json();
+    const prices = await response.json() as any;
     prices.sort((a: { time: number }, b: { time: number}) => b.time - a.time);
     const result = {
       id,
       prices,
     };
     cache[result.id] = {
-      item: result,
+      item: result as MarketItem,
       added: new Date(),
     };
-    return result;
+    return result as MarketItem;
   } catch (err) {
     console.error(err);
     console.error(`Failed to fetch from Marketplace API`);

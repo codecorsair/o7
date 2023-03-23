@@ -1,4 +1,4 @@
-import { ICommand } from "../../../shared/interfaces/ICommand";
+import { ICommand } from "@/src/shared/interfaces/ICommand";
 import { getClient, collections } from "../libs/db";
 import { SlashCommandBuilder } from "@discordjs/builders";
 import { CommandInteraction } from "discord.js";
@@ -34,7 +34,7 @@ export default {
     description: "This command will configure the application.",
     examples: [
       {
-        args: "#channel question1, question2, question3",
+        args: ["#channel", "question1,question2,question3"],
         description:
           "Configures the application to send to #channel and ask the questions.",
       },
@@ -75,5 +75,5 @@ export default {
       await interaction.editReply(`Failed to configure the application.`);
       return;
     }
-  },
+  }
 } as ICommand;

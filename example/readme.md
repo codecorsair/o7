@@ -32,17 +32,23 @@
     ---
 5. Edit the docker compose file
     > 
-6. Start the bot
+
+### Start the bot
     ```bash
     docker-compose up -d
     ```
     ---
-7. Invite the bot to your server
+## Invite the bot to your server
     ```curl
     https://discord.com/oauth2/authorize?client_id=<client_id>&scope=bot&permissions=3072
     ```
     ---
 
+### Stoping the bot
+    ```bash
+    docker-compose down
+    ```
+    ---
 
 ### Updating
 1. Pull the latest changes

@@ -1,8 +1,13 @@
 import { GenericStore } from "./GenericStore";
+import { resolve } from "./utils/resolve";
 
 export class GenericConfig<T> extends GenericStore<T> {
 
   private flattendValue: { [key: string]: any } = {};
+
+  constructor (filePath: string) {
+    super(resolve("./", "configs", filePath));
+  }
 
   get <T>(key: string): T {
     if (!this.flattendValue || this.flattendValue.length === 0 || !this.flattendValue[key]) {

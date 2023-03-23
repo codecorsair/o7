@@ -1,7 +1,7 @@
 import { existsSync } from "fs";
 import { join } from "path";
 import { IPluginWrapper, IInitializedPluginWrapper, PluginInstance } from "./IPluginWrapper";
-import { IClient } from "../../shared/interfaces/IClient";
+import { IClient } from "@/src/shared/interfaces/IClient";
 import Config from "../Config"
 
 export class PluginManager {

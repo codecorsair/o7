@@ -1,22 +1,9 @@
 {
+  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
-    "outDir": "./dist/bot",
-    "strict": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "moduleResolution": "node",
-    "allowJs": true,
-    "noImplicitAny": false,
+    "outDir": "./dist/bot"
   },
   "include": [
     "src/bot/**/*"
-  ],
-  "exclude": ["node_modules", "**/*.spec.ts", "dist/**/*", "**/*.disabled"]
+  ]
 }
