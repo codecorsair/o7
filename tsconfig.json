@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
-    "outDir": "dist/",
+    "outDir": "dist",
     "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
@@ -19,5 +19,6 @@
       "@/src/*": ["./src/*"]
     }
   },
+  "include": ["src/**/*", "data/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts", "dist/**/*", "**/*.disabled"]
 }
