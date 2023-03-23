@@ -1,16 +1,17 @@
 import { Client } from 'discord-cross-hosting';
 import { ClusterManager } from 'discord-hybrid-sharding';
 import { createLogger } from '@/shared/utils/logger';
+import Config from "./Config";
 
 const logger = createLogger();
 
 const client = new Client({
-  agent: 'bot',
-  host: 'localhost', // Domain without https
-  port: 4444, // Proxy Connection (Replit) needs Port 443
-  // handshake: true, When Replit or any other Proxy is used
-  authToken: 'theauthtoken',
-  rollingRestarts: false // Enable, when bot should respawn when cluster list changes.
+  agent: Config.agent,
+  host: Config.host, // Domain without https
+  port: Config.port, // Proxy Connection (Replit) needs Port 443
+  handshake: Config.handshake,
+  authToken: Config.authToken,
+  rollingRestarts: Config.rollingRestarts // Enable, when bot should respawn when cluster list changes.
 });
 client.on('debug', (message) => logger.debug(message));
 client.connect();
