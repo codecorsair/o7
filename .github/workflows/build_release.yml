@@ -33,6 +33,13 @@ jobs:
         with:
           node-version: '16'
           cache: 'yarn'
+
+      - name: Setup docker
+        uses: actions/setup-docker@v2
+        with:
+          registry-url: https://ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Install Dependencies
         run: yarn install --frozen-lockfile --cache-folder ~/.yarn-cache

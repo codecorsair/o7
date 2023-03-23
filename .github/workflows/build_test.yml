@@ -25,6 +25,13 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+
+      - name: Setup docker
+        uses: actions/setup-docker@v2
+        with:
+          registry-url: https://ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Setup Node
         uses: actions/setup-node@v2
