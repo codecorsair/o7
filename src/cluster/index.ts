@@ -43,5 +43,8 @@ client.on('ready', () => {
     clusterManager.clusterList = e.clusterList;
     clusterManager.spawn({ timeout: ONE_MINUTE });
   })
-  .catch((err: any) => logger.error(`Error while fetching shard data: ${err}`));
+  .catch((err: any) => {
+    logger.error(`Error while fetching shard data: ${err}`);
+    process.exit(1);
+  });
 });
