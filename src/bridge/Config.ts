@@ -2,6 +2,7 @@ import { GenericConfig } from '@/shared/GenericConfig';
 import { assert } from '@/shared/utils/assert';
 
 const {
+  BRIDGE_HOST,
   BRIDGE_PORT,
   BRIDGE_AUTH_TOKEN,
   BRIDGE_TOTAL_SHARDS,
@@ -11,6 +12,7 @@ const {
 } = process.env;
 
 export interface IConfig {
+  host: string;
   port: number;
   authToken: string;
   totalShards: number | 'auto';
@@ -22,8 +24,14 @@ export interface IConfig {
 const Config = new GenericConfig<IConfig>('bridge.json');
 
 export default {
+  host: assert<string>(
+    `Configure bridge host using the "host" key in the config file or the "BRIDGE_HOST" environment variable.`,
+    BRIDGE_HOST,
+    Config.get('host'),
+    'localhost'
+  ),
   port: assert<number>(
-    'Port is not defined',
+    `Configure bridge port using the "port" key in the config file or the "BRIDGE_PORT" environment variable.`,
     BRIDGE_PORT && parseInt(BRIDGE_PORT as string),
     Config.get('port'),
     4444

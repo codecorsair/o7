@@ -24,6 +24,7 @@ services:
     image: o7_bridge
     restart: always
     environment:
+      BRIDGE_HOST: 0.0.0.0
       BRIDGE_PORT: 4444
       BRIDGE_AUTH_TOKEN: <a shared secret between the bridge and the cluster>
       BRIDGE_TOTAL_SHARDS: 40
