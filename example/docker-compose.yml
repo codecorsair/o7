@@ -49,6 +49,7 @@ services:
       BOT_INTENTS: Guilds
       BOT_PLUGINS_PATH: /usr/src/app/plugins
       BOT_TOKEN: <your bot token>
+      BOT_PLUGINS: eve_echoes,system
     networks:
       - internal
     secrets:

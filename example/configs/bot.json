@@ -1,5 +1,9 @@
 {
   "intents": [ "GUILDS" ],
   "pluginsPath": "/usr/src/app/plugins",
-  "token": "<your bot token>"
+  "token": "<your bot token>",
+  "plugins": [
+    "eve_echoes",
+    "system"
+  ]
 }
