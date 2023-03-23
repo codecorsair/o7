@@ -5,7 +5,7 @@ import {
   IInitializedPluginWrapper,
   PluginInstance
 } from './IPluginWrapper';
-import { IClient } from '@/src/shared/interfaces/IClient';
+import { IClient } from '@/shared/interfaces/IClient';
 import { createLogger } from '@/shared/utils/logger';
 import Config from '../Config';
 
