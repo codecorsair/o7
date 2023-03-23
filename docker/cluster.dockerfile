@@ -2,7 +2,7 @@ FROM node:18-alpine as builder
 
 WORKDIR /usr/src/app
 
-COPY package*.json yarn.lock /usr/src/app/
+COPY ./package*.json ./yarn.lock /usr/src/app/
 RUN yarn install
 
 COPY ./ /usr/src/app
@@ -20,6 +20,6 @@ COPY --from=builder /usr/src/app/package*.json /usr/src/app/
 COPY --from=builder /usr/src/app/yarn.lock /usr/src/app/
 COPY --from=builder /usr/src/app/node_modules /usr/src/app/node_modules
 
-COPY ../data/bot /usr/src/app/data/bot
+COPY ./data/bot /usr/src/app/data/bot
 
 CMD ["node", "/usr/src/app/dist/cluster/index.js"]
