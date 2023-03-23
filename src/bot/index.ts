@@ -66,10 +66,18 @@ client.on('interactionCreate', async (interaction) => {
             `Error while executing command ${interaction.commandName} by ${interaction.user.tag} (${interaction.user.id}) in ${interaction.guild?.name} (${interaction.guild?.id})`,
             error,
         )
-        await interaction.reply({
-            content: 'There was an error while executing this command!',
-            ephemeral: true,
-        })
+        if (interaction.isChatInputCommand()) {
+            if (interaction.replied) {
+                await interaction.followUp({
+                    content: 'There was an error while executing this command!',
+                    ephemeral: true,
+                })
+            } else {
+                await interaction.reply({
+                    content: 'There was an error while executing this command!',
+                    ephemeral: true,
+                })
+            }
         return;
     }
 })
