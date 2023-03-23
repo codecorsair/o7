@@ -28,7 +28,7 @@ export default {
   ),
   authToken: assert<string>(
     `Configure bridge auth token using the "authToken" key in the config file or the "BRIDGE_AUTH_TOKEN" environment variable.`,
-    BRIDGE_AUTH_TOKEN
+    BRIDGE_AUTH_TOKEN,
     Config.get('authToken')
   ),
   totalShards: assert<number | 'auto'>(
