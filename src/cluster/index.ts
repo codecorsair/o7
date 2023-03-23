@@ -7,8 +7,10 @@ const ONE_MINUTE = 60 * 1000;
 
 const logger = createLogger();
 
+const GUID = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+
 const client = new Client({
-  agent: Config.agent,
+  agent: `Discord-Hybrid-Sharding/${Config.agent} ${GUID}`, // User-Agent
   host: Config.host, // Domain without https
   port: Config.port, // Proxy Connection (Replit) needs Port 443
   handshake: Config.handshake,
