@@ -17,14 +17,3 @@ server.start();
 server.on('ready', (url) => {
   logger.info(`Bridge is ready at ${url}`);
 });
-
-server.on('error', (error) => {
-  logger.error(`Bridge Error: ${error}`);
-})
-
-server.on('connection', (connection) => {
-  logger.info(`Connection from ${connection.ip}`);
-  connection.on('error', (error) => {
-    logger.error(`Connection Error: ${error}`);
-  });
-})
