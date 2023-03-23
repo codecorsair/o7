@@ -7,12 +7,9 @@
     "JB <jb@codecorsair.com>",
     "Ralph Schuler <ralph.schuler@nyphon.de>"
   ],
-  "_moduleAliases": {
-    "@": "./"
-  },
   "scripts": {
     "clean": "rimraf dist && mkdirp dist",
-    "build": "yarn clean && tsc -p tsconfig.json",
+    "build": "yarn clean && tsc -p tsconfig.json && tsc-alias -p tsconfig.json",
     "lint": "eslint src --ext .ts",
     "format": "prettier --write src/**/*.ts"
   },
@@ -28,6 +25,7 @@
     "prettier": "^2.8.6",
     "rimraf": "^4.4.1",
     "ts-node": "^10.9.1",
+    "tsc-alias": "^1.8.4",
     "typescript": "^5.0.2"
   },
   "dependencies": {

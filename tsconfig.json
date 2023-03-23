@@ -3,8 +3,7 @@
     "target": "es6",
     "module": "commonjs",
     "outDir": "dist",
-    "rootDir": "src",
-    "baseUrl": ".",
+    "baseUrl": "src/",
     "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
@@ -17,7 +16,7 @@
     "allowJs": true,
     "noImplicitAny": false,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["*"]
     }
   },
   "include": ["src/**/*", "data/**/*"],
