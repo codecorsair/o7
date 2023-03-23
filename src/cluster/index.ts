@@ -13,7 +13,7 @@ const client = new Client({
   authToken: Config.authToken,
   rollingRestarts: Config.rollingRestarts // Enable, when bot should respawn when cluster list changes.
 });
-client.on('debug', (message) => logger.debug(message));
+client.on('debug', (message) => logger.debug(`[DEBUG] ${message}`));
 client.connect();
 
 const clusterManager = new ClusterManager(`${__dirname}/../bot/index.js`, {
@@ -37,4 +37,4 @@ client
     clusterManager.clusterList = e.clusterList;
     clusterManager.spawn({ timeout: -1 });
   })
-  .catch((err: any) => logger.error(err.message));
+  .catch((err: any) => logger.error(`Error while fetching shard data: ${err}`));

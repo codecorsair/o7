@@ -14,7 +14,7 @@ const server = new Bridge({
   token: Config.token
 });
 new RatelimitManager(server);
-server.on('debug', (message) => logger.debug(message));
+server.on('debug', (message) => logger.debug(`[DEBUG] ${message}`));
 server.start();
 server.on('ready', (url) => {
   logger.info(`Bridge is ready at ${url}`);
@@ -22,6 +22,6 @@ server.on('ready', (url) => {
     server
       .broadcastEval('this.guilds.cache.size')
       .then((results: any) => logger.info(`Guilds: ${results.reduce((prev, val) => prev + val, 0)}`))
-      .catch((err: any) => logger.error(err.message));
+      .catch((err: any) => logger.error(`Error while fetching guild count: ${err}`));
   }, 10000);
 });
