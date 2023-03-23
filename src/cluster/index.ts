@@ -9,7 +9,7 @@ const ONE_MINUTE = 60 * 1000;
 const logger = createLogger();
 
 const client = new Client({
-  agent: `Discord-Cluster/${Config.agent} (${hostname})`, // User-Agent
+  agent: `Discord-Cluster/${Config.agent} (${hostname()})`, // User-Agent
   host: Config.host, // Domain without https
   port: Config.port, // Proxy Connection (Replit) needs Port 443
   handshake: Config.handshake,
