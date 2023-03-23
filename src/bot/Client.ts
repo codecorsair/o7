@@ -60,15 +60,15 @@ export class Client extends DJSClient implements IClient {
     }
 
     private loadPlugins(): void {
-        if (!fs.existsSync(__dirname + '/plugins')) {
+        if (!fs.existsSync(Config.pluginsPath)) {
             logger.error('Plugins folder does not exist')
             return
         }
 
         const plugins = fs
-            .readdirSync(__dirname + '/plugins')
+            .readdirSync(Config.pluginsPath)
             .filter((file) =>
-                fs.existsSync(__dirname + '/plugins/' + file + '/index.js'),
+                fs.existsSync(Config.pluginsPath + file + '/index.js'),
             )
 
         for (const plugin of plugins) {
