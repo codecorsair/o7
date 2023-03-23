@@ -24,24 +24,26 @@ const Config = new GenericConfig<IConfig>('cluster.json');
 export default {
   agent: assert<string>(
     'Agent is not defined',
-    Config.get('agent'),
-    CLUSTER_AGENT
+    CLUSTER_AGENT,
+    Config.get('agent')
   ),
-  host: assert<string>('Host is not defined', Config.get('host'), CLUSTER_HOST),
-  port: assert<number>('Port is not defined', Config.get('port'), CLUSTER_PORT),
+  host: assert<string>('Host is not defined', CLUSTER_HOST, Config.get('host'), '127.0.0.1'),
+  port: assert<number>('Port is not defined', CLUSTER_PORT, Config.get('port'), 4444),
   handshake: assert<boolean>(
     'Handshake is not defined',
+    CLUSTER_HANDSHAKE,
     Config.get('handshake'),
-    CLUSTER_HANDSHAKE
+    false
   ),
   authToken: assert<string>(
     'Auth token is not defined',
-    Config.get('authToken'),
-    CLUSTER_AUTH_TOKEN
+    CLUSTER_AUTH_TOKEN,
+    Config.get('authToken')
   ),
   rollingRestarts: assert<boolean>(
     'Rolling restarts is not defined',
+    CLUSTER_ROLLING_RESTARTS,
     Config.get('rollingRestarts'),
-    CLUSTER_ROLLING_RESTARTS
+    false
   )
 } as IConfig;

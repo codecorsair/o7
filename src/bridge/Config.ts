@@ -22,30 +22,30 @@ export interface IConfig {
 const Config = new GenericConfig<IConfig>('bridge.json');
 
 export default {
-  port: assert<number>('Port is not defined', Config.get('port'), BRIDGE_PORT),
+  port: assert<number>('Port is not defined', BRIDGE_PORT, Config.get('port'), 4444),
   authToken: assert<string>(
     'Auth token is not defined',
-    Config.get('authToken'),
-    BRIDGE_AUTH_TOKEN
+    BRIDGE_AUTH_TOKEN,
+    Config.get('authToken')
   ),
   totalShards: assert<number>(
     'Total shards is not defined',
-    Config.get('totalShards'),
-    BRIDGE_TOTAL_SHARDS
+    BRIDGE_TOTAL_SHARDS,
+    Config.get('totalShards')
   ),
   totalMachines: assert<number>(
     'Total machines is not defined',
-    Config.get('totalMachines'),
-    BRIDGE_TOTAL_MACHINES
+    BRIDGE_TOTAL_MACHINES,
+    Config.get('totalMachines')
   ),
   shardsPerCluster: assert<number>(
     'Shards per cluster is not defined',
-    Config.get('shardsPerCluster'),
-    BRIDGE_SHARDS_PER_CLUSTER
+    BRIDGE_SHARDS_PER_CLUSTER,
+    Config.get('shardsPerCluster')
   ),
   token: assert<string>(
     'Token is not defined',
-    Config.get('token'),
-    BRIDGE_TOKEN
+    BRIDGE_TOKEN,
+    Config.get('token')
   )
 } as IConfig;
