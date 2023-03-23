@@ -1,16 +1,15 @@
 import { Client } from 'discord-cross-hosting';
 import { ClusterManager } from 'discord-hybrid-sharding';
 import { createLogger } from '@/shared/utils/logger';
+import { hostname } from 'os';
 import Config from "./Config";
 
 const ONE_MINUTE = 60 * 1000;
 
 const logger = createLogger();
 
-const GUID = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-
 const client = new Client({
-  agent: `Discord-Hybrid-Sharding/${Config.agent} ${GUID}`, // User-Agent
+  agent: `Discord-Cluster/${Config.agent} (${hostname})`, // User-Agent
   host: Config.host, // Domain without https
   port: Config.port, // Proxy Connection (Replit) needs Port 443
   handshake: Config.handshake,
