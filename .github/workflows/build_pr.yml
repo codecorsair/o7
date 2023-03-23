@@ -1,9 +1,13 @@
-name: Check pull request
+name: Build pull request
 
 on:
   pull_request:
     branches:
       - main
+
+concurrency: 
+  group: pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 jobs:
   lint:
