@@ -27,8 +27,7 @@ clusterManager.on('clusterCreate', (cluster) =>
   logger.info(`Cluster ${cluster.id} created`)
 );
 clusterManager.on('debug', (message) => logger.debug(message));
-client.on('ready', () => {
-  client.listen(clusterManager);
+const restart = () => {
   client
   .requestShardData()
   .then((e: any) => {
@@ -42,8 +41,13 @@ client.on('ready', () => {
   })
   .catch((err: any) => {
     logger.error(`Error while fetching shard data: ${err}`);
-    process.exit(1);
+    setTimeout(restart, ONE_MINUTE);
   });
+};
+
+client.on('ready', () => {
+  restart();
 });
 
+client.listen(clusterManager);
 client.connect();
