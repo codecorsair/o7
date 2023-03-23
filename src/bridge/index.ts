@@ -13,14 +13,14 @@ const server = new Bridge({
   token: 'Your_Bot_Token'
 });
 new RatelimitManager(server);
-server.on('debug', logger.debug);
+server.on('debug', (message) => logger.debug(message));
 server.start();
 server.on('ready', (url) => {
   logger.info(`Bridge is ready at ${url}`);
   setInterval(() => {
     server
       .broadcastEval('this.guilds.cache.size')
-      .then(logger.info)
-      .catch(logger.error);
+      .then((results: any) => logger.info(`Guilds: ${results.reduce((prev, val) => prev + val, 0)}`))
+      .catch((err: any) => logger.error(err.message));
   }, 10000);
 });

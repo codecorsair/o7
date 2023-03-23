@@ -12,7 +12,7 @@ const client = new Client({
   authToken: 'theauthtoken',
   rollingRestarts: false // Enable, when bot should respawn when cluster list changes.
 });
-client.on('debug', logger.debug);
+client.on('debug', (message) => logger.debug(message));
 client.connect();
 
 const clusterManager = new ClusterManager(`${__dirname}/../bot/index.js`, {
@@ -22,7 +22,7 @@ const clusterManager = new ClusterManager(`${__dirname}/../bot/index.js`, {
 clusterManager.on('clusterCreate', (cluster) =>
   logger.info(`Cluster ${cluster.id} created`)
 );
-clusterManager.on('debug', logger.debug);
+clusterManager.on('debug', (message) => logger.debug(message));
 
 client.listen(clusterManager);
 client
@@ -36,4 +36,4 @@ client
     clusterManager.clusterList = e.clusterList;
     clusterManager.spawn({ timeout: -1 });
   })
-  .catch(logger.error);
+  .catch((err: any) => logger.error(err.message));
