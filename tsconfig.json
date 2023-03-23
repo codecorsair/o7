@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
+    "outDir": "dist/",
     "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
