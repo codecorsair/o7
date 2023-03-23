@@ -49,19 +49,19 @@ jobs:
 
       - name: Build Docker Images
         run: |
-          docker build -t https://ghcr.io/${{ github.repository }}_neo4j:latest -f docker/neo4j.dockerfile .
-          docker build -t https://ghcr.io/${{ github.repository }}_bridge:latest -f docker/bridge.dockerfile .
-          docker build -t https://ghcr.io/${{ github.repository }}_cluster:latest -f docker/cluster.dockerfile .
+          docker build -t ${{ github.repository }}_neo4j:latest -f docker/neo4j.dockerfile .
+          docker build -t ${{ github.repository }}_bridge:latest -f docker/bridge.dockerfile .
+          docker build -t ${{ github.repository }}_cluster:latest -f docker/cluster.dockerfile .
 
       - name: Tag Docker Images
         run: |
-          docker tag https://ghcr.io/${{ github.repository }}_neo4j:latest https://ghcr.io/${{ github.repository }}_neo4j:release-${{ github.event.release.tag_name }}
-          docker tag https://ghcr.io/${{ github.repository }}_bridge:latest https://ghcr.io/${{ github.repository }}_bridge:release-${{ github.event.release.tag_name }}
-          docker tag https://ghcr.io/${{ github.repository }}_cluster:latest https://ghcr.io/${{ github.repository }}_cluster:release-${{ github.event.release.tag_name }}
+          docker tag ${{ github.repository }}_neo4j:latest https://ghcr.io/${{ github.repository }}_neo4j:release-${{ github.event.release.tag_name }}
+          docker tag ${{ github.repository }}_bridge:latest https://ghcr.io/${{ github.repository }}_bridge:release-${{ github.event.release.tag_name }}
+          docker tag ${{ github.repository }}_cluster:latest https://ghcr.io/${{ github.repository }}_cluster:release-${{ github.event.release.tag_name }}
 
-          docker tag https://ghcr.io/${{ github.repository }}_neo4j:latest https://ghcr.io/${{ github.repository }}_neo4j:release-${{ github.ref }}
-          docker tag https://ghcr.io/${{ github.repository }}_bridge:latest https://ghcr.io/${{ github.repository }}_bridge:release-${{ github.ref }}
-          docker tag https://ghcr.io/${{ github.repository }}_cluster:latest https://ghcr.io/${{ github.repository }}_cluster:release-${{ github.ref }}
+          docker tag ${{ github.repository }}_neo4j:latest https://ghcr.io/${{ github.repository }}_neo4j:release-${{ github.ref }}
+          docker tag ${{ github.repository }}_bridge:latest https://ghcr.io/${{ github.repository }}_bridge:release-${{ github.ref }}
+          docker tag ${{ github.repository }}_cluster:latest https://ghcr.io/${{ github.repository }}_cluster:release-${{ github.ref }}
 
       - name: Push Docker Images
         run: |
