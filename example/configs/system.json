@@ -1,0 +1,6 @@
+{
+  "mongo": {
+    "connectionString": "mongodb://o7:<a strong password>@mongodb:27017/",
+    "database": "o7"
+  }
+}

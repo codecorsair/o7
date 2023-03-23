@@ -1,8 +1,8 @@
 #!/bin/bash
-/wait-for-neo4j.sh
+/usr/src/app/wait-for-neo4j.sh
 echo "Initializing database..."
 
-cypher-shell -f /init.cypher
+cypher-shell -f /usr/src/app/init.cypher
 
 if [ $? -ne 0 ]; then
   echo "Error: cypher-shell failed"

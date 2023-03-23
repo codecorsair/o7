@@ -1,5 +1,5 @@
 {
   "intents": [ "GUILDS" ],
-  "pluginsPath": "/home/container/app/plugins",
+  "pluginsPath": "/usr/src/app/plugins",
   "token": "<your bot token>"
 }

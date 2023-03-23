@@ -34,7 +34,7 @@ services:
       - internal
     secrets:
       - source: bridge_config
-        target: /home/container/app/configs/bridge.json
+        target: /usr/src/app/configs/bridge.json
 
   cluster:
     image: o7_cluster
@@ -47,15 +47,19 @@ services:
       CLUSTER_AUTH_TOKEN: <a shared secret between the bridge and the cluster>
       CLUSTER_ROLLING_RESTARTS: false
       BOT_INTENTS: Guilds
-      BOT_PLUGINS_PATH: /home/container/app/plugins
+      BOT_PLUGINS_PATH: /usr/src/app/plugins
       BOT_TOKEN: <your bot token>
     networks:
       - internal
     secrets:
       - source: cluster_config
-        target: /home/container/app/configs/cluster.json
+        target: /usr/src/app/configs/cluster.json
       - source: bot_config
-        target: /home/container/app/configs/bot.json
+        target: /usr/src/app/configs/bot.json
+      - source: eve_echoes_config
+        target: /usr/src/app/configs/eve_echoes.json
+      - source: system_config
+        target: /usr/src/app/configs/system.json
     depends_on:
       - mongodb
       - neo4j
@@ -76,6 +80,10 @@ secrets:
     file: ./configs/cluster.json
   bot_config:
     file: ./configs/bot.json
+  eve_echoes_config:
+    file: ./configs/eve_echoes.json
+  system_config:
+    file: ./configs/system.json
 
 networks:
   internal:

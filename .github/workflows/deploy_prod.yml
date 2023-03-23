@@ -7,11 +7,17 @@ on:
       - main
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Check for changes
-        id: check
-        uses:
+      - name: Deploy to staging
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.STAGING_HOST }}
+          username: ${{ secrets.STAGING_USERNAME }}
+          key: ${{ secrets.STAGING_KEY }}
+          script: |
+            docker pull ${{ github.username }}/o7_neo4j:latest
+            docker pull ${{ github.username }}/o7_bridge:latest
+            docker pull ${{ github.username }}/o7_cluster:latest
+            docker-compose -f docker-compose.yml -f docker-compose.yml up -d
