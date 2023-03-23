@@ -4,8 +4,8 @@ import {
   CommandInteraction,
   EmbedBuilder,
 } from "discord.js";
-import { ICommand } from "@/src/shared/interfaces/ICommand";
-import { IClient } from "@/src/shared/interfaces/IClient";
+import { ICommand } from "@/shared/interfaces/ICommand";
+import { IClient } from "@/shared/interfaces/IClient";
 
 const getAllCommands = (client: IClient) =>
   client.commands

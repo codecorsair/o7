@@ -1,4 +1,4 @@
-import { IPlugin } from '@/src/shared/interfaces/IPlugin';
+import { IPlugin } from '@/shared/interfaces/IPlugin';
 
 export interface IPluginWrapper {
   name: string;

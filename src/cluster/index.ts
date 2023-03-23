@@ -1,6 +1,6 @@
 import { Client } from 'discord-cross-hosting';
 import { ClusterManager } from 'discord-hybrid-sharding';
-import { createLogger } from '@/src/shared/utils/logger';
+import { createLogger } from '@/shared/utils/logger';
 
 const logger = createLogger();
 

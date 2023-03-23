@@ -1,6 +1,6 @@
 import { SlashCommandBuilder, EmbedBuilder } from "@discordjs/builders";
 import { CommandInteraction } from "discord.js";
-import { ICommand } from "@/src/shared/interfaces/ICommand";
+import { ICommand } from "@/shared/interfaces/ICommand";
 
 export default {
   aliases: ["invite"],

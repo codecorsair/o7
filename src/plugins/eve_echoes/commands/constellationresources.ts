@@ -5,10 +5,10 @@ import {
 } from "discord.js";
 import Fuse from "fuse.js";
 import Config from "../Config"
-import systems from "@/data/bot/systems.json";
+import systems from "@/data/systems.json";
 import neo4j from "neo4j-driver";
 import { PlanetaryResources } from "../constants";
-import { ICommand } from "@/src/shared/interfaces/ICommand";
+import { ICommand } from "@/shared/interfaces/ICommand";
 
 const RESOURCE_CHOICES = Object.values(PlanetaryResources).map((p) => ({
   name: String(p),

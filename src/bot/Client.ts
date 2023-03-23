@@ -4,12 +4,12 @@ import {
     Collection,
     GatewayIntentBits,
 } from 'discord.js'
-import { ICommand } from '@/src/shared/interfaces/ICommand'
-import { ICronjob } from '@/src/shared/interfaces/ICronjob'
-import { IClient } from '@/src/shared/interfaces/IClient'
+import { ICommand } from '@/shared/interfaces/ICommand'
+import { ICronjob } from '@/shared/interfaces/ICronjob'
+import { IClient } from '@/shared/interfaces/IClient'
 import { PluginManager } from './pluginManager/PluginManager'
 import { IPluginWrapper } from './pluginManager/IPluginWrapper'
-import { createLogger } from '@/src/shared/utils/logger'
+import { createLogger } from '@/shared/utils/logger'
 import * as fs from 'fs'
 
 const logger = createLogger()

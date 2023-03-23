@@ -6,8 +6,8 @@ import {
 import Config from "../Config";
 import neo4j from "neo4j-driver";
 import { printSecurity, getSystems } from "./jumps";
-import { ICommand } from "@/src/shared/interfaces/ICommand";
-import systems from "@/data/bot/systems.json";
+import { ICommand } from "@/shared/interfaces/ICommand";
+import systems from "@/data/systems.json";
 
 const SYSTEM_CHOICES = systems.map((system) => ({
   name: String(system.Name),

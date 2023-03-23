@@ -1,4 +1,4 @@
-import { ICommand } from "@/src/shared/interfaces/ICommand";
+import { ICommand } from "@/shared/interfaces/ICommand";
 import { getClient, collections } from "../libs/db";
 import { SlashCommandBuilder } from "@discordjs/builders";
 import { CommandInteraction } from "discord.js";

@@ -1,4 +1,4 @@
-import { IPlugin } from '@/src/shared/interfaces/IPlugin';
+import { IPlugin } from '@/shared/interfaces/IPlugin';
 
 import COMMAND_SAFEJUMPS from './commands/safejumps';
 import COMMAND_REPROCESS from './commands/reprocess';
