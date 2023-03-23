@@ -31,8 +31,8 @@ clusterManager.on('clusterCreate', (cluster) =>
 clusterManager.on('debug', (message) => logger.debug(message));
 
 client.listen(clusterManager);
-console.log(`Requesting shard data from ${Config.host}:${Config.port}`);
-client
+client.on('ready', () => {
+  client
   .requestShardData()
   .then((e: any) => {
     if (!e) return;
@@ -44,3 +44,4 @@ client
     clusterManager.spawn({ timeout: ONE_MINUTE });
   })
   .catch((err: any) => logger.error(`Error while fetching shard data: ${err}`));
+});
