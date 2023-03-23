@@ -1,0 +1,8326 @@
+[
+  {
+      "id": 10100000101,
+      "name": "Griffin"
+  },
+  {
+      "id": 10100000103,
+      "name": "Bantam"
+  },
+  {
+      "id": 10100000104,
+      "name": "Bantam II"
+  },
+  {
+      "id": 10100000105,
+      "name": "Condor"
+  },
+  {
+      "id": 10100000106,
+      "name": "Merlin"
+  },
+  {
+      "id": 10100000107,
+      "name": "Kestrel"
+  },
+  {
+      "id": 10100000108,
+      "name": "Condor II"
+  },
+  {
+      "id": 10100000109,
+      "name": "Condor Interceptor"
+  },
+  {
+      "id": 10100000110,
+      "name": "Condor II Interceptor"
+  },
+  {
+      "id": 10100000112,
+      "name": "Merlin Assault"
+  },
+  {
+      "id": 10100000113,
+      "name": "Manticore"
+  },
+  {
+      "id": 10100000114,
+      "name": "Manticore II"
+  },
+  {
+      "id": 10100000116,
+      "name": "Heron"
+  },
+  {
+      "id": 10100000117,
+      "name": "Heron Covert Ops"
+  },
+  {
+      "id": 10100000201,
+      "name": "Vigil"
+  },
+  {
+      "id": 10100000203,
+      "name": "Burst"
+  },
+  {
+      "id": 10100000204,
+      "name": "Burst II"
+  },
+  {
+      "id": 10100000205,
+      "name": "Slasher"
+  },
+  {
+      "id": 10100000206,
+      "name": "Rifter"
+  },
+  {
+      "id": 10100000207,
+      "name": "Breacher"
+  },
+  {
+      "id": 10100000208,
+      "name": "Slasher II"
+  },
+  {
+      "id": 10100000209,
+      "name": "Slasher Interceptor"
+  }, 
+  {
+      "id": 10100000210,
+      "name": "Slasher II Interceptor"
+  },
+  {
+      "id": 10100000212,
+      "name": "Breacher Assault"
+  },
+  {
+      "id": 10100000213,
+      "name": "Hound"
+  },
+  {
+      "id": 10100000214,
+      "name": "Hound II"
+  },
+  {
+      "id": 10100000216,
+      "name": "Probe"
+  },
+  {
+      "id": 10100000217,
+      "name": "Probe Covert Ops"
+  },
+  {
+      "id": 10100000301,
+      "name": "Crucifier"
+  },
+  {
+      "id": 10100000303,
+      "name": "Inquisitor"
+  },
+  {
+      "id": 10100000304,
+      "name": "Inquisitor II"
+  },
+  {
+      "id": 10100000305,
+      "name": "Executioner"
+  },
+  {
+      "id": 10100000306,
+      "name": "Tormentor"
+  },
+  {
+      "id": 10100000307,
+      "name": "Punisher"
+  },
+  {
+      "id": 10100000308,
+      "name": "Executioner II"
+  },
+  {
+      "id": 10100000309,
+      "name": "Executioner I Interceptor"
+  },
+  {
+      "id": 10100000310,
+      "name": "Executioner II Interceptor"
+  },
+  {
+      "id": 10100000312,
+      "name": "Punisher Assault"
+  },
+  {
+      "id": 10100000313,
+      "name": "Purifier"
+  },
+  {
+      "id": 10100000314,
+      "name": "Purifier II"
+  },
+  {
+      "id": 10100000316,
+      "name": "Magnate"
+  },
+  {
+      "id": 10100000317,
+      "name": "Magnate Covert Ops"
+  },
+  {
+      "id": 10100000401,
+      "name": "Maulus"
+  },
+  {
+      "id": 10100000403,
+      "name": "Navitas"
+  },
+  {
+      "id": 10100000404,
+      "name": "Navitas II"
+  },
+  {
+      "id": 10100000405,
+      "name": "Atron"
+  },
+  {
+      "id": 10100000406,
+      "name": "Tristan"
+  },
+  {
+      "id": 10100000407,
+      "name": "Incursus"
+  },
+  {
+      "id": 10100000408,
+      "name": "Atron II"
+  },
+  {
+	  "id": 10100000409,
+	  "name": "Atron Interceptor"
+  },
+  {
+      "id": 10100000410,
+      "name": "Atron II Interceptor"
+  },
+  {
+      "id": 10100000412,
+      "name": "Incursus Assault"
+  },
+  {
+      "id": 10100000413,
+      "name": "Nemesis"
+  },
+  {
+      "id": 10100000414,
+      "name": "Nemesis II"
+  },
+  {
+      "id": 10100000416,
+      "name": "Imicus"
+  },
+  {
+      "id": 10100000417,
+      "name": "Imicus Covert Ops"
+  },
+  {
+      "id": 10100001001,
+      "name": "Worm"
+  },
+  {
+      "id": 10100001101,
+      "name": "Dramiel"
+  },
+  {
+      "id": 10100001201,
+      "name": "Cruor"
+  },
+  {
+      "id": 10100001601,
+      "name": "Astero"
+  },
+  {
+      "id": 10100001801,
+      "name": "Garmur"
+  },
+  {
+      "id": 10100001901,
+      "name": "Succubus"
+  },
+  {
+      "id": 10100002001,
+      "name": "Daredevil"
+  },
+  {
+      "id": 10200000101,
+      "name": "Cormorant Guardian"
+  },
+  {
+      "id": 10200000104,
+      "name": "Cormorant"
+  },
+  {
+      "id": 10200000105,
+      "name": "Corax"
+  },
+  {
+      "id": 10200000106,
+      "name": "Cormorant II"
+  },
+  {
+      "id": 10200000107,
+      "name": "Cormorant Navy Issue"
+  },
+  {
+      "id": 10200000108,
+      "name": "Corax Assault"
+  },
+  {
+      "id": 10200000109,
+      "name": "Corax Trainer"
+  },
+  {
+      "id": 10200000110,
+      "name": "Corax Sniper"
+  },
+  {
+      "id": 10200000111,
+      "name": "Cormorant Covert Ops"
+  },
+  {
+      "id": 10200000201,
+      "name": "Thrasher Guardian"
+  },
+  {
+      "id": 10200000204,
+      "name": "Thrasher"
+  },
+  {
+      "id": 10200000205,
+      "name": "Talwar"
+  },
+  {
+      "id": 10200000206,
+      "name": "Thrasher II"
+  },
+  {
+      "id": 10200000207,
+      "name": "Thrasher Fleet Issue"
+  },
+  {
+      "id": 10200000208,
+      "name": "Talwar Assault"
+  },
+  {
+      "id": 10200000209,
+      "name": "Talwar Trainer"
+  },
+  {
+      "id": 10200000210,
+      "name": "Talwar Sniper"
+  },
+  {
+      "id": 10200000211,
+      "name": "Thrasher Covert Ops"
+  },
+  {
+      "id": 10200000301,
+      "name": "Coercer Guardian"
+  },
+  {
+      "id": 10200000304,
+      "name": "Coercer"
+  },
+  {
+      "id": 10200000305,
+      "name": "Dragoon"
+  },
+  {
+      "id": 10200000306,
+      "name": "Coercer II"
+  },
+  {
+      "id": 10200000307,
+      "name": "Coercer Navy Issue"
+  },
+  {
+      "id": 10200000308,
+      "name": "Dragoon Assault"
+  },
+  {
+      "id": 10200000309,
+      "name": "Dragoon Trainer"
+  },
+  {
+      "id": 10200000310,
+      "name": "Dragoon Sniper"
+  },
+  {
+      "id": 10200000311,
+      "name": "Coercer Covert Ops"
+  },
+  {
+      "id": 10200000401,
+      "name": "Catalyst Guardian"
+  },
+  {
+      "id": 10200000404,
+      "name": "Catalyst"
+  },
+  {
+      "id": 10200000405,
+      "name": "Algos"
+  },
+  {
+      "id": 10200000406,
+      "name": "Catalyst II"
+  },
+  {
+      "id": 10200000407,
+      "name": "Catalyst Navy Issue"
+  },
+  {
+      "id": 10200000408,
+      "name": "Algos Assault"
+  },
+  {
+      "id": 10200000409,
+      "name": "Algos Trainer"
+  },
+  {
+      "id": 10200000410,
+      "name": "Algos Sniper"
+  },
+  {
+      "id": 10300000101,
+      "name": "Moa Guardian"
+  },
+  {
+      "id": 10300000103,
+      "name": "Blackbird"
+  },
+  {
+      "id": 10300000105,
+      "name": "Osprey"
+  },
+  {
+      "id": 10300000108,
+      "name": "Caracal"
+  },
+  {
+      "id": 10300000109,
+      "name": "Moa"
+  },
+  {
+      "id": 10300000110,
+      "name": "Caracal Navy Issue"
+  },
+  {
+      "id": 10300000111,
+      "name": "Caracal Trainer"
+  },
+  {
+      "id": 10300000112,
+      "name": "Moa Trainer"
+  },
+  {
+      "id": 10300000113,
+      "name": "Caracal Sniper"
+  },
+  {
+      "id": 10300000114,
+      "name": "Blackbird Covert Ops"
+  },
+  {
+      "id": 10300000115,
+      "name": "Blackbird II Covert Ops"
+  },
+  {
+      "id": 10300000201,
+      "name": "Rupture Guardian"
+  },
+  {
+      "id": 10300000202,
+      "name": "Rupture II Guardian"
+  },
+  {
+      "id": 10300000203,
+      "name": "Bellicose"
+  },
+  {
+      "id": 10300000205,
+      "name": "Scythe"
+  },
+  {
+      "id": 10300000208,
+      "name": "Stabber"
+  },
+  {
+      "id": 10300000209,
+      "name": "Stabber Fleet Issue"
+  },
+  {
+      "id": 10300000210,
+      "name": "Rupture"
+  },
+  {
+      "id": 10300000211,
+      "name": "Stabber Trainer"
+  },
+  {
+      "id": 10300000212,
+      "name": "Rupture Trainer"
+  },
+  {
+      "id": 10300000213,
+      "name": "Stabber Sniper"
+  },
+  {
+      "id": 10300000214,
+      "name": "Bellicose Covert Ops"
+  },
+  {
+      "id": 10300000301,
+      "name": "Maller Guardian"
+  },
+  {
+      "id": 10300000302,
+      "name": "Maller II Guardian"
+  },
+  {
+      "id": 10300000303,
+      "name": "Arbitrator"
+  },
+    {
+      "id": 10200000102,
+      "name": "Cormorant Interdictor"
+  },  
+  {
+      "id": 10200000103,
+      "name": "Cormorant II Interdictor"
+  },  
+  {
+      "id": 10200000202,
+      "name": "Thrasher Interdictor"
+  },  
+  {
+      "id": 10200000203,
+      "name": "Thrasher II Interdictor"
+  },  
+  {
+      "id": 10200000302,
+      "name": "Coercer Interdictor"
+  },  
+  {
+      "id": 10200000303,
+      "name": "Coercer II Interdictor"
+  },  
+  {
+      "id": 10200000402,
+      "name": "Catalyst Interdictor"
+  },  
+  {
+      "id": 10200000403,
+      "name": "Catalyst II Interdictor"
+  },  
+  {
+      "id": 10300000206,
+      "name": "Rupture Interdictor"
+  },  
+  {
+      "id": 10300000207,
+      "name": "Bellicose Interdictor"
+  },  
+  {
+      "id": 10300000306,
+      "name": "Maller Interdictor"
+  },  
+  {
+      "id": 10300000307,
+      "name": "Arbitrator Interdictor"
+  },  
+  {
+      "id": 10300000406,
+      "name": "Thorax Interdictor"
+  },  
+  {
+      "id": 10300000407,
+      "name": "Celestis Interdictor"
+  },  
+  {
+      "id": 10300000106,
+      "name": "Moa Interdictor"
+  },  
+  {
+      "id": 10300000107,
+      "name": "Blackbird Interdictor"
+  },
+  {
+      "id": 10300000305,
+      "name": "Augoror"
+  },
+  {
+      "id": 10300000308,
+      "name": "Omen"
+  },
+  {
+      "id": 10300000309,
+      "name": "Maller"
+  },
+  {
+      "id": 10300000310,
+      "name": "Omen Navy Issue"
+  },
+  {
+      "id": 10300000311,
+      "name": "Omen Trainer"
+  },
+  {
+      "id": 10300000312,
+      "name": "Maller Trainer"
+  },
+  {
+      "id": 10300000313,
+      "name": "Omen Sniper"
+  },
+  {
+      "id": 10300000314,
+      "name": "Arbitrator Covert Ops"
+  },
+  {
+      "id": 10300000401,
+      "name": "Thorax Guardian"
+  },
+  {
+      "id": 10300000403,
+      "name": "Celestis"
+  },
+  {
+      "id": 10300000405,
+      "name": "Exequror"
+  },
+  {
+      "id": 10300000408,
+      "name": "Vexor"
+  },
+  {
+      "id": 10300000409,
+      "name": "Vexor Navy Issue"
+  },
+  {
+      "id": 10300000410,
+      "name": "Thorax"
+  },
+  {
+      "id": 10300000411,
+      "name": "Vexor Trainer"
+  },
+  {
+      "id": 10300000412,
+      "name": "Thorax Trainer"
+  },
+  {
+      "id": 10300000413,
+      "name": "Vexor Sniper"
+  },
+  {
+      "id": 10300000414,
+      "name": "Celestis Covert Ops"
+  },
+  {
+      "id": 10300000416,
+      "name": "Thorax Prototype"
+  },
+  {
+      "id": 10300001001,
+      "name": "Gila"
+  },
+  {
+      "id": 10300001101,
+      "name": "Cynabal"
+  },
+  {
+      "id": 10300001201,
+      "name": "Ashimmu"
+  },
+  {
+      "id": 10300001601,
+      "name": "Stratios"
+  },
+  {
+      "id": 10300001801,
+      "name": "Orthrus"
+  },
+  {
+      "id": 10300001901,
+      "name": "Phantasm"
+  },
+  {
+      "id": 10300002001,
+      "name": "Vigilant"
+  },
+  {
+      "id": 10400000101,
+      "name": "Ferox Guardian"
+  },
+  {
+      "id": 10400000104,
+      "name": "Naga"
+  },
+  {
+      "id": 10400000105,
+      "name": "Naga II"
+  },
+  {
+      "id": 10400000107,
+      "name": "Ferox"
+  },
+  {
+      "id": 10400000108,
+      "name": "Drake"
+  },
+  {
+      "id": 10400000202,
+      "name": "Cyclone II Guardian"
+  },
+  {
+      "id": 10400000205,
+      "name": "Tornado II"
+  },
+  {
+      "id": 10400000206,
+      "name": "Hurricane Logistics"
+  },
+  {
+      "id": 10400000207,
+      "name": "Cyclone"
+  },
+  {
+      "id": 10400000208,
+      "name": "Hurricane"
+  },
+  {
+      "id": 10400000211,
+      "name": "Hurricane Prototype"
+  },
+  {
+      "id": 10400000301,
+      "name": "Prophecy Guardian"
+  },
+  {
+      "id": 10400000302,
+      "name": "Prophecy II Guardian"
+  },
+  {
+      "id": 10400000304,
+      "name": "Oracle"
+  },
+  {
+      "id": 10400000305,
+      "name": "Oracle II"
+  },
+  {
+      "id": 10400000306,
+      "name": "Harbinger Logistics"
+  },
+  {
+      "id": 10400000307,
+      "name": "Prophecy"
+  },
+  {
+      "id": 10400000308,
+      "name": "Harbinger"
+  },
+  {
+      "id": 10400000311,
+      "name": "Harbinger Prototype"
+  },
+  {
+      "id": 10400000401,
+      "name": "Myrmidon Guardian"
+  },
+  {
+      "id": 10400000402,
+      "name": "Myrmidon II Guardian"
+  },
+  {
+      "id": 10400000404,
+      "name": "Talos"
+  },
+  {
+      "id": 10400000405,
+      "name": "Talos II"
+  },
+  {
+      "id": 10400000407,
+      "name": "Myrmidon"
+  },
+  {
+      "id": 10400000408,
+      "name": "Brutix"
+  },
+  {
+      "id": 10500000101,
+      "name": "Scorpion"
+  },
+  {
+      "id": 10500000102,
+      "name": "Raven Striker"
+  },
+  {
+      "id": 10500000103,
+      "name": "Rokh"
+  },
+  {
+      "id": 10500000104,
+      "name": "Raven"
+  },
+  {
+      "id": 10500000201,
+      "name": "Maelstrom Striker"
+  },
+  {
+      "id": 10500000204,
+      "name": "Tempest"
+  },
+  {
+      "id": 10500000301,
+      "name": "Armageddon"
+  },
+  {
+      "id": 10500000302,
+      "name": "Apocalypse Striker"
+  },
+  {
+      "id": 10500000303,
+      "name": "Apocalypse"
+  },
+  {
+      "id": 10500000304,
+      "name": "Abaddon"
+  },
+  {
+      "id": 10500000401,
+      "name": "Megathron Striker"
+  },
+  {
+      "id": 10500000402,
+      "name": "Dominix"
+  },
+  {
+      "id": 10500000403,
+      "name": "Megathron"
+  },
+  {
+      "id": 10500000404,
+      "name": "Hyperion"
+  },
+  {
+      "id": 10500001001,
+      "name": "Rattlesnake"
+  },
+  {
+      "id": 10500001101,
+      "name": "Machariel"
+  },
+  {
+      "id": 10500001201,
+      "name": "Bhaalgorn"
+  },
+  {
+      "id": 10500001601,
+      "name": "Nestor"
+  },
+  {
+      "id": 10500001801,
+      "name": "Barghest"
+  },
+  {
+      "id": 10500001901,
+      "name": "Nightmare"
+  },
+  {
+      "id": 10500002001,
+      "name": "Vindicator"
+  },
+  {
+      "id": 10600000101,
+      "name": "Tayra"
+  },
+  {
+      "id": 10600000102,
+      "name": "Badger"
+  },
+  {
+      "id": 10600000103,
+      "name": "Badger II"
+  },
+  {
+      "id": 10600000201,
+      "name": "Wreathe"
+  },
+  {
+      "id": 10600000202,
+      "name": "Mammoth"
+  },
+  {
+      "id": 10600000203,
+      "name": "Wreathe II"
+  },
+  {
+      "id": 10600000301,
+      "name": "Bestower"
+  },
+  {
+      "id": 10600000302,
+      "name": "Sigil"
+  },
+  {
+      "id": 10600000303,
+      "name": "Sigil II"
+  },
+  {
+      "id": 10600000401,
+      "name": "Kryos"
+  },
+  {
+      "id": 10600000402,
+      "name": "Nereus"
+  },
+  {
+      "id": 10600000403,
+      "name": "Nereus II"
+  },
+  {
+      "id": 10600001301,
+      "name": "Nereus High Mobility"
+  },
+  {
+      "id": 10600001302,
+      "name": "Nereus Combat"
+  },
+  {
+      "id": 10600001303,
+      "name": "Nereus Hauling"
+  },
+  {
+      "id": 10600001304,
+      "name": "Imicus High Mobility"
+  },
+  {
+      "id": 10600001305,
+      "name": "Humpback High Mobility"
+  },
+  {
+      "id": 10600001306,
+      "name": "Humpback Hauling"
+  },
+  {
+      "id": 10600001307,
+      "name": "Humpback Combat"
+  },
+  {
+      "id": 10600001401,
+      "name": "Retriever"
+  },
+  {
+      "id": 10600001402,
+      "name": "Procurer"
+  },
+  {
+      "id": 10600001403,
+      "name": "Covetor"
+  },
+  {
+      "id": 10600001405,
+      "name": "Venture Trainer"
+  },
+  {
+      "id": 10600001406,
+      "name": "Venture"
+  },
+  {
+      "id": 10600001407,
+      "name": "Venture II"
+  },
+  {
+      "id": 10600001408,
+      "name": "Venture III"
+  },
+  {
+      "id": 11000020002,
+      "name": "MK1 Small Rifled Railgun"
+  },
+  {
+      "id": 11000020004,
+      "name": "MK3 Small Rifled Railgun"
+  },
+  {
+      "id": 11000020006,
+      "name": "MK5 Small Rifled Railgun"
+  },
+  {
+      "id": 11000020008,
+      "name": "MK7 Small Rifled Railgun"
+  },
+  {
+      "id": 11000020010,
+      "name": "MK9 Small Rifled Railgun"
+  },
+  {
+      "id": 11000020012,
+      "name": "Musket' Small Rifled Railgun"
+  },
+  {
+      "id": 11000020013,
+      "name": "Caldari Navy Small Rifled Railgun"
+  },
+  {
+      "id": 11000020014,
+      "name": "Federation Navy Small Rifled Railgun"
+  },
+  {
+      "id": 11000020017,
+      "name": "Dread Guristas Small Rifled Railgun"
+  },
+  {
+      "id": 11000020018,
+      "name": "Shadow Serpentis Small Rifled Railgun"
+  },
+  {
+      "id": 11000020021,
+      "name": "Quafe' Small Rifled Railgun"
+  },
+  {
+      "id": 11000020024,
+      "name": "Coreli C-Type Small Rifled Railgun"
+  },
+  {
+      "id": 11000120006,
+      "name": "MK5 Medium Rifled Railgun"
+  },
+  {
+      "id": 11000120008,
+      "name": "MK7 Medium Rifled Railgun"
+  },
+  {
+      "id": 11000120010,
+      "name": "MK9 Medium Rifled Railgun"
+  },
+  {
+      "id": 11000120012,
+      "name": "Flintlock' Medium Rifled Railgun"
+  },
+  {
+      "id": 11000120013,
+      "name": "Caldari Navy Medium Rifled Railgun"
+  },
+  {
+      "id": 11000120014,
+      "name": "Federation Navy Medium Rifled Railgun"
+  },
+  {
+      "id": 11000120021,
+      "name": "Magnate' Medium Rifled Railgun"
+  },
+  {
+      "id": 11000120024,
+      "name": "Corelum C-Type Medium Rifled Railgun"
+  },
+  {
+      "id": 11000220008,
+      "name": "MK7 Large Rifled Railgun"
+  },
+  {
+      "id": 11000220010,
+      "name": "MK9 Large Rifled Railgun"
+  },
+  {
+      "id": 11000220012,
+      "name": "Popper' Large Rifled Railgun"
+  },
+  {
+      "id": 11000220013,
+      "name": "Caldari Navy Large Rifled Railgun"
+  },
+  {
+      "id": 11000220014,
+      "name": "Federation Navy Large Rifled Railgun"
+  },
+  {
+      "id": 11000220021,
+      "name": "Poison' Large Rifled Railgun"
+  },
+  {
+      "id": 11000220024,
+      "name": "Core C-Type Large Rifled Railgun"
+  },
+  {
+      "id": 11000520001,
+      "name": "Civilian Small Snubnosed Railgun"
+  },
+  {
+      "id": 11000520002,
+      "name": "MK1 Small Snubnosed Railgun"
+  },
+  {
+      "id": 11000520004,
+      "name": "MK3 Small Snubnosed Railgun"
+  },
+  {
+      "id": 11000520006,
+      "name": "MK5 Small Snubnosed Railgun"
+  },
+  {
+      "id": 11000520008,
+      "name": "MK7 Small Snubnosed Railgun"
+  },
+  {
+      "id": 11000520010,
+      "name": "MK9 Small Snubnosed Railgun"
+  },
+  {
+      "id": 11000520012,
+      "name": "Dealer' Small Snubnosed Railgun"
+  },
+  {
+      "id": 11000520013,
+      "name": "Federation Navy Small Snubnosed Railgun"
+  },
+  {
+      "id": 11000520021,
+      "name": "Quafe' Small Snubnosed Railgun"
+  },
+  {
+      "id": 11000520024,
+      "name": "Coreli C-Type Small Snubnosed Railgun"
+  },
+  {
+      "id": 11000620001,
+      "name": "Civilian Medium Snubnosed Railgun"
+  },
+  {
+      "id": 11000620006,
+      "name": "MK5 Medium Snubnosed Railgun"
+  },
+  {
+      "id": 11000620008,
+      "name": "MK7 Medium Snubnosed Railgun"
+  },
+  {
+      "id": 11000620010,
+      "name": "MK9 Medium Snubnosed Railgun"
+  },
+  {
+      "id": 11000620012,
+      "name": "Hustler' Medium Snubnosed Railgun"
+  },
+  {
+      "id": 11000620013,
+      "name": "Federation Navy Medium Snubnosed Railgun"
+  },
+  {
+      "id": 11000620021,
+      "name": "Magnate' Medium Snubnosed Railgun"
+  },
+  {
+      "id": 11000620024,
+      "name": "Corelum C-Type Medium Snubnosed Railgun"
+  },
+  {
+      "id": 11000720008,
+      "name": "MK7 Large Snubnosed Railgun"
+  },
+  {
+      "id": 11000720010,
+      "name": "MK9 Large Snubnosed Railgun"
+  },
+  {
+      "id": 11000720012,
+      "name": "Swindler' Large Snubnosed Railgun"
+  },
+  {
+      "id": 11000720013,
+      "name": "Federation Navy Large Snubnosed Railgun"
+  },
+  {
+      "id": 11000720021,
+      "name": "Poison' Large Snubnosed Railgun"
+  },
+  {
+      "id": 11000720024,
+      "name": "Core C-Type Large Snubnosed Railgun"
+  },
+  {
+      "id": 11002110002,
+      "name": "MK1 Small Beam Laser"
+  },
+  {
+      "id": 11002110004,
+      "name": "MK3 Small Beam Laser"
+  },
+  {
+      "id": 11002110006,
+      "name": "MK5 Small Beam Laser"
+  },
+  {
+      "id": 11002110008,
+      "name": "MK7 Small Beam Laser"
+  },
+  {
+      "id": 11002110010,
+      "name": "MK9 Small Beam Laser"
+  },
+  {
+      "id": 11002110012,
+      "name": "Mace' Small Beam Laser"
+  },
+  {
+      "id": 11002110013,
+      "name": "Imperial Navy Small Beam Laser"
+  },
+  {
+      "id": 11002110021,
+      "name": "Rebel' Small Beam Laser"
+  },
+  {
+      "id": 11002110024,
+      "name": "Centii C-Type Small Beam Laser"
+  },
+  {
+      "id": 11002110025,
+      "name": "Corpii C-Type Small Beam Laser"
+  },
+  {
+      "id": 11002220006,
+      "name": "MK5 Medium Beam Laser"
+  },
+  {
+      "id": 11002220008,
+      "name": "MK7 Medium Beam Laser"
+  },
+  {
+      "id": 11002220010,
+      "name": "MK9 Medium Beam Laser"
+  },
+  {
+      "id": 11002220012,
+      "name": "Crossbow' Medium Beam Laser"
+  },
+  {
+      "id": 11002220013,
+      "name": "Imperial Navy Medium Beam Laser"
+  },
+  {
+      "id": 11002220021,
+      "name": "Ritual' Medium Beam Laser"
+  },
+  {
+      "id": 11002220024,
+      "name": "Centum C-Type Medium Beam Laser"
+  },
+  {
+      "id": 11002220025,
+      "name": "Corpum C-Type Medium Beam Laser"
+  },
+  {
+      "id": 11002310008,
+      "name": "MK7 Large Beam Laser"
+  },
+  {
+      "id": 11002310010,
+      "name": "MK9 Large Beam Laser"
+  },
+  {
+      "id": 11002310012,
+      "name": "Catapult' Large Beam Laser"
+  },
+  {
+      "id": 11002310013,
+      "name": "Imperial Navy Large Beam Laser"
+  },
+  {
+      "id": 11002310017,
+      "name": "True Sansha Large Beam Laser"
+  },
+  {
+      "id": 11002310021,
+      "name": "Ruin' Large Beam Laser"
+  },
+  {
+      "id": 11002310024,
+      "name": "Centus C-Type Large Beam Laser"
+  },
+  {
+      "id": 11002310025,
+      "name": "Corpus C-Type Large Beam Laser"
+  },
+  {
+      "id": 11002510001,
+      "name": "Civilian Small Pulse Laser"
+  },
+  {
+      "id": 11002510002,
+      "name": "MK1 Small Pulse Laser"
+  },
+  {
+      "id": 11002510004,
+      "name": "MK3 Small Pulse Laser"
+  },
+  {
+      "id": 11002510006,
+      "name": "MK5 Small Pulse Laser"
+  },
+  {
+      "id": 11002510008,
+      "name": "MK7 Small Pulse Laser"
+  },
+  {
+      "id": 11002510010,
+      "name": "MK9 Small Pulse Laser"
+  },
+  {
+      "id": 11002510012,
+      "name": "Longbow' Small Pulse Laser"
+  },
+  {
+      "id": 11002510013,
+      "name": "Imperial Navy Small Pulse Laser"
+  },
+  {
+      "id": 11002510017,
+      "name": "True Sansha Small Pulse Laser"
+  },
+  {
+      "id": 11002510018,
+      "name": "Dark Blood Small Pulse Laser"
+  },
+  {
+      "id": 11002510021,
+      "name": "Rebel' Small Pulse Laser"
+  },
+  {
+      "id": 11002510024,
+      "name": "Centii C-Type Small Pulse Laser"
+  },
+  {
+      "id": 11002510025,
+      "name": "Corpii C-Type Small Pulse Laser"
+  },
+  {
+      "id": 11002600001,
+      "name": "Civilian Medium Pulse Laser"
+  },
+  {
+      "id": 11002600006,
+      "name": "MK5 Medium Pulse Laser"
+  },
+  {
+      "id": 11002600008,
+      "name": "MK7 Medium Pulse Laser"
+  },
+  {
+      "id": 11002600010,
+      "name": "MK9 Medium Pulse Laser"
+  },
+  {
+      "id": 11002600012,
+      "name": "Joust' Medium Pulse Laser"
+  },
+  {
+      "id": 11002600013,
+      "name": "Imperial Navy Medium Pulse Laser"
+  },
+  {
+      "id": 11002600017,
+      "name": "True Sansha Medium Pulse Laser"
+  },
+  {
+      "id": 11002600018,
+      "name": "Dark Blood Medium Pulse Laser"
+  },
+  {
+      "id": 11002600021,
+      "name": "Ritual' Medium Pulse Laser"
+  },
+  {
+      "id": 11002600024,
+      "name": "Centum C-Type Medium Pulse Laser"
+  },
+  {
+      "id": 11002600025,
+      "name": "Corpum C-Type Medium Pulse Laser"
+  },
+  {
+      "id": 11002710008,
+      "name": "MK7 Large Pulse Laser"
+  },
+  {
+      "id": 11002710010,
+      "name": "MK9 Large Pulse Laser"
+  },
+  {
+      "id": 11002710012,
+      "name": "Halberd' Large Pulse Laser"
+  },
+  {
+      "id": 11002710013,
+      "name": "Imperial Navy Large Pulse Laser"
+  },
+  {
+      "id": 11002710021,
+      "name": "Ruin' Large Pulse Laser"
+  },
+  {
+      "id": 11002710024,
+      "name": "Centus C-Type Large Pulse Laser"
+  },
+  {
+      "id": 11002710025,
+      "name": "Corpus C-Type Large Pulse Laser"
+  },
+  {
+      "id": 11004120001,
+      "name": "Civilian Small Autocannon"
+  },
+  {
+      "id": 11004120002,
+      "name": "MK1 Small Autocannon"
+  },
+  {
+      "id": 11004120004,
+      "name": "MK3 Small Autocannon"
+  },
+  {
+      "id": 11004120006,
+      "name": "MK5 Small Autocannon"
+  },
+  {
+      "id": 11004120008,
+      "name": "MK7 Small Autocannon"
+  },
+  {
+      "id": 11004120010,
+      "name": "MK9 Small Autocannon"
+  },
+  {
+      "id": 11004120012,
+      "name": "Jolt' Small Autocannon"
+  },
+  {
+      "id": 11004120013,
+      "name": "Republic Fleet Small Autocannon"
+  },
+  {
+      "id": 11004120017,
+      "name": "Domination Small Autocannon"
+  },
+  {
+      "id": 11004120021,
+      "name": "Criminal' Small Autocannon"
+  },
+  {
+      "id": 11004120024,
+      "name": "Gistii C-Type Small Autocannon"
+  },
+  {
+      "id": 11004220001,
+      "name": "Civilian Medium Autocannon"
+  },
+  {
+      "id": 11004220006,
+      "name": "MK5 Medium Autocannon"
+  },
+  {
+      "id": 11004220008,
+      "name": "MK7 Medium Autocannon"
+  },
+  {
+      "id": 11004220010,
+      "name": "MK9 Medium Autocannon"
+  },
+  {
+      "id": 11004220012,
+      "name": "Jolt' Medium Autocannon"
+  },
+  {
+      "id": 11004220013,
+      "name": "Republic Fleet Medium Autocannon"
+  },
+  {
+      "id": 11004220017,
+      "name": "Domination Medium Autocannon"
+  },
+  {
+      "id": 11004220021,
+      "name": "Free' Medium Autocannon"
+  },
+  {
+      "id": 11004220024,
+      "name": "Gistum C-Type Medium Autocannon"
+  },
+  {
+      "id": 11004320008,
+      "name": "MK7 Large Autocannon"
+  },
+  {
+      "id": 11004320010,
+      "name": "MK9 Large Autocannon"
+  },
+  {
+      "id": 11004320012,
+      "name": "Jolt' Large Autocannon"
+  },
+  {
+      "id": 11004320013,
+      "name": "Republic Fleet Large Autocannon"
+  },
+  {
+      "id": 11004320021,
+      "name": "Elder' Large Autocannon"
+  },
+  {
+      "id": 11004320024,
+      "name": "Gist C-Type Large Autocannon"
+  },
+  {
+      "id": 11004510002,
+      "name": "MK1 Small Strike Cannon"
+  },
+  {
+      "id": 11004510004,
+      "name": "MK3 Small Strike Cannon"
+  },
+  {
+      "id": 11004510006,
+      "name": "MK5 Small Strike Cannon"
+  },
+  {
+      "id": 11004510008,
+      "name": "MK7 Small Strike Cannon"
+  },
+  {
+      "id": 11004510010,
+      "name": "MK9 Small Strike Cannon"
+  },
+  {
+      "id": 11004510012,
+      "name": "Jolt' Small Strike Cannon"
+  },
+  {
+      "id": 11004510013,
+      "name": "Republic Fleet Small Strike Cannon"
+  },
+  {
+      "id": 11004510017,
+      "name": "Domination Small Strike Cannon"
+  },
+  {
+      "id": 11004510021,
+      "name": "Criminal' Small Strike Cannon"
+  },
+  {
+      "id": 11004510024,
+      "name": "Gistii C-Type Small Strike Cannon"
+  },
+  {
+      "id": 11004610006,
+      "name": "MK5 Medium Strike Cannon"
+  },
+  {
+      "id": 11004610008,
+      "name": "MK7 Medium Strike Cannon"
+  },
+  {
+      "id": 11004610010,
+      "name": "MK9 Medium Strike Cannon"
+  },
+  {
+      "id": 11004610012,
+      "name": "Jolt' Medium Strike Cannon"
+  },
+  {
+      "id": 11004610013,
+      "name": "Republic Fleet Medium Strike Cannon"
+  },
+  {
+      "id": 11004610021,
+      "name": "Free' Medium Strike Cannon"
+  },
+  {
+      "id": 11004610024,
+      "name": "Gistum C-Type Medium Strike Cannon"
+  },
+  {
+      "id": 11004710008,
+      "name": "MK7 Large Strike Cannon"
+  },
+  {
+      "id": 11004710010,
+      "name": "MK9 Large Strike Cannon"
+  },
+  {
+      "id": 11004710012,
+      "name": "Jolt' Large Strike Cannon"
+  },
+  {
+      "id": 11004710013,
+      "name": "Republic Fleet Large Strike Cannon"
+  },
+  {
+      "id": 11004710021,
+      "name": "Elder' Large Strike Cannon"
+  },
+  {
+      "id": 11004710024,
+      "name": "Gist C-Type Large Strike Cannon"
+  },
+  {
+      "id": 11005000012,
+      "name": "The Returned' Small Jetstream Decomposer"
+  },
+  {
+      "id": 11005000013,
+      "name": "Yan-Jung Small Jetstream Decomposer"
+  },
+  {
+      "id": 11005000017,
+      "name": "The Departed' Small Jetstream Decomposer"
+  },
+  {
+      "id": 11005000021,
+      "name": "The Sacrificed' Small Jetstream Decomposer"
+  },
+  {
+      "id": 11005000024,
+      "name": "Wei' C Small Jetstream Decomposer"
+  },
+  {
+      "id": 11005050012,
+      "name": "The Returned' Medium Jetstream Decomposer"
+  },
+  {
+      "id": 11005050013,
+      "name": "Yan-Jung Medium Jetstream Decomposer"
+  },
+  {
+      "id": 11005050017,
+      "name": "The Departed' Medium Jetstream Decomposer"
+  },
+  {
+      "id": 11005050021,
+      "name": "The Sacrificed' Medium Jetstream Decomposer"
+  },
+  {
+      "id": 11005050024,
+      "name": "Cheng' C Medium Jetstream Decomposer"
+  },
+  {
+      "id": 11006100004,
+      "name": "MK3 Miner"
+  },
+  {
+      "id": 11006100006,
+      "name": "MK5 Miner"
+  },
+  {
+      "id": 11006100008,
+      "name": "MK7 Miner"
+  },
+  {
+      "id": 11006100010,
+      "name": "MK9 Miner"
+  },
+  {
+      "id": 11006100012,
+      "name": "Single Diode Miner"
+  },
+  {
+      "id": 11006100013,
+      "name": "Gallente Miner"
+  },
+  {
+      "id": 11006100017,
+      "name": "ORE Miner"
+  },
+  {
+      "id": 11006100021,
+      "name": "Ion' Miner"
+  },
+  {
+      "id": 11008100006,
+      "name": "MK5 Strip Miner"
+  },
+  {
+      "id": 11008100008,
+      "name": "MK7 Strip Miner"
+  },
+  {
+      "id": 11008100010,
+      "name": "MK9 Strip Miner"
+  },
+  {
+      "id": 11008100012,
+      "name": "Single Diode Strip Miner"
+  },
+  {
+      "id": 11008100013,
+      "name": "Gallente Strip Miner"
+  },
+  {
+      "id": 11008100017,
+      "name": "ORE Strip Miner"
+  },
+  {
+      "id": 11008100021,
+      "name": "Ion' Strip Miner"
+  },
+  {
+      "id": 11012000001,
+      "name": "Civilian Small Missile Launcher"
+  },
+  {
+      "id": 11012000002,
+      "name": "MK1 Small Missile Launcher"
+  },
+  {
+      "id": 11012000004,
+      "name": "MK3 Small Missile Launcher"
+  },
+  {
+      "id": 11012000006,
+      "name": "MK5 Small Missile Launcher"
+  },
+  {
+      "id": 11012000008,
+      "name": "MK7 Small Missile Launcher"
+  },
+  {
+      "id": 11012000010,
+      "name": "MK9 Small Missile Launcher"
+  },
+  {
+      "id": 11012000012,
+      "name": "Gallows' Small Missile Launcher"
+  },
+  {
+      "id": 11012000013,
+      "name": "Caldari Navy Small Missile Launcher"
+  },
+  {
+      "id": 11012000014,
+      "name": "Republic Fleet Small Missile Launcher"
+  },
+  {
+      "id": 11012000017,
+      "name": "True Sansha Small Missile Launcher"
+  },
+  {
+      "id": 11012000018,
+      "name": "Dread Guristas Small Missile Launcher"
+  },
+  {
+      "id": 11012000019,
+      "name": "Domination Small Missile Launcher"
+  },
+  {
+      "id": 11012000021,
+      "name": "Discipline' Small Missile Launcher"
+  },
+  {
+      "id": 11012000024,
+      "name": "Pithi C-Type Small Missile Launcher"
+  },
+  {
+      "id": 11013000001,
+      "name": "Civilian Medium Missile Launcher"
+  },
+  {
+      "id": 11013000006,
+      "name": "MK5 Medium Missile Launcher"
+  },
+  {
+      "id": 11013000008,
+      "name": "MK7 Medium Missile Launcher"
+  },
+  {
+      "id": 11013000010,
+      "name": "MK9 Medium Missile Launcher"
+  },
+  {
+      "id": 11013000012,
+      "name": "Challenger' Medium Missile Launcher"
+  },
+  {
+      "id": 11013000013,
+      "name": "Caldari Navy Medium Missile Launcher"
+  },
+  {
+      "id": 11013000014,
+      "name": "Republic Fleet Medium Missile Launcher"
+  },
+  {
+      "id": 11013000017,
+      "name": "True Sansha Medium Missile Launcher"
+  },
+  {
+      "id": 11013000018,
+      "name": "Dread Guristas Medium Missile Launcher"
+  },
+  {
+      "id": 11013000019,
+      "name": "Domination Medium Missile Launcher"
+  },
+  {
+      "id": 11013000021,
+      "name": "Discipline' Medium Missile Launcher"
+  },
+  {
+      "id": 11013000024,
+      "name": "Pithum C-Type Medium Missile Launcher"
+  },
+  {
+      "id": 11014000008,
+      "name": "MK7 Large Missile Launcher"
+  },
+  {
+      "id": 11014000010,
+      "name": "MK9 Large Missile Launcher"
+  },
+  {
+      "id": 11014000012,
+      "name": "Gallows' Large Missile Launcher"
+  },
+  {
+      "id": 11014000013,
+      "name": "Caldari Navy Large Missile Launcher"
+  },
+  {
+      "id": 11014000014,
+      "name": "Republic Fleet Large Missile Launcher"
+  },
+  {
+      "id": 11014000019,
+      "name": "Domination Large Missile Launcher"
+  },
+  {
+      "id": 11014000021,
+      "name": "Hurricane Large Missile Launcher"
+  },
+  {
+      "id": 11014000024,
+      "name": "Pith C-Type Large Missile Launcher"
+  },
+  {
+      "id": 11015000006,
+      "name": "MK5 Medium Rapid Missile Launcher"
+  },
+  {
+      "id": 11015000008,
+      "name": "MK7 Medium Rapid Missile Launcher"
+  },
+  {
+      "id": 11015000010,
+      "name": "MK9 Medium Rapid Missile Launcher"
+  },
+  {
+      "id": 11015000012,
+      "name": "Challenger' Medium Rapid Missile Launcher"
+  },
+  {
+      "id": 11015000013,
+      "name": "Caldari Navy Medium Rapid Missile Launcher"
+  },
+  {
+      "id": 11015000014,
+      "name": "Republic Fleet Medium Rapid Missile Launcher"
+  },
+  {
+      "id": 11015000017,
+      "name": "True Sansha Medium Rapid Missile Launcher"
+  },
+  {
+      "id": 11015000018,
+      "name": "Dread Guristas Medium Rapid Missile Launcher"
+  },
+  {
+      "id": 11015000019,
+      "name": "Domination Medium Rapid Missile Launcher"
+  },
+  {
+      "id": 11015000021,
+      "name": "Hurricane Medium Rapid Missile Launcher"
+  },
+  {
+      "id": 11015000024,
+      "name": "Pithum C-Type Medium Rapid Missile Launcher"
+  },
+  {
+      "id": 11016000008,
+      "name": "MK7 Large Rapid Missile Launcher"
+  },
+  {
+      "id": 11016000010,
+      "name": "MK9 Large Rapid Missile Launcher"
+  },
+  {
+      "id": 11016000012,
+      "name": "Gallows' Large Rapid Missile Launcher"
+  },
+  {
+      "id": 11016000013,
+      "name": "Caldari Navy Large Rapid Missile Launcher"
+  },
+  {
+      "id": 11016000014,
+      "name": "Republic Fleet Large Rapid Missile Launcher"
+  },
+  {
+      "id": 11016000021,
+      "name": "Hurricane Large Rapid Missile Launcher"
+  },
+  {
+      "id": 11016000024,
+      "name": "Pith C-Type Large Rapid Missile Launcher"
+  },
+  {
+      "id": 11017000006,
+      "name": "MK5 Medium Torpedo Launcher"
+  },
+  {
+      "id": 11017000008,
+      "name": "MK7 Medium Torpedo Launcher"
+  },
+  {
+      "id": 11017000010,
+      "name": "MK9 Medium Torpedo Launcher"
+  },
+  {
+      "id": 11017000012,
+      "name": "Challenger' Medium Torpedo Launcher"
+  },
+  {
+      "id": 11017000013,
+      "name": "Caldari Navy Medium Torpedo Launcher"
+  },
+  {
+      "id": 11017000014,
+      "name": "Republic Fleet Medium Torpedo Launcher"
+  },
+  {
+      "id": 11017000021,
+      "name": "Heth' Medium Torpedo Launcher"
+  },
+  {
+      "id": 11017000024,
+      "name": "Pithum C-Type Medium Torpedo Launcher"
+  },
+  {
+      "id": 11019000004,
+      "name": "MK3 Small Torpedo Launcher"
+  },
+  {
+      "id": 11019000006,
+      "name": "MK5 Small Torpedo Launcher"
+  },
+  {
+      "id": 11019000008,
+      "name": "MK7 Small Torpedo Launcher"
+  },
+  {
+      "id": 11019000010,
+      "name": "MK9 Small Torpedo Launcher"
+  },
+  {
+      "id": 11019000012,
+      "name": "Balefire' Small Torpedo Launcher"
+  },
+  {
+      "id": 11019000013,
+      "name": "Caldari Navy Small Torpedo Launcher"
+  },
+  {
+      "id": 11019000014,
+      "name": "Republic Fleet Small Torpedo Launcher"
+  },
+  {
+      "id": 11019000017,
+      "name": "True Sansha Small Torpedo Launcher"
+  },
+  {
+      "id": 11019000021,
+      "name": "Heth' Small Torpedo Launcher"
+  },
+  {
+      "id": 11019000024,
+      "name": "Pithi C-Type Small Torpedo Launcher"
+  },
+  {
+      "id": 11020000008,
+      "name": "MK7 Large Torpedo Launcher"
+  },
+  {
+      "id": 11020000010,
+      "name": "MK9 Large Torpedo Launcher"
+  },
+  {
+      "id": 11020000012,
+      "name": "Barrage' Large Torpedo Launcher"
+  },
+  {
+      "id": 11020000013,
+      "name": "Caldari Navy Large Torpedo Launcher"
+  },
+  {
+      "id": 11020000014,
+      "name": "Republic Fleet Large Torpedo Launcher"
+  },
+  {
+      "id": 11020000021,
+      "name": "Hurricane Large Torpedo Launcher"
+  },
+  {
+      "id": 11020000024,
+      "name": "Pith C-Type Large Torpedo Launcher"
+  },
+  {
+      "id": 11031000004,
+      "name": "MK3 Small Energy Nosferatu"
+  },
+  {
+      "id": 11031000006,
+      "name": "MK5 Small Energy Nosferatu"
+  },
+  {
+      "id": 11031000008,
+      "name": "MK7 Small Energy Nosferatu"
+  },
+  {
+      "id": 11031000010,
+      "name": "MK9 Small Energy Nosferatu"
+  },
+  {
+      "id": 11031000012,
+      "name": "Upir' Small Energy Nosferatu"
+  },
+  {
+      "id": 11031000013,
+      "name": "Imperial Navy Small Energy Nosferatu"
+  },
+  {
+      "id": 11031000018,
+      "name": "True Sansha Small Energy Nosferatu"
+  },
+  {
+      "id": 11031000021,
+      "name": "Vrykolakas' Small Energy Nosferatu"
+  },
+  {
+      "id": 11031100006,
+      "name": "MK5 Medium Energy Nosferatu"
+  },
+  {
+      "id": 11031100008,
+      "name": "MK7 Medium Energy Nosferatu"
+  },
+  {
+      "id": 11031100010,
+      "name": "MK9 Medium Energy Nosferatu"
+  },
+  {
+      "id": 11031100012,
+      "name": "Upir' Medium Energy Nosferatu"
+  },
+  {
+      "id": 11031100013,
+      "name": "Imperial Navy Medium Energy Nosferatu"
+  },
+  {
+      "id": 11031100017,
+      "name": "Dark Blood Medium Energy Nosferatu"
+  },
+  {
+      "id": 11031100021,
+      "name": "Vrykolakas' Medium Energy Nosferatu"
+  },
+  {
+      "id": 11031200010,
+      "name": "MK9 Large Energy Nosferatu"
+  },
+  {
+      "id": 11031200012,
+      "name": "Upir' Large Energy Nosferatu"
+  },
+  {
+      "id": 11031200013,
+      "name": "Imperial Navy Large Energy Nosferatu"
+  },
+  {
+      "id": 11031200017,
+      "name": "Dark Blood Large Energy Nosferatu"
+  },
+  {
+      "id": 11031200018,
+      "name": "True Sansha Large Energy Nosferatu"
+  },
+  {
+      "id": 11031200021,
+      "name": "Vrykolakas' Large Energy Nosferatu"
+  },
+  {
+      "id": 11032000004,
+      "name": "MK3 Small Energy Neutralizer"
+  },
+  {
+      "id": 11032000006,
+      "name": "MK5 Small Energy Neutralizer"
+  },
+  {
+      "id": 11032000008,
+      "name": "MK7 Small Energy Neutralizer"
+  },
+  {
+      "id": 11032000010,
+      "name": "MK9 Small Energy Neutralizer"
+  },
+  {
+      "id": 11032000012,
+      "name": "Caltrop' Small Energy Neutralizer"
+  },
+  {
+      "id": 11032000013,
+      "name": "Imperial Navy Small Energy Neutralizer"
+  },
+  {
+      "id": 11032000021,
+      "name": "Moat' Small Energy Neutralizer"
+  },
+  {
+      "id": 11032100006,
+      "name": "MK5 Medium Energy Neutralizer"
+  },
+  {
+      "id": 11032100008,
+      "name": "MK7 Medium Energy Neutralizer"
+  },
+  {
+      "id": 11032100010,
+      "name": "MK9 Medium Energy Neutralizer"
+  },
+  {
+      "id": 11032100012,
+      "name": "Caltrop' Medium Energy Neutralizer"
+  },
+  {
+      "id": 11032100013,
+      "name": "Imperial Navy Medium Energy Neutralizer"
+  },
+  {
+      "id": 11032100021,
+      "name": "Moat' Medium Energy Neutralizer"
+  },
+  {
+      "id": 11032200010,
+      "name": "MK9 Large Energy Neutralizer"
+  },
+  {
+      "id": 11032200012,
+      "name": "Caltrop' Large Energy Neutralizer"
+  },
+  {
+      "id": 11032200013,
+      "name": "Imperial Navy Large Energy Neutralizer"
+  },
+  {
+      "id": 11032200021,
+      "name": "Moat' Large Energy Neutralizer"
+  },
+  {
+      "id": 11100000004,
+      "name": "MK3 Small Remote Capacitor Transmitter"
+  },
+  {
+      "id": 11100000006,
+      "name": "MK5 Small Remote Capacitor Transmitter"
+  },
+  {
+      "id": 11100000008,
+      "name": "MK7 Small Remote Capacitor Transmitter"
+  },
+  {
+      "id": 11100000010,
+      "name": "MK9 Small Remote Capacitor Transmitter"
+  },
+  {
+      "id": 11100000012,
+      "name": "Squire' Small Remote Capacitor Transmitter"
+  },
+  {
+      "id": 11100000013,
+      "name": "Imperial Navy Small Remote Capacitor Transmitter"
+  },
+  {
+      "id": 11100000021,
+      "name": "Knight' Small Remote Capacitor Transmitter"
+  },
+  {
+      "id": 11100100006,
+      "name": "MK5 Medium Remote Capacitor Transmitter"
+  },
+  {
+      "id": 11100100008,
+      "name": "MK7 Medium Remote Capacitor Transmitter"
+  },
+  {
+      "id": 11100100010,
+      "name": "MK9 Medium Remote Capacitor Transmitter"
+  },
+  {
+      "id": 11100100012,
+      "name": "Squire' Medium Remote Capacitor Transmiiter"
+  },
+  {
+      "id": 11100100013,
+      "name": "Imperial Navy Medium Remote Capacitor Transmitter"
+  },
+  {
+      "id": 11100100021,
+      "name": "Chivalry' Medium Remote Capacitor Transmitter"
+  },
+  {
+      "id": 11100200010,
+      "name": "MK9 Large Remote Capacitor Transmitter"
+  },
+  {
+      "id": 11100200012,
+      "name": "Squire' Large Remote Capacitor Transmitter"
+  },
+  {
+      "id": 11100200013,
+      "name": "Imperial Navy Large Remote Capacitor Transmitter"
+  },
+  {
+      "id": 11100200021,
+      "name": "Chivalry' Large Remote Capacitor Transmitter"
+  },
+  {
+      "id": 11101000004,
+      "name": "MK3 Small Remote Shield Booster"
+  },
+  {
+      "id": 11101000006,
+      "name": "MK5 Small Remote Shield Booster"
+  },
+  {
+      "id": 11101000008,
+      "name": "MK7 Small Remote Shield Booster"
+  },
+  {
+      "id": 11101000010,
+      "name": "MK9 Small Remote Shield Booster"
+  },
+  {
+      "id": 11101000012,
+      "name": "Micro' Small Remote Shield Booster"
+  },
+  {
+      "id": 11101000013,
+      "name": "Caldari Navy Small Remote Shield Booster"
+  },
+  {
+      "id": 11101000021,
+      "name": "Healer' Small Remote Shield Booster"
+  },
+  {
+      "id": 11101000024,
+      "name": "Pithi C-Type Small Remote Shield Booster"
+  },
+  {
+      "id": 11101000025,
+      "name": "Gistii C-Type Small Remote Shield Booster"
+  },
+  {
+      "id": 11101100006,
+      "name": "MK5 Medium Remote Shield Booster"
+  },
+  {
+      "id": 11101100008,
+      "name": "MK7 Medium Remote Shield Booster"
+  },
+  {
+      "id": 11101100010,
+      "name": "MK9 Medium Remote Shield Booster"
+  },
+  {
+      "id": 11101100012,
+      "name": "Micro' Medium Remote Shield Booster"
+  },
+  {
+      "id": 11101100013,
+      "name": "Caldari Navy Medium Remote Shield Booster"
+  },
+  {
+      "id": 11101100021,
+      "name": "Healer' Medium Remote Shield Booster"
+  },
+  {
+      "id": 11101100024,
+      "name": "Pithum C-Type Medium Remote Shield Booster"
+  },
+  {
+      "id": 11101100025,
+      "name": "Gistum C-Type Medium Remote Shield Booster"
+  },
+  {
+      "id": 11101200010,
+      "name": "MK9 Large Remote Shield Booster"
+  },
+  {
+      "id": 11101200012,
+      "name": "Micro' Large Remote Shield Booster"
+  },
+  {
+      "id": 11101200021,
+      "name": "Healer' Large Remote Shield Booster"
+  },
+  {
+      "id": 11101200024,
+      "name": "Pith C-Type Large Remote Shield Booster"
+  },
+  {
+      "id": 11101200025,
+      "name": "Gist C-Type Large Remote Shield Booster"
+  },
+  {
+      "id": 11102000004,
+      "name": "MK3 Small Remote Armor Repairer"
+  },
+  {
+      "id": 11102000006,
+      "name": "MK5 Small Remote Armor Repairer"
+  },
+  {
+      "id": 11102000008,
+      "name": "MK7 Small Remote Armor Repairer"
+  },
+  {
+      "id": 11102000010,
+      "name": "MK9 Small Remote Armor Repairer"
+  },
+  {
+      "id": 11102000012,
+      "name": "Beatnik' Small Remote Armor Repairer"
+  },
+  {
+      "id": 11102000013,
+      "name": "Imperial Navy Small Remote Armor Repairer"
+  },
+  {
+      "id": 11102000021,
+      "name": "Tranquil' Small Remote Armor Repairer"
+  },
+  {
+      "id": 11102000024,
+      "name": "Corpii C-Type Small Remote Armor Repairer"
+  },
+  {
+      "id": 11102000025,
+      "name": "Coreli C-Type Small Remote Armor Repairer"
+  },
+  {
+      "id": 11102100006,
+      "name": "MK5 Medium Remote Armor Repairer"
+  },
+  {
+      "id": 11102100008,
+      "name": "MK7 Medium Remote Armor Repairer"
+  },
+  {
+      "id": 11102100010,
+      "name": "MK9 Medium Remote Armor Repairer"
+  },
+  {
+      "id": 11102100012,
+      "name": "Beatnik' Medium Remote Armor Repairer"
+  },
+  {
+      "id": 11102100013,
+      "name": "Imperial Navy Medium Remote Armor Repairer"
+  },
+  {
+      "id": 11102100021,
+      "name": "Tranquil' Medium Remote Armor Repairer"
+  },
+  {
+      "id": 11102100024,
+      "name": "Corpum C-Type Medium Remote Armor Repairer"
+  },
+  {
+      "id": 11102100025,
+      "name": "Corelum C-Type Medium Remote Armor Repairer"
+  },
+  {
+      "id": 11102200010,
+      "name": "MK9 Large Remote Armor Repairer"
+  },
+  {
+      "id": 11102200012,
+      "name": "Beatnik' Large Remote Armor Repairer"
+  },
+  {
+      "id": 11102200013,
+      "name": "Imperial Navy Large Remote Armor Repairer"
+  },
+  {
+      "id": 11102200021,
+      "name": "Peace' Large Remote Armor Repairer"
+  },
+  {
+      "id": 11102200024,
+      "name": "Corpus C-Type Large Remote Armor Repairer"
+  },
+  {
+      "id": 11108000006,
+      "name": "MK5 Cloaking Device"
+  },
+  {
+      "id": 11108000008,
+      "name": "MK7 Cloaking Device"
+  },
+  {
+      "id": 11108000012,
+      "name": "Guise' Cloaking Device"
+  },
+  {
+      "id": 11108000021,
+      "name": "Smokescreen' Cloaking Device"
+  },
+  {
+      "id": 11123000006,
+      "name": "MK5 Covert Ops Cloaking Device"
+  },
+  {
+      "id": 11123000008,
+      "name": "MK7 Covert Ops Cloaking Device"
+  },
+  {
+      "id": 11123000012,
+      "name": "Camouflage' Covert Ops Cloaking Device"
+  },
+  {
+      "id": 11123000017,
+      "name": "SOE Covert Ops Cloaking Device"
+  },
+  {
+      "id": 11123000021,
+      "name": "Smoke' Covert Ops Cloaking Device"
+  },
+  {
+      "id": 11300100002,
+      "name": "MK1 Small Shield Extender"
+  },
+  {
+      "id": 11300100004,
+      "name": "MK3 Small Shield Extender"
+  },
+  {
+      "id": 11300100006,
+      "name": "MK5 Small Shield Extender"
+  },
+  {
+      "id": 11300100008,
+      "name": "MK7 Small Shield Extender"
+  },
+  {
+      "id": 11300100010,
+      "name": "MK9 Small Shield Extender"
+  },
+  {
+      "id": 11300100012,
+      "name": "Wolf' Small Shield Extenders"
+  },
+  {
+      "id": 11300100013,
+      "name": "Caldari Navy Small Shield Extender"
+  },
+  {
+      "id": 11300100014,
+      "name": "Republic Fleet Small Shield Extender"
+  },
+  {
+      "id": 11300100021,
+      "name": "Trapper' Small Shield Extender"
+  },
+  {
+      "id": 11300200006,
+      "name": "MK5 Medium Shield Extender"
+  },
+  {
+      "id": 11300200008,
+      "name": "MK7 Medium Shield Extender"
+  },
+  {
+      "id": 11300200010,
+      "name": "MK9 Medium Shield Extender"
+  },
+  {
+      "id": 11300200012,
+      "name": "Canyon' Medium Shield Extender"
+  },
+  {
+      "id": 11300200013,
+      "name": "Caldari Navy Medium Shield Extender"
+  },
+  {
+      "id": 11300200014,
+      "name": "Republic Fleet Medium Shield Extender"
+  },
+  {
+      "id": 11300200017,
+      "name": "Dread Guristas Medium Shield Extender"
+  },
+  {
+      "id": 11300200021,
+      "name": "Patriot Medium Shield Extension Device"
+  },
+  {
+      "id": 11300300010,
+      "name": "MK9 Large Shield Extender"
+  },
+  {
+      "id": 11300300012,
+      "name": "Sheriff' Large Shield Extender"
+  },
+  {
+      "id": 11300300014,
+      "name": "Republic Fleet Large Shield Extender"
+  },
+  {
+      "id": 11300300021,
+      "name": "Protector' Large Shield Extender"
+  },
+  {
+      "id": 11302000001,
+      "name": "Civilian Small Shield Booster"
+  },
+  {
+      "id": 11302000002,
+      "name": "MK1 Small Shield Booster"
+  },
+  {
+      "id": 11302000004,
+      "name": "MK3 Small Shield Booster"
+  },
+  {
+      "id": 11302000006,
+      "name": "MK5 Small Shield Booster"
+  },
+  {
+      "id": 11302000008,
+      "name": "MK7 Small Shield Booster"
+  },
+  {
+      "id": 11302000010,
+      "name": "MK9 Small Shield Booster"
+  },
+  {
+      "id": 11302000012,
+      "name": "Settler' Small Shield Booster"
+  },
+  {
+      "id": 11302000013,
+      "name": "Caldari Navy Small Shield Booster"
+  },
+  {
+      "id": 11302000014,
+      "name": "Republic Fleet Small Shield Booster"
+  },
+  {
+      "id": 11302000017,
+      "name": "True Sansha Small Shield Booster"
+  },
+  {
+      "id": 11302000018,
+      "name": "Dread Guristas Small Shield Booster"
+  },
+  {
+      "id": 11302000019,
+      "name": "Domination Small Shield Booster"
+  },
+  {
+      "id": 11302000021,
+      "name": "Veteran Small Shield Booster"
+  },
+  {
+      "id": 11302000024,
+      "name": "Centii C-Type Small Shield Booster"
+  },
+  {
+      "id": 11302000025,
+      "name": "Pithi C-Type Small Shield Booster"
+  },
+  {
+      "id": 11302000026,
+      "name": "Gistii C-Type Small Shield Booster"
+  },
+  {
+      "id": 11302100001,
+      "name": "Civilian Medium Shield Booster"
+  },
+  {
+      "id": 11302100006,
+      "name": "MK5 Medium Shield Booster"
+  },
+  {
+      "id": 11302100008,
+      "name": "MK7 Medium Shield Booster"
+  },
+  {
+      "id": 11302100010,
+      "name": "MK9 Medium Shield Booster"
+  },
+  {
+      "id": 11302100012,
+      "name": "Lone Ranger' Medium Shield Booster"
+  },
+  {
+      "id": 11302100013,
+      "name": "Caldari Navy Medium Shield Booster"
+  },
+  {
+      "id": 11302100014,
+      "name": "Republic Fleet Medium Shield Booster"
+  },
+  {
+      "id": 11302100017,
+      "name": "True Sansha Medium Shield Booster"
+  },
+  {
+      "id": 11302100018,
+      "name": "Dread Guristas Medium Shield Booster"
+  },
+  {
+      "id": 11302100019,
+      "name": "Domination Medium Shield Booster"
+  },
+  {
+      "id": 11302100021,
+      "name": "Disaster' Medium Shield Booster"
+  },
+  {
+      "id": 11302100024,
+      "name": "Centum C-Type Medium Shield Booster"
+  },
+  {
+      "id": 11302100025,
+      "name": "Pithum C-Type Medium Shield Booster"
+  },
+  {
+      "id": 11302100026,
+      "name": "Gistum C-Type Medium Shield Booster"
+  },
+  {
+      "id": 11302200010,
+      "name": "MK9 Large Shield Booster"
+  },
+  {
+      "id": 11302200012,
+      "name": "Outlaw' Large Shield Booster"
+  },
+  {
+      "id": 11302200013,
+      "name": "Caldari Navy Large Shield Booster"
+  },
+  {
+      "id": 11302200014,
+      "name": "Republic Fleet Large Shield Booster"
+  },
+  {
+      "id": 11302200017,
+      "name": "True Sansha Large Shield Booster"
+  },
+  {
+      "id": 11302200021,
+      "name": "Seeker' Large Shield Booster"
+  },
+  {
+      "id": 11302200024,
+      "name": "Centus C-Type Large Shield Booster"
+  },
+  {
+      "id": 11302200025,
+      "name": "Pith C-Type Large Shield Booster"
+  },
+  {
+      "id": 11302200026,
+      "name": "Gist C-Type Large Shield Booster"
+  },
+  {
+      "id": 11304000004,
+      "name": "MK3 Small Microwarpdrive"
+  },
+  {
+      "id": 11304000006,
+      "name": "MK5 Small Microwarpdrive"
+  },
+  {
+      "id": 11304000008,
+      "name": "MK7 Small Microwarpdrive"
+  },
+  {
+      "id": 11304000010,
+      "name": "MK9 Small Microwarpdrive"
+  },
+  {
+      "id": 11304000012,
+      "name": "Dealer' Small Microwarpdrive"
+  },
+  {
+      "id": 11304000013,
+      "name": "Federation Navy Small Microwarpdrive"
+  },
+  {
+      "id": 11304000014,
+      "name": "Republic Fleet Small Microwarpdrive"
+  },
+  {
+      "id": 11304000017,
+      "name": "Shadow Serpentis Small Microwarpdrive"
+  },
+  {
+      "id": 11304000021,
+      "name": "Scout' Small Microwarpdrive"
+  },
+  {
+      "id": 11304000024,
+      "name": "Gistii C-Type Small Microwarpdrive"
+  },
+  {
+      "id": 11304100006,
+      "name": "MK5 Medium Microwarpdrive"
+  },
+  {
+      "id": 11304100008,
+      "name": "MK7 Medium Microwarpdrive"
+  },
+  {
+      "id": 11304100010,
+      "name": "MK9 Medium Microwarpdrive"
+  },
+  {
+      "id": 11304100012,
+      "name": "Dealer' Medium Microwarpdrive"
+  },
+  {
+      "id": 11304100013,
+      "name": "Federation Navy Medium Microwarpdrive"
+  },
+  {
+      "id": 11304100014,
+      "name": "Republic Fleet Medium Microwarpdrive"
+  },
+  {
+      "id": 11304100017,
+      "name": "Shadow Serpentis Medium Microwarpdrive"
+  },
+  {
+      "id": 11304100021,
+      "name": "Scout' Medium Microwarpdrive"
+  },
+  {
+      "id": 11304100024,
+      "name": "Gistum C-Type Medium Microwarpdrive"
+  },
+  {
+      "id": 11304200010,
+      "name": "MK9 Large Microwarpdrive"
+  },
+  {
+      "id": 11304200012,
+      "name": "Dealer' Large Microwarpdrive"
+  },
+  {
+      "id": 11304200013,
+      "name": "Federation Navy Large Microwarpdrive"
+  },
+  {
+      "id": 11304200014,
+      "name": "Republic Fleet Large Microwarpdrive"
+  },
+  {
+      "id": 11304200021,
+      "name": "Scout' Large Microwarpdrive"
+  },
+  {
+      "id": 11304200024,
+      "name": "Gist C-Type Large Microwarpdrive"
+  },
+  {
+      "id": 11304500001,
+      "name": "Civilian Small Afterburner"
+  },
+  {
+      "id": 11304500002,
+      "name": "MK1 Small Afterburner"
+  },
+  {
+      "id": 11304500004,
+      "name": "MK3 Small Afterburner"
+  },
+  {
+      "id": 11304500006,
+      "name": "MK5 Small Afterburner"
+  },
+  {
+      "id": 11304500008,
+      "name": "MK7 Small Afterburner"
+  },
+  {
+      "id": 11304500010,
+      "name": "MK9 Small Afterburner"
+  },
+  {
+      "id": 11304500012,
+      "name": "Smuggler Small Afterburner"
+  },
+  {
+      "id": 11304500013,
+      "name": "Federation Navy Small Afterburner"
+  },
+  {
+      "id": 11304500014,
+      "name": "Republic Fleet Small Afterburner"
+  },
+  {
+      "id": 11304500017,
+      "name": "Shadow Serpentis Small Afterburner"
+  },
+  {
+      "id": 11304500021,
+      "name": "Ranger' Small Afterburner"
+  },
+  {
+      "id": 11304500024,
+      "name": "Centii C-Type Small Afterburner"
+  },
+  {
+      "id": 11304500025,
+      "name": "Coreli C-Type Small Afterburner"
+  },
+  {
+      "id": 11304600001,
+      "name": "Civilian Medium Afterburner"
+  },
+  {
+      "id": 11304600006,
+      "name": "MK5 Medium Afterburner"
+  },
+  {
+      "id": 11304600008,
+      "name": "MK7 Medium Afterburner"
+  },
+  {
+      "id": 11304600010,
+      "name": "MK9 Medium Afterburner"
+  },
+  {
+      "id": 11304600012,
+      "name": "Smuggler Medium Afterburner"
+  },
+  {
+      "id": 11304600013,
+      "name": "Federation Navy Medium Afterburner"
+  },
+  {
+      "id": 11304600014,
+      "name": "Republic Fleet Medium Afterburner"
+  },
+  {
+      "id": 11304600017,
+      "name": "Shadow Serpentis Medium Afterburner"
+  },
+  {
+      "id": 11304600018,
+      "name": "Domination Medium Afterburner"
+  },
+  {
+      "id": 11304600021,
+      "name": "Ranger' Medium Afterburner"
+  },
+  {
+      "id": 11304600024,
+      "name": "Centum C-Type Medium Afterburner"
+  },
+  {
+      "id": 11304600025,
+      "name": "Corelum C-Type Medium Afterburner"
+  },
+  {
+      "id": 11304700010,
+      "name": "MK9 Large Afterburner"
+  },
+  {
+      "id": 11304700012,
+      "name": "Smuggler Large Afterburner"
+  },
+  {
+      "id": 11304700013,
+      "name": "Federation Navy Large Afterburner"
+  },
+  {
+      "id": 11304700014,
+      "name": "Republic Fleet Large Afterburner"
+  },
+  {
+      "id": 11304700021,
+      "name": "Ranger' Large Afterburner"
+  },
+  {
+      "id": 11304700024,
+      "name": "Centus C-Type Large Afterburner"
+  },
+  {
+      "id": 11304700025,
+      "name": "Core C-Type Large Afterburner"
+  },
+  {
+      "id": 11308500004,
+      "name": "MK3 Warp Disruptor"
+  },
+  {
+      "id": 11308500006,
+      "name": "MK5 Warp Disruptor"
+  },
+  {
+      "id": 11308500008,
+      "name": "MK7 Warp Disruptor"
+  },
+  {
+      "id": 11308500010,
+      "name": "MK9 Warp Disruptor"
+  },
+  {
+      "id": 11308500012,
+      "name": "Interruptive' Warp Disruptor"
+  },
+  {
+      "id": 11308500013,
+      "name": "Caldari Navy Warp Disruptor"
+  },
+  {
+      "id": 11308500014,
+      "name": "Federation Navy Warp Disruptor"
+  },
+  {
+      "id": 11308500015,
+      "name": "Republic Fleet Warp Disruptor"
+  },
+  {
+      "id": 11308500017,
+      "name": "True Sansha Warp Disruptor"
+  },
+  {
+      "id": 11308500018,
+      "name": "Dark Blood Warp Disruptor"
+  },
+  {
+      "id": 11308500019,
+      "name": "Dread Guristas Warp Disruptor"
+  },
+  {
+      "id": 11308500021,
+      "name": "Predator' Warp Disruptor"
+  },
+  {
+      "id": 11309100004,
+      "name": "MK3 Small Capacitor Battery"
+  },
+  {
+      "id": 11309100006,
+      "name": "MK5 Small Capacitor Battery"
+  },
+  {
+      "id": 11309100008,
+      "name": "MK7 Small Capacitor Battery"
+  },
+  {
+      "id": 11309100010,
+      "name": "MK9 Small Capacitor Battery"
+  },
+  {
+      "id": 11309100012,
+      "name": "Acolyth' Small Capacitor Battery"
+  },
+  {
+      "id": 11309100013,
+      "name": "Republic Fleet Small Capacitor Battery"
+  },
+  {
+      "id": 11309100021,
+      "name": "Demolish' Small Capacitor Battery"
+  },
+  {
+      "id": 11309100024,
+      "name": "Gistii C-Type Small Capacitor Batteries"
+  },
+  {
+      "id": 11309200006,
+      "name": "MK5 Medium Capacitor Battery"
+  },
+  {
+      "id": 11309200008,
+      "name": "MK7 Medium Capacitor Battery"
+  },
+  {
+      "id": 11309200010,
+      "name": "MK9 Medium Capacitor Battery"
+  },
+  {
+      "id": 11309200012,
+      "name": "Acolyth' Medium Capacitor Battery"
+  },
+  {
+      "id": 11309200013,
+      "name": "Republic Fleet Medium Capacitor Battery"
+  },
+  {
+      "id": 11309200021,
+      "name": "Demolish' Medium Capacitor Battery"
+  },
+  {
+      "id": 11309200024,
+      "name": "Gistum C-Type Medium Capacitor Battery"
+  },
+  {
+      "id": 11309300010,
+      "name": "MK9 Large Capacitor Battery"
+  },
+  {
+      "id": 11309300012,
+      "name": "Acolyth' Large Capacitor Batteries"
+  },
+  {
+      "id": 11309300013,
+      "name": "Republic Fleet Large Capacitor Battery"
+  },
+  {
+      "id": 11309300021,
+      "name": "Demolish' Large Capacitor Battery"
+  },
+  {
+      "id": 11309300024,
+      "name": "Gist C-Type Large Capacitor Battery"
+  },
+  {
+      "id": 11311000001,
+      "name": "Civilian Stasis Webifier"
+  },
+  {
+      "id": 11311000004,
+      "name": "MK3 Stasis Webifier"
+  },
+  {
+      "id": 11311000006,
+      "name": "MK5 Stasis Webifier"
+  },
+  {
+      "id": 11311000008,
+      "name": "MK7 Stasis Webifier"
+  },
+  {
+      "id": 11311000010,
+      "name": "MK9 Stasis Webifier"
+  },
+  {
+      "id": 11311000012,
+      "name": "Interruptive' Stasis Webifier"
+  },
+  {
+      "id": 11311000013,
+      "name": "Caldari Navy Stasis Webifier"
+  },
+  {
+      "id": 11311000014,
+      "name": "Federation Navy Stasis Webifier"
+  },
+  {
+      "id": 11311000015,
+      "name": "Republic Fleet Stasis Webifier"
+  },
+  {
+      "id": 11311000017,
+      "name": "True Sansha Stasis Webifier"
+  },
+  {
+      "id": 11311000019,
+      "name": "Dread Guristas Stasis Webifier"
+  },
+  {
+      "id": 11311000020,
+      "name": "Shadow Serpentis Stasis Webifier"
+  },
+  {
+      "id": 11311000021,
+      "name": "Predator' Stasis Webifier"
+  },
+  {
+      "id": 11313400006,
+      "name": "MK5 Adaptive Invulnerability Field"
+  },
+  {
+      "id": 11313400008,
+      "name": "MK7 Adaptive Invulnerability Field"
+  },
+  {
+      "id": 11313400010,
+      "name": "MK9 Adaptive Invulnerability Field"
+  },
+  {
+      "id": 11313400012,
+      "name": "Posse Adaptive Invulnerability Field"
+  },
+  {
+      "id": 11313400013,
+      "name": "Caldari Navy Adaptive Invulnerability Field"
+  },
+  {
+      "id": 11313400017,
+      "name": "Dread Guristas Adaptive Invulnerability Field"
+  },
+  {
+      "id": 11313400018,
+      "name": "Domination Adaptive Invulnerability Field"
+  },
+  {
+      "id": 11313400021,
+      "name": "Enterprise' Adaptive Invulnerability Field"
+  },
+  {
+      "id": 11313400024,
+      "name": "Pith C-Type Adaptive Invulnerability Field"
+  },
+  {
+      "id": 11313400025,
+      "name": "Gist C-Type Adaptive Invulnerability Field"
+  },
+  {
+      "id": 11322000006,
+      "name": "MK5 Tracking Computer"
+  },
+  {
+      "id": 11322000008,
+      "name": "MK7 Tracking Computer"
+  },
+  {
+      "id": 11322000010,
+      "name": "MK9 Tracking Computer"
+  },
+  {
+      "id": 11322000012,
+      "name": "Marketeer' Tracking Computer"
+  },
+  {
+      "id": 11322000013,
+      "name": "Federation Navy Tracking Computer"
+  },
+  {
+      "id": 11322000021,
+      "name": "Eagle' Tracking Computer"
+  },
+  {
+      "id": 11333000006,
+      "name": "MK5 Drone Navigation Computer"
+  },
+  {
+      "id": 11333000008,
+      "name": "MK7 Drone Navigation Computer"
+  },
+  {
+      "id": 11333000010,
+      "name": "MK9 Drone Navigation Computer"
+  },
+  {
+      "id": 11333000012,
+      "name": "Decoder' Drone Navigation Computer"
+  },
+  {
+      "id": 11333000013,
+      "name": "Federation Navy Drone Navigation Computer"
+  },
+  {
+      "id": 11333000021,
+      "name": "Supervisor' Drone Navigation Computer"
+  },
+  {
+      "id": 11334000006,
+      "name": "MK5 Omnidirectional Tracking Link"
+  },
+  {
+      "id": 11334000008,
+      "name": "MK7 Omnidirectional Tracking Link"
+  },
+  {
+      "id": 11334000010,
+      "name": "MK9 Omnidirectional Tracking Link"
+  },
+  {
+      "id": 11334000012,
+      "name": "Decoder' Omnidirectional Tracking Link"
+  },
+  {
+      "id": 11334000013,
+      "name": "Imperial Navy Omnidirectional Tracking Link"
+  },
+  {
+      "id": 11334000014,
+      "name": "Federation Navy Omnidirectional Tracking Link"
+  },
+  {
+      "id": 11334000021,
+      "name": "Supervisor' Omnidirectional Tracking Link"
+  },
+  {
+      "id": 11340000006,
+      "name": "MK5 Missile Guidance Computer"
+  },
+  {
+      "id": 11340000008,
+      "name": "MK7 Missile Guidance Computer"
+  },
+  {
+      "id": 11340000010,
+      "name": "MK9 Missile Guidance Computer"
+  },
+  {
+      "id": 11340000012,
+      "name": "Elusive' Missile Guidance Computer"
+  },
+  {
+      "id": 11340000013,
+      "name": "Caldari Navy Missile Guidance Computer"
+  },
+  {
+      "id": 11340000021,
+      "name": "Hook' Missile Guidance Computer"
+  },
+  {
+      "id": 11501000002,
+      "name": "MK1 Gyrostabilizer"
+  },
+  {
+      "id": 11501000004,
+      "name": "MK3 Gyrostabilizer"
+  },
+  {
+      "id": 11501000006,
+      "name": "MK5 Gyrostabilizer"
+  },
+  {
+      "id": 11501000008,
+      "name": "MK7 Gyrostabilizer"
+  },
+  {
+      "id": 11501000010,
+      "name": "MK9 Gyrostabilizer"
+  },
+  {
+      "id": 11501000012,
+      "name": "Basic Gyrostabilizer"
+  },
+  {
+      "id": 11501000013,
+      "name": "Republic Fleet Gyrostabilizer"
+  },
+  {
+      "id": 11501000021,
+      "name": "Rebirth' Gyrostabilizer"
+  },
+  {
+      "id": 11501000024,
+      "name": "Gistum C-Type Gyrostabilizers"
+  },
+  {
+      "id": 11502000006,
+      "name": "MK5 Damage Control"
+  },
+  {
+      "id": 11502000008,
+      "name": "MK7 Damage Control"
+  },
+  {
+      "id": 11502000010,
+      "name": "MK9 Damage Control"
+  },
+  {
+      "id": 11502000012,
+      "name": "Basic Damage Control"
+  },
+  {
+      "id": 11502000013,
+      "name": "Imperial Navy Damage Control"
+  },
+  {
+      "id": 11502000014,
+      "name": "Federation Navy Damage Control"
+  },
+  {
+      "id": 11502000017,
+      "name": "Shadow Serpentis Damage Control"
+  },
+  {
+      "id": 11502000021,
+      "name": "All-round Damage Control"
+  },
+  {
+      "id": 11503000001,
+      "name": "Civilian Small Armor Repairer"
+  },
+  {
+      "id": 11503000002,
+      "name": "MK1 Small Armor Repairer"
+  },
+  {
+      "id": 11503000004,
+      "name": "MK3 Small Armor Repairer"
+  },
+  {
+      "id": 11503000006,
+      "name": "MK5 Small Armor Repairer"
+  },
+  {
+      "id": 11503000008,
+      "name": "MK7 Small Armor Repairer"
+  },
+  {
+      "id": 11503000010,
+      "name": "MK9 Small Armor Repairer"
+  },
+  {
+      "id": 11503000012,
+      "name": "Gorget Small Armor Repairer"
+  },
+  {
+      "id": 11503000013,
+      "name": "Imperial Navy Small Armor Repairer"
+  },
+  {
+      "id": 11503000014,
+      "name": "Federation Navy Small Armor Repairer"
+  },
+  {
+      "id": 11503000017,
+      "name": "Dark Blood Small Armor Repairer"
+  },
+  {
+      "id": 11503000018,
+      "name": "Shadow Serpentis Small Armor Repairer"
+  },
+  {
+      "id": 11503000021,
+      "name": "Knight' Small Armor Repairer"
+  },
+  {
+      "id": 11503000024,
+      "name": "Corpii C-Type Small Armor Repairer"
+  },
+  {
+      "id": 11503000025,
+      "name": "Coreli C-Type Small Armor Repairer"
+  },
+  {
+      "id": 11503100001,
+      "name": "Civilian Medium Armor Repairer"
+  },
+  {
+      "id": 11503100006,
+      "name": "MK5 Medium Armor Repairer"
+  },
+  {
+      "id": 11503100008,
+      "name": "MK7 Medium Armor Repairer"
+  },
+  {
+      "id": 11503100010,
+      "name": "MK9 Medium Armor Repairer"
+  },
+  {
+      "id": 11503100012,
+      "name": "Gorget' Medium Armor Repairer"
+  },
+  {
+      "id": 11503100013,
+      "name": "Imperial Navy Medium Armor Repairer"
+  },
+  {
+      "id": 11503100014,
+      "name": "Federation Navy Medium Armor Repairer"
+  },
+  {
+      "id": 11503100017,
+      "name": "Dark Blood Medium Armor Repairer"
+  },
+  {
+      "id": 11503100018,
+      "name": "Shadow Serpentis Medium Armor Repairer"
+  },
+  {
+      "id": 11503100021,
+      "name": "Knight' Medium Armor Repairer"
+  },
+  {
+      "id": 11503100024,
+      "name": "Corpum C-Type Medium Armor Repairer"
+  },
+  {
+      "id": 11503100025,
+      "name": "Corelum C-Type Medium Armor Repairer"
+  },
+  {
+      "id": 11503200010,
+      "name": "MK9 Large Armor Repairer"
+  },
+  {
+      "id": 11503200012,
+      "name": "Gorget' Large Armor Repairer"
+  },
+  {
+      "id": 11503200013,
+      "name": "Imperial Navy Large Armor Repairer"
+  },
+  {
+      "id": 11503200014,
+      "name": "Federation Navy Large Armor Repairer"
+  },
+  {
+      "id": 11503200021,
+      "name": "Chivalry' Large Armor Repairer"
+  },
+  {
+      "id": 11503200024,
+      "name": "Corpus C-Type Large Armor Repairer"
+  },
+  {
+      "id": 11503200025,
+      "name": "Core C-Type Large Armor Repairer"
+  },
+  {
+      "id": 11506000002,
+      "name": "MK1 Heat Sink"
+  },
+  {
+      "id": 11506000004,
+      "name": "MK3 Heat Sink"
+  },
+  {
+      "id": 11506000006,
+      "name": "MK5 Heat Sink"
+  },
+  {
+      "id": 11506000008,
+      "name": "MK7 Heat Sink"
+  },
+  {
+      "id": 11506000010,
+      "name": "MK9 Heat Sink"
+  },
+  {
+      "id": 11506000012,
+      "name": "Basic Heat Sink"
+  },
+  {
+      "id": 11506000013,
+      "name": "Imperial Navy Heat Sink"
+  },
+  {
+      "id": 11506000017,
+      "name": "True Sansha Heat Sink"
+  },
+  {
+      "id": 11506000018,
+      "name": "Dark Blood Heat Sink"
+  },
+  {
+      "id": 11506000021,
+      "name": "Judgement' Heat Sink"
+  },
+  {
+      "id": 11506000024,
+      "name": "Centum C-Type Heat Sink"
+  },
+  {
+      "id": 11506000025,
+      "name": "Corpum C-Type Heat Sink"
+  },
+  {
+      "id": 11510000002,
+      "name": "MK1 Magnetic Field Stabilizer"
+  },
+  {
+      "id": 11510000004,
+      "name": "MK3 Magnetic Field Stabilizer"
+  },
+  {
+      "id": 11510000006,
+      "name": "MK5 Magnetic Field Stabilizer"
+  },
+  {
+      "id": 11510000008,
+      "name": "MK7 Magnetic Field Stabilizer"
+  },
+  {
+      "id": 11510000010,
+      "name": "MK9 Magnetic Field Stabilizer"
+  },
+  {
+      "id": 11510000012,
+      "name": "Basic Magnetic Field Stabilizer"
+  },
+  {
+      "id": 11510000013,
+      "name": "Federation Navy Magnetic Field Stabilizer"
+  },
+  {
+      "id": 11510000021,
+      "name": "Narcotics Magnetic Field Stabilizer"
+  },
+  {
+      "id": 11510000024,
+      "name": "Corelum C-Type Magnetic Field Stabilizer"
+  },
+  {
+      "id": 11511000002,
+      "name": "MK1 Warp Core Stabilizer"
+  },
+  {
+      "id": 11511000004,
+      "name": "MK3 Warp Core Stabilizer"
+  },
+  {
+      "id": 11511000006,
+      "name": "MK5 Warp Core Stabilizer"
+  },
+  {
+      "id": 11511000008,
+      "name": "MK7 Warp Core Stabilizer"
+  },
+  {
+      "id": 11511000010,
+      "name": "MK9 Warp Core Stabilizer"
+  },
+  {
+      "id": 11511000012,
+      "name": "Aura' Warp Core Stabilizer"
+  },
+  {
+      "id": 11511000021,
+      "name": "Natura' Warp Core Stabilizer"
+  },
+  {
+      "id": 11513100006,
+      "name": "MK5 Adaptive Armor Hardener"
+  },
+  {
+      "id": 11513100008,
+      "name": "MK7 Adaptive Armor Hardener"
+  },
+  {
+      "id": 11513100010,
+      "name": "MK9 Adaptive Armor Hardener"
+  },
+  {
+      "id": 11513100012,
+      "name": "Pilfer' Adaptive Armor Hardener"
+  },
+  {
+      "id": 11513100013,
+      "name": "Imperial Navy Adaptive Armor Hardener"
+  },
+  {
+      "id": 11513100014,
+      "name": "Federation Navy Adaptive Armor Hardener"
+  },
+  {
+      "id": 11513100019,
+      "name": "Shadow Serpentis Adaptive Armor Hardener"
+  },
+  {
+      "id": 11513100021,
+      "name": "Sparkly' Adaptive Armor Hardener"
+  },
+  {
+      "id": 11513100024,
+      "name": "Corpus C-Type Adaptive Armor Hardener"
+  },
+  {
+      "id": 11513100025,
+      "name": "Core C-Type Adaptive Armor Hardener"
+  },
+  {
+      "id": 11514100002,
+      "name": "MK1 100mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514100004,
+      "name": "MK3 100mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514100006,
+      "name": "MK5 100mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514100008,
+      "name": "MK7 100mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514100010,
+      "name": "MK9 100mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514100012,
+      "name": "Abatis' 100mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514100013,
+      "name": "Imperial Navy 100mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514100014,
+      "name": "Federation Navy 100mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514100021,
+      "name": "Fort' 100mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514200004,
+      "name": "MK3 200mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514200006,
+      "name": "MK5 200mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514200008,
+      "name": "MK7 200mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514200010,
+      "name": "MK9 200mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514200012,
+      "name": "Abatis' 200mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514200013,
+      "name": "Imperial Navy 200mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514200014,
+      "name": "Federation Navy 200mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514200021,
+      "name": "Citadella' 200mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514300006,
+      "name": "MK5 400mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514300008,
+      "name": "MK7 400mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514300010,
+      "name": "MK9 400mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514300012,
+      "name": "Bastion' 400mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514300013,
+      "name": "Imperial Navy 400mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514300014,
+      "name": "Federation Navy 400mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514300021,
+      "name": "Hansen 400mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514400006,
+      "name": "MK5 800mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514400008,
+      "name": "MK7 800mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514400010,
+      "name": "MK9 800mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514400012,
+      "name": "Bastion' 800mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514400013,
+      "name": "Imperial Navy 800mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514400014,
+      "name": "Federation Navy 800mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514400017,
+      "name": "Dark Blood 800mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514400021,
+      "name": "Hansen' 800mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514500010,
+      "name": "MK9 1600mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514500012,
+      "name": "Bailey' 1600mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514500013,
+      "name": "Imperial Navy 1600mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514500014,
+      "name": "Federation Navy 1600mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514500017,
+      "name": "Dark Blood 1600mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11514500021,
+      "name": "Core' 1600mm Reinforced Steel Plate"
+  },
+  {
+      "id": 11516000002,
+      "name": "MK1 Ballistic Control System"
+  },
+  {
+      "id": 11516000004,
+      "name": "MK3 Ballistic Control System"
+  },
+  {
+      "id": 11516000006,
+      "name": "MK5 Ballistic Control System"
+  },
+  {
+      "id": 11516000008,
+      "name": "MK7 Ballistic Control System"
+  },
+  {
+      "id": 11516000010,
+      "name": "MK9 Ballistic Control System"
+  },
+  {
+      "id": 11516000012,
+      "name": "Full Duplex Ballistic Control System"
+  },
+  {
+      "id": 11516000013,
+      "name": "Caldari Navy Ballistic Control System"
+  },
+  {
+      "id": 11516000014,
+      "name": "Republic Fleet Ballistic Control System"
+  },
+  {
+      "id": 11516000017,
+      "name": "Dread Guristas Ballistic Control System"
+  },
+  {
+      "id": 11516000021,
+      "name": "Ironblood' Damage Control System"
+  },
+  {
+      "id": 11516000024,
+      "name": "Pithum C-Type Ballistic Control System"
+  },
+  {
+      "id": 11519000004,
+      "name": "MK3 Drone Damage Amplifier"
+  },
+  {
+      "id": 11519000006,
+      "name": "MK5 Drone Damage Amplifier"
+  },
+  {
+      "id": 11519000008,
+      "name": "MK7 Drone Damage Amplifier"
+  },
+  {
+      "id": 11519000010,
+      "name": "MK9 Drone Damage Amplifier"
+  },
+  {
+      "id": 11519000012,
+      "name": "Bat Drone Damage Amplifier"
+  },
+  {
+      "id": 11519000013,
+      "name": "Imperial Navy Drone Damage Amplifier"
+  },
+  {
+      "id": 11519000014,
+      "name": "Federation Navy Drone Damage Amplifier"
+  },
+  {
+      "id": 11519000017,
+      "name": "Dread Guristas Drone Damage Amplifier"
+  },
+  {
+      "id": 11519000021,
+      "name": "Nestworm' Drone Damage Amplifier"
+  },
+  {
+      "id": 11520000004,
+      "name": "MK3 Inertial Stabilizer"
+  },
+  {
+      "id": 11520000006,
+      "name": "MK5 Inertial Stabilizer"
+  },
+  {
+      "id": 11520000008,
+      "name": "MK7 Inertial Stabilizer"
+  },
+  {
+      "id": 11520000010,
+      "name": "MK9 Inertial Stabilizer"
+  },
+  {
+      "id": 11520000012,
+      "name": "Basic Inertial Stabilizer"
+  },
+  {
+      "id": 11520000013,
+      "name": "Federation Navy Inertial Stabilizer"
+  },
+  {
+      "id": 11520000014,
+      "name": "Republic Fleet Inertial Stabilizer"
+  },
+  {
+      "id": 11520000021,
+      "name": "Synthetic Hull Inertial Stabilizer"
+  },
+  {
+      "id": 11529000002,
+      "name": "MK1 Reactive Armor Hardener"
+  },
+  {
+      "id": 11529000004,
+      "name": "MK3 Reactive Armor Hardener"
+  },
+  {
+      "id": 11529000006,
+      "name": "MK5 Reactive Armor Hardener"
+  },
+  {
+      "id": 11529000008,
+      "name": "MK7 Reactive Armor Hardener"
+  },
+  {
+      "id": 11529000010,
+      "name": "MK9 Reactive Armor Hardener"
+  },
+  {
+      "id": 11529000012,
+      "name": "Moat' Reactive Armor Hardener"
+  },
+  {
+      "id": 11529000013,
+      "name": "Imperial Navy Reactive Armor Hardener"
+  },
+  {
+      "id": 11529000014,
+      "name": "Federation Navy Reactive Armor Hardener"
+  },
+  {
+      "id": 11529000017,
+      "name": "Dark Blood Reactive Armor Hardener"
+  },
+  {
+      "id": 11529000021,
+      "name": "Sparkly' Reactive Armor Hardener"
+  },
+  {
+      "id": 11529000024,
+      "name": "Corpum C-Type Reactive Armor Hardener"
+  },
+  {
+      "id": 11529000025,
+      "name": "Corelum C-Type Reactive Armor Hardener"
+  },
+  {
+      "id": 11536000002,
+      "name": "MK1 Reactive Shield Hardener"
+  },
+  {
+      "id": 11536000004,
+      "name": "MK3 Reactive Shield Hardener"
+  },
+  {
+      "id": 11536000006,
+      "name": "MK5 Reactive Shield Hardener"
+  },
+  {
+      "id": 11536000008,
+      "name": "MK7 Reactive Shield Hardener"
+  },
+  {
+      "id": 11536000010,
+      "name": "MK9 Reactive Shield Hardener"
+  },
+  {
+      "id": 11536000012,
+      "name": "Challenger Reactive Shield Hardener"
+  },
+  {
+      "id": 11536000013,
+      "name": "Caldari Navy Reactive Shield Hardener"
+  },
+  {
+      "id": 11536000014,
+      "name": "Republic Fleet Reactive Shield Hardener"
+  },
+  {
+      "id": 11536000019,
+      "name": "Domination Reactive Shield Hardener"
+  },
+  {
+      "id": 11536000021,
+      "name": "Enterprise' Reactive Shield Hardener"
+  },
+  {
+      "id": 11536000024,
+      "name": "Pithum C-Type Reactive Shield Hardener"
+  },
+  {
+      "id": 11536000025,
+      "name": "Gistum C-Type Reactive Shield Hardener"
+  },
+  {
+      "id": 11537000006,
+      "name": "MK5 Small Shield Field Module"
+  },
+  {
+      "id": 11537000008,
+      "name": "MK7 Small Shield Field Module"
+  },
+  {
+      "id": 11537000010,
+      "name": "MK9 Small Shield Field Module"
+  },
+  {
+      "id": 11537000012,
+      "name": "Crucible' Small Shield Field Module"
+  },
+  {
+      "id": 11537000013,
+      "name": "Caldari Navy Small Shield Field Module"
+  },
+  {
+      "id": 11537000021,
+      "name": "Mirror' Small Shield Field Module"
+  },
+  {
+      "id": 11537100006,
+      "name": "MK5 Medium Shield Field Module"
+  },
+  {
+      "id": 11537100008,
+      "name": "MK7 Medium Shield Field Module"
+  },
+  {
+      "id": 11537100010,
+      "name": "MK9 Medium Shield Field Module"
+  },
+  {
+      "id": 11537100012,
+      "name": "Crucible' Medium Shield Field Module"
+  },
+  {
+      "id": 11537100021,
+      "name": "Mirror' Medium Shield Field Module"
+  },
+  {
+      "id": 11537100024,
+      "name": "Pithum C-Type Medium Shield Field Module"
+  },
+  {
+      "id": 11537100025,
+      "name": "Gistum C-Type Medium Shield Field Module"
+  },
+  {
+      "id": 11537200008,
+      "name": "MK7 Large Shield Field Module"
+  },
+  {
+      "id": 11537200010,
+      "name": "MK9 Large Shield Field Module"
+  },
+  {
+      "id": 11537200012,
+      "name": "Crucible' Large Shield Field Module"
+  },
+  {
+      "id": 11537200021,
+      "name": "Mirror' Large Shield Field Module"
+  },
+  {
+      "id": 11538000006,
+      "name": "MK5 Small Armor Link Module"
+  },
+  {
+      "id": 11538000008,
+      "name": "MK7 Small Armor Link Module"
+  },
+  {
+      "id": 11538000010,
+      "name": "MK9 Small Armor Link Module"
+  },
+  {
+      "id": 11538000012,
+      "name": "Hustler' Small Armor Link Module"
+  },
+  {
+      "id": 11538000013,
+      "name": "Imperial Navy Small Armor Link Module"
+  },
+  {
+      "id": 11538000021,
+      "name": "Bloodline' Small Armor Link Module"
+  },
+  {
+      "id": 11538100006,
+      "name": "MK5 Medium Armor Link Module"
+  },
+  {
+      "id": 11538100008,
+      "name": "MK7 Medium Armor Link Module"
+  },
+  {
+      "id": 11538100010,
+      "name": "MK9 Medium Armor Link Module"
+  },
+  {
+      "id": 11538100012,
+      "name": "Hustler' Medium Armor Link Module"
+  },
+  {
+      "id": 11538100021,
+      "name": "Bloodline' Medium Armor Link Module"
+  },
+  {
+      "id": 11538100024,
+      "name": "Corpum C-Type Medium Armor Link Module"
+  },
+  {
+      "id": 11538100025,
+      "name": "Corelum C-Type Medium Armor Link Module"
+  },
+  {
+      "id": 11538200008,
+      "name": "MK7 Large Armor Link Module"
+  },
+  {
+      "id": 11538200010,
+      "name": "MK9 Large Armor Link Module"
+  },
+  {
+      "id": 11538200012,
+      "name": "Hustler' Large Armor Link Module"
+  },
+  {
+      "id": 11538200021,
+      "name": "Bloodline' Large Armor Link Module"
+  },
+  {
+      "id": 11539000006,
+      "name": "MK5 Small Group Shield Booster"
+  },
+  {
+      "id": 11539000008,
+      "name": "MK7 Small Group Shield Booster"
+  },
+  {
+      "id": 11539000010,
+      "name": "MK9 Small Group Shield Booster"
+  },
+  {
+      "id": 11539000012,
+      "name": "Settler' Small Group Shield Booster"
+  },
+  {
+      "id": 11539000021,
+      "name": "Bannerman' Small Group Shield Booster"
+  },
+  {
+      "id": 11539100006,
+      "name": "MK5 Medium Group Shield Booster"
+  },
+  {
+      "id": 11539100008,
+      "name": "MK7 Medium Group Shield Booster"
+  },
+  {
+      "id": 11539100012,
+      "name": "Settler' Medium Group Shield Booster"
+  },
+  {
+      "id": 11539100021,
+      "name": "Bannerman' Medium Group Shield Booster"
+  },
+  {
+      "id": 11539200008,
+      "name": "MK7 Large Group Shield Booster"
+  },
+  {
+      "id": 11539200010,
+      "name": "MK9 Large Group Shield Booster"
+  },
+  {
+      "id": 11539200012,
+      "name": "Settler' Large Group Shield Booster"
+  },
+  {
+      "id": 11539200013,
+      "name": "Caldari Navy Large Group Shield Booster"
+  },
+  {
+      "id": 11539200014,
+      "name": "Republic Fleet Large Group Shield Booster"
+  },
+  {
+      "id": 11539200017,
+      "name": "True Sansha Large Group Shield Booster"
+  },
+  {
+      "id": 11539200018,
+      "name": "Dread Guristas Large Group Shield Booster"
+  },
+  {
+      "id": 11540000006,
+      "name": "MK5 Small Group Armor Repairer"
+  },
+  {
+      "id": 11540000008,
+      "name": "MK7 Small Group Armor Repairer"
+  },
+  {
+      "id": 11540000021,
+      "name": "Engineer' Small Group Armor Repairer"
+  },
+  {
+      "id": 11540100006,
+      "name": "MK5 Medium Group Armor Repairer"
+  },
+  {
+      "id": 11540100008,
+      "name": "MK7 Medium Group Armor Repairer"
+  },
+  {
+      "id": 11540100012,
+      "name": "Repairman' Medium Group Armor Repairer"
+  },
+  {
+      "id": 11540100013,
+      "name": "Imperial Navy Medium Group Armor Repairer"
+  },
+  {
+      "id": 11540100014,
+      "name": "Federation Navy Medium Group Armor Repairer"
+  },
+  {
+      "id": 11540100021,
+      "name": "Engineer' Medium Group Armor Repairer"
+  },
+  {
+      "id": 11540200008,
+      "name": "MK7 Large Group Armor Repairer"
+  },
+  {
+      "id": 11540200010,
+      "name": "MK9 Large Group Armor Repairer"
+  },
+  {
+      "id": 11541000006,
+      "name": "MK5 Small Group Capacitor Transmitter"
+  },
+  {
+      "id": 11541000008,
+      "name": "MK7 Small Group Capacitor Transmitter"
+  },
+  {
+      "id": 11541100006,
+      "name": "MK5 Medium Group Capacitor Transmitter"
+  },
+  {
+      "id": 11541100008,
+      "name": "MK7 Medium Group Capacitor Transmitter"
+  },
+  {
+      "id": 11541100012,
+      "name": "Ghost' Medium Group Capacitor Transmitter"
+  },
+  {
+      "id": 11541200008,
+      "name": "MK7 Large Group Capacitor Transmitter"
+  },
+  {
+      "id": 11541200010,
+      "name": "MK9 Large Group Capacitor Transmitter"
+  },
+  {
+      "id": 11541200012,
+      "name": "Ghost' Large Group Capacitor Transmitter"
+  },
+  {
+      "id": 11542000012,
+      "name": "The Returned' Macro Particle Stabilizer"
+  },
+  {
+      "id": 11542000013,
+      "name": "Yan-Jung Macro Particle Stabilizer"
+  },
+  {
+      "id": 11700000002,
+      "name": "Railgun Collision Accelerator I"
+  },
+  {
+      "id": 11700000004,
+      "name": "Railgun Collision Accelerator II"
+  },
+  {
+      "id": 11700010002,
+      "name": "Railgun Ambit Extension I"
+  },
+  {
+      "id": 11700010004,
+      "name": "Railgun Ambit Extension II"
+  },
+  {
+      "id": 11700020002,
+      "name": "Railgun Discharge Elutriation I"
+  },
+  {
+      "id": 11700020004,
+      "name": "Railgun Discharge Elutriation II"
+  },
+  {
+      "id": 11700030002,
+      "name": "Railgun Burst Aerator I"
+  },
+  {
+      "id": 11700030004,
+      "name": "Railgun Burst Aerator II"
+  },
+  {
+      "id": 11700040002,
+      "name": "Algid Railgun Administrations Unit I"
+  },
+  {
+      "id": 11700040004,
+      "name": "Algid Railgun Administrations Unit II"
+  },
+  {
+      "id": 11702000002,
+      "name": "Laser Collision Accelerator I"
+  },
+  {
+      "id": 11702000004,
+      "name": "Laser Collision Accelerator II"
+  },
+  {
+      "id": 11702010002,
+      "name": "Laser Ambit Extension I"
+  },
+  {
+      "id": 11702010004,
+      "name": "Laser Ambit Extension II"
+  },
+  {
+      "id": 11702020002,
+      "name": "Laser Discharge Elutriation I"
+  },
+  {
+      "id": 11702020004,
+      "name": "Laser Discharge Elutriation II"
+  },
+  {
+      "id": 11702030002,
+      "name": "Laser Burst Aerator I"
+  },
+  {
+      "id": 11702030004,
+      "name": "Laser Burst Aerator II"
+  },
+  {
+      "id": 11702040002,
+      "name": "Algid Energy Administrations Unit I"
+  },
+  {
+      "id": 11702040004,
+      "name": "Algid Energy Administrations Unit II"
+  },
+  {
+      "id": 11702040008,
+      "name": "Algid Energy Administrations Unit IV"
+  },
+  {
+      "id": 11704000002,
+      "name": "Cannon Collision Accelerator I"
+  },
+  {
+      "id": 11704000004,
+      "name": "Cannon Collision Accelerator II"
+  },
+  {
+      "id": 11704000006,
+      "name": "Cannon Collision Accelerator III"
+  },
+  {
+      "id": 11704010002,
+      "name": "Cannon Ambit Extension I"
+  },
+  {
+      "id": 11704010004,
+      "name": "Cannon Ambit Extension II"
+  },
+  {
+      "id": 11704010006,
+      "name": "Cannon Ambit Extension III"
+  },
+  {
+      "id": 11704020002,
+      "name": "Cannon Burst Aerator I"
+  },
+  {
+      "id": 11704020004,
+      "name": "Cannon Burst Aerator II"
+  },
+  {
+      "id": 11704020006,
+      "name": "Cannon Burst Aerator III"
+  },
+  {
+      "id": 11704030002,
+      "name": "Cannon Metastasis Adjuster I"
+  },
+  {
+      "id": 11704030004,
+      "name": "Cannon Metastasis Adjuster II"
+  },
+  {
+      "id": 11705000002,
+      "name": "Decomposer Collision Accelerator I"
+  },
+  {
+      "id": 11705000004,
+      "name": "Decomposer Collision Accelerator II"
+  },
+  {
+      "id": 11705000008,
+      "name": "Decomposer Collision Accelerator IV"
+  },
+  {
+      "id": 11705010002,
+      "name": "Decomposer Ambit Extension I"
+  },
+  {
+      "id": 11705010004,
+      "name": "Decomposer Ambit Extension II"
+  },
+  {
+      "id": 11705020002,
+      "name": "Decomposer Discharge Elutriation I"
+  },
+  {
+      "id": 11705020004,
+      "name": "Decomposer Discharge Elutriation II"
+  },
+  {
+      "id": 11705030002,
+      "name": "Decomposer Burst Aerator I"
+  },
+  {
+      "id": 11705030004,
+      "name": "Decomposer Burst Aerator II"
+  },
+  {
+      "id": 11705040002,
+      "name": "Decomposer Algid Hybrid Administrations Unit I"
+  },
+  {
+      "id": 11705040004,
+      "name": "Decomposer Algid Hybrid Administrations Unit II"
+  },
+  {
+      "id": 11706000002,
+      "name": "Warhead Flare Catalyst I"
+  },
+  {
+      "id": 11706000004,
+      "name": "Warhead Flare Catalyst II"
+  },
+  {
+      "id": 11706010002,
+      "name": "Warhead Calefaction Catalyst I"
+  },
+  {
+      "id": 11706010004,
+      "name": "Warhead Calefaction Catalyst II"
+  },
+  {
+      "id": 11706010006,
+      "name": "Warhead Calefaction Catalyst III"
+  },
+  {
+      "id": 11706020002,
+      "name": "Warhead Rigor Catalyst I"
+  },
+  {
+      "id": 11706020004,
+      "name": "Warhead Rigor Catalyst II"
+  },
+  {
+      "id": 11706030002,
+      "name": "Rocket Fuel Cache Partition I"
+  },
+  {
+      "id": 11706030004,
+      "name": "Rocket Fuel Cache Partition II"
+  },
+  {
+      "id": 11706030006,
+      "name": "Rocket Fuel Cache Partition III"
+  },
+  {
+      "id": 11706040002,
+      "name": "Hydraulic Bay Thrusters I"
+  },
+  {
+      "id": 11706040004,
+      "name": "Hydraulic Bay Thrusters II"
+  },
+  {
+      "id": 11706050002,
+      "name": "Bay Loading Accelerator I"
+  },
+  {
+      "id": 11706050004,
+      "name": "Bay Loading Accelerator II"
+  },
+  {
+      "id": 11706050006,
+      "name": "Bay Loading Accelerator III"
+  },
+  {
+      "id": 11706050008,
+      "name": "Bay Loading Accelerator IV"
+  },
+  {
+      "id": 11707000002,
+      "name": "Core Defense Operational Solidifier I"
+  },
+  {
+      "id": 11707000004,
+      "name": "Core Defense Operational Solidifier II"
+  },
+  {
+      "id": 11707000006,
+      "name": "Core Defense Operational Solidifier III"
+  },
+  {
+      "id": 11707010002,
+      "name": "Core Defense Charge Economizer I"
+  },
+  {
+      "id": 11707010004,
+      "name": "Core Defense Charge Economizer II"
+  },
+  {
+      "id": 11707020002,
+      "name": "Core Defense Capacitor Safeguard I"
+  },
+  {
+      "id": 11707020004,
+      "name": "Core Defense Capacitor Safeguard II"
+  },
+  {
+      "id": 11707030002,
+      "name": "Core Defense Field Extender I"
+  },
+  {
+      "id": 11707030004,
+      "name": "Core Defense Field Extender II"
+  },
+  {
+      "id": 11707040002,
+      "name": "Anti-Explosive Screen Reinforcer I"
+  },
+  {
+      "id": 11707040004,
+      "name": "Anti-Explosive Screen Reinforcer II"
+  },
+  {
+      "id": 11707050002,
+      "name": "Anti-EM Screen Reinforcer I"
+  },
+  {
+      "id": 11707050004,
+      "name": "Anti-EM Screen Reinforcer II"
+  },
+  {
+      "id": 11707050008,
+      "name": "Anti-EM Screen Reinforcer IV"
+  },
+  {
+      "id": 11707060002,
+      "name": "Anti-Kinetic Screen Reinforcer I"
+  },
+  {
+      "id": 11707060004,
+      "name": "Anti-Kinetic Screen Reinforcer II"
+  },
+  {
+      "id": 11707070002,
+      "name": "Anti-Thermal Screen Reinforcer I"
+  },
+  {
+      "id": 11707070004,
+      "name": "Anti-Thermal Screen Reinforcer II"
+  },
+  {
+      "id": 11708000002,
+      "name": "Nanobot Accelerator I"
+  },
+  {
+      "id": 11708000004,
+      "name": "Nanobot Accelerator II"
+  },
+  {
+      "id": 11708010002,
+      "name": "Auxiliary Nano Pump I"
+  },
+  {
+      "id": 11708010004,
+      "name": "Auxiliary Nano Pump II"
+  },
+  {
+      "id": 11708020002,
+      "name": "Repair Augmentor I"
+  },
+  {
+      "id": 11708020004,
+      "name": "Repair Augmentor II"
+  },
+  {
+      "id": 11708030002,
+      "name": "Trimark Armor Pump I"
+  },
+  {
+      "id": 11708030004,
+      "name": "Trimark Armor Pump II"
+  },
+  {
+      "id": 11708040002,
+      "name": "Anti-Explosive Pump I"
+  },
+  {
+      "id": 11708040004,
+      "name": "Anti-Explosive Pump II"
+  },
+  {
+      "id": 11708050002,
+      "name": "Anti-EM Pump I"
+  },
+  {
+      "id": 11708050004,
+      "name": "Anti-EM Pump II"
+  },
+  {
+      "id": 11708060002,
+      "name": "Anti-Kinetic Pump I"
+  },
+  {
+      "id": 11708060004,
+      "name": "Anti-Kinetic Pump II"
+  },
+  {
+      "id": 11708070002,
+      "name": "Anti-Thermal Pump I"
+  },
+  {
+      "id": 11708070004,
+      "name": "Anti-Thermal Pump II"
+  },
+  {
+      "id": 11710000002,
+      "name": "Dynamic Fuel Valve I"
+  },
+  {
+      "id": 11710000004,
+      "name": "Dynamic Fuel Valve II"
+  },
+  {
+      "id": 11710000006,
+      "name": "Dynamic Fuel Valve III"
+  },
+  {
+      "id": 11710010002,
+      "name": "Auxiliary Thrusters I"
+  },
+  {
+      "id": 11710010004,
+      "name": "Auxiliary Thrusters II"
+  },
+  {
+      "id": 11710010006,
+      "name": "Auxiliary Thrusters III"
+  },
+  {
+      "id": 11710020002,
+      "name": "Polycarbon Engine Housing I"
+  },
+  {
+      "id": 11710020004,
+      "name": "Polycarbon Engine Housing II"
+  },
+  {
+      "id": 11710020006,
+      "name": "Polycarbon Engine Housing III"
+  },
+  {
+      "id": 11710030002,
+      "name": "Cargohold Optimization I"
+  },
+  {
+      "id": 11710030004,
+      "name": "Cargohold Optimization II"
+  },
+  {
+      "id": 11710030006,
+      "name": "Cargohold Optimization III"
+  },
+  {
+      "id": 11710030008,
+      "name": "Cargohold Optimization IV"
+  },
+  {
+      "id": 11710040002,
+      "name": "Higgs Anchor I"
+  },
+  {
+      "id": 11710040004,
+      "name": "Higgs Anchor II"
+  },
+  {
+      "id": 11710050002,
+      "name": "Warp Core Optimizer I"
+  },
+  {
+      "id": 11710050004,
+      "name": "Warp Core Optimizer II"
+  },
+  {
+      "id": 11710050006,
+      "name": "Warp Core Optimizer III"
+  },
+  {
+      "id": 11710050008,
+      "name": "Warp Core Optimizer IV"
+  },
+  {
+      "id": 11710060002,
+      "name": "Hyperspatial Velocity Optimizer I"
+  },
+  {
+      "id": 11710060004,
+      "name": "Hyperspatial Velocity Optimizer II"
+  },
+  {
+      "id": 11710060008,
+      "name": "Hyperspatial Velocity Optimizer IV"
+  },
+  {
+      "id": 11711000002,
+      "name": "Semiconductor Memory Cell I"
+  },
+  {
+      "id": 11711000004,
+      "name": "Semiconductor Memory Cell II"
+  },
+  {
+      "id": 11711000006,
+      "name": "Semiconductor Memory Cell III"
+  },
+  {
+      "id": 11711000008,
+      "name": "Semiconductor Memory Cell IV"
+  },
+  {
+      "id": 11711010002,
+      "name": "Capacitor Control Circuit I"
+  },
+  {
+      "id": 11711010004,
+      "name": "Capacitor Control Circuit II"
+  },
+  {
+      "id": 11711010006,
+      "name": "Capacitor Control Circuit III"
+  },
+  {
+      "id": 11711010008,
+      "name": "Capacitor Control Circuit IV"
+  },
+  {
+      "id": 11711020002,
+      "name": "Ancillary Powergrid Router I"
+  },
+  {
+      "id": 11711020004,
+      "name": "Ancillary Powergrid Router II"
+  },
+  {
+      "id": 11711030002,
+      "name": "Targeting System Subcontroller I"
+  },
+  {
+      "id": 11711030004,
+      "name": "Targeting System Subcontroller II"
+  },
+  {
+      "id": 11714000002,
+      "name": "Gravity Capacitor Upgrade I"
+  },
+  {
+      "id": 11714000004,
+      "name": "Gravity Capacitor Upgrade II"
+  },
+  {
+      "id": 11714010002,
+      "name": "Emission Scope Sharpener I"
+  },
+  {
+      "id": 11714010004,
+      "name": "Emission Scope Sharpener II"
+  },
+  {
+      "id": 11717000002,
+      "name": "Miner Efficiency Upgrade I"
+  },
+  {
+      "id": 11717000004,
+      "name": "Miner Efficiency Upgrade II"
+  },
+  {
+      "id": 11717000006,
+      "name": "Miner Efficiency Upgrade III"
+  },
+  {
+      "id": 11717000008,
+      "name": "Miner Efficiency Upgrade IV"
+  },
+  {
+      "id": 11717010002,
+      "name": "Miner Circulation Accelerator I"
+  },
+  {
+      "id": 11717010004,
+      "name": "Miner Circulation Accelerator II"
+  },
+  {
+      "id": 11717010006,
+      "name": "Miner Circulation Accelerator III"
+  },
+  {
+      "id": 11717010008,
+      "name": "Miner Circulation Accelerator IV"
+  },
+  {
+      "id": 11717020002,
+      "name": "Miner Range Controller I"
+  },
+  {
+      "id": 11717020004,
+      "name": "Miner Range Controller II"
+  },
+  {
+      "id": 11717030002,
+      "name": "Miner Algid Optimizer I"
+  },
+  {
+      "id": 11717030004,
+      "name": "Miner Algid Optimizer II"
+  },
+  {
+      "id": 11718000002,
+      "name": "Transverse Bulkhead I"
+  },
+  {
+      "id": 11718000004,
+      "name": "Transverse Bulkhead II"
+  },
+  {
+      "id": 11718010002,
+      "name": "Anti-Explosive Transverse Bulkhead I"
+  },
+  {
+      "id": 11718010004,
+      "name": "Anti-Explosive Transverse Bulkhead II"
+  },
+  {
+      "id": 11718020002,
+      "name": "Anti-EM Transverse Bulkhead I"
+  },
+  {
+      "id": 11718020004,
+      "name": "Anti-EM Transverse Bulkhead II"
+  },
+  {
+      "id": 11718030002,
+      "name": "Anti-Kinetic Transverse Bulkhead I"
+  },
+  {
+      "id": 11718030004,
+      "name": "Anti-Kinetic Transverse Bulkhead II"
+  },
+  {
+      "id": 11718040002,
+      "name": "Anti-Thermal Transverse Bulkhead I"
+  },
+  {
+      "id": 11718040004,
+      "name": "Anti-Thermal Transverse Bulkhead II"
+  },
+  {
+      "id": 11719000002,
+      "name": "Sentry Damage Augmentor I"
+  },
+  {
+      "id": 11719000004,
+      "name": "Sentry Damage Augmentor II"
+  },
+  {
+      "id": 11719010002,
+      "name": "Drone Scope Chip I"
+  },
+  {
+      "id": 11719010004,
+      "name": "Drone Scope Chip II"
+  },
+  {
+      "id": 11719010006,
+      "name": "Drone Scope Chip III"
+  },
+  {
+      "id": 11719020002,
+      "name": "Drone Speed Augmentor I"
+  },
+  {
+      "id": 11719020004,
+      "name": "Drone Speed Augmentor II"
+  },
+  {
+      "id": 11719020006,
+      "name": "Drone Speed Augmentor III"
+  },
+  {
+      "id": 11719030002,
+      "name": "Drone Control Range Augmentor I"
+  },
+  {
+      "id": 11719030004,
+      "name": "Drone Control Range Augmentor II"
+  },
+  {
+      "id": 11719030006,
+      "name": "Drone Control Range Augmentor III"
+  },
+  {
+      "id": 14000000001,
+      "name": "Civilian Acolyte"
+  },
+  {
+      "id": 14000000004,
+      "name": "MK3 Acolyte"
+  },
+  {
+      "id": 14000000006,
+      "name": "MK5 Acolyte"
+  },
+  {
+      "id": 14000000008,
+      "name": "MK7 Acolyte"
+  },
+  {
+      "id": 14000000010,
+      "name": "MK9 Acolyte"
+  },
+  {
+      "id": 14000000012,
+      "name": "Imperial Navy Acolyte"
+  },
+  {
+      "id": 14000010001,
+      "name": "Civilian Hornet"
+  },
+  {
+      "id": 14000010004,
+      "name": "MK3 Hornet"
+  },
+  {
+      "id": 14000010006,
+      "name": "MK5 Hornet"
+  },
+  {
+      "id": 14000010008,
+      "name": "MK7 Hornet"
+  },
+  {
+      "id": 14000010012,
+      "name": "Caldari Navy Hornet"
+  },
+  {
+      "id": 14000020001,
+      "name": "Civilian Hobgoblin"
+  },
+  {
+      "id": 14000020004,
+      "name": "MK3 Hobgoblin"
+  },
+  {
+      "id": 14000020006,
+      "name": "MK5 Hobgoblin"
+  },
+  {
+      "id": 14000020008,
+      "name": "MK7 Hobgoblin"
+  },
+  {
+      "id": 14000020012,
+      "name": "Federation Navy Hobgoblin"
+  },
+  {
+      "id": 14000030001,
+      "name": "Civilian Warrior"
+  },
+  {
+      "id": 14000030004,
+      "name": "MK3 Warrior"
+  },
+  {
+      "id": 14000030006,
+      "name": "MK5 Warrior"
+  },
+  {
+      "id": 14000030008,
+      "name": "MK7 Warrior"
+  },
+  {
+      "id": 14000030012,
+      "name": "Republic Fleet Warrior"
+  },
+  {
+      "id": 14000100006,
+      "name": "MK5 Infiltrator"
+  },
+  {
+      "id": 14000100008,
+      "name": "MK7 Infiltrator"
+  },
+  {
+      "id": 14000100012,
+      "name": "Imperial Navy Infiltrator"
+  },
+  {
+      "id": 14000110006,
+      "name": "MK5 Vespa"
+  },
+  {
+      "id": 14000110008,
+      "name": "MK7 Vespa"
+  },
+  {
+      "id": 14000110012,
+      "name": "Caldari Navy Vespa"
+  },
+  {
+      "id": 14000120006,
+      "name": "MK5 Hammerhead"
+  },
+  {
+      "id": 14000120008,
+      "name": "MK7 Hammerhead"
+  },
+  {
+      "id": 14000120010,
+      "name": "MK9 Hammerhead"
+  },
+  {
+      "id": 14000120012,
+      "name": "Federation Navy Hammerhead"
+  },
+  {
+      "id": 14000130006,
+      "name": "MK5 Valkyrie"
+  },
+  {
+      "id": 14000130008,
+      "name": "MK7 Valkyrie"
+  },
+  {
+      "id": 14000130010,
+      "name": "MK9 Valkyrie"
+  },
+  {
+      "id": 14000130012,
+      "name": "Republic Fleet Valkyrie"
+  },
+  {
+      "id": 14000200008,
+      "name": "MK7 Praetor"
+  },
+  {
+      "id": 14000200012,
+      "name": "Imperial Navy Praetor"
+  },
+  {
+      "id": 14000210008,
+      "name": "MK7 Wasp"
+  },
+  {
+      "id": 14000220008,
+      "name": "MK7 Ogre"
+  },
+  {
+      "id": 14000220010,
+      "name": "MK9 Ogre"
+  },
+  {
+      "id": 14000230008,
+      "name": "MK7 Berserker"
+  },
+  {
+      "id": 14000300008,
+      "name": "MK7 Curator"
+  },
+  {
+      "id": 14000310008,
+      "name": "MK7 Warden"
+  },
+  {
+      "id": 14000310010,
+      "name": "MK9 Warden"
+  },
+  {
+      "id": 14000320008,
+      "name": "MK7 Guard"
+  },
+  {
+      "id": 14000320012,
+      "name": "Federation Navy Guard"
+  },
+  {
+      "id": 14000330008,
+      "name": "MK7 Bouncer"
+  },
+  {
+      "id": 23008000000,
+      "name": "Capsuleer Outpost"
+  },
+  {
+      "id": 24002000002,
+      "name": "Standard Standup Medium Missile Launcher"
+  },
+  {
+      "id": 24003000002,
+      "name": "Standard Standup Large Missile Launcher"
+  },
+  {
+      "id": 24011000002,
+      "name": "Standard Standup Stasis Webifier"
+  },
+  {
+      "id": 24012000002,
+      "name": "Standard Standup Warp Disruptor"
+  },
+  {
+      "id": 24013000002,
+      "name": "Standard Standup Energy Neutralizer"
+  },
+  {
+      "id": 24021000002,
+      "name": "Production Service Center"
+  },
+  {
+      "id": 27000000000,
+      "name": "Structure Construction Parts"
+  },
+  {
+      "id": 27000000001,
+      "name": "Structure Hangar Array"
+  },
+  {
+      "id": 27000000002,
+      "name": "Structure Storage Bay"
+  },
+  {
+      "id": 27000000003,
+      "name": "Structure Laboratory"
+  },
+  {
+      "id": 27000000004,
+      "name": "Structure Factory"
+  },
+  {
+      "id": 27000000005,
+      "name": "Structure Repair Facility"
+  },
+  {
+      "id": 27000000006,
+      "name": "Structure Reprocessing Plant"
+  },
+  {
+      "id": 27000000007,
+      "name": "Structure Docking Bay"
+  },
+  {
+      "id": 27000000008,
+      "name": "Structure Market Network"
+  },
+  {
+      "id": 27000000009,
+      "name": "Structure Medical Center"
+  },
+  {
+      "id": 27000000010,
+      "name": "Structure Office Center"
+  },
+  {
+      "id": 27000000012,
+      "name": "Structure Electromagnetic Sensor"
+  },
+  {
+      "id": 27000000013,
+      "name": "Structure Acceleration Coils"
+  },
+  {
+      "id": 27021000000,
+      "name": "Datacore - Amarrian Starship Engineering"
+  },
+  {
+      "id": 27021000003,
+      "name": "Datacore - Electromagnetic Physics"
+  },
+  {
+      "id": 27021000007,
+      "name": "Datacore - Gallentean Starship Engineering"
+  },
+  {
+      "id": 27021000008,
+      "name": "Datacore - High Energy Physics"
+  },
+  {
+      "id": 27021000011,
+      "name": "Datacore - Rocket Science"
+  },
+  {
+      "id": 27021000012,
+      "name": "Datacore - Mechanical Engineering"
+  },
+  {
+      "id": 27021000013,
+      "name": "Datacore - Laser Physics"
+  },
+  {
+      "id": 27021000014,
+      "name": "Datacore - Caldari Starship Engineering"
+  },
+  {
+      "id": 27021000016,
+      "name": "Datacore - Minmatar Starship Engineering"
+  },
+  {
+      "id": 27116000001,
+      "name": "Metal Scraps"
+  },
+  {
+      "id": 27116000002,
+      "name": "Reinforced Metal Scraps"
+  },
+  {
+      "id": 27117000000,
+      "name": "Ancient Remains"
+  },
+  {
+      "id": 28007000000,
+      "name": "PLEX"
+  },
+  {
+      "id": 28008000004,
+      "name": "Divine Redemption"
+  },
+  {
+      "id": 28008000005,
+      "name": "True Divine Trial"
+  },
+  {
+      "id": 28008000007,
+      "name": "Spark of Rebellion"
+  },
+  {
+      "id": 28008000008,
+      "name": "For Freedom"
+  },
+  {
+      "id": 28008000009,
+      "name": "Matar Reborn"
+  },
+  {
+      "id": 28008000010,
+      "name": "Angel or Devil"
+  },
+  {
+      "id": 28008000011,
+      "name": "Disaster Relief"
+  },
+  {
+      "id": 28008000012,
+      "name": "A Soldier's Way"
+  },
+  {
+      "id": 28008000013,
+      "name": "Bad Hare Day"
+  },
+  {
+      "id": 28008000014,
+      "name": "Mega Corporation"
+  },
+  {
+      "id": 28008000015,
+      "name": "For Patriotism"
+  },
+  {
+      "id": 28008000017,
+      "name": "Modern World"
+  },
+  {
+      "id": 28008000018,
+      "name": "Business Magnate"
+  },
+  {
+      "id": 28008000019,
+      "name": "Super Soft Drink"
+  },
+  {
+      "id": 28009000001,
+      "name": "Conqueror' Supply Chest"
+  },
+  {
+      "id": 28009000002,
+      "name": "Devout' Supply Chest"
+  },
+  {
+      "id": 28009000003,
+      "name": "Martyr' Supply Chest"
+  },
+  {
+      "id": 28009000004,
+      "name": "Patriot' Supply Chest"
+  },
+  {
+      "id": 28009000005,
+      "name": "Soldier' Supply Chest"
+  },
+  {
+      "id": 28009000006,
+      "name": "Hunter' Supply Chest"
+  },
+  {
+      "id": 28009000007,
+      "name": "Quafe Exclusive' Supply Chest"
+  },
+  {
+      "id": 28009000008,
+      "name": "Investor' Supply Chest"
+  },
+  {
+      "id": 28009000009,
+      "name": "Detective' Supply Chest"
+  },
+  {
+      "id": 28009000010,
+      "name": "Revolt' Supply Chest"
+  },
+  {
+      "id": 28009000011,
+      "name": "Survivor' Supply Chest"
+  },
+  {
+      "id": 28009000012,
+      "name": "Guardian' Supply Chest"
+  },
+  {
+      "id": 28010000000,
+      "name": "Chip: Cognitive Neuroscience Lv. 5"
+  },
+  {
+      "id": 28010000001,
+      "name": "Chip: Advanced Cognitive Neuroscience Lv. 5"
+  },
+  {
+      "id": 28010000002,
+      "name": "Chip: Expert Cognitive Neuroscience Lv. 5"
+  },
+  {
+      "id": 41000000000,
+      "name": "Tritanium"
+  },
+  {
+      "id": 41000000002,
+      "name": "Pyerite"
+  },
+  {
+      "id": 41000000003,
+      "name": "Mexallon"
+  },
+  {
+      "id": 41000000004,
+      "name": "Isogen"
+  },
+  {
+      "id": 41000000005,
+      "name": "Nocxium"
+  },
+  {
+      "id": 41000000006,
+      "name": "Zydrine"
+  },
+  {
+      "id": 41000000007,
+      "name": "Megacyte"
+  },
+  {
+      "id": 41000000008,
+      "name": "Morphite"
+  },
+  {
+      "id": 41400000000,
+      "name": "Charred Micro Circuit"
+  },
+  {
+      "id": 41400000001,
+      "name": "Fried Interface Circuit"
+  },
+  {
+      "id": 41400000002,
+      "name": "Tripped Power Circuit"
+  },
+  {
+      "id": 41400000004,
+      "name": "Smashed Trigger Unit"
+  },
+  {
+      "id": 41400000005,
+      "name": "Damaged Close-in Weapon System"
+  },
+  {
+      "id": 41400000006,
+      "name": "Scorched Telemetry Processor"
+  },
+  {
+      "id": 41400000008,
+      "name": "Contaminated Lorentz Fluid"
+  },
+  {
+      "id": 41400000009,
+      "name": "Conductive Polymer"
+  },
+  {
+      "id": 41400000010,
+      "name": "Contaminated Nanite Polymer"
+  },
+  {
+      "id": 41400000011,
+      "name": "Defective Current Pump"
+  },
+  {
+      "id": 42001000000,
+      "name": "Lustering Alloy"
+  },
+  {
+      "id": 42001000001,
+      "name": "Sheen Compound"
+  },
+  {
+      "id": 42001000002,
+      "name": "Gleaming Alloy"
+  },
+  {
+      "id": 42001000003,
+      "name": "Condensed Alloy"
+  },
+  {
+      "id": 42001000004,
+      "name": "Precious Alloy"
+  },
+  {
+      "id": 42001000005,
+      "name": "Motley Compound"
+  },
+  {
+      "id": 42001000006,
+      "name": "Fiber Composite"
+  },
+  {
+      "id": 42001000007,
+      "name": "Lucent Compound"
+  },
+  {
+      "id": 42001000008,
+      "name": "Opulent Compound"
+  },
+  {
+      "id": 42001000009,
+      "name": "Glossy Compound"
+  },
+  {
+      "id": 42001000010,
+      "name": "Crystal Compound"
+  },
+  {
+      "id": 42001000011,
+      "name": "Dark Compound"
+  },
+  {
+      "id": 42001000018,
+      "name": "Reactive Gas"
+  },
+  {
+      "id": 42001000019,
+      "name": "Noble Gas"
+  },
+  {
+      "id": 42001000020,
+      "name": "Base Metals"
+  },
+  {
+      "id": 42001000021,
+      "name": "Heavy Metals"
+  },
+  {
+      "id": 42001000022,
+      "name": "Noble Metals"
+  },
+  {
+      "id": 42001000023,
+      "name": "Reactive Metals"
+  },
+  {
+      "id": 42001000024,
+      "name": "Toxic Metals"
+  },
+  {
+      "id": 42001000025,
+      "name": "Industrial Fibers"
+  },
+  {
+      "id": 42001000026,
+      "name": "Supertensile Plastics"
+  },
+  {
+      "id": 42001000027,
+      "name": "Polyaramids"
+  },
+  {
+      "id": 42001000028,
+      "name": "Coolant"
+  },
+  {
+      "id": 42001000029,
+      "name": "Condensates"
+  },
+  {
+      "id": 42001000030,
+      "name": "Construction Blocks"
+  },
+  {
+      "id": 42001000031,
+      "name": "Nanites"
+  },
+  {
+      "id": 42001000032,
+      "name": "Silicate Glass"
+  },
+  {
+      "id": 42001000033,
+      "name": "Smartfab Units"
+  },
+  {
+      "id": 42002000012,
+      "name": "Heavy Water"
+  },
+  {
+      "id": 42002000013,
+      "name": "Suspended Plasma"
+  },
+  {
+      "id": 42002000014,
+      "name": "Liquid Ozone"
+  },
+  {
+      "id": 42002000015,
+      "name": "Ionic Solutions"
+  },
+  {
+      "id": 42002000016,
+      "name": "Oxygen Isotopes"
+  },
+  {
+      "id": 42002000017,
+      "name": "Plasmoids"
+  },
+  {
+      "id": 44000000004,
+      "name": "Lv.4 Amarr Ship Debris"
+  },
+  {
+      "id": 44000000005,
+      "name": "Lv.5 Amarr Ship Debris"
+  },
+  {
+      "id": 44000000006,
+      "name": "Lv.6 Amarr Ship Debris"
+  },
+  {
+      "id": 44000000007,
+      "name": "Lv.7 Amarr Ship Debris"
+  },
+  {
+      "id": 44000000008,
+      "name": "Lv.8 Amarr Ship Debris"
+  },
+  {
+      "id": 44000000009,
+      "name": "Lv.9 Amarr Ship Debris"
+  },
+  {
+      "id": 44000000010,
+      "name": "Lv.10 Amarr Ship Debris"
+  },
+  {
+      "id": 44010000004,
+      "name": "Lv.4 Caldari Ship Debris"
+  },
+  {
+      "id": 44010000005,
+      "name": "Lv.5 Caldari Ship Debris"
+  },
+  {
+      "id": 44010000006,
+      "name": "Lv.6 Caldari Ship Debris"
+  },
+  {
+      "id": 44010000007,
+      "name": "Lv.7 Caldari Ship Debris"
+  },
+  {
+      "id": 44010000008,
+      "name": "Lv.8 Caldari Ship Debris"
+  },
+  {
+      "id": 44010000009,
+      "name": "Lv.9 Caldari Ship Debris"
+  },
+  {
+      "id": 44010000010,
+      "name": "Lv.10 Caldari Ship Debris"
+  },
+  {
+      "id": 44020000004,
+      "name": "Lv.4 Gallente Ship Debris"
+  },
+  {
+      "id": 44020000005,
+      "name": "Lv.5 Gallente Ship Debris"
+  },
+  {
+      "id": 44020000006,
+      "name": "Lv.6 Gallente Ship Debris"
+  },
+  {
+      "id": 44020000007,
+      "name": "Lv.7 Gallente Ship Debris"
+  },
+  {
+      "id": 44020000008,
+      "name": "Lv.8 Gallente Ship Debris"
+  },
+  {
+      "id": 44020000009,
+      "name": "Lv.9 Gallente Ship Debris"
+  },
+  {
+      "id": 44020000010,
+      "name": "Lv.10 Gallente Ship Debris"
+  },
+  {
+      "id": 44030000004,
+      "name": "Lv.4 Minmatar Ship Debris"
+  },
+  {
+      "id": 44030000005,
+      "name": "Lv.5 Minmatar Ship Debris"
+  },
+  {
+      "id": 44030000006,
+      "name": "Lv.6 Minmatar Ship Debris"
+  },
+  {
+      "id": 44030000007,
+      "name": "Lv.7 Minmatar Ship Debris"
+  },
+  {
+      "id": 44030000008,
+      "name": "Lv.8 Minmatar Ship Debris"
+  },
+  {
+      "id": 44030000009,
+      "name": "Lv.9 Minmatar Ship Debris"
+  },
+  {
+      "id": 44030000010,
+      "name": "Lv.10 Minmatar Ship Debris"
+  },
+  {
+      "id": 44040000000,
+      "name": "Small Damaged ORE Hull"
+  },
+  {
+      "id": 44040000001,
+      "name": "Medium Damaged ORE Hull"
+  },
+  {
+      "id": 44040000002,
+      "name": "Large Damaged ORE Hull"
+  },
+  {
+      "id": 44050000000,
+      "name": "Guristas Ship Debris"
+  },
+  {
+      "id": 44060000000,
+      "name": "Sansha Ship Debris"
+  },
+  {
+      "id": 44080000000,
+      "name": "Angel Ship Debris"
+  },
+  {
+      "id": 44090000000,
+      "name": "Serpentis Ship Debris"
+  },
+  {
+      "id": 44100000000,
+      "name": "SOE Ship Debris"
+  },
+  {
+      "id": 44110000000,
+      "name": "Mordu's Legion Ship Debris"
+  },
+  {
+      "id": 44130000000,
+      "name": "Small Damaged InterBus Hull"
+  },
+  {
+      "id": 44130000001,
+      "name": "Medium Damaged InterBus Hull"
+  },
+  {
+      "id": 44130000002,
+      "name": "Large Damaged InterBus Hull"
+  },
+  {
+      "id": 51000000000,
+      "name": "Veldspar"
+  },
+  {
+      "id": 51000000006,
+      "name": "Compressed Veldspar"
+  },
+  {
+      "id": 51001000000,
+      "name": "Scordite"
+  },
+  {
+      "id": 51001000005,
+      "name": "Compressed Scordite"
+  },
+  {
+      "id": 51002000000,
+      "name": "Pyroxeres"
+  },
+  {
+      "id": 51002000003,
+      "name": "Compressed Pyroxeres"
+  },
+  {
+      "id": 51003000000,
+      "name": "Plagioclase"
+  },
+  {
+      "id": 51003000004,
+      "name": "Compressed Plagioclase"
+  },
+  {
+      "id": 51004000000,
+      "name": "Omber"
+  },
+  {
+      "id": 51004000004,
+      "name": "Compressed Omber"
+  },
+  {
+      "id": 51005000000,
+      "name": "Kernite"
+  },
+  {
+      "id": 51005000004,
+      "name": "Compressed Kernite"
+  },
+  {
+      "id": 51006000000,
+      "name": "Jaspet"
+  },
+  {
+      "id": 51006000004,
+      "name": "Compressed Jaspet"
+  },
+  {
+      "id": 51007000000,
+      "name": "Hemorphite"
+  },
+  {
+      "id": 51007000003,
+      "name": "Compressed Hemorphite"
+  },
+  {
+      "id": 51008000000,
+      "name": "Hedbergite"
+  },
+  {
+      "id": 51008000004,
+      "name": "Compressed Hedbergite"
+  },
+  {
+      "id": 51009000000,
+      "name": "Spodumain"
+  },
+  {
+      "id": 51009000005,
+      "name": "Compressed Spodumain"
+  },
+  {
+      "id": 51010000000,
+      "name": "Dark Ochre"
+  },
+  {
+      "id": 51010000003,
+      "name": "Compressed Dark Ochre"
+  },
+  {
+      "id": 51011000000,
+      "name": "Gneiss"
+  },
+  {
+      "id": 51011000004,
+      "name": "Compressed Gneiss"
+  },
+  {
+      "id": 51012000000,
+      "name": "Crokite"
+  },
+  {
+      "id": 51012000004,
+      "name": "Compressed Crokite"
+  },
+  {
+      "id": 51013000000,
+      "name": "Bistot"
+  },
+  {
+      "id": 51013000003,
+      "name": "Compressed Bistot"
+  },
+  {
+      "id": 51014000000,
+      "name": "Arkonor"
+  },
+  {
+      "id": 51014000004,
+      "name": "Compressed Arkonor"
+  },
+  {
+      "id": 51015000000,
+      "name": "Mercoxit"
+  },
+  {
+      "id": 51015000004,
+      "name": "Compressed Mercoxit"
+  },
+  {
+      "id": 60100000101,
+      "name": "Griffin Blueprint"
+  },
+  {
+      "id": 60100000103,
+      "name": "Bantam Blueprint"
+  },
+  {
+      "id": 60100000104,
+      "name": "Bantam II Blueprint"
+  },
+  {
+      "id": 60100000108,
+      "name": "Condor II Blueprint"
+  },
+  {
+      "id": 60100000109,
+      "name": "Condor Interceptor Blueprint"
+  },
+  {
+      "id": 60100000110,
+      "name": "Condor II Interceptor Blueprint"
+  },
+  {
+      "id": 60100000112,
+      "name": "Merlin Assault Blueprint"
+  },
+  {
+      "id": 60100000113,
+      "name": "Manticore Blueprint"
+  },
+  {
+      "id": 60100000114,
+      "name": "Manticore II Blueprint"
+  },
+  {
+      "id": 60100000117,
+      "name": "Heron Covert Ops Blueprint"
+  },
+  {
+      "id": 60100000201,
+      "name": "Vigil Blueprint"
+  },
+  {
+      "id": 60100000203,
+      "name": "Burst Blueprint"
+  },
+  {
+      "id": 60100000204,
+      "name": "Burst II Blueprint"
+  },
+  {
+      "id": 60100000208,
+      "name": "Slasher II Blueprint"
+  },
+  {
+      "id": 60100000209,
+      "name": "Slasher Interceptor Blueprint"
+  },
+  {
+      "id": 60100000210,
+      "name": "Slasher II Interceptor Blueprint"
+  },
+  {
+      "id": 60100000212,
+      "name": "Breacher Assault Blueprint"
+  },
+  {
+      "id": 60100000213,
+      "name": "Hound Blueprint"
+  },
+  {
+      "id": 60100000214,
+      "name": "Hound II Blueprint"
+  },
+  {
+      "id": 60100000217,
+      "name": "Probe Covert Ops Blueprint"
+  },
+  {
+      "id": 60100000301,
+      "name": "Crucifier Blueprint"
+  },
+  {
+      "id": 60100000303,
+      "name": "Inquisitor Blueprint"
+  },
+  {
+      "id": 60100000304,
+      "name": "Inquisitor II Blueprint"
+  },
+  {
+      "id": 60100000308,
+      "name": "Executioner II Blueprint"
+  },
+  {
+      "id": 60100000310,
+      "name": "Executioner II Interceptor Blueprint"
+  },
+  {
+      "id": 60100000312,
+      "name": "Punisher Assault Blueprint"
+  },
+  {
+      "id": 60100000313,
+      "name": "Purifier Blueprint"
+  },
+  {
+      "id": 60100000314,
+      "name": "Purifier II Blueprint"
+  },
+  {
+      "id": 60100000317,
+      "name": "Magnate Covert Ops Blueprint"
+  },
+  {
+      "id": 60100000401,
+      "name": "Maulus Blueprint"
+  },
+  {
+      "id": 60100000403,
+      "name": "Navitas Blueprint"
+  },
+  {
+      "id": 60100000404,
+      "name": "Navitas II Blueprint"
+  },
+  {
+      "id": 60100000408,
+      "name": "Atron II Blueprint"
+  },
+  {
+      "id": 60100000409,
+      "name": "Atron Interceptor Blueprint"
+  },
+  {
+      "id": 60100000410,
+      "name": "Atron II Interceptor Blueprint"
+  },
+  {
+      "id": 60100000412,
+      "name": "Incursus Assault Blueprint"
+  },
+  {
+      "id": 60100000413,
+      "name": "Nemesis Blueprint"
+  },
+  {
+      "id": 60100000414,
+      "name": "Nemesis II Blueprint"
+  },
+  {
+      "id": 60100000417,
+      "name": "Imicus Covert Ops Blueprint"
+  },
+  {
+      "id": 60100001001,
+      "name": "Worm Blueprint"
+  },
+  {
+      "id": 60100001101,
+      "name": "Dramiel Blueprint"
+  },
+  {
+      "id": 60100001201,
+      "name": "Cruor Blueprint"
+  },
+  {
+      "id": 60100001601,
+      "name": "Astero Blueprint"
+  },
+  {
+      "id": 60100001801,
+      "name": "Garmur Blueprint"
+  },
+  {
+      "id": 60100001901,
+      "name": "Succubus Blueprint"
+  },
+  {
+      "id": 60100002001,
+      "name": "Daredevil Blueprint"
+  },
+  {
+      "id": 60200000101,
+      "name": "Cormorant Guardian Blueprint"
+  },
+  {
+      "id": 60200000105,
+      "name": "Corax Blueprint"
+  },
+  {
+      "id": 60200000106,
+      "name": "Cormorant II Blueprint"
+  },
+  {
+      "id": 60200000107,
+      "name": "Cormorant Navy Issue Blueprint"
+  },
+  {
+      "id": 60200000108,
+      "name": "Corax Assault Blueprint"
+  },
+  {
+      "id": 60200000110,
+      "name": "Corax Sniper Blueprint"
+  },
+  {
+      "id": 60200000111,
+      "name": "Cormorant Covert Ops Blueprint"
+  },
+  {
+      "id": 60200000201,
+      "name": "Thrasher Guardian Blueprint"
+  },
+  {
+      "id": 60200000205,
+      "name": "Talwar Blueprint"
+  },
+  {
+      "id": 60200000206,
+      "name": "Thrasher II Blueprint"
+  },
+  {
+      "id": 60200000207,
+      "name": "Thrasher Fleet Issue Blueprint"
+  },
+  {
+      "id": 60200000208,
+      "name": "Talwar Assault Blueprint"
+  },
+  {
+      "id": 60200000210,
+      "name": "Talwar Sniper Blueprint"
+  },
+  {
+      "id": 60200000211,
+      "name": "Thrasher Covert Ops Blueprint"
+  },
+  {
+      "id": 60200000301,
+      "name": "Coercer Guardian Blueprint"
+  },
+  {
+      "id": 60200000305,
+      "name": "Dragoon Blueprint"
+  },
+  {
+      "id": 60200000306,
+      "name": "Coercer II Blueprint"
+  },
+  {
+      "id": 60200000307,
+      "name": "Coercer Navy Issue Blueprint"
+  },
+  {
+      "id": 60200000308,
+      "name": "Dragoon Assault Blueprint"
+  },
+  {
+      "id": 60200000311,
+      "name": "Coercer Covert Ops Blueprint"
+  },
+  {
+      "id": 60200000401,
+      "name": "Catalyst Guardian Blueprint"
+  },
+  {
+      "id": 60200000405,
+      "name": "Algos Blueprint"
+  },
+  {
+      "id": 60200000406,
+      "name": "Catalyst II Blueprint"
+  },
+  {
+      "id": 60200000407,
+      "name": "Catalyst Navy Issue Blueprint"
+  },
+  {
+      "id": 60200000408,
+      "name": "Algos Assault Blueprint"
+  },
+  {
+      "id": 60200000410,
+      "name": "Algos Sniper Blueprint"
+  },
+  {
+      "id": 60200000411,
+      "name": "Catalyst Covert Ops Blueprint"
+  },
+  {
+      "id": 60300000101,
+      "name": "Moa Guardian Blueprint"
+  },
+  {
+      "id": 60300000102,
+      "name": "Moa II Guardian Blueprint"
+  },
+  {
+      "id": 60300000103,
+      "name": "Blackbird Blueprint"
+  },
+  {
+      "id": 60300000105,
+      "name": "Osprey Blueprint"
+  },
+  {
+      "id": 60300000108,
+      "name": "Caracal Blueprint"
+  },
+  {
+      "id": 60300000109,
+      "name": "Moa Blueprint"
+  },
+  {
+      "id": 60300000110,
+      "name": "Caracal Navy Issue Blueprint"
+  },
+  {
+      "id": 60300000113,
+      "name": "Caracal Sniper Blueprint"
+  },
+  {
+      "id": 60300000114,
+      "name": "Blackbird Covert Ops Blueprint"
+  },
+  {
+      "id": 60300000115,
+      "name": "Blackbird II Covert Ops Blueprint"
+  },
+  {
+      "id": 60300000201,
+      "name": "Rupture Guardian Blueprint"
+  },
+  {
+      "id": 60300000202,
+      "name": "Rupture II Guardian Blueprint"
+  },
+  {
+      "id": 60300000203,
+      "name": "Bellicose Blueprint"
+  },
+  {
+      "id": 60300000205,
+      "name": "Scythe Blueprint"
+  },
+  {
+      "id": 60300000208,
+      "name": "Stabber Blueprint"
+  },
+  {
+      "id": 60300000209,
+      "name": "Stabber Fleet Issue Blueprint"
+  },
+  {
+      "id": 60300000210,
+      "name": "Rupture Blueprint"
+  },
+  {
+      "id": 60300000213,
+      "name": "Stabber Sniper Blueprint"
+  },
+  {
+      "id": 60300000214,
+      "name": "Bellicose Covert Ops Blueprint"
+  },
+  {
+      "id": 60300000301,
+      "name": "Maller Guardian Blueprint"
+  },
+  {
+      "id": 60300000302,
+      "name": "Maller II Guardian Blueprint"
+  },
+  {
+      "id": 60300000303,
+      "name": "Arbitrator Blueprint"
+  },
+  {
+      "id": 60300000305,
+      "name": "Augoror Blueprint"
+  },
+  {
+      "id": 60300000308,
+      "name": "Omen Blueprint"
+  },
+  {
+      "id": 60300000309,
+      "name": "Maller Blueprint"
+  },
+  {
+      "id": 60300000310,
+      "name": "Omen Navy Issue Blueprint"
+  },
+  {
+      "id": 60300000313,
+      "name": "Omen Sniper Blueprint"
+  },
+  {
+      "id": 60300000314,
+      "name": "Arbitrator Covert Ops Blueprint"
+  },
+  {
+      "id": 60300000315,
+      "name": "Arbitrator II Covert Ops Blueprint"
+  },
+  {
+      "id": 60300000401,
+      "name": "Thorax Guardian Blueprint"
+  },
+  {
+      "id": 60300000402,
+      "name": "Thorax II Guardian Blueprint"
+  },
+  {
+      "id": 60300000403,
+      "name": "Celestis Blueprint"
+  },
+  {
+      "id": 60300000405,
+      "name": "Exequror Blueprint"
+  },
+  {
+      "id": 60300000408,
+      "name": "Vexor Blueprint"
+  },
+  {
+      "id": 60300000409,
+      "name": "Vexor Navy Issue Blueprint"
+  },
+  {
+      "id": 60300000410,
+      "name": "Thorax Blueprint"
+  },
+  {
+      "id": 60300000413,
+      "name": "Vexor Sniper Blueprint"
+  },
+  {
+      "id": 60300000414,
+      "name": "Celestis Covert Ops Blueprint"
+  },
+  {
+      "id": 60300000416,
+      "name": "Thorax Prototype Blueprint"
+  },
+  {
+      "id": 60300001001,
+      "name": "Gila Blueprint"
+  },
+  {
+      "id": 60300001101,
+      "name": "Cynabal Blueprint"
+  },
+  {
+      "id": 60300001201,
+      "name": "Ashimmu Blueprint"
+  },
+  {
+      "id": 60300001601,
+      "name": "Stratios Blueprint"
+  },
+  {
+      "id": 60300001801,
+      "name": "Orthrus Blueprint"
+  },
+  {
+      "id": 60300001901,
+      "name": "Phantasm Blueprint"
+  },
+  {
+      "id": 60300002001,
+      "name": "Vigilant Blueprint"
+  },
+  {
+      "id": 60400000101,
+      "name": "Ferox Guardian Blueprint"
+  },
+  {
+      "id": 60400000102,
+      "name": "Ferox II Guardian Blueprint"
+  },
+  {
+      "id": 60400000104,
+      "name": "Naga Blueprint"
+  },
+  {
+      "id": 60400000106,
+      "name": "Drake Logistics Blueprint"
+  },
+  {
+      "id": 60400000107,
+      "name": "Ferox Blueprint"
+  },
+  {
+      "id": 60400000108,
+      "name": "Drake Blueprint"
+  },
+  {
+      "id": 60400000201,
+      "name": "Cyclone Guardian Blueprint"
+  },
+  {
+      "id": 60400000202,
+      "name": "Cyclone II Guardian Blueprint"
+  },
+  {
+      "id": 60400000204,
+      "name": "Tornado Blueprint"
+  },
+  {
+      "id": 60400000205,
+      "name": "Tornado II Blueprint"
+  },
+  {
+      "id": 60400000207,
+      "name": "Cyclone Blueprint"
+  },
+  {
+      "id": 60400000208,
+      "name": "Hurricane Blueprint"
+  },
+  {
+      "id": 60400000211,
+      "name": "Hurricane Prototype Blueprint"
+  },
+  {
+      "id": 60400000301,
+      "name": "Prophecy Guardian Blueprint"
+  },
+  {
+      "id": 60400000302,
+      "name": "Prophecy II Guardian Blueprint"
+  },
+  {
+      "id": 60400000304,
+      "name": "Oracle Blueprint"
+  },
+  {
+      "id": 60400000306,
+      "name": "Harbinger Logistics Blueprint"
+  },
+  {
+      "id": 60400000307,
+      "name": "Prophecy Blueprint"
+  },
+  {
+      "id": 60400000308,
+      "name": "Harbinger Blueprint"
+  },
+  {
+      "id": 60400000311,
+      "name": "Harbinger Prototype Blueprint"
+  },
+  {
+      "id": 60400000401,
+      "name": "Myrmidon Guardian Blueprint"
+  },
+  {
+      "id": 60400000405,
+      "name": "Talos II Blueprint"
+  },
+  {
+      "id": 60400000407,
+      "name": "Myrmidon Blueprint"
+  },
+  {
+      "id": 60400000408,
+      "name": "Brutix Blueprint"
+  },
+  {
+      "id": 60500000101,
+      "name": "Scorpion Blueprint"
+  },
+  {
+      "id": 60500000102,
+      "name": "Raven Striker Blueprint"
+  },
+  {
+      "id": 60500000103,
+      "name": "Rokh Blueprint"
+  },
+  {
+      "id": 60500000104,
+      "name": "Raven Blueprint"
+  },
+  {
+      "id": 60500000203,
+      "name": "Typhoon Blueprint"
+  },
+  {
+      "id": 60500000204,
+      "name": "Tempest Blueprint"
+  },
+  {
+      "id": 60500000301,
+      "name": "Armageddon Blueprint"
+  },
+  {
+      "id": 60500000302,
+      "name": "Apocalypse Striker Blueprint"
+  },
+  {
+      "id": 60500000304,
+      "name": "Abaddon Blueprint"
+  },
+  {
+      "id": 60500000401,
+      "name": "Megathron Striker Blueprint"
+  },
+  {
+      "id": 60500000402,
+      "name": "Dominix Blueprint"
+  },
+  {
+      "id": 60500000403,
+      "name": "Megathron Blueprint"
+  },
+  {
+      "id": 60500001001,
+      "name": "Rattlesnake Blueprint"
+  },
+  {
+      "id": 60500001101,
+      "name": "Machariel Blueprint"
+  },
+  {
+      "id": 60500001601,
+      "name": "Nestor Blueprint"
+  },
+  {
+      "id": 60500001801,
+      "name": "Barghest Blueprint"
+  },
+  {
+      "id": 60500002001,
+      "name": "Vindicator Blueprint"
+  },
+  {
+      "id": 60600000101,
+      "name": "Tayra Blueprint"
+  },
+  {
+      "id": 60600000102,
+      "name": "Badger Blueprint"
+  },
+  {
+      "id": 60600000103,
+      "name": "Badger II Blueprint"
+  },
+  {
+      "id": 60600000202,
+      "name": "Mammoth Blueprint"
+  },
+  {
+      "id": 60600000203,
+      "name": "Wreathe II Blueprint"
+  },
+  {
+      "id": 60600000301,
+      "name": "Bestower Blueprint"
+  },
+  {
+      "id": 60600000302,
+      "name": "Sigil Blueprint"
+  },
+  {
+      "id": 60600000401,
+      "name": "Kryos Blueprint"
+  },
+  {
+      "id": 60600000402,
+      "name": "Nereus Blueprint"
+  },
+  {
+      "id": 60600001301,
+      "name": "Nereus High Mobility Blueprint"
+  },
+  {
+      "id": 60600001302,
+      "name": "Nereus Combat Blueprint"
+  },
+  {
+      "id": 60600001303,
+      "name": "Nereus Hauling Blueprint"
+  },
+  {
+      "id": 60600001304,
+      "name": "Imicus High Mobility Blueprint"
+  },
+  {
+      "id": 60600001305,
+      "name": "Humpback High Mobility Blueprint"
+  },
+  {
+      "id": 60600001306,
+      "name": "Humpback Hauling Blueprint"
+  },
+  {
+      "id": 60600001307,
+      "name": "Humpback Combat Blueprint"
+  },
+  {
+      "id": 60600001401,
+      "name": "Retriever Blueprint"
+  },
+  {
+      "id": 60600001402,
+      "name": "Procurer Blueprint"
+  },
+  {
+      "id": 60600001403,
+      "name": "Covetor Blueprint"
+  },
+  {
+      "id": 60600001406,
+      "name": "Venture Blueprint"
+  },
+  {
+      "id": 60600001407,
+      "name": "Venture II Blueprint"
+  },
+  {
+      "id": 60600001408,
+      "name": "Venture III Blueprint"
+  },
+  {
+      "id": 60300000306,
+      "name": "Maller Interdictor Blueprint"
+  },
+  {
+	  "id": 60300000407,
+      "name": "Celestis Interdictor Blueprint"
+  },
+  {
+	  "id": 60300000206,
+      "name": "Rupture Interdictor Blueprint"
+  },
+  {
+	  "id": 60300000300,
+      "name": "Arbitrator Interdictor Blueprint"
+  },
+  {
+	  "id": 60300000106,
+      "name": "Moa Interdictor Blueprint"
+  },
+  {
+	  "id": 60300000207,
+      "name": "Bellicose Interdictor Blueprint"
+  },
+  {
+	  "id": 60300000107,
+      "name": "Blackbird Interdictor Blueprint"
+  },
+  {
+	  "id": 60200000402,
+      "name": "Catalyst Interdictor Blueprint"
+  },
+  {
+	  "id": 60200000302,
+      "name": "Coercer Interdictor Blueprint"
+  },
+  {
+	  "id": 60200000403,
+      "name": "Catalyst II Interdictor Blueprint"
+  },
+  {
+	  "id": 60200000202,
+      "name": "Thrasher Interdictor Blueprint"
+  },
+  {
+	  "id": 60200000303,
+      "name": "Coercer II Interdictor Blueprint"
+  },
+  {
+	  "id": 60200000102,
+      "name": "Cormorant Interdictor Blueprint"
+  },
+  {
+	  "id": 60200000203,
+      "name": "Thrasher II Interdictor Blueprint"
+  },
+  {
+	  "id": 60200000103,
+      "name": "Cormorant II Interdictor Blueprint"
+  },
+  {
+	  "id": 60300000406,
+      "name": "Thorax Interdictor Blueprint"
+  },	
+  {
+      "id": 61108000006,
+      "name": "MK5 Cloaking Device Blueprint"
+  },
+  {
+      "id": 61108000008,
+      "name": "MK7 Cloaking Device Blueprint"
+  },
+  {
+      "id": 61123000006,
+      "name": "MK5 Covert Ops Cloaking Device Blueprint"
+  },
+  {
+      "id": 61123000008,
+      "name": "MK7 Covert Ops Cloaking Device Blueprint"
+  },
+  {
+      "id": 61123000010,
+      "name": "MK9 Covert Ops Cloaking Device Blueprint"
+  },
+  {
+      "id": 61537000006,
+      "name": "MK5 Small Shield Field Module Blueprint"
+  },
+  {
+      "id": 61537000008,
+      "name": "MK7 Small Shield Field Module Blueprint"
+  },
+  {
+      "id": 61537100006,
+      "name": "MK5 Medium Shield Field Module Blueprint"
+  },
+  {
+      "id": 61537100008,
+      "name": "MK7 Medium Shield Field Module Blueprint"
+  },
+  {
+      "id": 61537100010,
+      "name": "MK9 Medium Shield Field Module Blueprint"
+  },
+  {
+      "id": 61537200008,
+      "name": "MK7 Large Shield Field Module Blueprint"
+  },
+  {
+      "id": 61538000006,
+      "name": "MK5 Small Armor Link Module Blueprint"
+  },
+  {
+      "id": 61538000008,
+      "name": "MK7 Small Armor Link Module Blueprint"
+  },
+  {
+      "id": 61538100006,
+      "name": "MK5 Medium Armor Link Module Blueprint"
+  },
+  {
+      "id": 61538100008,
+      "name": "MK7 Medium Armor Link Module Blueprint"
+  },
+  {
+      "id": 61538200008,
+      "name": "MK7 Large Armor Link Module Blueprint"
+  },
+  {
+      "id": 61539000006,
+      "name": "MK5 Small Group Shield Booster Blueprint"
+  },
+  {
+      "id": 61539000008,
+      "name": "MK7 Small Group Shield Booster Blueprint"
+  },
+  {
+      "id": 61539100006,
+      "name": "MK5 Medium Group Shield Booster Blueprint"
+  },
+  {
+      "id": 61539100008,
+      "name": "MK7 Medium Group Shield Booster Blueprint"
+  },
+  {
+      "id": 61539200008,
+      "name": "MK7 Large Group Shield Booster  Blueprint"
+  },
+  {
+      "id": 61539200010,
+      "name": "MK9 Large Group Shield Booster  Blueprint"
+  },
+  {
+      "id": 61540000006,
+      "name": "MK5 Small Group Armor Repairer Blueprint"
+  },
+  {
+      "id": 61540000008,
+      "name": "MK7 Small Group Armor Repairer Blueprint"
+  },
+  {
+      "id": 61540100006,
+      "name": "MK5 Medium Group Armor Repairer Blueprint"
+  },
+  {
+      "id": 61540100008,
+      "name": "MK7 Medium Group Armor Repairer Blueprint"
+  },
+  {
+      "id": 61540200008,
+      "name": "MK7 Large Group Armor Repairer  Blueprint"
+  },
+  {
+      "id": 61541000006,
+      "name": "MK5 Small Group Capacitor Transmitter Blueprint"
+  },
+  {
+      "id": 61541000008,
+      "name": "MK7 Small Group Capacitor Transmitter Blueprint"
+  },
+  {
+      "id": 61541100006,
+      "name": "MK5 Medium Group Capacitor Transmitter Blueprint"
+  },
+  {
+      "id": 61541100008,
+      "name": "MK7 Medium Group Capacitor Transmitter Blueprint"
+  },
+  {
+      "id": 61541200008,
+      "name": "MK7 Large Group Capacitor Transmitter  Blueprint"
+  },
+  {
+      "id": 61700000002,
+      "name": "Railgun Collision Accelerator I Blueprint"
+  },
+  {
+      "id": 61700000004,
+      "name": "Railgun Collision Accelerator II Blueprint"
+  },
+  {
+      "id": 61700000006,
+      "name": "Railgun Collision Accelerator III Blueprint"
+  },
+  {
+      "id": 61700010002,
+      "name": "Railgun Ambit Extension I Blueprint"
+  },
+  {
+      "id": 61700010004,
+      "name": "Railgun Ambit Extension II Blueprint"
+  },
+  {
+      "id": 61700010006,
+      "name": "Railgun Ambit Extension III Blueprint"
+  },
+  {
+      "id": 61700020002,
+      "name": "Railgun Discharge Elutriation I Blueprint"
+  },
+  {
+      "id": 61700020004,
+      "name": "Railgun Discharge Elutriation II Blueprint"
+  },
+  {
+      "id": 61700020006,
+      "name": "Railgun Discharge Elutriation III Blueprint"
+  },
+  {
+      "id": 61700030002,
+      "name": "Railgun Burst Aerator I Blueprint"
+  },
+  {
+      "id": 61700030004,
+      "name": "Railgun Burst Aerator II Blueprint"
+  },
+  {
+      "id": 61700030006,
+      "name": "Railgun Burst Aerator III Blueprint"
+  },
+  {
+      "id": 61700040002,
+      "name": "Algid Railgun Administrations Unit I Blueprint"
+  },
+  {
+      "id": 61700040004,
+      "name": "Algid Railgun Administrations Unit II Blueprint"
+  },
+  {
+      "id": 61700040006,
+      "name": "Algid Railgun Administrations Unit III Blueprint"
+  },
+  {
+      "id": 61702000002,
+      "name": "Laser Collision Accelerator I Blueprint"
+  },
+  {
+      "id": 61702000004,
+      "name": "Laser Collision Accelerator II Blueprint"
+  },
+  {
+      "id": 61702000006,
+      "name": "Laser Collision Accelerator III Blueprint"
+  },
+  {
+      "id": 61702010002,
+      "name": "Laser Ambit Extension I Blueprint"
+  },
+  {
+      "id": 61702010004,
+      "name": "Laser Ambit Extension II Blueprint"
+  },
+  {
+      "id": 61702010006,
+      "name": "Laser Ambit Extension III Blueprint"
+  },
+  {
+      "id": 61702020002,
+      "name": "Laser Discharge Elutriation I Blueprint"
+  },
+  {
+      "id": 61702020004,
+      "name": "Laser Discharge Elutriation II Blueprint"
+  },
+  {
+      "id": 61702020006,
+      "name": "Laser Discharge Elutriation III Blueprint"
+  },
+  {
+      "id": 61702030002,
+      "name": "Laser Burst Aerator I Blueprint"
+  },
+  {
+      "id": 61702030004,
+      "name": "Laser Burst Aerator II Blueprint"
+  },
+  {
+      "id": 61702030006,
+      "name": "Laser Burst Aerator III Blueprint"
+  },
+  {
+      "id": 61702040002,
+      "name": "Algid Energy Administrations Unit I Blueprint"
+  },
+  {
+      "id": 61702040004,
+      "name": "Algid Energy Administrations Unit II Blueprint"
+  },
+  {
+      "id": 61702040006,
+      "name": "Algid Energy Administrations Unit III Blueprint"
+  },
+  {
+      "id": 61704000002,
+      "name": "Cannon Collision Accelerator I Blueprint"
+  },
+  {
+      "id": 61704000004,
+      "name": "Cannon Collision Accelerator II Blueprint"
+  },
+  {
+      "id": 61704000006,
+      "name": "Cannon Collision Accelerator III Blueprint"
+  },
+  {
+      "id": 61704010002,
+      "name": "Cannon Ambit Extension I Blueprint"
+  },
+  {
+      "id": 61704010004,
+      "name": "Cannon Ambit Extension II Blueprint"
+  },
+  {
+      "id": 61704010006,
+      "name": "Cannon Ambit Extension III Blueprint"
+  },
+  {
+      "id": 61704020002,
+      "name": "Cannon Burst Aerator I Blueprint"
+  },
+  {
+      "id": 61704020004,
+      "name": "Cannon Burst Aerator II Blueprint"
+  },
+  {
+      "id": 61704020006,
+      "name": "Cannon Burst Aerator III Blueprint"
+  },
+  {
+      "id": 61704030002,
+      "name": "Cannon Metastasis Adjuster I Blueprint"
+  },
+  {
+      "id": 61704030004,
+      "name": "Cannon Metastasis Adjuster II Blueprint"
+  },
+  {
+      "id": 61704030006,
+      "name": "Cannon Metastasis Adjuster III Blueprint"
+  },
+  {
+      "id": 61705000002,
+      "name": "Decomposer Collision Accelerator I Blueprint"
+  },
+  {
+      "id": 61705000004,
+      "name": "Decomposer Collision Accelerator II Blueprint"
+  },
+  {
+      "id": 61705000006,
+      "name": "Decomposer Collision Accelerator III Blueprint"
+  },
+  {
+      "id": 61705010002,
+      "name": "Decomposer Ambit Extension I Blueprint"
+  },
+  {
+      "id": 61705010004,
+      "name": "Decomposer Ambit Extension II Blueprint"
+  },
+  {
+      "id": 61705010006,
+      "name": "Decomposer Ambit Extension III Blueprint"
+  },
+  {
+      "id": 61705020002,
+      "name": "Decomposer Discharge Elutriation I Blueprint"
+  },
+  {
+      "id": 61705020004,
+      "name": "Decomposer Discharge Elutriation II Blueprint"
+  },
+  {
+      "id": 61705020006,
+      "name": "Decomposer Discharge Elutriation III Blueprint"
+  },
+  {
+      "id": 61705030002,
+      "name": "Decomposer Burst Aerator I Blueprint"
+  },
+  {
+      "id": 61705030004,
+      "name": "Decomposer Burst Aerator II Blueprint"
+  },
+  {
+      "id": 61705030006,
+      "name": "Decomposer Burst Aerator III Blueprint"
+  },
+  {
+      "id": 61705040002,
+      "name": "Decomposer Algid Hybrid Administrations Unit I Blueprint"
+  },
+  {
+      "id": 61705040004,
+      "name": "Decomposer Algid Hybrid Administrations Unit II Blueprint"
+  },
+  {
+      "id": 61706000002,
+      "name": "Warhead Flare Catalyst I Blueprint"
+  },
+  {
+      "id": 61706000004,
+      "name": "Warhead Flare Catalyst II Blueprint"
+  },
+  {
+      "id": 61706000006,
+      "name": "Warhead Flare Catalyst III Blueprint"
+  },
+  {
+      "id": 61706010002,
+      "name": "Warhead Calefaction Catalyst I Blueprint"
+  },
+  {
+      "id": 61706010004,
+      "name": "Warhead Calefaction Catalyst II Blueprint"
+  },
+  {
+      "id": 61706010006,
+      "name": "Warhead Calefaction Catalyst III Blueprint"
+  },
+  {
+      "id": 61706020002,
+      "name": "Warhead Rigor Catalyst I Blueprint"
+  },
+  {
+      "id": 61706020004,
+      "name": "Warhead Rigor Catalyst II Blueprint"
+  },
+  {
+      "id": 61706020006,
+      "name": "Warhead Rigor Catalyst III Blueprint"
+  },
+  {
+      "id": 61706030002,
+      "name": "Rocket Fuel Cache Partition I Blueprint"
+  },
+  {
+      "id": 61706030004,
+      "name": "Rocket Fuel Cache Partition II Blueprint"
+  },
+  {
+      "id": 61706030006,
+      "name": "Rocket Fuel Cache Partition III Blueprint"
+  },
+  {
+      "id": 61706040002,
+      "name": "Hydraulic Bay Thrusters I Blueprint"
+  },
+  {
+      "id": 61706040004,
+      "name": "Hydraulic Bay Thrusters II Blueprint"
+  },
+  {
+      "id": 61706040006,
+      "name": "Hydraulic Bay Thrusters III Blueprint"
+  },
+  {
+      "id": 61706050002,
+      "name": "Bay Loading Accelerator I Blueprint"
+  },
+  {
+      "id": 61706050004,
+      "name": "Bay Loading Accelerator II Blueprint"
+  },
+  {
+      "id": 61706050006,
+      "name": "Bay Loading Accelerator III Blueprint"
+  },
+  {
+      "id": 61707000002,
+      "name": "Core Defense Operational Solidifier I Blueprint"
+  },
+  {
+      "id": 61707000004,
+      "name": "Core Defense Operational Solidifier II Blueprint"
+  },
+  {
+      "id": 61707000006,
+      "name": "Core Defense Operational Solidifier III Blueprint"
+  },
+  {
+      "id": 61707010002,
+      "name": "Core Defense Charge Economizer I Blueprint"
+  },
+  {
+      "id": 61707010004,
+      "name": "Core Defense Charge Economizer II Blueprint"
+  },
+  {
+      "id": 61707010006,
+      "name": "Core Defense Charge Economizer III Blueprint"
+  },
+  {
+      "id": 61707020002,
+      "name": "Core Defense Capacitor Safeguard I Blueprint"
+  },
+  {
+      "id": 61707020004,
+      "name": "Core Defense Capacitor Safeguard II Blueprint"
+  },
+  {
+      "id": 61707020006,
+      "name": "Core Defense Capacitor Safeguard III Blueprint"
+  },
+  {
+      "id": 61707030002,
+      "name": "Core Defense Field Extender I Blueprint"
+  },
+  {
+      "id": 61707030004,
+      "name": "Core Defense Field Extender II Blueprint"
+  },
+  {
+      "id": 61707030006,
+      "name": "Core Defense Field Extender III Blueprint"
+  },
+  {
+      "id": 61707040002,
+      "name": "Small Anti-Explosive Screen Reinforcer I Blueprint"
+  },
+  {
+      "id": 61707040004,
+      "name": "Small Anti-Explosive Screen Reinforcer II Blueprint"
+  },
+  {
+      "id": 61707040006,
+      "name": "Small Anti-Explosive Screen Reinforcer III Blueprint"
+  },
+  {
+      "id": 61707050002,
+      "name": "Anti-EM Screen Reinforcer I Blueprint"
+  },
+  {
+      "id": 61707050004,
+      "name": "Anti-EM Screen Reinforcer II Blueprint"
+  },
+  {
+      "id": 61707050006,
+      "name": "Anti-EM Screen Reinforcer III Blueprint"
+  },
+  {
+      "id": 61707060002,
+      "name": "Anti-Kinetic Screen Reinforcer I Blueprint"
+  },
+  {
+      "id": 61707060004,
+      "name": "Anti-Kinetic Screen Reinforcer II Blueprint"
+  },
+  {
+      "id": 61707060006,
+      "name": "Anti-Kinetic Screen Reinforcer III Blueprint"
+  },
+  {
+      "id": 61707070002,
+      "name": "Anti-Thermal Screen Reinforcer I Blueprint"
+  },
+  {
+      "id": 61707070004,
+      "name": "Anti-Thermal Screen Reinforcer II Blueprint"
+  },
+  {
+      "id": 61707070006,
+      "name": "Anti-Thermal Screen Reinforcer III Blueprint"
+  },
+  {
+      "id": 61708000002,
+      "name": "Nanobot Accelerator I Blueprint"
+  },
+  {
+      "id": 61708000004,
+      "name": "Nanobot Accelerator II Blueprint"
+  },
+  {
+      "id": 61708000006,
+      "name": "Nanobot Accelerator III Blueprint"
+  },
+  {
+      "id": 61708010002,
+      "name": "Auxiliary Nano Pump I Blueprint"
+  },
+  {
+      "id": 61708010004,
+      "name": "Auxiliary Nano Pump II Blueprint"
+  },
+  {
+      "id": 61708010006,
+      "name": "Auxiliary Nano Pump III Blueprint"
+  },
+  {
+      "id": 61708020002,
+      "name": "Remote Repair Augmentor I Blueprint"
+  },
+  {
+      "id": 61708020004,
+      "name": "Remote Repair Augmentor II Blueprint"
+  },
+  {
+      "id": 61708020006,
+      "name": "Remote Repair Augmentor III Blueprint"
+  },
+  {
+      "id": 61708030002,
+      "name": "Small Trimark Armor Pump I Blueprint"
+  },
+  {
+      "id": 61708030004,
+      "name": "Small Trimark Armor Pump II Blueprint"
+  },
+  {
+      "id": 61708030006,
+      "name": "Small Trimark Armor Pump III Blueprint"
+  },
+  {
+      "id": 61708040002,
+      "name": "Small Anti-Explosive Pump I Blueprint"
+  },
+  {
+      "id": 61708040004,
+      "name": "Small Anti-Explosive Pump II Blueprint"
+  },
+  {
+      "id": 61708040006,
+      "name": "Small Anti-Explosive Pump III Blueprint"
+  },
+  {
+      "id": 61708050002,
+      "name": "Small Anti-EM Pump I Blueprint"
+  },
+  {
+      "id": 61708050004,
+      "name": "Small Anti-EM Pump II Blueprint"
+  },
+  {
+      "id": 61708050006,
+      "name": "Small Anti-EM Pump III Blueprint"
+  },
+  {
+      "id": 61708060002,
+      "name": "Small Anti-Kinetic Pump I Blueprint"
+  },
+  {
+      "id": 61708060004,
+      "name": "Small Anti-Kinetic Pump II Blueprint"
+  },
+  {
+      "id": 61708060006,
+      "name": "Small Anti-Kinetic Pump III Blueprint"
+  },
+  {
+      "id": 61708070002,
+      "name": "Small Anti-Thermal Pump I Blueprint"
+  },
+  {
+      "id": 61708070004,
+      "name": "Small Anti-Thermal Pump II Blueprint"
+  },
+  {
+      "id": 61708070006,
+      "name": "Small Anti-Thermal Pump III Blueprint"
+  },
+  {
+      "id": 61710000002,
+      "name": "Small Dynamic Fuel Valve I Blueprint"
+  },
+  {
+      "id": 61710000004,
+      "name": "Small Dynamic Fuel Valve II Blueprint"
+  },
+  {
+      "id": 61710000006,
+      "name": "Small Dynamic Fuel Valve III Blueprint"
+  },
+  {
+      "id": 61710010002,
+      "name": "Auxiliary Thrusters I Blueprint"
+  },
+  {
+      "id": 61710010004,
+      "name": "Auxiliary Thrusters II Blueprint"
+  },
+  {
+      "id": 61710010006,
+      "name": "Auxiliary Thrusters III Blueprint"
+  },
+  {
+      "id": 61710020002,
+      "name": "Small Polycarbon Engine Housing I Blueprint"
+  },
+  {
+      "id": 61710020004,
+      "name": "Small Polycarbon Engine Housing II Blueprint"
+  },
+  {
+      "id": 61710020006,
+      "name": "Small Polycarbon Engine Housing III Blueprint"
+  },
+  {
+      "id": 61710030002,
+      "name": "Cargohold Optimization I Blueprint"
+  },
+  {
+      "id": 61710030004,
+      "name": "Cargohold Optimization II Blueprint"
+  },
+  {
+      "id": 61710030006,
+      "name": "Cargohold Optimization III Blueprint"
+  },
+  {
+      "id": 61710040002,
+      "name": "Higgs Anchor I Blueprint"
+  },
+  {
+      "id": 61710040004,
+      "name": "Higgs Anchor II Blueprint"
+  },
+  {
+      "id": 61710040006,
+      "name": "Higgs Anchor III Blueprint"
+  },
+  {
+      "id": 61710050002,
+      "name": "Warp Core Optimizer I Blueprint"
+  },
+  {
+      "id": 61710050004,
+      "name": "Warp Core Optimizer II Blueprint"
+  },
+  {
+      "id": 61710050006,
+      "name": "Warp Core Optimizer III Blueprint"
+  },
+  {
+      "id": 61710060002,
+      "name": "Hyperspatial Velocity Optimizer I Blueprint"
+  },
+  {
+      "id": 61710060004,
+      "name": "Hyperspatial Velocity Optimizer II Blueprint"
+  },
+  {
+      "id": 61710060006,
+      "name": "Hyperspatial Velocity Optimizer III Blueprint"
+  },
+  {
+      "id": 61711000002,
+      "name": "Small Semiconductor Memory Cell I Blueprint"
+  },
+  {
+      "id": 61711000004,
+      "name": "Small Semiconductor Memory Cell II Blueprint"
+  },
+  {
+      "id": 61711000006,
+      "name": "Small Semiconductor Memory Cell III Blueprint"
+  },
+  {
+      "id": 61711010002,
+      "name": "Capacitor Control Circuit I Blueprint"
+  },
+  {
+      "id": 61711010004,
+      "name": "Capacitor Control Circuit II Blueprint"
+  },
+  {
+      "id": 61711010006,
+      "name": "Capacitor Control Circuit III Blueprint"
+  },
+  {
+      "id": 61711020002,
+      "name": "Ancillary Powergrid Router I Blueprint"
+  },
+  {
+      "id": 61711020004,
+      "name": "Ancillary Powergrid Router II Blueprint"
+  },
+  {
+      "id": 61711020006,
+      "name": "Ancillary Powergrid Router III Blueprint"
+  },
+  {
+      "id": 61711030002,
+      "name": "Targeting System Subcontroller I Blueprint"
+  },
+  {
+      "id": 61711030004,
+      "name": "Targeting System Subcontroller II Blueprint"
+  },
+  {
+      "id": 61711030006,
+      "name": "Targeting System Subcontroller III Blueprint"
+  },
+  {
+      "id": 61714000002,
+      "name": "Gravity Capacitor Upgrade I Blueprint"
+  },
+  {
+      "id": 61714000004,
+      "name": "Gravity Capacitor Upgrade II Blueprint"
+  },
+  {
+      "id": 61714000006,
+      "name": "Gravity Capacitor Upgrade III Blueprint"
+  },
+  {
+      "id": 61714010002,
+      "name": "Emission Scope Sharpener I Blueprint"
+  },
+  {
+      "id": 61714010004,
+      "name": "Emission Scope Sharpener II Blueprint"
+  },
+  {
+      "id": 61714010006,
+      "name": "Emission Scope Sharpener III Blueprint"
+  },
+  {
+      "id": 61717000002,
+      "name": "Miner Efficiency Upgrade I Blueprint"
+  },
+  {
+      "id": 61717000004,
+      "name": "Miner Efficiency Upgrade II Blueprint"
+  },
+  {
+      "id": 61717000006,
+      "name": "Miner Efficiency Upgrade III Blueprint"
+  },
+  {
+      "id": 61717010002,
+      "name": "Miner Circulation Accelerator I Blueprint"
+  },
+  {
+      "id": 61717010004,
+      "name": "Miner Circulation Accelerator II Blueprint"
+  },
+  {
+      "id": 61717010006,
+      "name": "Miner Circulation Accelerator III Blueprint"
+  },
+  {
+      "id": 61717020002,
+      "name": "Miner Range Controller I Blueprint"
+  },
+  {
+      "id": 61717020004,
+      "name": "Miner Range Controller II Blueprint"
+  },
+  {
+      "id": 61717020006,
+      "name": "Miner Range Controller III Blueprint"
+  },
+  {
+      "id": 61717030002,
+      "name": "Miner Algid Optimizer I Blueprint"
+  },
+  {
+      "id": 61717030004,
+      "name": "Miner Algid Optimizer II Blueprint"
+  },
+  {
+      "id": 61717030006,
+      "name": "Miner Algid Optimizer III Blueprint"
+  },
+  {
+      "id": 61718000002,
+      "name": "Transverse Bulkhead I Blueprint"
+  },
+  {
+      "id": 61718000004,
+      "name": "Transverse Bulkhead II Blueprint"
+  },
+  {
+      "id": 61718000006,
+      "name": "Transverse Bulkhead III Blueprint"
+  },
+  {
+      "id": 61718010002,
+      "name": "Anti-Explosive Transverse Bulkhead I Blueprint"
+  },
+  {
+      "id": 61718010004,
+      "name": "Anti-Explosive Transverse Bulkhead II Blueprint"
+  },
+  {
+      "id": 61718010006,
+      "name": "Anti-Explosive Transverse Bulkhead III Blueprint"
+  },
+  {
+      "id": 61718020002,
+      "name": "Anti-EM Transverse Bulkhead I Blueprint"
+  },
+  {
+      "id": 61718020004,
+      "name": "Anti-EM Transverse Bulkhead II Blueprint"
+  },
+  {
+      "id": 61718020006,
+      "name": "Anti-EM Transverse Bulkhead III Blueprint"
+  },
+  {
+      "id": 61718030002,
+      "name": "Anti-Kinetic Transverse Bulkhead I Blueprint Blueprint"
+  },
+  {
+      "id": 61718030004,
+      "name": "Anti-Kinetic Transverse Bulkhead II Blueprint"
+  },
+  {
+      "id": 61718030006,
+      "name": "Anti-Kinetic Transverse Bulkhead III Blueprint"
+  },
+  {
+      "id": 61718040002,
+      "name": "Anti-Thermal Transverse Bulkhead I Blueprint"
+  },
+  {
+      "id": 61718040004,
+      "name": "Anti-Thermal Transverse Bulkhead II Blueprint"
+  },
+  {
+      "id": 61718040006,
+      "name": "Anti-Thermal Transverse Bulkhead III Blueprint"
+  },
+  {
+      "id": 61719000002,
+      "name": "Sentry Damage Augmentor I Blueprint"
+  },
+  {
+      "id": 61719000004,
+      "name": "Sentry Damage Augmentor II Blueprint"
+  },
+  {
+      "id": 61719000006,
+      "name": "Sentry Damage Augmentor III Blueprint"
+  },
+  {
+      "id": 61719010002,
+      "name": "Drone Scope Chip I Blueprint"
+  },
+  {
+      "id": 61719010004,
+      "name": "Drone Scope Chip II Blueprint"
+  },
+  {
+      "id": 61719010006,
+      "name": "Drone Scope Chip III Blueprint"
+  },
+  {
+      "id": 61719020002,
+      "name": "Drone Speed Augmentor I Blueprint"
+  },
+  {
+      "id": 61719020004,
+      "name": "Drone Speed Augmentor II Blueprint"
+  },
+  {
+      "id": 61719020006,
+      "name": "Drone Speed Augmentor III Blueprint"
+  },
+  {
+      "id": 61719030002,
+      "name": "Drone Control Range Augmentor I Blueprint"
+  },
+  {
+      "id": 61719030004,
+      "name": "Drone Control Range Augmentor II Blueprint"
+  },
+  {
+      "id": 61719030006,
+      "name": "Drone Control Range Augmentor III Blueprint"
+  },
+  {
+      "id": 64000000004,
+      "name": "MK3 Acolyte Blueprint"
+  },
+  {
+      "id": 64000000006,
+      "name": "MK5 Acolyte Blueprint"
+  },
+  {
+      "id": 64000000008,
+      "name": "MK7 Acolyte Blueprint"
+  },
+  {
+      "id": 64000000010,
+      "name": "MK9 Acolyte Blueprint"
+  },
+  {
+      "id": 64000010004,
+      "name": "MK3 Hornet Blueprint"
+  },
+  {
+      "id": 64000010006,
+      "name": "MK5 Hornet Blueprint"
+  },
+  {
+      "id": 64000010008,
+      "name": "MK7 Hornet Blueprint"
+  },
+  {
+      "id": 64000020004,
+      "name": "MK3 Hobgoblin Blueprint"
+  },
+  {
+      "id": 64000020006,
+      "name": "MK5 Hobgoblin Blueprint"
+  },
+  {
+      "id": 64000020008,
+      "name": "MK7 Hobgoblin Blueprint"
+  },
+  {
+      "id": 64000020010,
+      "name": "MK9 Hobgoblin Blueprint"
+  },
+  {
+      "id": 64000030004,
+      "name": "MK3 Warrior Blueprint"
+  },
+  {
+      "id": 64000030006,
+      "name": "MK5 Warrior Blueprint"
+  },
+  {
+      "id": 64000030008,
+      "name": "MK7 Warrior Blueprint"
+  },
+  {
+      "id": 64000100006,
+      "name": "MK5 Infiltrator Blueprint"
+  },
+  {
+      "id": 64000100008,
+      "name": "MK7 Infiltrator Blueprint"
+  },
+  {
+      "id": 64000100010,
+      "name": "MK9 Infiltrator Blueprint"
+  },
+  {
+      "id": 64000110006,
+      "name": "MK5 Vespa Blueprint"
+  },
+  {
+      "id": 64000110008,
+      "name": "MK7 Vespa Blueprint"
+  },
+  {
+      "id": 64000110010,
+      "name": "MK9 Vespa Blueprint"
+  },
+  {
+      "id": 64000120006,
+      "name": "MK5 Hammerhead Blueprint"
+  },
+  {
+      "id": 64000120008,
+      "name": "MK7 Hammerhead Blueprint"
+  },
+  {
+      "id": 64000120010,
+      "name": "MK9 Hammerhead Blueprint"
+  },
+  {
+      "id": 64000130006,
+      "name": "MK5 Valkyrie Blueprint"
+  },
+  {
+      "id": 64000130008,
+      "name": "MK7 Valkyrie Blueprint"
+  },
+  {
+      "id": 64000130010,
+      "name": "MK9 Valkyrie Blueprint"
+  },
+  {
+      "id": 64000200008,
+      "name": "MK7 Praetor Blueprint"
+  },
+  {
+      "id": 64000210008,
+      "name": "MK7 Wasp Blueprint"
+  },
+  {
+      "id": 64000220008,
+      "name": "MK7 Ogre Blueprint"
+  },
+  {
+      "id": 64000220010,
+      "name": "MK9 Ogre Blueprint"
+  },
+  {
+      "id": 64000230008,
+      "name": "MK7 Berserker Blueprint"
+  },
+  {
+      "id": 64000300008,
+      "name": "MK7 Curator Blueprint"
+  },
+  {
+      "id": 64000310008,
+      "name": "MK7 Warden Blueprint"
+  },
+  {
+      "id": 64000320008,
+      "name": "MK7 Guard Blueprint"
+  },
+  {
+      "id": 64000320010,
+      "name": "MK9 Guard Blueprint"
+  },
+  {
+      "id": 64000330008,
+      "name": "MK7 Bouncer Blueprint"
+  },
+  {
+      "id": 64000330010,
+      "name": "MK9 Bouncer Blueprint"
+  },
+  {
+      "id": 73008000000,
+      "name": "Capsuleer Outpost Blueprint"
+  },
+  {
+      "id": 74001000002,
+      "name": "Standard Standup Small Missile Launcher Blueprint"
+  },
+  {
+      "id": 74002000002,
+      "name": "Standard Standup Medium Missile Launcher Blueprint"
+  },
+  {
+      "id": 74003000002,
+      "name": "Standard Standup Large Missile Launcher Blueprint"
+  },
+  {
+      "id": 74011000002,
+      "name": "Standard Standup Stasis Webifier Blueprint"
+  },
+  {
+      "id": 74012000002,
+      "name": "Standard Standup Warp Disruptor Blueprint"
+  },
+  {
+      "id": 74013000002,
+      "name": "Standard Standup Energy Neutralizer Blueprint"
+  },
+  {
+      "id": 74021000002,
+      "name": "Industry Service Center Blueprint"
+  },
+  {
+      "id": 77000000000,
+      "name": "Structure Construction Parts Blueprint"
+  },
+  {
+      "id": 77000000001,
+      "name": "Structure Hangar Array Blueprint"
+  },
+  {
+      "id": 77000000002,
+      "name": "Structure Storage Bay Blueprint"
+  },
+  {
+      "id": 77000000003,
+      "name": "Structure Laboratory Blueprint"
+  },
+  {
+      "id": 77000000004,
+      "name": "Structure Factory Blueprint"
+  },
+  {
+      "id": 77000000005,
+      "name": "Structure Repair Facility Blueprint"
+  },
+  {
+      "id": 77000000006,
+      "name": "Structure Reprocessing Plant Blueprint"
+  },
+  {
+      "id": 77000000007,
+      "name": "Structure Docking Bay Blueprint"
+  },
+  {
+      "id": 77000000008,
+      "name": "Structure Market Network Blueprint"
+  },
+  {
+      "id": 77000000009,
+      "name": "Structure Medical Center Blueprint"
+  },
+  {
+      "id": 77000000010,
+      "name": "Structure Office Center Blueprint"
+  },
+  {
+      "id": 77000000011,
+      "name": "Structure Mission Network Blueprint"
+  },
+  {
+      "id": 77000000012,
+      "name": "Structure Electromagnetic Sensor Blueprint"
+  },
+  {
+      "id": 77000000013,
+      "name": "Structure Acceleration Coils Blueprint"
+  },
+  {
+      "id": 77000000014,
+      "name": "Structure Advertisement Nexus Blueprint"
+  },
+  {
+      "id": 80000300020,
+      "name": "Impairor White blade SKIN(permanent)"
+  },
+  {
+      "id": 80000400020,
+      "name": "Impairor Jagged SKIN(permanent)"
+  },
+  {
+      "id": 80000700030,
+      "name": "Ibis Ghost Bird SKIN(permanent)"
+  },
+  {
+      "id": 80000800030,
+      "name": "Ibis Marty Kraken SKIN(permanent)"
+  },
+  {
+      "id": 80001100040,
+      "name": "Velator Edge of Edge SKIN(permanent)"
+  },
+  {
+      "id": 80001200040,
+      "name": "Velator Short-distance Delivery SKIN(permanent)"
+  },
+  {
+      "id": 80001500050,
+      "name": "Reaper Glory of Vakir SKIN(permanent)"
+  },
+  {
+      "id": 80001600050,
+      "name": "Reaper Nefantar SKIN(permanent)"
+  },
+  {
+      "id": 80001700300,
+      "name": "Venture Trainer Mining Masters Emblem SKIN(permanent)"
+  },
+  {
+      "id": 80001700310,
+      "name": "Venture Mining Masters Emblem SKIN(permanent)"
+  },
+  {
+      "id": 80001701440,
+      "name": "Retriever Mining Masters Emblem SKIN(permanent)"
+  },
+  {
+      "id": 80001800300,
+      "name": "Venture Trainer Wealth Explorer SKIN(permanent)"
+  },
+  {
+      "id": 80001800310,
+      "name": "Venture Wealth Explorer SKIN(permanent)"
+  },
+  {
+      "id": 80001801440,
+      "name": "Retriever Wealth Explorer SKIN(permanent)"
+  },
+  {
+      "id": 80001802180,
+      "name": "Procurer Wealth Explorer SKIN(permanent)"
+  },
+  {
+      "id": 80001802190,
+      "name": "Porpoise Wealth Explorer SKIN(permanent)"
+  },
+  {
+      "id": 80001802590,
+      "name": "Covetor Wealth Explorer SKIN(permanent)"
+  },
+  {
+      "id": 80002000100,
+      "name": "Tormentor Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002000140,
+      "name": "Magnate Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002000150,
+      "name": "Punisher Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002000220,
+      "name": "Coercer Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002000360,
+      "name": "Dragoon Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002000440,
+      "name": "Dragoon Trainer Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002000650,
+      "name": "Omen Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002000690,
+      "name": "Omen Trainer Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002000970,
+      "name": "Maller Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002000980,
+      "name": "Arbitrator Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002001090,
+      "name": "Maller Trainer Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002100110,
+      "name": "Merlin Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002100160,
+      "name": "Kestrel Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002100170,
+      "name": "Heron Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002100230,
+      "name": "Cormorant Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002100370,
+      "name": "Corax Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002100450,
+      "name": "Corax Trainer Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002100660,
+      "name": "Caracal Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002100700,
+      "name": "Caracal Trainer Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002100990,
+      "name": "Moa Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002101000,
+      "name": "Blackbird Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002101100,
+      "name": "Moa Trainer Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002200120,
+      "name": "Tristan Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002200180,
+      "name": "Incursus Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002200190,
+      "name": "Imicus Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002200240,
+      "name": "Catalyst Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002200380,
+      "name": "Algos Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002200460,
+      "name": "Algos Trainer Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002200670,
+      "name": "Vexor Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002200710,
+      "name": "Vexor Trainer Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002201010,
+      "name": "Thorax Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002201110,
+      "name": "Thorax Trainer Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002300130,
+      "name": "Rifter Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002300200,
+      "name": "Probe Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002300250,
+      "name": "Thrasher Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002300470,
+      "name": "Talwar Trainer Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002300720,
+      "name": "Stabber Trainer Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002301120,
+      "name": "Rupture Trainer Alien Hunter SKIN(permanent)"
+  },
+  {
+      "id": 80002400100,
+      "name": "Tormentor Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002400140,
+      "name": "Magnate Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002400150,
+      "name": "Punisher Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002400220,
+      "name": "Coercer Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002400360,
+      "name": "Dragoon Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002400440,
+      "name": "Dragoon Trainer Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002400650,
+      "name": "Omen Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002400690,
+      "name": "Omen Trainer Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002400970,
+      "name": "Maller Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002401090,
+      "name": "Maller Trainer Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002500110,
+      "name": "Merlin Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002500160,
+      "name": "Kestrel Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002500170,
+      "name": "Heron Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002500230,
+      "name": "Cormorant Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002500370,
+      "name": "Corax Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002500450,
+      "name": "Corax Trainer Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002500660,
+      "name": "Caracal Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002500700,
+      "name": "Caracal Trainer Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002500990,
+      "name": "Moa Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002501000,
+      "name": "Blackbird Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002501100,
+      "name": "Moa Trainer Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002600120,
+      "name": "Tristan Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002600180,
+      "name": "Incursus Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002600190,
+      "name": "Imicus Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002600240,
+      "name": "Catalyst Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002600380,
+      "name": "Algos Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002600460,
+      "name": "Algos Trainer Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002600670,
+      "name": "Vexor Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002600710,
+      "name": "Vexor Trainer Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002601010,
+      "name": "Thorax Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002601110,
+      "name": "Thorax Trainer Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002700130,
+      "name": "Rifter Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002700200,
+      "name": "Probe Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002700250,
+      "name": "Thrasher Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002700390,
+      "name": "Talwar Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002700470,
+      "name": "Talwar Trainer Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002700680,
+      "name": "Stabber Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002700720,
+      "name": "Stabber Trainer Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002701040,
+      "name": "Bellicose Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80002701120,
+      "name": "Rupture Trainer Holy Throne SKIN(permanent)"
+  },
+  {
+      "id": 80500100060,
+      "name": "Executioner Red copper SKIN(permanent)"
+  },
+  {
+      "id": 80500100220,
+      "name": "Coercer Red copper SKIN(permanent)"
+  },
+  {
+      "id": 80500100650,
+      "name": "Omen Red copper SKIN(permanent)"
+  },
+  {
+      "id": 80500100690,
+      "name": "Omen Trainer Red copper SKIN(permanent)"
+  },
+  {
+      "id": 80500101390,
+      "name": "Prophecy Red copper SKIN(permanent)"
+  },
+  {
+      "id": 80500102100,
+      "name": "Apocalypse Red copper SKIN(permanent)"
+  },
+  {
+      "id": 80500400080,
+      "name": "Atron Titanium silver SKIN(permanent)"
+  },
+  {
+      "id": 80500400240,
+      "name": "Catalyst Titanium silver SKIN(permanent)"
+  },
+  {
+      "id": 80500400670,
+      "name": "Vexor Titanium silver SKIN(permanent)"
+  },
+  {
+      "id": 80500400710,
+      "name": "Vexor Trainer Titanium silver SKIN(permanent)"
+  },
+  {
+      "id": 80500401410,
+      "name": "Myrmidon Titanium silver SKIN(permanent)"
+  },
+  {
+      "id": 80500402140,
+      "name": "Megathron Titanium silver SKIN(permanent)"
+  },
+  {
+      "id": 80500700070,
+      "name": "Condor Ochre SKIN(permanent)"
+  },
+  {
+      "id": 80500700660,
+      "name": "Caracal Ochre SKIN(permanent)"
+  },
+  {
+      "id": 80500701400,
+      "name": "Ferox Ochre SKIN(permanent)"
+  },
+  {
+      "id": 80501000090,
+      "name": "Slasher Soot SKIN(permanent)"
+  },
+  {
+      "id": 80501000250,
+      "name": "Thrasher Soot SKIN(permanent)"
+  },
+  {
+      "id": 80501000680,
+      "name": "Stabber Soot SKIN(permanent)"
+  },
+  {
+      "id": 80501001420,
+      "name": "Cyclone Soot SKIN(permanent)"
+  },
+  {
+      "id": 80501400870,
+      "name": "Xian-Yue Prototype Lunar Eclipse SKIN(permanent)"
+  },
+  {
+      "id": 80502000220,
+      "name": "Coercer Earth  SKIN(permanent)"
+  },
+  {
+      "id": 80502000240,
+      "name": "Catalyst Earth  SKIN(permanent)"
+  },
+  {
+      "id": 80502000250,
+      "name": "Thrasher Earth  SKIN(permanent)"
+  },
+  {
+      "id": 80502000970,
+      "name": "Maller Earth  SKIN(permanent)"
+  },
+  {
+      "id": 80502000990,
+      "name": "Moa Earth  SKIN(permanent)"
+  },
+  {
+      "id": 80502001030,
+      "name": "Rupture Earth  SKIN(permanent)"
+  },
+  {
+      "id": 80502001100,
+      "name": "Moa Trainer Earth  SKIN(permanent)"
+  },
+  {
+      "id": 80502100370,
+      "name": "Corax Gas  SKIN(permanent)"
+  },
+  {
+      "id": 80502100440,
+      "name": "Dragoon Trainer Gas  SKIN(permanent)"
+  },
+  {
+      "id": 80502100450,
+      "name": "Corax Trainer Gas  SKIN(permanent)"
+  },
+  {
+      "id": 80502100460,
+      "name": "Algos Trainer Gas  SKIN(permanent)"
+  },
+  {
+      "id": 80502100470,
+      "name": "Talwar Trainer Gas  SKIN(permanent)"
+  },
+  {
+      "id": 80502101390,
+      "name": "Prophecy Gas  SKIN(15 days)"
+  },
+  {
+      "id": 80502101420,
+      "name": "Cyclone Gas  SKIN(permanent)"
+  },
+  {
+      "id": 80502101670,
+      "name": "Drake Gas  SKIN(permanent)"
+  },
+  {
+      "id": 80502200750,
+      "name": "Purifier Fire  SKIN(permanent)"
+  },
+  {
+      "id": 80502200760,
+      "name": "Manticore Fire  SKIN(permanent)"
+  },
+  {
+      "id": 80502200770,
+      "name": "Nemesis Fire  SKIN(permanent)"
+  },
+  {
+      "id": 80502200780,
+      "name": "Hound Fire  SKIN(permanent)"
+  },
+  {
+      "id": 80502202120,
+      "name": "Scorpion Fire  SKIN(permanent)"
+  },
+  {
+      "id": 80502202160,
+      "name": "Typhoon Fire  SKIN(permanent)"
+  },
+  {
+      "id": 80502300110,
+      "name": "Merlin Water  SKIN(permanent)"
+  },
+  {
+      "id": 80502300130,
+      "name": "Rifter Water  SKIN(permanent)"
+  },
+  {
+      "id": 80502300150,
+      "name": "Punisher Water  SKIN(permanent)"
+  },
+  {
+      "id": 80502300180,
+      "name": "Incursus Water  SKIN(permanent)"
+  },
+  {
+      "id": 80502300650,
+      "name": "Omen Water  SKIN(permanent)"
+  },
+  {
+      "id": 80502300690,
+      "name": "Omen Trainer Water  SKIN(permanent)"
+  },
+  {
+      "id": 80502300990,
+      "name": "Moa Water  SKIN(permanent)"
+  },
+  {
+      "id": 80502301010,
+      "name": "Thorax Water  SKIN(permanent)"
+  }
+]

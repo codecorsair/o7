@@ -1,0 +1,70 @@
+name: Build release
+
+on:
+  release:
+    types: [published]
+    branches:
+      - main
+    tags:
+      - '*'
+
+concurrency: 
+  group: release-${{ github.event.release.tag_name }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: Setup Cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.yarn-cache
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'yarn'
+      
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile --cache-folder ~/.yarn-cache
+      
+      - name: Build Code
+        run: yarn build
+
+      - name: Build Docker Images
+        run: |
+          docker build -t ${{ github.username }}/o7_neo4j:latest -f docker/neo4j.dockerfile
+          docker build -t ${{ github.username }}/o7_bridge:latest -f docker/bridge.dockerfile
+          docker build -t ${{ github.username }}/o7_cluster:latest -f docker/cluster.dockerfile
+
+      - name: Tag Docker Images
+        run: |
+          docker tag ${{ github.username }}/o7_neo4j:latest ${{ github.username }}/o7_neo4j:release-${{ github.event.release.tag_name }}
+          docker tag ${{ github.username }}/o7_bridge:latest ${{ github.username }}/o7_bridge:release-${{ github.event.release.tag_name }}
+          docker tag ${{ github.username }}/o7_cluster:latest ${{ github.username }}/o7_cluster:release-${{ github.event.release.tag_name }}
+
+          docker tag ${{ github.username }}/o7_neo4j:latest ${{ github.username }}/o7_neo4j:release-${{ github.ref }}
+          docker tag ${{ github.username }}/o7_bridge:latest ${{ github.username }}/o7_bridge:release-${{ github.ref }}
+          docker tag ${{ github.username }}/o7_cluster:latest ${{ github.username }}/o7_cluster:release-${{ github.ref }}
+
+      - name: Push Docker Images
+        run: |
+          docker push ${{ github.username }}/o7_neo4j:latest
+          docker push ${{ github.username }}/o7_bridge:latest
+          docker push ${{ github.username }}/o7_cluster:latest
+
+          docker push ${{ github.username }}/o7_neo4j:release-${{ github.event.release.tag_name }}
+          docker push ${{ github.username }}/o7_bridge:release-${{ github.event.release.tag_name }}
+          docker push ${{ github.username }}/o7_cluster:release-${{ github.event.release.tag_name }}
+
+          docker push ${{ github.username }}/o7_neo4j:release-${{ github.ref }}
+          docker push ${{ github.username }}/o7_bridge:release-${{ github.ref }}
+          docker push ${{ github.username }}/o7_cluster:release-${{ github.ref }}

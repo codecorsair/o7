@@ -1,7 +1,4 @@
-import { client } from './client';
-import config from './config.json';
-
-client.loadCommands(__dirname + '/commands')
-  .then(() => client.loadModules(__dirname + '/modules'));
-client.owners = config.owners;
-client.login(config.token);
+export * as Bot from "./bot"
+export * as Bridge from "./bridge"
+export * as Cluster from "./cluster"
+export * as Plugins from "./plugins"

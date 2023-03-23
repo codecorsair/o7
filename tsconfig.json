@@ -2,7 +2,6 @@
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
-    "outDir": "./dist",
     "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
@@ -14,7 +13,10 @@
     "moduleResolution": "node",
     "allowJs": true,
     "noImplicitAny": false,
+    "paths": {
+      "@/data/*": ["./data/*"],
+      "@/src/*": ["./src/*"]
+    }
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.spec.ts", "dist/**/*"]
+  "exclude": ["node_modules", "**/*.spec.ts", "dist/**/*", "**/*.disabled"]
 }

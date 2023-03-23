@@ -1,0 +1,93 @@
+version: '3'
+
+services:
+  mongodb:
+    image: mongo:latest
+    restart: always
+    networks:
+      - internal
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: o7
+      MONGO_INITDB_ROOT_PASSWORD: <a strong password>
+    volumes:
+      - mongodb_data:/data/db
+
+  neo4j:
+    image: o7_neo4j
+    restart: always
+    networks:
+      - internal
+    volumes:
+      - neo4j_data:/data
+
+  bridge:
+    image: o7_bridge
+    restart: always
+    environment:
+      BRIDGE_PORT: 4444
+      BRIDGE_AUTH_TOKEN: <a shared secret between the bridge and the cluster>
+      BRIDGE_TOTAL_SHARDS: 1
+      BRIDGE_TOTAL_MACHINES: 1
+      BRIDGE_SHARDS_PER_CLUSTER: 1
+      BRIDGE_TOKEN: <your bot token>
+    networks:
+      - internal
+    secrets:
+      - source: bridge_config
+        target: /usr/src/app/configs/bridge.json
+
+  cluster:
+    image: o7_cluster
+    restart: always
+    environment:
+      CLUSTER_AGENT: bot
+      CLUSTER_HOST: bridge
+      CLUSTER_PORT: 4444
+      CLUSTER_HANDSHAKE: false
+      CLUSTER_AUTH_TOKEN: <a shared secret between the bridge and the cluster>
+      CLUSTER_ROLLING_RESTARTS: false
+      BOT_INTENTS: Guilds
+      BOT_PLUGINS_PATH: /usr/src/app/plugins
+      BOT_TOKEN: <your bot token>
+    networks:
+      - internal
+    secrets:
+      - source: cluster_config
+        target: /usr/src/app/configs/cluster.json
+      - source: bot_config
+        target: /usr/src/app/configs/bot.json
+      - source: eve_echoes_config
+        target: /usr/src/app/configs/eve_echoes.json
+      - source: system_config
+        target: /usr/src/app/configs/system.json
+    depends_on:
+      - mongodb
+      - neo4j
+      - bridge
+
+  # watchtower:
+  #   image: containrrr/watchtower
+  #   container_name: watchtower
+  #   restart: always
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   command: --cleanup --interval 30
+
+secrets:
+  bridge_config:
+    file: ./configs/bridge.json
+  cluster_config:
+    file: ./configs/cluster.json
+  bot_config:
+    file: ./configs/bot.json
+  eve_echoes_config:
+    file: ./configs/eve_echoes.json
+  system_config:
+    file: ./configs/system.json
+
+networks:
+  internal:
+
+volumes:
+  neo4j_data:
+  mongodb_data:

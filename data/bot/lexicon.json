@@ -1,0 +1,27 @@
+[
+  {
+    "term": "o/",
+    "description": "Wave"
+  },{
+    "term": "o7",
+    "description": "Salute - Hey! That's me"
+  },{
+    "term": "07",
+    "description": "Salute"
+  },{
+    "term": "\\o",
+    "description": "Wave back"
+  },{
+    "term": "7o",
+    "description": "Salute (as performed by the Brave Newbies)"
+  },{
+    "term": "\\o/",
+    "description": "Hurrah!"
+  },{
+    "term": "*\\o/*",
+    "description": "Cheerleader"
+  },{
+    "term": "0.0",
+    "description": "Nullsec (Star systems with a security rating of 0.0 and below)"
+  }
+]

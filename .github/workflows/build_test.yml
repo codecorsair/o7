@@ -1,0 +1,64 @@
+name: Build test
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+
+concurrency: 
+  group: test-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: Setup Cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.yarn-cache
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'yarn'
+      
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile --cache-folder ~/.yarn-cache
+      
+      - name: Build Code
+        run: yarn build
+
+      - name: Build Docker Images
+        run: |
+          docker build -t ${{ github.username }}/o7_neo4j:test -f docker/neo4j.dockerfile
+          docker build -t ${{ github.username }}/o7_bridge:test -f docker/bridge.dockerfile
+          docker build -t ${{ github.username }}/o7_cluster:test -f docker/cluster.dockerfile
+
+      - name: Tag Docker Images
+        run: |
+          docker tag ${{ github.username }}/o7_neo4j:test ${{ github.username }}/o7_neo4j:test-${{ github.event.pull_request.number }}
+          docker tag ${{ github.username }}/o7_bridge:test ${{ github.username }}/o7_bridge:test-${{ github.event.pull_request.number }}
+          docker tag ${{ github.username }}/o7_cluster:test ${{ github.username }}/o7_cluster:test-${{ github.event.pull_request.number }}
+
+          docker tag ${{ github.username }}/o7_neo4j:test ${{ github.username }}/o7_neo4j:test-${{ github.sha }}
+          docker tag ${{ github.username }}/o7_bridge:test ${{ github.username }}/o7_bridge:test-${{ github.sha }}
+          docker tag ${{ github.username }}/o7_cluster:test ${{ github.username }}/o7_cluster:test-${{ github.sha }}
+
+      - name: Push Docker Images
+        run: |
+          docker push ${{ github.username }}/o7_neo4j:test-${{ github.event.pull_request.number }}
+          docker push ${{ github.username }}/o7_bridge:test-${{ github.event.pull_request.number }}
+          docker push ${{ github.username }}/o7_cluster:test-${{ github.event.pull_request.number }}
+
+          docker push ${{ github.username }}/o7_neo4j:test-${{ github.sha }}
+          docker push ${{ github.username }}/o7_bridge:test-${{ github.sha }}
+          docker push ${{ github.username }}/o7_cluster:test-${{ github.sha }}

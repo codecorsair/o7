@@ -1,0 +1,119 @@
+{
+  "content": "Change Log",
+  "embeds": [
+    {
+      "title": "o7 Goes Public!",
+      "description": " * Blueprint command available\n * Market Price command available\n * Application command available\n * Set Role command available\n * Help command available",
+      "footer": {
+        "text": "By JB"
+      },
+      "timestamp": "2020-09-16T05:00:00.000Z"
+    },
+    {
+      "title": "Blueprints go mobile!",
+      "fields": [
+        {
+          "name": "New Features & Updates",
+          "value": " * Application system will wait for half a second before asking the next question to prevent message overlaps.\n * New Prefix command available! Set a custom prefix for o7 on your Discord server with the **prefix** command. *note: Only server administrators can use this.*\n * Blueprint command no longer requires a hyphen between the name of blueprint and skill levels\n * Caching of market data so requests can be returned faster and bot can still give prices if the market-data source site goes down for a time.\n * Added section totals on blueprints!\n * Updated text on Market Item search.\n * Added **blueprintm** | **bpm** command for a more mobile friendly view of blueprints!\n* Updated help text! Help text is not sent to you via direct message.\n* Added these change logs! You can view changelogs anytime with the **changelog** command."
+        },
+        {
+          "name": "Bug Fixes",
+          "value": " * Regex updated thanks to `Stokholm` which removes the requirement to have a hyphen between blueprint name and skill levels as well as fixes bugs with the parsing.\n * Blueprint cost calculations take into account quantity of items built, so it's more accurate for drones.\n * Fuzzy searching tuned to improve search results."
+        },
+        {
+          "name": "Known Issues",
+          "value": "Some market items are not available and you'll get a different item even when searching the exact name. This is due to the item you're searching for not existing at all in the data set. This will be addressed in a future update."
+        }
+      ],
+      "footer": {
+        "text": "By JB"
+      },
+      "timestamp": "2020-09-18T05:00:00.000Z"
+    },
+    {
+      "title": "Did someone ask about Planetary Resources?",
+      "fields": [
+        {
+          "name": "New Features & Updates",
+          "value": " * Added Planetary Resource command! Now you can search for the best locations to set up your mining arrays near your home station.\n* Added jump distance command to quickly let you know how far away any two systems are.\n* Added safer jump distance command to find the distance between two systems if you prefer to stick to hi sec systems."
+        }
+      ],
+      "footer": {
+        "text": "By JB"
+      },
+      "timestamp": "2020-09-20T12:13:00.000Z"
+    },
+    {
+      "title": "Tell me what this is!",
+      "fields": [
+        {
+          "name": "New Features & updates",
+          "value": " * Added new **item** command! This will give you details about any item in game.\n * Updated **jumps** and **safejumps** commands to include the security of the start & end systems as well as the lowest security that will be traveled through.\n * Added item icons to market price searces."
+        },
+        {
+          "name": "Bug Fixes",
+          "value": " * Added missing market items to the registry.\n * Added Plasmoids to **pr** command which was missing."
+        }
+      ],
+      "footer": {
+        "text": "By JB"
+      },
+      "timestamp": "2020-09-23T01:30:00.000Z"
+    },
+    {
+      "title": "It's a team now!",
+      "fields": [
+        {
+          "name": "New Team Members!",
+          "value": "A couple amazing people have volunteered to join the o7 team! Now that it's not just myself, I can actually call this a team. I am very much looking forward to working with the new team members and seeing what they will contribute. There are quite a lot of features waiting in the queue and these new team members will help me to get those realized much sooner!"
+        },
+        {
+          "name": "New Features & Updates",
+          "value": " * Added icons to blueprints!\n * Added a **dataretention** to dm the user detailing any data stored by the bot, what it is used for and why.\n * Server administrators can now delete all data stored by the bot for their server with the command **deleteguilddata**. *Note: You can get more details about what information the bot actually stores on the **dataretention** command*\n * All users can now delete any data stored by the bot for about their user with the command **deletemydata**. *Note: You can get more details about what information the bot actually stores on the **dataretention** command*"
+        },
+        {
+          "name": "Bug Fixes",
+          "value": " * Fixed an issue where blueprint searches starting with `MK#` would incorrectly return items.\n * Improved blueprint search logic a bit.\n * Added some `.`s to the author field on the !bpm command to expand the width of the embed so code blocks won't get squished on many mobile devices. This should give better readability on mobile.\n * Added missing planetary resources from the search function"
+        }
+      ],
+      "footer": {
+        "text": "By JB"
+      },
+      "timestamp": "2020-09-27T22:49:00.000Z"
+    },
+    {
+      "title": "Minerals, Resources, and Ores.. Oh My!",
+      "fields": [
+        {
+          "name": "New Features & Updates",
+          "value": " * As the first addition of one our new team members on o7 @Cornexo, The bot will now return market prices grouped by ores, minerals, and planetary resources through specific keywords to the **!market** command. Use **!market help** for more details.\n * Added **invite** command which responds with a link you can use to invite o7 to a new server.\n* Simplified the general **!help** command and added a unique help to most all commands to give help speciifc to that command.  *Try !pc help*"
+        },
+        {
+          "name": "Bug Fixes",
+          "value": " * Removed thumbnail from blueprints for now as they were causing issues on some mobile devices. "
+        }
+      ],
+      "footer": {
+        "text": "By JB & Cornexo"
+      },
+      "timestamp": "2020-10-01T02:27:00.000Z"
+    },
+    {
+      "title": "Reprocessing, Auto Voice Channels, and more!",
+      "fields": [
+        {
+          "name": "New Features & Updates",
+          "value": " * Added **reprocess** command to show what you'll get for reprocessing an item / ore.\n * Added **Auto Voice Channels** module which will let you create a voice channel that will create temporary voice channels automatically whenever a user choice the auto channel.\n * Added Broker's Fees & Transaction Taxes to **blueprint** command. You can optionally provide your accounting skill levels after your manufacturing skill levels to adjust these fees.\n * Added commas to materal costs on **blueprint**s.\n * Added new categories on blueprint result to display applied Manufacturing & Accounting skills.\n * Added a flag to the **help** command `!help here` will respond with the help directly in the channel you've sent the command from instead of a dm.\n * Updated help again, all commands now have a help feature for them.\n * The **planetaryresource* command will now respond with all richness levels, instead of just Perfect / Rich."
+        },
+        {
+          "name": "Extra Dev Notes",
+          "value": "It's been a bit longer than usual without a changelog post, but not without good reason! I completely re-wrote the framework o7 is built on from scratch. Previously, the bot was built on top of a third-party library, however o7 has outgrown this framework and the rebuild will allow for more features with less work overall. This means faster development and more features faster for you! \n \nOne of the new features enabled by this change is the **Auto Voice Channel** module which is a great tool to help reduce the clutter of too many voice channels in your communities! Check it out with the `!voice create` command on your server!\n\n *note: use of this command requires the user to have the `MANAGE_CHANNELS` permission, and o7 will need the `MANAGE_CHANNELS` permission in any category in which you wish to use the auto vhoice channels*\n"
+        }
+      ],
+      "footer": {
+        "text": "By JB & Cornexo"
+      },
+      "timestamp": "2020-10-12T02:46:00.000Z"
+    }
+  ]
+}
