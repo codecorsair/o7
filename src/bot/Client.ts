@@ -9,7 +9,7 @@ import { ICronjob } from '@/src/shared/interfaces/ICronjob'
 import { IClient } from '@/src/shared/interfaces/IClient'
 import { PluginManager } from './pluginManager/PluginManager'
 import { IPluginWrapper } from './pluginManager/IPluginWrapper'
-import { createLogger } from '@/src/shared/logger'
+import { createLogger } from '@/src/shared/utils/logger'
 import * as fs from 'fs'
 
 const logger = createLogger()
