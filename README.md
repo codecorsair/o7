@@ -10,6 +10,7 @@ You are welcome to self-host **o7**, however I can not fully support self-hosted
 - [ ] Prometheus Metrics endpoint. ([prom-client](https://github.com/siimon/prom-client))
 
 ## Project Structure
+- **/neo4j** - Neo4j docker image with eve echoes data
 - **/example** - Example setup using docker compose
   - **/configs** - Example configs
     - **/bridge.json** - Example bridge config
