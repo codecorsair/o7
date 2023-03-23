@@ -3,10 +3,10 @@ FROM neo4j:latest
 WORKDIR /usr/src/app
 
 COPY ./data/neo4j/entrypoint-wrapper.sh /usr/src/app/entrypoint-wrapper.sh
-RUN chmod +x /entrypoint-wrapper.sh
+RUN chmod +x /usr/src/app//entrypoint-wrapper.sh
 
 COPY ./data/neo4j/wait-for-neo4j.sh /usr/src/app/wait-for-neo4j.sh
-RUN chmod +x /wait-for-neo4j.sh
+RUN chmod +x /usr/src/app//wait-for-neo4j.sh
 
 COPY ./data/neo4j/init.sh /usr/src/app/init.sh
 RUN chmod +x /usr/src/app/init.sh
