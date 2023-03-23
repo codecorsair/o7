@@ -11,6 +11,7 @@ import { PluginManager } from './pluginManager/PluginManager'
 import { IPluginWrapper } from './pluginManager/IPluginWrapper'
 import { createLogger } from '@/shared/utils/logger'
 import * as fs from 'fs'
+import Config from './Config'
 
 const logger = createLogger()
 
