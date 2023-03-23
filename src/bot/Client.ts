@@ -16,6 +16,7 @@ export class Client extends DJSClient implements IClient {
 
     public cluster: any
     public machine: any
+    public rest: any
 
     public commands: Collection<string, ICommand> = new Collection()
     public cronjobs: Collection<string, ICronjob> = new Collection()

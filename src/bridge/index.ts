@@ -1,4 +1,5 @@
 import { Bridge } from 'discord-cross-hosting';
+import { RatelimitManager } from "discord-cross-ratelimit";
 
 const server = new Bridge({
     port: 4444, // The Port of the Server | Proxy Connection (Replit) needs Port 443
@@ -8,7 +9,7 @@ const server = new Bridge({
     shardsPerCluster: 10, // The amount of Internal Shards, which are in one Cluster
     token: 'Your_Bot_Token',
 });
-
+new RatelimitManager(server);
 server.on('debug', console.log);
 server.start();
 server.on('ready', url => {
