@@ -5,6 +5,7 @@ on:
     types: [published]
     branches:
       - main
+      - master
     tags:
       - '*'
 
