@@ -16,10 +16,15 @@ server.on('debug', (message) => logger.debug(`[DEBUG] ${message}`));
 server.start();
 server.on('ready', (url) => {
   logger.info(`Bridge is ready at ${url}`);
-  setInterval(() => {
-    server
-      .broadcastEval('this.guilds.cache.size')
-      .then((results: any) => logger.info(`Guilds: ${JSON.stringify(results)}}`))
-      .catch((err: any) => logger.error(`Error while fetching guild count: ${err}`));
-  }, 10000);
 });
+
+server.on('error', (error) => {
+  logger.error(`Bridge Error: ${error}`);
+})
+
+server.on('connection', (connection) => {
+  logger.info(`Connection from ${connection.ip}`);
+  connection.on('error', (error) => {
+    logger.error(`Connection Error: ${error}`);
+  });
+})
