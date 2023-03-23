@@ -1,5 +1,4 @@
 import { Bridge } from 'discord-cross-hosting';
-import { RatelimitManager } from 'discord-cross-ratelimit';
 import { createLogger } from '@/shared/utils/logger';
 import Config from './Config';
 
@@ -13,7 +12,6 @@ const server = new Bridge({
   shardsPerCluster: Config.shardsPerCluster, // The amount of Internal Shards, which are in one Cluster
   token: Config.token, // The Bot Token
 });
-new RatelimitManager(server);
 server.on('debug', (message) => logger.debug(`[DEBUG] ${message}`));
 server.start();
 server.on('ready', (url) => {
