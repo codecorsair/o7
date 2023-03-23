@@ -15,7 +15,7 @@ const client = new Client({
 client.on('debug', logger.debug);
 client.connect();
 
-const clusterManager = new ClusterManager(`${__dirname}/bot/index.js`, {
+const clusterManager = new ClusterManager(`${__dirname}/../bot/index.js`, {
   totalShards: 1,
   totalClusters: 'auto'
 }); // Some dummy Data
