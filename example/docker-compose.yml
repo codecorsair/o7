@@ -29,7 +29,6 @@ services:
       BRIDGE_TOTAL_SHARDS: 40
       BRIDGE_TOTAL_MACHINES: 20
       BRIDGE_SHARDS_PER_CLUSTER: 10
-      BRIDGE_TOKEN: <your bot token>
     networks:
       - internal
     secrets:

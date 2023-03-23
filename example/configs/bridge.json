@@ -3,6 +3,5 @@
   "authToken": "<a shared secret between the bridge and the cluster>",
   "totalShards": 40,
   "totalMachines": 2,
-  "shardsPerCluster": 10,
-  "token": "<your bot token>"
+  "shardsPerCluster": 10
 }
