@@ -32,7 +32,7 @@ export default {
     password: assert(
       `Configure Neo4j password using the "neo4j.password" key in the config file or the "PLUGIN_EVE_ECHOES_NEO4J_PASSWORD" environment variable.`,
       String(PLUGIN_EVE_ECHOES_NEO4J_PASSWORD),
-      Config.get('neo4j.password'),
+      Config.get('neo4j.password')
     )
   }
 } as IConfig;
