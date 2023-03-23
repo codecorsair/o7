@@ -51,7 +51,7 @@ jobs:
   auto-merge:
     needs: build
     runs-on: ubuntu-latest
-    if: ${{ github.actor == 'dependabot[bot]' }}
+    if: ${{ github.actor == 'dependabot[bot]' && success() }}
     steps:
       - name: Dependabot metadata
         id: metadata
