@@ -1,7 +1,9 @@
+import { GenericStore } from "./GenericStore";
+
 export class I18n<T> extends GenericStore<T> {
 
-  constructor (filePath: string) {
-    super(resolve("./", "I18n", filePath));
+  constructor () {
+    super("i18n.json");
   }
 
 }
