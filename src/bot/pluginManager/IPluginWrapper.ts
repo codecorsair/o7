@@ -1,4 +1,4 @@
-import { IPlugin } from "@/src/shared/interfaces/IPlugin";
+import { IPlugin } from '@/src/shared/interfaces/IPlugin';
 
 export interface IPluginWrapper {
   name: string;
@@ -6,7 +6,7 @@ export interface IPluginWrapper {
   isRelative?: boolean;
 }
 
-export type PluginInstance = any extends IPlugin ? any : never
+export type PluginInstance = any extends IPlugin ? any : never;
 
 export interface IInitializedPluginWrapper extends IPluginWrapper {
   instance: PluginInstance;

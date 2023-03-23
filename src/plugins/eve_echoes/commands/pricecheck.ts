@@ -155,10 +155,10 @@ _last updated ${moment(price.time * 1000).fromNow()}_`),
       });
       return;
     } catch (err) {
-      interaction.editReply(
+      await interaction.editReply(
         `Oh No! Something went wrong and I was unable to get market data for that item.`
       );
-      console.error(err);
+      throw err;
     }
   },
 } as ICommand;

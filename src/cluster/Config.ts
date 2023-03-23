@@ -1,5 +1,5 @@
 import { GenericConfig } from '@/src/shared/GenericConfig';
-import { assert } from '@/src/shared/Utils/assert';
+import { assert } from '@/src/shared/utils/assert';
 
 const {
   CLUSTER_AGENT,
@@ -7,7 +7,7 @@ const {
   CLUSTER_PORT,
   CLUSTER_HANDSHAKE,
   CLUSTER_AUTH_TOKEN,
-  CLUSTER_ROLLING_RESTARTS,
+  CLUSTER_ROLLING_RESTARTS
 } = process.env;
 
 export interface IConfig {
@@ -19,13 +19,29 @@ export interface IConfig {
   rollingRestarts: boolean;
 }
 
-const Config = new GenericConfig<IConfig>("cluster.json");
+const Config = new GenericConfig<IConfig>('cluster.json');
 
 export default {
-  agent: assert<string>("Agent is not defined", Config.get("agent"), CLUSTER_AGENT),
-  host: assert<string>("Host is not defined", Config.get("host"), CLUSTER_HOST),
-  port: assert<number>("Port is not defined", Config.get("port"), CLUSTER_PORT),
-  handshake: assert<boolean>("Handshake is not defined", Config.get("handshake"), CLUSTER_HANDSHAKE),
-  authToken: assert<string>("Auth token is not defined", Config.get("authToken"), CLUSTER_AUTH_TOKEN),
-  rollingRestarts: assert<boolean>("Rolling restarts is not defined", Config.get("rollingRestarts"), CLUSTER_ROLLING_RESTARTS),
+  agent: assert<string>(
+    'Agent is not defined',
+    Config.get('agent'),
+    CLUSTER_AGENT
+  ),
+  host: assert<string>('Host is not defined', Config.get('host'), CLUSTER_HOST),
+  port: assert<number>('Port is not defined', Config.get('port'), CLUSTER_PORT),
+  handshake: assert<boolean>(
+    'Handshake is not defined',
+    Config.get('handshake'),
+    CLUSTER_HANDSHAKE
+  ),
+  authToken: assert<string>(
+    'Auth token is not defined',
+    Config.get('authToken'),
+    CLUSTER_AUTH_TOKEN
+  ),
+  rollingRestarts: assert<boolean>(
+    'Rolling restarts is not defined',
+    Config.get('rollingRestarts'),
+    CLUSTER_ROLLING_RESTARTS
+  )
 } as IConfig;

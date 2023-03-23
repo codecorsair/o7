@@ -95,8 +95,8 @@ export default {
       );
       return;
     } catch (e) {
-      console.error(e);
       await interaction.editReply("An error occurred.");
+      throw e;
     } finally {
       await session.close();
       await driver.close();

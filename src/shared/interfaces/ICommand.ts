@@ -1,7 +1,4 @@
-import {
-  CommandInteraction,
-  AutocompleteInteraction,
-} from "discord.js";
+import { CommandInteraction, AutocompleteInteraction } from 'discord.js';
 
 export interface ICommand {
   disabled?: boolean;
@@ -11,13 +8,11 @@ export interface ICommand {
     title: string;
     description: string;
     examples?: {
-      args: string[]
-      description: string
-    }[]
-  },
+      args: string[];
+      description: string;
+    }[];
+  };
   commandBuilder: (commandName: string) => any;
   commandInteraction: (interaction: CommandInteraction) => Promise<void>;
-  commandAutocomplete?: (
-    interaction: AutocompleteInteraction
-  ) => Promise<void>;
+  commandAutocomplete?: (interaction: AutocompleteInteraction) => Promise<void>;
 }

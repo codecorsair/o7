@@ -1,5 +1,5 @@
 import { GenericConfig } from '@/src/shared/GenericConfig';
-import { assert } from '@/src/shared/Utils/assert';
+import { assert } from '@/src/shared/utils/assert';
 
 const {
   BOT_INTENTS,

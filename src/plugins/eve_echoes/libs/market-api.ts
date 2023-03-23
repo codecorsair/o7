@@ -51,7 +51,6 @@ export async function getMarketData(searchTerms: string): Promise<MarketItem | n
     const response = await timeoutPromise(10000, fetch(`${MARKET_API}${id}`));
 
     if (!response || !response.ok) {
-      console.error(`Failed to fetch from Marketplace API with response: ${JSON.stringify(response)}`);
       return null;
     }
 
@@ -67,8 +66,6 @@ export async function getMarketData(searchTerms: string): Promise<MarketItem | n
     };
     return result as MarketItem;
   } catch (err) {
-    console.error(err);
-    console.error(`Failed to fetch from Marketplace API`);
     if (cache[id]) return cache[id].item;
   }
   return null;

@@ -143,7 +143,6 @@ export async function getResponseCapital(searchText: string, isMobile: boolean) 
 
   // No results
   if (results.length == 0) {
-    console.log("Not found capital ship ...");
     return null;
   }
   // Too many results

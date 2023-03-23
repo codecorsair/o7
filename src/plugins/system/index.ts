@@ -1,9 +1,9 @@
-import { IPlugin } from "@/src/shared/interfaces/IPlugin";
+import { IPlugin } from '@/src/shared/interfaces/IPlugin';
 
-import COMMAND_APPCONFIG from "./commands/appconfig";
+import COMMAND_APPCONFIG from './commands/appconfig';
 //import COMMAND_CHANGELOG from "./commands/changelog";
-import COMMAND_HELP from "./commands/help";
-import COMMAND_INVITE from "./commands/invite";
+import COMMAND_HELP from './commands/help';
+import COMMAND_INVITE from './commands/invite';
 //import COMMAND_STATUS from "./commands/status";
 
 export default class extends IPlugin {
@@ -18,7 +18,5 @@ export default class extends IPlugin {
   onInit(): void {
     this.registerCommands();
   }
-  onDispose(): void {
-  
-  }
+  onDispose(): void {}
 }

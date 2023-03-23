@@ -6,6 +6,7 @@ import { Client as DJSClient } from 'discord.js';
 export interface IClient extends DJSClient {
   cluster: any;
   machine: any;
+  rest: any;
 
   cronjobs: Collection<string, ICronjob>;
   commands: Collection<string, ICommand>;

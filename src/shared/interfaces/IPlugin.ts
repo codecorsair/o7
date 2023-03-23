@@ -1,7 +1,6 @@
-import { IProtocol } from "./IProtocol";
+import { IProtocol } from './IProtocol';
 
 export abstract class IPlugin {
-
   protected protocol: IProtocol;
 
   constructor(protocol: IProtocol) {

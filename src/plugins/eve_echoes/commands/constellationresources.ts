@@ -195,11 +195,10 @@ export default {
       await interaction.editReply(response);
       return;
     } catch (err: any) {
-      console.error(err.message);
       await interaction.editReply(
         `There was an error processing your request. Please try again later.`
       );
-      return;
+      throw err;
     } finally {
       await driver.close();
     }
