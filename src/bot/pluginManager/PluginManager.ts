@@ -71,7 +71,8 @@ export class PluginManager {
     const plugin = this.plugins.get(name) as IInitializedPluginWrapper;
     const pluginInstance = plugin.instance as PluginInstance;
     const protocol = {
-      logger: logger.child({ plugin: plugin.name }),
+      logger: console,
+      // logger: logger.child({ plugin: plugin.name }),
       client: this.client,
       registerCommand: this.client.registerCommand,
       registerCronjob: this.client.registerCronjob
