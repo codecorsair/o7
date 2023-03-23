@@ -18,7 +18,6 @@ const client = new Client({
   rollingRestarts: Config.rollingRestarts // Enable, when bot should respawn when cluster list changes.
 });
 client.on('debug', (message) => logger.debug(`[DEBUG] ${message}`));
-client.connect();
 
 const clusterManager = new ClusterManager(`${__dirname}/../bot/index.js`, {
   totalShards: 1,
@@ -29,8 +28,6 @@ clusterManager.on('clusterCreate', (cluster) =>
   logger.info(`Cluster ${cluster.id} created`)
 );
 clusterManager.on('debug', (message) => logger.debug(message));
-
-client.listen(clusterManager);
 client.on('ready', () => {
   client
   .requestShardData()
@@ -48,3 +45,6 @@ client.on('ready', () => {
     process.exit(1);
   });
 });
+
+client.connect();
+client.listen(clusterManager);
