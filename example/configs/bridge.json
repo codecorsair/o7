@@ -2,6 +2,6 @@
   "port": 4444,
   "authToken": "<a shared secret between the bridge and the cluster>",
   "totalShards": 40,
-  "totalMachines": 2,
+  "totalMachines": 20,
   "shardsPerCluster": 10
 }
