@@ -33,14 +33,15 @@ export class Client extends DJSClient implements IClient {
     this.on('interactionCreate', this.onInteractionCreate.bind(this));
     this.on('guildCreate', this.onGuildCreate.bind(this));
 
-    this.cluster = new ClusterClient(this);
-    this.machine = new Shard(this.cluster); // Initialize Cluster
-
     this.pluginManager = new PluginManager(this);
   }
 
   onReady() {
     console.log(`Logged in as ${this.user?.tag}!`);
+    
+    this.cluster = new ClusterClient(this);
+    this.machine = new Shard(this.cluster); // Initialize Cluster
+
     this.machine
       .broadcastEval(`this.guilds.cache.size`)
       .then((results) => {
