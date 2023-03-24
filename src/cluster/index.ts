@@ -2,7 +2,7 @@ import { Client, CacheClient } from 'discord-cross-hosting';
 import { ClusterManager } from 'discord-hybrid-sharding';
 import { createLogger } from '@/shared/utils/logger';
 import { hostname } from 'os';
-import Config from "./Config";
+import Config from './Config';
 
 const ONE_MINUTE = 60 * 1000;
 
@@ -18,28 +18,18 @@ const client = new Client({
 });
 const storage = new CacheClient(client, {
   path: [
-      {
-          path: 'guilds',
-          maxSize: 100,
-      },
-      {
-          path: 'channels',
-          maxSize: 100,
-      },
-  ],
+    {
+      path: 'guilds',
+      maxSize: 100
+    },
+    {
+      path: 'channels',
+      maxSize: 100
+    }
+  ]
 });
 client.on('debug', (message) => logger.debug(`[DEBUG] ${message}`));
-client.on('ready', () => {
-  logger.info('Connected to Discord Cross Hosting')
-
-  const clusterManager = new ClusterManager(`${__dirname}/../bot/index.js`, {
-    totalShards: 1,
-    totalClusters: 'auto'
-  }); // Some dummy Data
-  clusterManager.on('clusterCreate', (cluster) => logger.info(`Cluster ${cluster.id} created`));
-  clusterManager.on('debug', (message) => logger.debug(message));
-  client.listen(clusterManager);
-
+const fetchShardData = async () => {
   client
     .requestShardData()
     .then((e: any) => {
@@ -53,7 +43,26 @@ client.on('ready', () => {
     })
     .catch((err: any) => {
       logger.error(`Error while fetching shard data: ${err}`);
+
+      setTimeout(() => {
+        fetchShardData();
+      });
     });
+};
+client.on('ready', () => {
+  logger.info('Connected to Discord Cross Hosting');
+
+  const clusterManager = new ClusterManager(`${__dirname}/../bot/index.js`, {
+    totalShards: 1,
+    totalClusters: 'auto'
+  }); // Some dummy Data
+  clusterManager.on('clusterCreate', (cluster) =>
+    logger.info(`Cluster ${cluster.id} created`)
+  );
+  clusterManager.on('debug', (message) => logger.debug(message));
+  client.listen(clusterManager);
+
+  fetchShardData();
 });
 
 client.connect();
