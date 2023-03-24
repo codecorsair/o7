@@ -17,41 +17,34 @@ const client = new Client({
   rollingRestarts: Config.rollingRestarts // Enable, when bot should respawn when cluster list changes.
 });
 const clusterManager = new ClusterManager(`${__dirname}/../bot/index.js`, {
-  totalShards: 1,
-  totalClusters: 'auto',
-  mode: 'worker'
+  totalShards: 1
 });
 client.on('debug', (message) => logger.debug(`[DEBUG] ${message}`));
 const fetchShardData = async () => {
-  client
-    .requestShardData()
-    .then((e: any) => {
-      if (!e) return;
-      if (!e.shardList) return;
-      clusterManager.totalShards = e.totalShards;
-      clusterManager.totalClusters = e.shardList.length;
-      clusterManager.shardList = e.shardList;
-      clusterManager.clusterList = e.clusterList;
-      clusterManager.spawn({ timeout: ONE_MINUTE });
-    })
-    .catch((err: any) => {
-      logger.error(`Error while fetching shard data: ${err}`);
+  try {
+    const shardData = await client.requestShardData() as any;
 
-      setTimeout(() => {
-        fetchShardData();
-      });
-    });
+    if (!shardData || !shardData.shardList) {
+      return;
+    }
+    clusterManager.totalShards = shardData.totalShards;
+    clusterManager.totalClusters = shardData.shardList.length;
+    clusterManager.shardList = shardData.shardList;
+    clusterManager.clusterList = shardData.clusterList;
+    clusterManager.spawn({ timeout: ONE_MINUTE });
+  } catch (err: any) {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+  }
 };
-client.on('ready', () => {
-  logger.info('Connected to Discord Cross Hosting');
 
-  clusterManager.on('clusterCreate', (cluster) =>
-    logger.info(`Cluster ${cluster.id} created`)
-  );
-  clusterManager.on('debug', (message) => logger.debug(`[DEBUG] ${message}`));
+clusterManager.on('clusterCreate', (cluster) =>
+  logger.info(`Cluster ${cluster.id} created`)
+);
+clusterManager.on('debug', (message) => logger.debug(`[DEBUG] ${message}`));
+client.on('ready', async () => {
+  await fetchShardData();
+
   client.listen(clusterManager);
-
-  fetchShardData();
 });
 
 client.connect();

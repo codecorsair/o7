@@ -26,9 +26,9 @@ services:
     environment:
       BRIDGE_PORT: 4444
       BRIDGE_AUTH_TOKEN: <a shared secret between the bridge and the cluster>
-      BRIDGE_TOTAL_SHARDS: 40
+      BRIDGE_TOTAL_SHARDS: 16
       BRIDGE_TOTAL_MACHINES: 2
-      BRIDGE_SHARDS_PER_CLUSTER: 10
+      BRIDGE_SHARDS_PER_CLUSTER: 4
     networks:
       - internal
     secrets:
