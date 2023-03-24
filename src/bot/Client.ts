@@ -102,7 +102,7 @@ export class Client extends DJSClient implements IClient {
     }
   }
 
-  private loadPlugins(): void {
+  private async loadPlugins(): Promise<void> {
     if (!fs.existsSync(Config.pluginsPath)) {
       logger.error('Plugins folder does not exist');
       return;
@@ -124,7 +124,7 @@ export class Client extends DJSClient implements IClient {
       };
 
       logger.info(`Loading plugin ${plugin}`);
-      this.pluginManager.registerPlugin(pluginWrapper);
+      await this.pluginManager.registerPlugin(pluginWrapper);
       this.pluginManager.loadPlugin(plugin);
     }
   }

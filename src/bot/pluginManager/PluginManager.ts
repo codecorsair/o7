@@ -19,16 +19,16 @@ export class PluginManager {
     this.client = client;
   }
 
-  private requireModule(path: string): PluginInstance {
+  private async requireModule(path: string): Promise<PluginInstance> {
     if (!existsSync(path)) {
       logger.error(`Plugin path ${path} does not exist`);
       return;
     }
 
-    return require(path).default as PluginInstance;
+    return await import(path);
   }
 
-  public registerPlugin(plugin: IPluginWrapper): void {
+  public async registerPlugin(plugin: IPluginWrapper): Promise<void> {
     if (!plugin.name || !plugin.packageName) {
       logger.error(`Plugin name or package name is not defined`);
     }
@@ -39,12 +39,12 @@ export class PluginManager {
 
     try {
       const pluginInstance = plugin.isRelative
-        ? this.requireModule(join(Config.pluginsPath, plugin.packageName))
-        : this.requireModule(
+        ? await this.requireModule(join(Config.pluginsPath, plugin.packageName))
+        : await this.requireModule(
             join(process.cwd(), 'node_modules', plugin.packageName)
           );
 
-      this.addPlugin(plugin, pluginInstance);
+      this.addPlugin(plugin, pluginInstance.default);
     } catch (error: any) {
       logger.error(
         `Plugin with name ${plugin.name} failed to load: ${error.message}`
