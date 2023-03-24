@@ -4,6 +4,7 @@ export function createLogger(name?: string) {
   const logger = pino(
     {
       name: name || 'default',
+      level: 'debug',
     }
   );
 
