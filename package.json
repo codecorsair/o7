@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "type": "module",
   "contributors": [
     "JB <jb@codecorsair.com>",
     "Ralph Schuler <ralph.schuler@nyphon.de>"
