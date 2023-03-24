@@ -1,11 +1,18 @@
 import { pino } from 'pino';
 
+const multistream = pino.multistream;
+
+const streams = [
+  { level: 'debug', stream: process.stdout },
+  { level: 'error', stream: process.stderr }
+];
 export function createLogger(name?: string) {
   const logger = pino(
     {
       name: name || 'default',
-      level: 'debug',
-    }
+      level: 'debug'
+    },
+    multistream(streams as any)
   );
 
   return {
