@@ -124,7 +124,7 @@ export class Client extends DJSClient implements IClient {
       };
 
       logger.info(`Loading plugin ${plugin}`);
-      await this.pluginManager.registerPlugin(pluginWrapper);
+      this.pluginManager.registerPlugin(pluginWrapper);
       this.pluginManager.loadPlugin(plugin);
     }
   }

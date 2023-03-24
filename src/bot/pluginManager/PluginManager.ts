@@ -19,16 +19,17 @@ export class PluginManager {
     this.client = client;
   }
 
-  private async requireModule(path: string): Promise<PluginInstance> {
+  private requireModule(path: string): PluginInstance {
     if (!existsSync(path)) {
       logger.error(`Plugin path ${path} does not exist`);
       return;
     }
 
-    return await import(path);
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    return require(path).default as PluginInstance;
   }
 
-  public async registerPlugin(plugin: IPluginWrapper): Promise<void> {
+  public registerPlugin(plugin: IPluginWrapper): void {
     if (!plugin.name || !plugin.packageName) {
       logger.error(`Plugin name or package name is not defined`);
     }
@@ -39,12 +40,12 @@ export class PluginManager {
 
     try {
       const pluginInstance = plugin.isRelative
-        ? await this.requireModule(join(Config.pluginsPath, plugin.packageName))
-        : await this.requireModule(
+        ? this.requireModule(join(Config.pluginsPath, plugin.packageName))
+        : this.requireModule(
             join(process.cwd(), 'node_modules', plugin.packageName)
           );
 
-      this.addPlugin(plugin, pluginInstance.default);
+      this.addPlugin(plugin, pluginInstance);
     } catch (error: any) {
       logger.error(
         `Plugin with name ${plugin.name} failed to load: ${error.message}`
