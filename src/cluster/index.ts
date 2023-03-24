@@ -33,6 +33,7 @@ const fetchShardData = async () => {
     clusterManager.clusterList = shardData.clusterList;
     clusterManager.spawn({ timeout: ONE_MINUTE });
   } catch (err: any) {
+    logger.error(`Error while fetching shard data: ${err}`);
     await new Promise((resolve) => setTimeout(resolve, 1000));
   }
 };
