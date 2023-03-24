@@ -18,7 +18,8 @@ const client = new Client({
 });
 const clusterManager = new ClusterManager(`${__dirname}/../bot/index.js`, {
   totalShards: 1,
-  totalClusters: 'auto'
+  totalClusters: 'auto',
+  mode: 'worker'
 });
 client.on('debug', (message) => logger.debug(`[DEBUG] ${message}`));
 const fetchShardData = async () => {
