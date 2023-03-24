@@ -1,58 +1,58 @@
-import { SlashCommandBuilder, CommandInteraction } from "discord.js";
-import { getResponse, getResponseList } from "../libs/bputils";
+import { SlashCommandBuilder, CommandInteraction } from 'discord.js';
+import { getResponse, getResponseList } from '../libs/bputils';
 import {
   getResponseCapital,
-  getCapitalResponseList,
-} from "../libs/bputils_capital";
-import { ICommand } from "@/shared/interfaces/ICommand";
+  getCapitalResponseList
+} from '../libs/bputils_capital';
+import { ICommand } from '@/shared/interfaces/ICommand';
 
 export default {
-  aliases: ["bp", "blueprint"],
+  aliases: ['bp', 'blueprint'],
   commandBuilder: (alias: string) =>
     new SlashCommandBuilder()
       .setName(alias)
       .setDescription(
-        "This command will return the blueprint for a given ship."
+        'This command will return the blueprint for a given ship.'
       )
       .addStringOption((option) =>
         option
-          .setName("search")
-          .setDescription("The search term to use.")
+          .setName('search')
+          .setDescription('The search term to use.')
           .setRequired(true)
       )
       .addBooleanOption((option) =>
         option
-          .setName("mobile")
-          .setDescription("Whether to use the mobile version of the response.")
+          .setName('mobile')
+          .setDescription('Whether to use the mobile version of the response.')
           .setRequired(false)
       ),
-  description: "This command will return the blueprint for a given ship.",
+  description: 'This command will return the blueprint for a given ship.',
   help: {
-    title: "Blueprint",
+    title: 'Blueprint',
     description:
-      "This command will return a list of all the resources and costs associated to build a given blueprint. Optionally, the resource and time costs will be adjusted based on skill levels, if provided.",
+      'This command will return a list of all the resources and costs associated to build a given blueprint. Optionally, the resource and time costs will be adjusted based on skill levels, if provided.',
     examples: [
       {
-        args: ["mk5 hob"],
+        args: ['mk5 hob'],
         description:
-          "Returns the resources and costs for a MK5 Hobgoblin at base rates for an unskilled character.",
+          'Returns the resources and costs for a MK5 Hobgoblin at base rates for an unskilled character.'
       },
       {
-        args: ["caracal navy 5/5/2"],
+        args: ['caracal navy 5/5/2'],
         description:
-          "Returns the resources and costs for a Caracal Navy Issue adjusted for a character with Cruiser Manufacturing 5, Advanced Cruiser Manufacturing 5, and Expert Cruiser Manufacturing 2.",
+          'Returns the resources and costs for a Caracal Navy Issue adjusted for a character with Cruiser Manufacturing 5, Advanced Cruiser Manufacturing 5, and Expert Cruiser Manufacturing 2.'
       },
       {
-        args: ["vexor 5/5/2 4/1/0"],
+        args: ['vexor 5/5/2 4/1/0'],
         description:
-          "Returns the resources and costs for a Vexor adjusted for a character with Cruiser Manufacturing 5, Advanced Cruiser Manufacturing 5, and Expert Cruiser Manufacturing 2 and Accounting 4, Advanced Accounting 1, and Expert Accounting 0.",
-      },
-    ],
+          'Returns the resources and costs for a Vexor adjusted for a character with Cruiser Manufacturing 5, Advanced Cruiser Manufacturing 5, and Expert Cruiser Manufacturing 2 and Accounting 4, Advanced Accounting 1, and Expert Accounting 0.'
+      }
+    ]
   },
   async commandInteraction(interaction: CommandInteraction) {
     await interaction.deferReply();
-    const searchTerm = interaction.options.get("search")?.value as string;
-    const mobile = interaction.options.get("mobile")?.value as boolean;
+    const searchTerm = interaction.options.get('search')?.value as string;
+    const mobile = interaction.options.get('mobile')?.value as boolean;
     // Looking for standards chips
     let response = await getResponse(searchTerm, !!mobile);
     let lst: any;
@@ -83,14 +83,14 @@ export default {
         );
         return;
       } else {
-        let listItem = "";
+        let listItem = '';
 
         lst.forEach((item) => {
-          listItem += "- " + item + "\n";
+          listItem += '- ' + item + '\n';
         });
 
         await interaction.editReply(
-          `I could not find an exact match... Did you mean?` + "\n" + listItem
+          `I could not find an exact match... Did you mean?` + '\n' + listItem
         );
         return;
       }
@@ -98,5 +98,5 @@ export default {
 
     await interaction.editReply({ embeds: [response] });
     return;
-  },
+  }
 } as ICommand;

@@ -6,7 +6,7 @@ import Config from './Config';
 
 const ONE_MINUTE = 60 * 1000;
 
-const logger = createLogger();
+const logger = createLogger("cluster");
 
 const client = new Client({
   agent: `Discord-Cluster/${Config.agent} (${hostname()})`, // User-Agent
@@ -22,7 +22,7 @@ const clusterManager = new ClusterManager(`${__dirname}/../bot/index.js`, {
 client.on('debug', (message) => logger.debug(`[DEBUG] ${message}`));
 const fetchShardData = async () => {
   try {
-    const shardData = await client.requestShardData() as any;
+    const shardData = (await client.requestShardData()) as any;
 
     if (!shardData || !shardData.shardList) {
       return;

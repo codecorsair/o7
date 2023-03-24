@@ -1,79 +1,81 @@
-import Fuse from "fuse.js";
-import { PlanetaryResources } from "../constants";
-import systems from "@/data/systems.json";
-import neo4j from "neo4j-driver";
-import Config from "../Config";
+import Fuse from 'fuse.js';
+import { PlanetaryResources } from '../constants';
+import systems from '@/data/systems.json';
+import neo4j from 'neo4j-driver';
+import Config from '../Config';
 import {
   SlashCommandBuilder,
   CommandInteraction,
-  AutocompleteInteraction,
-} from "discord.js";
-import { ICommand } from "@/shared/interfaces/ICommand";
+  AutocompleteInteraction
+} from 'discord.js';
+import { ICommand } from '@/shared/interfaces/ICommand';
 
 const RESOURCE_CHOICES = Object.values(PlanetaryResources).map((p) => ({
   name: String(p),
-  value: String(p),
+  value: String(p)
 }));
 
 const SYSTEM_CHOICES = systems.map((s) => ({
   name: String(s.Name),
-  value: String(s.Name),
+  value: String(s.Name)
 }));
 
 const prNames = Object.values(PlanetaryResources).map((p) => ({ name: p }));
 const fusePR = new Fuse(prNames, {
   ignoreLocation: true,
-  keys: ["name"],
+  keys: ['name']
 });
 
 const fuseSystems = new Fuse(systems, {
   ignoreLocation: true,
-  keys: ["Name"],
+  keys: ['Name']
 });
 
 export default {
-  aliases: ["planetaryresources", "pr"],
+  aliases: ['planetaryresources', 'pr'],
   commandBuilder: (alias: string) =>
     new SlashCommandBuilder()
       .setName(alias)
       .setDescription(
-        "This command will return the locations of perfect and/or rich planetary resources."
+        'This command will return the locations of perfect and/or rich planetary resources.'
       )
       .addStringOption((option) =>
         option
-          .setName("system")
-          .setDescription("The system to search around")
+          .setName('system')
+          .setDescription('The system to search around')
           .setRequired(true)
           .setAutocomplete(true)
       )
       .addIntegerOption((option) =>
         option
-          .setName("range")
-          .setDescription("The range to search in jumps")
+          .setName('range')
+          .setDescription('The range to search in jumps')
           .setRequired(true)
       )
       .addStringOption((option) =>
         option
-          .setName("resource")
-          .setDescription("The resource to search for")
+          .setName('resource')
+          .setDescription('The resource to search for')
           .setRequired(true)
           .setAutocomplete(true)
       ),
-  description: "This command will return the locations of perfect and/or rich planetary resources.",
+  description:
+    'This command will return the locations of perfect and/or rich planetary resources.',
   help: {
-    title: "Planetary Resources",
+    title: 'Planetary Resources',
     description:
-      "This command will return the locations of perfect and/or rich planetary resources within a specified range of any system.",
+      'This command will return the locations of perfect and/or rich planetary resources within a specified range of any system.',
     examples: [
       {
-        args: ["jita 5 base metals"],
-        description: "Returns the locations of perfect and/or rich base metals within 5 jumps of Jita.",
-      },
-    ],
+        args: ['jita 5 base metals'],
+        description:
+          'Returns the locations of perfect and/or rich base metals within 5 jumps of Jita.'
+      }
+    ]
   },
   async commandAutocomplete(interaction: AutocompleteInteraction) {
     const focusedValue = interaction.options.getFocused(true);
-    if (focusedValue.name === "system") {
+    if (focusedValue.name === 'system') {
       const choices = SYSTEM_CHOICES.filter(
         (choice) =>
           choice.name
@@ -81,11 +83,11 @@ export default {
             .indexOf(focusedValue.value.toLowerCase()) !== -1
       );
       await interaction.respond(
-        focusedValue.value !== ""
+        focusedValue.value !== ''
           ? choices.slice(0, 25)
           : SYSTEM_CHOICES.slice(0, 25)
       );
-    } else if (focusedValue.name === "resource") {
+    } else if (focusedValue.name === 'resource') {
       const choices = RESOURCE_CHOICES.filter(
         (choice) =>
           choice.name
@@ -93,7 +95,7 @@ export default {
             .indexOf(focusedValue.value.toLowerCase()) !== -1
       );
       await interaction.respond(
-        focusedValue.value !== ""
+        focusedValue.value !== ''
           ? choices.slice(0, 25)
           : RESOURCE_CHOICES.slice(0, 25)
       );
@@ -101,9 +103,9 @@ export default {
   },
   async commandInteraction(interaction: CommandInteraction) {
     await interaction.deferReply();
-    const systemName = interaction.options.get("system")?.value as string;
-    let range = interaction.options.get("range")?.value as number;
-    const resourceName = interaction.options.get("resource")?.value as string;
+    const systemName = interaction.options.get('system')?.value as string;
+    let range = interaction.options.get('range')?.value as number;
+    const resourceName = interaction.options.get('resource')?.value as string;
 
     const prSearch = fusePR.search(resourceName);
     if (prSearch.length == 0) {
@@ -167,7 +169,7 @@ export default {
             constellation: fields[1],
             richness: fields[2],
             output: fields[3],
-            distance: fields[4].low as number,
+            distance: fields[4].low as number
           };
         })
         .forEach((r) => grouped[r.distance].push(r));
@@ -185,13 +187,13 @@ export default {
         g.sort((a, b) => b.output - a.output);
         const title =
           g[0].distance === 0
-            ? "**In System**\n"
+            ? '**In System**\n'
             : g[0].distance === 1
-            ? "**1 Jump**\n"
+            ? '**1 Jump**\n'
             : `**${g[0].distance} Jumps**\n`;
         const next =
           title +
-          "```" +
+          '```' +
           g
             .map(
               (s) =>
@@ -199,22 +201,22 @@ export default {
                   15 - s.system.length + s.constellation.length
                 )} ${s.richness.padStart(
                   20 - s.constellation.length + s.richness.length,
-                  " "
-                )} ${(s.output + "").padStart(
-                  8 - s.richness.length + (s.output + "").length,
-                  " "
+                  ' '
+                )} ${(s.output + '').padStart(
+                  8 - s.richness.length + (s.output + '').length,
+                  ' '
                 )}`
             )
-            .join("\n") +
-          "```";
+            .join('\n') +
+          '```';
         if (response.length + next.length >= 2000) {
           interaction.editReply(response);
-          response = "";
+          response = '';
         }
         response += next;
       });
       await interaction.editReply(response);
-      return 
+      return;
     } catch (err: any) {
       await interaction.editReply(
         `There was an error processing your request: ${err.message}`
@@ -224,5 +226,5 @@ export default {
     } finally {
       await driver.close();
     }
-  },
+  }
 } as ICommand;

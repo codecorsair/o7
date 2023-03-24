@@ -7,7 +7,7 @@ const {
   BRIDGE_TOTAL_SHARDS,
   BRIDGE_TOTAL_MACHINES,
   BRIDGE_SHARDS_PER_CLUSTER,
-  BRIDGE_TOKEN,
+  BRIDGE_TOKEN
 } = process.env;
 
 export interface IConfig {
@@ -35,7 +35,9 @@ export default {
   ),
   totalShards: assert<number | 'auto'>(
     `Configure bridge total shards using the "totalShards" key in the config file or the "BRIDGE_TOTAL_SHARDS" environment variable.`,
-    BRIDGE_TOTAL_SHARDS && BRIDGE_TOTAL_SHARDS === 'auto' ? 'auto' : parseInt(BRIDGE_TOTAL_SHARDS as string),
+    BRIDGE_TOTAL_SHARDS && BRIDGE_TOTAL_SHARDS === 'auto'
+      ? 'auto'
+      : parseInt(BRIDGE_TOTAL_SHARDS as string),
     Config.get('totalShards'),
     40
   ),
@@ -55,5 +57,5 @@ export default {
     `Configure bridge token using the "token" key in the config file.`,
     BRIDGE_TOKEN,
     Config.get('token')
-  ),
+  )
 } as IConfig;

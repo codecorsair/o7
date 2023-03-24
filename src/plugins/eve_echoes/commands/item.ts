@@ -1,6 +1,6 @@
-import marketItems from "@/data/market-items.json";
-import numeral from "numeral";
-import items from "@/data/items.json";
+import marketItems from '@/data/market-items.json';
+import numeral from 'numeral';
+import items from '@/data/items.json';
 import {
   Attributes,
   evalFormulae,
@@ -9,35 +9,35 @@ import {
   getItemType,
   isShip,
   Item,
-  omega_icon_id,
-} from "../libs/items";
-import { romanize } from "../libs/romanize";
-import { SlashCommandBuilder, EmbedBuilder } from "@discordjs/builders";
-import { AutocompleteInteraction, CommandInteraction } from "discord.js";
-import { ICommand } from "@/shared/interfaces/ICommand";
+  omega_icon_id
+} from '../libs/items';
+import { romanize } from '../libs/romanize';
+import { SlashCommandBuilder, EmbedBuilder } from '@discordjs/builders';
+import { AutocompleteInteraction, CommandInteraction } from 'discord.js';
+import { ICommand } from '@/shared/interfaces/ICommand';
 
 const ITEM_CHOICES = marketItems.map((item) => ({
   name: String(item.name),
-  value: String(item.id),
+  value: String(item.id)
 }));
 
 export default {
-  aliases: ["item"],
+  aliases: ['item'],
   commandBuilder: (alias: string) =>
     new SlashCommandBuilder()
       .setName(alias)
-      .setDescription("Get information about an item in game.")
+      .setDescription('Get information about an item in game.')
       .addStringOption((option) =>
         option
-          .setName("item")
-          .setDescription("The item to get information about.")
+          .setName('item')
+          .setDescription('The item to get information about.')
           .setAutocomplete(true)
           .setRequired(true)
       ),
-  description: "Get information about an item in game.",
+  description: 'Get information about an item in game.',
   help: {
-    title: "Item",
-    description: "This command will return information about an item in game.",
+    title: 'Item',
+    description: 'This command will return information about an item in game.'
   },
   async commandAutocomplete(interaction: AutocompleteInteraction) {
     const itemName = interaction.options.getFocused(true);
@@ -48,14 +48,14 @@ export default {
     );
 
     await interaction.respond(
-      itemName.value !== "" ? choices.slice(0, 25) : ITEM_CHOICES.slice(0, 25)
+      itemName.value !== '' ? choices.slice(0, 25) : ITEM_CHOICES.slice(0, 25)
     );
   },
   async commandInteraction(interaction: CommandInteraction) {
     await interaction.deferReply();
-    const id = interaction.options.get("item");
+    const id = interaction.options.get('item');
     if (!id) {
-      await interaction.editReply("You must provide an item to search for.");
+      await interaction.editReply('You must provide an item to search for.');
       return;
     }
     const itemInfo = items[id.value as number] as Item;
@@ -88,25 +88,25 @@ export default {
       embed.addFields([
         {
           name: `${
-            (itemInfo.faction && itemInfo.faction.toUpperCase()) || ""
+            (itemInfo.faction && itemInfo.faction.toUpperCase()) || ''
           } ${getItemType(itemInfo).toUpperCase()}`,
           value: `${
             itemInfo.is_rookie_insurance
-              ? "Can be insured"
-              : "Insurance ineligible"
+              ? 'Can be insured'
+              : 'Insurance ineligible'
           }`,
-          inline: true,
+          inline: true
         },
         {
-          name: "Cargo Capacity",
+          name: 'Cargo Capacity',
           value: `${itemInfo.capacity}m³`,
-          inline: true,
-        },
+          inline: true
+        }
       ]);
     }
 
     embed.addFields([
-      { name: "Description", value: itemInfo.description, inline: false },
+      { name: 'Description', value: itemInfo.description, inline: false }
     ]);
 
     if (itemInfo.is_omega) {
@@ -115,18 +115,18 @@ export default {
 
     if (isShip(itemInfo)) {
       for (const bonusGroup of itemInfo.bonus_groups) {
-        let bonusText = "";
+        let bonusText = '';
         for (let i = 0; i < bonusGroup.attributes.attribute_ids.length; ++i) {
           const value = evalFormulae(
             bonusGroup.attributes.values[i],
             bonusGroup.attributes.formulae[i]
           );
-          bonusText += ` ${value > 0 ? "+" : ""}${value}${
+          bonusText += ` ${value > 0 ? '+' : ''}${value}${
             bonusGroup.attributes.units[i]
           } ${bonusGroup.attributes.names[i]}\n`;
         }
         embed.addFields([
-          { name: bonusGroup.name, value: bonusText, inline: false },
+          { name: bonusGroup.name, value: bonusText, inline: false }
         ]);
       }
 
@@ -136,141 +136,141 @@ export default {
 
       embed.addFields([
         {
-          name: "High Slots",
+          name: 'High Slots',
           value: String(a[Attributes.highSlot].value),
-          inline: true,
+          inline: true
         },
         {
-          name: "Mid Slots",
+          name: 'Mid Slots',
           value: String(a[Attributes.medSlot].value),
-          inline: true,
+          inline: true
         },
         {
-          name: "Low Slots",
+          name: 'Low Slots',
           value: String(a[Attributes.lowSlot].value),
-          inline: true,
+          inline: true
         },
         {
-          name: "Rigs",
+          name: 'Rigs',
           value: `${a[Attributes.energyRigSlots].value}/${
             a[Attributes.mechanicalRigSlots].value
           }`,
-          inline: true,
+          inline: true
         },
         {
-          name: "Drones",
+          name: 'Drones',
           value: String(a[Attributes.droneSlotsLeft].value),
-          inline: true,
+          inline: true
         },
         {
-          name: "Powergrid Output",
+          name: 'Powergrid Output',
           value: `${a[Attributes.powerOutput].value} MW`,
-          inline: true,
+          inline: true
         },
         {
-          name: `DEFENSE ${numeral(getEHP(itemInfo)).format("0,0")}`,
+          name: `DEFENSE ${numeral(getEHP(itemInfo)).format('0,0')}`,
           value: `\
                  \`\`\`
                   | Shield |  Armor |   Hull 
         Hitpoints | ${numeral(a[Attributes.shieldCapacity].value)
-          .format("0,0")
+          .format('0,0')
           .padStart(6)} | ${numeral(a[Attributes.armorHP].value)
-            .format("0,0")
+            .format('0,0')
             .padStart(6)} | ${numeral(a[Attributes.hp].value)
-            .format("0,0")
+            .format('0,0')
             .padStart(6)}
         EM        | ${numeral(
           1 - a[Attributes.shieldEmDamageResonance].value
-        ).format("00.00%")} | ${numeral(
+        ).format('00.00%')} | ${numeral(
             1 - a[Attributes.armorEmDamageResonance].value
-          ).format("00.00%")} | ${numeral(
+          ).format('00.00%')} | ${numeral(
             1 - a[Attributes.emDamageResonance].value
-          ).format("00.00%")}
+          ).format('00.00%')}
         Thermal   | ${numeral(
           1 - a[Attributes.shieldThermalDamageResonance].value
-        ).format("00.00%")} | ${numeral(
+        ).format('00.00%')} | ${numeral(
             1 - a[Attributes.armorThermalDamageResonance].value
-          ).format("00.00%")} | ${numeral(
+          ).format('00.00%')} | ${numeral(
             1 - a[Attributes.thermalDamageResonance].value
-          ).format("00.00%")}
+          ).format('00.00%')}
         Kinetic   | ${numeral(
           1 - a[Attributes.shieldKineticDamageResonance].value
-        ).format("00.00%")} | ${numeral(
+        ).format('00.00%')} | ${numeral(
             1 - a[Attributes.armorKineticDamageResonance].value
-          ).format("00.00%")} | ${numeral(
+          ).format('00.00%')} | ${numeral(
             1 - a[Attributes.kineticDamageResonance].value
-          ).format("00.00%")}
+          ).format('00.00%')}
         Explosive | ${numeral(
           1 - a[Attributes.shieldExplosiveDamageResonance].value
-        ).format("00.00%")} | ${numeral(
+        ).format('00.00%')} | ${numeral(
             1 - a[Attributes.armorExplosiveDamageResonance].value
-          ).format("00.00%")} | ${numeral(
+          ).format('00.00%')} | ${numeral(
             1 - a[Attributes.explosiveDamageResonance].value
-          ).format("00.00%")}
+          ).format('00.00%')}
         Shield recharge time: ${numeral(
           a[Attributes.shieldRechargeRate].value / 1000
-        ).format("0.0")} seconds\
+        ).format('0.0')} seconds\
         \`\`\`
         `,
-          inline: false,
+          inline: false
         },
         {
-          name: "Capacitor",
-          value: `${numeral(capacitorCapacity).format("0.0")} GJ`,
-          inline: true,
+          name: 'Capacitor',
+          value: `${numeral(capacitorCapacity).format('0.0')} GJ`,
+          inline: true
         },
         {
-          name: "Recharge Time",
-          value: `${numeral(capacitorRechargeTime).format("0.0")} S`,
-          inline: true,
+          name: 'Recharge Time',
+          value: `${numeral(capacitorRechargeTime).format('0.0')} S`,
+          inline: true
         },
         {
-          name: "Recharge Rate",
+          name: 'Recharge Rate',
           value: `${numeral(
             ((10 * capacitorCapacity) / capacitorRechargeTime) * 0.25
-          ).format("0.0[0]")} GJ`,
-          inline: true,
+          ).format('0.0[0]')} GJ`,
+          inline: true
         },
         {
           name: `Max Locked Targets`,
           value: `${a[Attributes.maxLockedTargets].value}`,
-          inline: true,
+          inline: true
         },
         {
           name: `Sig Radius`,
-          value: `${a[Attributes.signatureRadius].value + " m"}`,
-          inline: true,
+          value: `${a[Attributes.signatureRadius].value + ' m'}`,
+          inline: true
         },
         {
           name: `Scan Resolution`,
-          value: `${a[Attributes.scanResolution].value + " km"}`,
-          inline: true,
+          value: `${a[Attributes.scanResolution].value + ' km'}`,
+          inline: true
         },
         {
           name: `Sensor Strength`,
           value: `${a[Attributes.scanRadarStrength].value}`,
-          inline: true,
+          inline: true
         },
         {
-          name: "Flight Velocity",
+          name: 'Flight Velocity',
           value: `${a[Attributes.maxVelocity].value} m/s`,
-          inline: true,
+          inline: true
         },
         {
-          name: "Warp Speed",
+          name: 'Warp Speed',
           value: `${a[Attributes.warpSpeedMultiplier].value} AU/s`,
-          inline: true,
+          inline: true
         },
-        { name: "Mass", value: `${a[Attributes.mass].value} kg`, inline: true },
+        { name: 'Mass', value: `${a[Attributes.mass].value} kg`, inline: true },
         {
-          name: "Inertia Modifier",
+          name: 'Inertia Modifier',
           value: `${a[Attributes.agility].value}`,
-          inline: true,
-        },
+          inline: true
+        }
       ]);
     }
 
     await interaction.editReply({ embeds: [embed] });
     return;
-  },
+  }
 } as ICommand;

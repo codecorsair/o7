@@ -1,17 +1,17 @@
 import {
   AutocompleteInteraction,
   CommandInteraction,
-  SlashCommandBuilder,
-} from "discord.js";
-import Fuse from "fuse.js";
-import neo4j from "neo4j-driver";
-import systems from "@/data/systems.json";
-import Config from "../Config";
-import { ICommand } from "@/shared/interfaces/ICommand";
+  SlashCommandBuilder
+} from 'discord.js';
+import Fuse from 'fuse.js';
+import neo4j from 'neo4j-driver';
+import systems from '@/data/systems.json';
+import Config from '../Config';
+import { ICommand } from '@/shared/interfaces/ICommand';
 
 const SYSTEM_CHOICES = systems.map((s) => ({
   name: String(s.Name),
-  value: String(s.Name),
+  value: String(s.Name)
 }));
 
 export function printSecurity(system: { Security: number }) {
@@ -24,7 +24,7 @@ export function printSecurity(system: { Security: number }) {
 }
 
 export const fuse = new Fuse(systems, {
-  keys: ["Name"],
+  keys: ['Name']
 });
 
 export function getSystems(
@@ -51,37 +51,38 @@ export function getSystems(
   }
   return {
     start: startSearch[0].item,
-    end: endSearch[0].item,
+    end: endSearch[0].item
   };
 }
 
 export default {
-  aliases: ["jumps", "j"],
+  aliases: ['jumps', 'j'],
   commandBuilder: (alias: string) =>
     new SlashCommandBuilder()
       .setName(alias)
       .setDescription(
-        "This command will return the shortest jump distance to travel between two given systems."
+        'This command will return the shortest jump distance to travel between two given systems.'
       )
       .addStringOption((option) =>
         option
-          .setName("start")
-          .setDescription("The starting system.")
+          .setName('start')
+          .setDescription('The starting system.')
           .setRequired(true)
           .setAutocomplete(true)
       )
       .addStringOption((option) =>
         option
-          .setName("end")
-          .setDescription("The ending system.")
+          .setName('end')
+          .setDescription('The ending system.')
           .setRequired(true)
           .setAutocomplete(true)
       ),
-  description: "This command will return the shortest jump distance to travel between two given systems.",
+  description:
+    'This command will return the shortest jump distance to travel between two given systems.',
   help: {
-    title: "Jumps",
+    title: 'Jumps',
     description:
-      "This command will return the shortest jump distance to travel between two given systems within New Eden as well as the lowest security rating along the route.",
+      'This command will return the shortest jump distance to travel between two given systems within New Eden as well as the lowest security rating along the route.'
   },
   async commandAutocomplete(interaction: AutocompleteInteraction) {
     const systemName = interaction.options.getFocused(true).value as string;
@@ -91,14 +92,14 @@ export default {
     );
 
     await interaction.respond(
-      systemName !== "" ? choices.slice(0, 25) : SYSTEM_CHOICES.slice(0, 25)
+      systemName !== '' ? choices.slice(0, 25) : SYSTEM_CHOICES.slice(0, 25)
     );
     return;
   },
   async commandInteraction(interaction: CommandInteraction) {
     await interaction.deferReply();
-    const start = interaction.options.get("start")?.value as string;
-    const end = interaction.options.get("end")?.value as string;
+    const start = interaction.options.get('start')?.value as string;
+    const end = interaction.options.get('end')?.value as string;
     const systems = getSystems(interaction, { start, end });
     if (!systems) return;
 
@@ -135,11 +136,9 @@ export default {
         `There was an error while trying to find the shortest route between ${systems.start.Name} and ${systems.end.Name}`
       );
       throw error;
-      
-    }
-    finally {
+    } finally {
       await session.close();
       await driver.close();
     }
-  },
+  }
 } as ICommand;

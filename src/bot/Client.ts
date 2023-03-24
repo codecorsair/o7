@@ -1,8 +1,4 @@
-import {
-  Client as DJSClient,
-  ClientOptions,
-  Collection
-} from 'discord.js';
+import { Client as DJSClient, ClientOptions, Collection } from 'discord.js';
 import { ICommand } from '@/shared/interfaces/ICommand';
 import { ICronjob } from '@/shared/interfaces/ICronjob';
 import { IClient } from '@/shared/interfaces/IClient';
@@ -14,7 +10,7 @@ import { ClusterClient } from 'discord-hybrid-sharding';
 import * as fs from 'fs';
 import Config from './Config';
 
-const logger = createLogger();
+const logger = createLogger("client");
 
 export class Client extends DJSClient implements IClient {
   private pluginManager: PluginManager;
@@ -38,17 +34,17 @@ export class Client extends DJSClient implements IClient {
   }
 
   onReady() {
-    console.log(`Logged in as ${this.user?.tag}!`);
-    
+    logger.log(`Logged in as ${this.user?.tag}!`);
+
     this.machine
       .broadcastEval(`this.guilds.cache.size`)
       .then((results) => {
-        console.log(
+        logger.log(
           `Total Guilds: ${results.reduce((prev, val) => prev + val, 0)}`
         );
       })
       .catch((e: any) =>
-        console.error(`Error while fetching guild count: ${e}`)
+        logger.error(`Error while fetching guild count: ${e}`)
       );
 
     this.loadPlugins();
@@ -58,10 +54,8 @@ export class Client extends DJSClient implements IClient {
   }
 
   async onGuildCreate(guild) {
-    const guildCount = await this.shard?.fetchClientValues(
-      'guilds.cache.size'
-    );
-    console.log(
+    const guildCount = await this.shard?.fetchClientValues('guilds.cache.size');
+    logger.log(
       `Joined guild ${guild.name} (${guild.id}) [Total: ${guildCount}]`
     );
   }
@@ -73,20 +67,20 @@ export class Client extends DJSClient implements IClient {
     if (!command) return;
     try {
       if (interaction.isChatInputCommand()) {
-        console.log(
+        logger.log(
           `Command ${interaction.commandName} used by ${interaction.user.tag} (${interaction.user.id}) in ${interaction.guild?.name} (${interaction.guild?.id})`
         );
         await command.commandInteraction(interaction);
         return;
       } else if (interaction.isAutocomplete() && command.commandAutocomplete) {
-        console.log(
+        logger.log(
           `Autocomplete ${interaction.commandName} used by ${interaction.user.tag} (${interaction.user.id}) in ${interaction.guild?.name} (${interaction.guild?.id})`
         );
         await command.commandAutocomplete(interaction);
         return;
       }
     } catch (error) {
-      console.error(
+      logger.error(
         `Error while executing command ${interaction.commandName} by ${interaction.user.tag} (${interaction.user.id}) in ${interaction.guild?.name} (${interaction.guild?.id})`,
         error
       );
@@ -149,14 +143,14 @@ export class Client extends DJSClient implements IClient {
   private initCommands(): void {
     for (const [commandName, command] of this.commands.entries()) {
       this.application?.commands.create(command.commandBuilder(commandName));
-      console.log(`Registered command ${commandName}`);
+      logger.log(`Registered command ${commandName}`);
     }
   }
 
   private initCronjobs(): void {
     // for (const [cronjobName, cronjob] of this.cronjobs.entries()) {
     //     // cronjob.job.start()
-    //     console.log(`Registered cronjob ${cronjobName}`)
+    //     logger.log(`Registered cronjob ${cronjobName}`)
     // }
   }
 }

@@ -9,7 +9,7 @@ import { IClient } from '@/shared/interfaces/IClient';
 import { createLogger } from '@/shared/utils/logger';
 import Config from '../Config';
 
-const logger = createLogger();
+const logger = createLogger("pluginManager");
 
 export class PluginManager {
   private client: IClient;
@@ -71,7 +71,7 @@ export class PluginManager {
     const plugin = this.plugins.get(name) as IInitializedPluginWrapper;
     const pluginInstance = plugin.instance as PluginInstance;
     const protocol = {
-      logger: console,
+      logger: createLogger(name),
       // logger: logger.child({ plugin: plugin.name }),
       client: this.client,
       registerCommand: this.client.registerCommand,

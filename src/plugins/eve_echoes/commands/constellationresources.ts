@@ -1,87 +1,89 @@
 import {
   SlashCommandBuilder,
   CommandInteraction,
-  AutocompleteInteraction,
-} from "discord.js";
-import Fuse from "fuse.js";
-import Config from "../Config"
-import systems from "@/data/systems.json";
-import neo4j from "neo4j-driver";
-import { PlanetaryResources } from "../constants";
-import { ICommand } from "@/shared/interfaces/ICommand";
+  AutocompleteInteraction
+} from 'discord.js';
+import Fuse from 'fuse.js';
+import Config from '../Config';
+import systems from '@/data/systems.json';
+import neo4j from 'neo4j-driver';
+import { PlanetaryResources } from '../constants';
+import { ICommand } from '@/shared/interfaces/ICommand';
 
 const RESOURCE_CHOICES = Object.values(PlanetaryResources).map((p) => ({
   name: String(p),
-  value: String(p),
+  value: String(p)
 }));
 
 const SYSTEM_CHOICES = systems.map((s) => ({
   name: String(s.Name),
-  value: String(s.Name),
+  value: String(s.Name)
 }));
 
 const prNames = Object.values(PlanetaryResources).map((p) => ({ name: p }));
 const fusePR = new Fuse(prNames, {
   ignoreLocation: true,
-  keys: ["name"],
+  keys: ['name']
 });
 
 const fuseSystems = new Fuse(systems, {
   ignoreLocation: true,
-  keys: ["Name", "Constellation"],
+  keys: ['Name', 'Constellation']
 });
 
 export default {
-  aliases: ["constellationresources", "cr"],
+  aliases: ['constellationresources', 'cr'],
   commandBuilder: (alias: string) =>
     new SlashCommandBuilder()
       .setName(alias)
       .setDescription(
-        "This command will return the locations of perfect and/or rich planetary resources."
+        'This command will return the locations of perfect and/or rich planetary resources.'
       )
       .addStringOption((option) =>
         option
-          .setName("system")
-          .setDescription("The system to search for.")
+          .setName('system')
+          .setDescription('The system to search for.')
           .setRequired(true)
           .setAutocomplete(true)
       )
       .addStringOption((option) =>
         option
-          .setName("resource")
-          .setDescription("The resource to search for.")
+          .setName('resource')
+          .setDescription('The resource to search for.')
           .setRequired(true)
           .setAutocomplete(true)
       ),
-  description: "This command will return the locations of perfect and/or rich planetary resources.",
+  description:
+    'This command will return the locations of perfect and/or rich planetary resources.',
   help: {
-    title: "Constellation Resources",
+    title: 'Constellation Resources',
     description:
-      "This command will return the planet/system(s) of perfect and/or rich planetary resources within the constellation of the system entered. This can be useful to decide decide the best Capsuleer Outpost placement.",
+      'This command will return the planet/system(s) of perfect and/or rich planetary resources within the constellation of the system entered. This can be useful to decide decide the best Capsuleer Outpost placement.',
     examples: [
       {
-        args: ["jita reactive metals"],
-        description: "Returns the planet/system(s) of perfect and/or rich reactive metals within the constellation of Jita.",
-      },
-    ],
+        args: ['jita reactive metals'],
+        description:
+          'Returns the planet/system(s) of perfect and/or rich reactive metals within the constellation of Jita.'
+      }
+    ]
   },
   async commandAutocomplete(interaction: AutocompleteInteraction) {
     const focusedValue = interaction.options.getFocused(true);
-    if (focusedValue.name === "system") {
+    if (focusedValue.name === 'system') {
       const choices = SYSTEM_CHOICES.filter((s) =>
         s.name.toLowerCase().startsWith(focusedValue.value.toLowerCase())
       );
       return interaction.respond(
-        focusedValue.value !== ""
+        focusedValue.value !== ''
           ? choices.slice(0, 25)
           : SYSTEM_CHOICES.slice(0, 25)
       );
-    } else if (focusedValue.name === "resource") {
+    } else if (focusedValue.name === 'resource') {
       const choices = RESOURCE_CHOICES.filter((s) =>
         s.name.toLowerCase().startsWith(focusedValue.value.toLowerCase())
       );
       return interaction.respond(
-        focusedValue.value !== ""
+        focusedValue.value !== ''
           ? choices.slice(0, 25)
           : RESOURCE_CHOICES.slice(0, 25)
       );
@@ -89,8 +91,8 @@ export default {
   },
   async commandInteraction(interaction: CommandInteraction) {
     await interaction.deferReply();
-    const systemName = interaction.options.get("system")?.value as string;
-    const resourceName = interaction.options.get("resource")?.value as string;
+    const systemName = interaction.options.get('system')?.value as string;
+    const resourceName = interaction.options.get('resource')?.value as string;
     const prSearch = fusePR.search(resourceName);
     console.log(prSearch);
     if (prSearch.length == 0) {
@@ -100,7 +102,7 @@ export default {
       return;
     }
 
-    let resource = prSearch[0].item.name;
+    const resource = prSearch[0].item.name;
     const constSearch = fuseSystems.search(systemName);
     if (constSearch.length == 0) {
       await interaction.editReply(
@@ -140,21 +142,21 @@ export default {
           return {
             system: fields[1],
             richness: fields[2],
-            output: fields[3],
+            output: fields[3]
           };
         })
         .forEach((r) => {
           switch (r.richness.toLowerCase()) {
-            case "perfect":
+            case 'perfect':
               grouped[perfect].push(r);
               break;
-            case "rich":
+            case 'rich':
               grouped[rich].push(r);
               break;
-            case "medium":
+            case 'medium':
               grouped[medium].push(r);
               break;
-            case "poor":
+            case 'poor':
               grouped[poor].push(r);
               break;
           }
@@ -172,23 +174,23 @@ export default {
         if (g.length == 0) return;
         g.sort((a, b) => b.output - a.output);
         const next =
-          "```" +
+          '```' +
           g
             .map(
               (s) =>
                 `${s.system} ${s.richness.padStart(
                   15 - s.system.length + s.richness.length,
-                  " "
-                )} ${(s.output + "").padStart(
-                  8 - s.richness.length + (s.output + "").length,
-                  " "
+                  ' '
+                )} ${(s.output + '').padStart(
+                  8 - s.richness.length + (s.output + '').length,
+                  ' '
                 )}`
             )
-            .join("\n") +
-          "```";
+            .join('\n') +
+          '```';
         if (response.length + next.length >= 2000) {
           interaction.editReply(response);
-          response = "";
+          response = '';
         }
         response += next;
       });
@@ -202,5 +204,5 @@ export default {
     } finally {
       await driver.close();
     }
-  },
+  }
 } as ICommand;

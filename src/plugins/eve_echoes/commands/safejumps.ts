@@ -1,46 +1,47 @@
 import {
   SlashCommandBuilder,
   CommandInteraction,
-  AutocompleteInteraction,
-} from "discord.js";
-import Config from "../Config";
-import neo4j from "neo4j-driver";
-import { printSecurity, getSystems } from "./jumps";
-import { ICommand } from "@/shared/interfaces/ICommand";
-import systems from "@/data/systems.json";
+  AutocompleteInteraction
+} from 'discord.js';
+import Config from '../Config';
+import neo4j from 'neo4j-driver';
+import { printSecurity, getSystems } from './jumps';
+import { ICommand } from '@/shared/interfaces/ICommand';
+import systems from '@/data/systems.json';
 
 const SYSTEM_CHOICES = systems.map((system) => ({
   name: String(system.Name),
-  value: String(system.Name),
+  value: String(system.Name)
 }));
 
 export default {
-  aliases: ["safejumps", "sj"],
+  aliases: ['safejumps', 'sj'],
   commandBuilder: (alias: string) =>
     new SlashCommandBuilder()
       .setName(alias)
       .setDescription(
-        "This command will return the jump distance to travel between two given systems."
+        'This command will return the jump distance to travel between two given systems.'
       )
       .addStringOption((option) =>
         option
-          .setName("start")
-          .setDescription("The starting system.")
+          .setName('start')
+          .setDescription('The starting system.')
           .setRequired(true)
           .setAutocomplete(true)
       )
       .addStringOption((option) =>
         option
-          .setName("end")
-          .setDescription("The ending system.")
+          .setName('end')
+          .setDescription('The ending system.')
           .setRequired(true)
           .setAutocomplete(true)
       ),
-  description: "This command will return the jump distance to travel between two given systems.",
+  description:
+    'This command will return the jump distance to travel between two given systems.',
   help: {
-    title: "Safe Jumps",
+    title: 'Safe Jumps',
     description:
-      "This command will return the jump distance to travel between two given systems while preferring to stay within high security systems.",
+      'This command will return the jump distance to travel between two given systems while preferring to stay within high security systems.'
   },
   async commandAutocomplete(interaction: AutocompleteInteraction) {
     const systemName = interaction.options.getFocused(true);
@@ -51,15 +52,15 @@ export default {
     );
 
     await interaction.respond(
-      systemName.value !== ""
+      systemName.value !== ''
         ? choices.slice(0, 25)
         : SYSTEM_CHOICES.slice(0, 25)
     );
   },
   async commandInteraction(interaction: CommandInteraction) {
     await interaction.deferReply();
-    const start = interaction.options.get("start")?.value as string;
-    const end = interaction.options.get("end")?.value as string;
+    const start = interaction.options.get('start')?.value as string;
+    const end = interaction.options.get('end')?.value as string;
 
     const systems = getSystems(interaction, { start, end });
     if (!systems) return;
@@ -95,11 +96,11 @@ export default {
       );
       return;
     } catch (e) {
-      await interaction.editReply("An error occurred.");
+      await interaction.editReply('An error occurred.');
       throw e;
     } finally {
       await session.close();
       await driver.close();
     }
-  },
+  }
 } as ICommand;

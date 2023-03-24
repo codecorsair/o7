@@ -7,8 +7,8 @@ export const collections = {
   appconfig: 'appconfig',
   verification: 'verification',
   autovoiceconfig: 'autovoiceconfig',
-  autovoicecreatedchannels: 'autovoicecreatedchannels',
-}
+  autovoicecreatedchannels: 'autovoicecreatedchannels'
+};
 
 // Usage guides:
 // https://docs.mongodb.com/drivers/node/usage-examples/findOne
@@ -20,7 +20,7 @@ export const collections = {
 // https://docs.mongodb.com/drivers/node/usage-examples/replaceOne
 // https://docs.mongodb.com/drivers/node/usage-examples/deleteOne
 // https://docs.mongodb.com/drivers/node/usage-examples/deleteMany
-export function getClient(): MongoClient & { getDb: () => Db; } {
+export function getClient(): MongoClient & { getDb: () => Db } {
   const client = <any>new MongoClient(Config.mongo.connectionString);
   client.getDb = () => client.db(Config.mongo.database);
   return client;

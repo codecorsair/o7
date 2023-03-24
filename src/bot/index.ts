@@ -8,9 +8,4 @@ const client = new Client({
   shardCount: getInfo().TOTAL_SHARDS
 });
 
-client
-  .login(Config.token)
-  .catch((e) => console.error(`Error while logging in: ${e}`))
-  .then(() => {
-    console.log('Logged in');
-  });
+client.login(Config.token);

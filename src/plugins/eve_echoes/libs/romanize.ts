@@ -1,5 +1,5 @@
 export function romanize(num: number) {
-  var roman = {
+  const roman = {
     M: 1000,
     CM: 900,
     D: 500,
@@ -14,10 +14,10 @@ export function romanize(num: number) {
     IV: 4,
     I: 1
   };
-  var str = '';
+  let str = '';
 
-  for (var i of Object.keys(roman)) {
-    var q = Math.floor(num / roman[i]);
+  for (const i of Object.keys(roman)) {
+    const q = Math.floor(num / roman[i]);
     num -= q * roman[i];
     str += i.repeat(q);
   }

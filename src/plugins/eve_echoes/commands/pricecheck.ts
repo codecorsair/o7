@@ -1,75 +1,75 @@
-import { SlashCommandBuilder, CommandInteraction } from "discord.js";
-import { startCase } from "lodash";
-import moment from "moment";
-import numeral from "numeral";
-import { getMarketData, getLatestValidPrice } from "../libs/market-api";
-import items from "@/data/items.json";
-import { Ores, PlanetaryResources, Minerals } from "../constants";
-import { EmbedBuilder } from "@discordjs/builders";
-import { ICommand } from "@/shared/interfaces/ICommand";
+import { SlashCommandBuilder, CommandInteraction } from 'discord.js';
+import { startCase } from 'lodash';
+import moment from 'moment';
+import numeral from 'numeral';
+import { getMarketData, getLatestValidPrice } from '../libs/market-api';
+import items from '@/data/items.json';
+import { Ores, PlanetaryResources, Minerals } from '../constants';
+import { EmbedBuilder } from '@discordjs/builders';
+import { ICommand } from '@/shared/interfaces/ICommand';
 
 const oreKeys = Object.values(Ores).map((_) => _.toLowerCase());
 const mineralKeys = Object.values(Minerals).map((_) => _.toLowerCase());
 const piKeys = Object.values(PlanetaryResources).map((_) => _.toLowerCase());
 
 const customKeywords = {
-  minerals: { title: "mineral", keys: mineralKeys },
-  mineral: { title: "mineral", keys: mineralKeys },
-  mins: { title: "mineral", keys: mineralKeys },
-  min: { title: "mineral", keys: mineralKeys },
-  planetary: { title: "planetary resource", keys: piKeys },
-  "planetary items": { title: "planetary resource", keys: piKeys },
-  "planetary item": { title: "planetary resource", keys: piKeys },
-  pl: { title: "planetary resource", keys: piKeys },
-  pi: { title: "planetary resource", keys: piKeys },
-  pr: { title: "planetary resource", keys: piKeys },
-  "planetary resource": { title: "planetary resource", keys: piKeys },
-  "planetary resources": { title: "planetary resource", keys: piKeys },
-  ore: { title: "ore", keys: oreKeys },
-  ores: { title: "ore", keys: oreKeys },
+  minerals: { title: 'mineral', keys: mineralKeys },
+  mineral: { title: 'mineral', keys: mineralKeys },
+  mins: { title: 'mineral', keys: mineralKeys },
+  min: { title: 'mineral', keys: mineralKeys },
+  planetary: { title: 'planetary resource', keys: piKeys },
+  'planetary items': { title: 'planetary resource', keys: piKeys },
+  'planetary item': { title: 'planetary resource', keys: piKeys },
+  pl: { title: 'planetary resource', keys: piKeys },
+  pi: { title: 'planetary resource', keys: piKeys },
+  pr: { title: 'planetary resource', keys: piKeys },
+  'planetary resource': { title: 'planetary resource', keys: piKeys },
+  'planetary resources': { title: 'planetary resource', keys: piKeys },
+  ore: { title: 'ore', keys: oreKeys },
+  ores: { title: 'ore', keys: oreKeys }
 };
 
 export default {
-  aliases: ["pricecheck", "pc"],
+  aliases: ['pricecheck', 'pc'],
   commandBuilder: (alias: string) =>
     new SlashCommandBuilder()
       .setName(alias)
       .setDescription(
-        "This command will return market price data which is queried from <https://eve-echoes-market.com>."
+        'This command will return market price data which is queried from <https://eve-echoes-market.com>.'
       )
       .addStringOption((option) =>
         option
-          .setName("item")
-          .setDescription("The item to get the price of.")
+          .setName('item')
+          .setDescription('The item to get the price of.')
           .setRequired(true)
       ),
-  description: "Get the price of an item.",
+  description: 'Get the price of an item.',
   help: {
-    title: "Price Check",
+    title: 'Price Check',
     description:
-      "This command will return market price data which is queried from <https://eve-echoes-market.com>.",
+      'This command will return market price data which is queried from <https://eve-echoes-market.com>.',
     examples: [
       {
-        args: ["caracal navy"],
-        description: "Get the price details for a Caracal Navy Issue.",
+        args: ['caracal navy'],
+        description: 'Get the price details for a Caracal Navy Issue.'
       },
       {
-        args: ["minerals"],
-        description: "Get the prices of all minerals",
+        args: ['minerals'],
+        description: 'Get the prices of all minerals'
       },
       {
-        args: ["ore"],
-        description: "Get the prices of all ore.",
+        args: ['ore'],
+        description: 'Get the prices of all ore.'
       },
       {
-        args: ["planetary"],
-        description: "Get the prices of all planetary resources.",
-      },
-    ],
+        args: ['planetary'],
+        description: 'Get the prices of all planetary resources.'
+      }
+    ]
   },
   async commandInteraction(interaction: CommandInteraction) {
     await interaction.deferReply();
-    const itemName = interaction.options.get("item")?.value as string;
+    const itemName = interaction.options.get('item')?.value as string;
     if (customKeywords[itemName]) {
       const special = customKeywords[itemName];
       let embed = new EmbedBuilder().setTitle(
@@ -86,29 +86,29 @@ export default {
               {
                 name: itemInfo.name,
                 value: `**B** ${
-                  numeral(price.buy).format("0[.]0a") || "__"
+                  numeral(price.buy).format('0[.]0a') || '__'
                 } *ISK*\n**S** ${
-                  numeral(price.sell).format("0[.]0a") || "__"
-                } *ISK*\n**V** ${numeral(price.volume).format("0,0") || 0}\n`,
-                inline: true,
-              },
+                  numeral(price.sell).format('0[.]0a') || '__'
+                } *ISK*\n**V** ${numeral(price.volume).format('0,0') || 0}\n`,
+                inline: true
+              }
             ]);
           } else {
             embed.addFields([
               {
                 name: startCase(key),
-                value: "unknown",
-                inline: true,
-              },
+                value: 'unknown',
+                inline: true
+              }
             ]);
           }
         } else {
           embed.addFields([
             {
               name: startCase(key),
-              value: "unknown",
-              inline: true,
-            },
+              value: 'unknown',
+              inline: true
+            }
           ]);
         }
         if (++counter === 24) {
@@ -147,11 +147,11 @@ export default {
             .setThumbnail(
               `https://storage.googleapis.com/o7-store/icons/${itemInfo.icon_id}.png`
             ).setDescription(`\
-**Buy Order** ${numeral(price.buy).format("0[.]0a")}
-**Sell Order** ${numeral(price.sell).format("0[.]0a")}
+**Buy Order** ${numeral(price.buy).format('0[.]0a')}
+**Sell Order** ${numeral(price.sell).format('0[.]0a')}
 **Volume** ${price.volume || 0}
-_last updated ${moment(price.time * 1000).fromNow()}_`),
-        ],
+_last updated ${moment(price.time * 1000).fromNow()}_`)
+        ]
       });
       return;
     } catch (err) {
@@ -160,5 +160,5 @@ _last updated ${moment(price.time * 1000).fromNow()}_`),
       );
       throw err;
     }
-  },
+  }
 } as ICommand;

@@ -41,7 +41,9 @@ export default {
   ),
   handshake: assert<boolean>(
     `Configure cluster handshake using the "handshake" key in the config file or the "CLUSTER_HANDSHAKE" environment variable.`,
-    CLUSTER_HANDSHAKE && (CLUSTER_HANDSHAKE.toLowerCase() === 'true' || parseInt(CLUSTER_HANDSHAKE as string) === 1),
+    CLUSTER_HANDSHAKE &&
+      (CLUSTER_HANDSHAKE.toLowerCase() === 'true' ||
+        parseInt(CLUSTER_HANDSHAKE as string) === 1),
     Config.get('handshake'),
     false
   ),
@@ -52,7 +54,9 @@ export default {
   ),
   rollingRestarts: assert<boolean>(
     `Configure cluster rolling restarts using the "rollingRestarts" key in the config file or the "CLUSTER_ROLLING_RESTARTS" environment variable.`,
-    CLUSTER_ROLLING_RESTARTS && (CLUSTER_ROLLING_RESTARTS.toLowerCase() === 'true' || parseInt(CLUSTER_ROLLING_RESTARTS as string) === 1),
+    CLUSTER_ROLLING_RESTARTS &&
+      (CLUSTER_ROLLING_RESTARTS.toLowerCase() === 'true' ||
+        parseInt(CLUSTER_ROLLING_RESTARTS as string) === 1),
     Config.get('rollingRestarts'),
     false
   )

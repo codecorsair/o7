@@ -1,5 +1,5 @@
 import { GenericConfig } from '@/shared/GenericConfig';
-import { resolve } from '@/shared/utils/resolve'
+import { resolve } from '@/shared/utils/resolve';
 import { assert } from '@/shared/utils/assert';
 
 const { BOT_INTENTS, BOT_PLUGINS_PATH, BOT_TOKEN, BOT_PLUGINS } = process.env;

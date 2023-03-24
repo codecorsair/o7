@@ -1,11 +1,11 @@
-import { SlashCommandBuilder } from "@discordjs/builders";
+import { SlashCommandBuilder } from '@discordjs/builders';
 import {
   AutocompleteInteraction,
   CommandInteraction,
-  EmbedBuilder,
-} from "discord.js";
-import { ICommand } from "@/shared/interfaces/ICommand";
-import { IClient } from "@/shared/interfaces/IClient";
+  EmbedBuilder
+} from 'discord.js';
+import { ICommand } from '@/shared/interfaces/ICommand';
+import { IClient } from '@/shared/interfaces/IClient';
 
 const getAllCommands = (client: IClient) =>
   client.commands
@@ -13,26 +13,26 @@ const getAllCommands = (client: IClient) =>
     .flat();
 
 export default {
-  aliases: ["help"],
+  aliases: ['help'],
   commandBuilder: (alias: string) =>
     new SlashCommandBuilder()
       .setName(alias)
-      .setDescription("Show help about commands")
+      .setDescription('Show help about commands')
       .addStringOption((option) =>
         option
-          .setName("search")
-          .setDescription("The command to get help for")
+          .setName('search')
+          .setDescription('The command to get help for')
           .setRequired(true)
           .setAutocomplete(true)
       ),
-  description: "Show help about commands",
+  description: 'Show help about commands',
   async commandAutocomplete(interaction: AutocompleteInteraction) {
-    const search = interaction.options.getString("search") as string;
+    const search = interaction.options.getString('search') as string;
     const client = interaction.client as IClient;
     const commands = getAllCommands(client)
       .map((c) => ({
         name: c,
-        value: c,
+        value: c
       }))
       .filter((c) => c.name.indexOf(search) !== -1);
 
@@ -42,13 +42,13 @@ export default {
   },
   async commandInteraction(interaction: CommandInteraction) {
     await interaction.deferReply({ ephemeral: true });
-    const search = interaction.options.get("search")?.value as string;
+    const search = interaction.options.get('search')?.value as string;
 
     const client = interaction.client as IClient;
     const command = getAllCommands(client)
       .map((c) => ({
         name: c,
-        value: c,
+        value: c
       }))
       .find((c) => c.name === search);
 
@@ -74,8 +74,8 @@ export default {
         .filter((alias) => alias !== search)
         .map((alias) => ({
           name: alias,
-          value: "No description",
-          inline: false,
+          value: 'No description',
+          inline: false
         }));
 
       embed.addFields(...embedAliases);
@@ -83,9 +83,9 @@ export default {
 
     if (help.examples) {
       const embedExamples = help.examples.map((example) => ({
-        name: example?.args ? `'${example.args.join(', ')}'` : "No arguments",
-        value: example?.description ? example.description : "No description",
-        inline: false,
+        name: example?.args ? `'${example.args.join(', ')}'` : 'No arguments',
+        value: example?.description ? example.description : 'No description',
+        inline: false
       }));
 
       embed.addFields(...embedExamples);
@@ -93,5 +93,5 @@ export default {
 
     await interaction.editReply({ embeds: [embed] });
     return;
-  },
+  }
 } as ICommand;

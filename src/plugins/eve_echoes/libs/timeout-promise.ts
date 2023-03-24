@@ -5,10 +5,10 @@ export function timeoutPromise<T>(ms: number, promise: Promise<T>) {
       clearTimeout(id);
       reject(`Timed out in ${ms}ms.`);
       return null;
-    }, ms)
+    }, ms);
   });
   return Promise.race([
-    promise.then(response => {
+    promise.then((response) => {
       clearTimeout(id);
       return response;
     }),
