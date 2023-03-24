@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "es6",
+    "module": "esnext",
     "outDir": "dist",
     "baseUrl": "src/",
     "strict": true,
@@ -12,7 +13,6 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "moduleResolution": "node",
-    "allowJs": true,
     "noImplicitAny": false,
     "paths": {
       "@/*": ["*"]
