@@ -44,5 +44,4 @@ client
   })
   .catch((err: any) => {
     logger.error(`Error while fetching shard data: ${err}`);
-    setTimeout(restart, ONE_MINUTE);
   });
