@@ -47,7 +47,7 @@ client.on('ready', () => {
   clusterManager.on('clusterCreate', (cluster) =>
     logger.info(`Cluster ${cluster.id} created`)
   );
-  clusterManager.on('debug', (message) => logger.debug(message));
+  clusterManager.on('debug', (message) => logger.debug(`[DEBUG] ${message}`));
   client.listen(clusterManager);
 
   fetchShardData();

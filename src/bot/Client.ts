@@ -21,7 +21,6 @@ export class Client extends DJSClient implements IClient {
 
   public cluster: any;
   public machine: any;
-  public rest: any;
 
   public commands: Collection<string, ICommand> = new Collection();
   public cronjobs: Collection<string, ICronjob> = new Collection();
@@ -29,18 +28,18 @@ export class Client extends DJSClient implements IClient {
   constructor(options: ClientOptions) {
     super(options);
 
+    this.pluginManager = new PluginManager(this);
+    this.machine = new Shard(this.cluster);
+
     this.on('ready', this.onReady.bind(this));
     this.on('interactionCreate', this.onInteractionCreate.bind(this));
     this.on('guildCreate', this.onGuildCreate.bind(this));
-
-    this.pluginManager = new PluginManager(this);
   }
 
   onReady() {
     console.log(`Logged in as ${this.user?.tag}!`);
     
     this.cluster = new ClusterClient(this);
-    this.machine = new Shard(this.cluster); // Initialize Cluster
 
     this.machine
       .broadcastEval(`this.guilds.cache.size`)
