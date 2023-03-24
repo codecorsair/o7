@@ -1,4 +1,4 @@
-import { Bridge, CacheServer } from 'discord-cross-hosting';
+import { Bridge } from 'discord-cross-hosting';
 import { createLogger } from '@/shared/utils/logger';
 import Config from './Config';
 
@@ -12,18 +12,7 @@ const server = new Bridge({
   shardsPerCluster: Config.shardsPerCluster, // The amount of Internal Shards, which are in one Cluster
   token: Config.token, // The Bot Token
 });
-const storage = new CacheServer(server, {
-  path: [
-      {
-          path: 'guilds',
-          maxSize: 100,
-      },
-      {
-          path: 'channels',
-          maxSize: 100,
-      },
-  ],
-});
+
 server.on('debug', (message) => logger.debug(`[DEBUG] ${message}`));
 server.start();
 server.on('ready', (url) => {

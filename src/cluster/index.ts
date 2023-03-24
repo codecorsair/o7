@@ -1,4 +1,4 @@
-import { Client, CacheClient } from 'discord-cross-hosting';
+import { Client } from 'discord-cross-hosting';
 import { ClusterManager } from 'discord-hybrid-sharding';
 import { createLogger } from '@/shared/utils/logger';
 import { hostname } from 'os';
@@ -16,17 +16,9 @@ const client = new Client({
   authToken: Config.authToken,
   rollingRestarts: Config.rollingRestarts // Enable, when bot should respawn when cluster list changes.
 });
-const storage = new CacheClient(client, {
-  path: [
-    {
-      path: 'guilds',
-      maxSize: 100
-    },
-    {
-      path: 'channels',
-      maxSize: 100
-    }
-  ]
+const clusterManager = new ClusterManager(`${__dirname}/../bot/index.js`, {
+  totalShards: 1,
+  totalClusters: 'auto'
 });
 client.on('debug', (message) => logger.debug(`[DEBUG] ${message}`));
 const fetchShardData = async () => {
@@ -52,10 +44,6 @@ const fetchShardData = async () => {
 client.on('ready', () => {
   logger.info('Connected to Discord Cross Hosting');
 
-  const clusterManager = new ClusterManager(`${__dirname}/../bot/index.js`, {
-    totalShards: 1,
-    totalClusters: 'auto'
-  }); // Some dummy Data
   clusterManager.on('clusterCreate', (cluster) =>
     logger.info(`Cluster ${cluster.id} created`)
   );

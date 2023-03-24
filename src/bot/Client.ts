@@ -10,7 +10,7 @@ import { PluginManager } from './pluginManager/PluginManager';
 import { IPluginWrapper } from './pluginManager/IPluginWrapper';
 import { createLogger } from '@/shared/utils/logger';
 import { Shard } from 'discord-cross-hosting';
-import { ClusterClient, getInfo } from 'discord-hybrid-sharding';
+import { ClusterClient } from 'discord-hybrid-sharding';
 import * as fs from 'fs';
 import Config from './Config';
 
@@ -26,19 +26,15 @@ export class Client extends DJSClient implements IClient {
   public commands: Collection<string, ICommand> = new Collection();
   public cronjobs: Collection<string, ICronjob> = new Collection();
 
-  constructor(options?: ClientOptions) {
-    super(
-      options || {
-        intents: Config.intents
-      }
-    );
+  constructor(options: ClientOptions) {
+    super(options);
 
     this.on('ready', this.onReady.bind(this));
     this.on('interactionCreate', this.onInteractionCreate.bind(this));
     this.on('guildCreate', this.onGuildCreate.bind(this));
 
-    this.cluster = new ClusterClient(client);
-    this.machine = new Shard(client.cluster); // Initialize Cluster
+    this.cluster = new ClusterClient(this);
+    this.machine = new Shard(this.cluster); // Initialize Cluster
 
     this.pluginManager = new PluginManager(this);
 
@@ -49,8 +45,8 @@ export class Client extends DJSClient implements IClient {
   }
 
   onReady() {
-    console.log(`Logged in as ${client.user?.tag}!`);
-    client.machine
+    console.log(`Logged in as ${this.user?.tag}!`);
+    this.machine
       .broadcastEval(`this.guilds.cache.size`)
       .then((results) => {
         console.log(
@@ -63,7 +59,7 @@ export class Client extends DJSClient implements IClient {
   }
 
   async onGuildCreate(guild) {
-    const guildCount = await client?.shard?.fetchClientValues(
+    const guildCount = await this.shard?.fetchClientValues(
       'guilds.cache.size'
     );
     console.log(
@@ -74,7 +70,7 @@ export class Client extends DJSClient implements IClient {
   async onInteractionCreate(interaction) {
     if (!interaction.isChatInputCommand() && !interaction.isAutocomplete())
       return;
-    const command = client.commands.get(interaction.commandName);
+    const command = this.commands.get(interaction.commandName);
     if (!command) return;
     try {
       if (interaction.isChatInputCommand()) {
