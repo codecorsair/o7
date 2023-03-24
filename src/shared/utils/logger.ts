@@ -4,11 +4,7 @@ export function createLogger(name?: string) {
   const logger = pino(
     {
       name: name || 'default',
-    },
-    pino.destination({
-      minLength: 4096,
-      sync: false
-    })
+    }
   );
 
   return {
