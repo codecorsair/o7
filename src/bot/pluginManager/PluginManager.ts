@@ -49,6 +49,7 @@ export class PluginManager {
       logger.error(
         `Plugin with name ${plugin.name} failed to load: ${error.message}`
       );
+      throw error;
     }
   }
 
@@ -72,7 +73,6 @@ export class PluginManager {
     const pluginInstance = plugin.instance as PluginInstance;
     const protocol = {
       logger: createLogger(name),
-      // logger: logger.child({ plugin: plugin.name }),
       client: this.client,
       registerCommand: this.client.registerCommand,
       registerCronjob: this.client.registerCronjob

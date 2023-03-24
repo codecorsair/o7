@@ -34,12 +34,12 @@ export class Client extends DJSClient implements IClient {
   }
 
   onReady() {
-    logger.log(`Logged in as ${this.user?.tag}!`);
+    logger.info(`Logged in as ${this.user?.tag}!`);
 
     this.machine
       .broadcastEval(`this.guilds.cache.size`)
       .then((results) => {
-        logger.log(
+        logger.info(
           `Total Guilds: ${results.reduce((prev, val) => prev + val, 0)}`
         );
       })
@@ -55,7 +55,7 @@ export class Client extends DJSClient implements IClient {
 
   async onGuildCreate(guild) {
     const guildCount = await this.shard?.fetchClientValues('guilds.cache.size');
-    logger.log(
+    logger.info(
       `Joined guild ${guild.name} (${guild.id}) [Total: ${guildCount}]`
     );
   }
@@ -67,13 +67,13 @@ export class Client extends DJSClient implements IClient {
     if (!command) return;
     try {
       if (interaction.isChatInputCommand()) {
-        logger.log(
+        logger.info(
           `Command ${interaction.commandName} used by ${interaction.user.tag} (${interaction.user.id}) in ${interaction.guild?.name} (${interaction.guild?.id})`
         );
         await command.commandInteraction(interaction);
         return;
       } else if (interaction.isAutocomplete() && command.commandAutocomplete) {
-        logger.log(
+        logger.info(
           `Autocomplete ${interaction.commandName} used by ${interaction.user.tag} (${interaction.user.id}) in ${interaction.guild?.name} (${interaction.guild?.id})`
         );
         await command.commandAutocomplete(interaction);
@@ -143,7 +143,7 @@ export class Client extends DJSClient implements IClient {
   private initCommands(): void {
     for (const [commandName, command] of this.commands.entries()) {
       this.application?.commands.create(command.commandBuilder(commandName));
-      logger.log(`Registered command ${commandName}`);
+      logger.info(`Registered command ${commandName}`);
     }
   }
 

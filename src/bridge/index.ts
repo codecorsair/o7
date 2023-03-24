@@ -13,7 +13,7 @@ const server = new Bridge({
   token: Config.token // The Bot Token
 });
 
-server.on('debug', (message) => logger.debug(`[DEBUG] ${message}`));
+server.on('debug', (message) => logger.debug(message));
 server.start();
 server.on('ready', (url) => {
   logger.info(`Bridge is ready at ${url}`);

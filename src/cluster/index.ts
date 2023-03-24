@@ -19,7 +19,7 @@ const client = new Client({
 const clusterManager = new ClusterManager(`${__dirname}/../bot/index.js`, {
   totalShards: 1
 });
-client.on('debug', (message) => logger.debug(`[DEBUG] ${message}`));
+client.on('debug', (message) => logger.debug(message));
 const fetchShardData = async () => {
   try {
     const shardData = (await client.requestShardData()) as any;
@@ -40,7 +40,7 @@ const fetchShardData = async () => {
 clusterManager.on('clusterCreate', (cluster) =>
   logger.info(`Cluster ${cluster.id} created`)
 );
-clusterManager.on('debug', (message) => logger.debug(`[DEBUG] ${message}`));
+clusterManager.on('debug', (message) => logger.debug(message);
 client.on('ready', async () => {
   await fetchShardData();
 
