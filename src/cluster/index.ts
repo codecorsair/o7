@@ -17,31 +17,31 @@ const client = new Client({
   rollingRestarts: Config.rollingRestarts // Enable, when bot should respawn when cluster list changes.
 });
 client.on('debug', (message) => logger.debug(`[DEBUG] ${message}`));
+client.on('ready', () => {
+  logger.info('Connected to Discord Cross Hosting')
 
-const clusterManager = new ClusterManager(`${__dirname}/../bot/index.js`, {
-  totalShards: 1,
-  totalClusters: 'auto',
-  mode: 'worker'
-}); // Some dummy Data
-clusterManager.on('clusterCreate', (cluster) =>
-  logger.info(`Cluster ${cluster.id} created`)
-);
-clusterManager.on('debug', (message) => logger.debug(message));
+  const clusterManager = new ClusterManager(`${__dirname}/../bot/index.js`, {
+    totalShards: 1,
+    totalClusters: 'auto'
+  }); // Some dummy Data
+  clusterManager.on('clusterCreate', (cluster) => logger.info(`Cluster ${cluster.id} created`));
+  clusterManager.on('debug', (message) => logger.debug(message));
+  client.listen(clusterManager);
 
-client.listen(clusterManager);
+  client
+    .requestShardData()
+    .then((e: any) => {
+      if (!e) return;
+      if (!e.shardList) return;
+      clusterManager.totalShards = e.totalShards;
+      clusterManager.totalClusters = e.shardList.length;
+      clusterManager.shardList = e.shardList;
+      clusterManager.clusterList = e.clusterList;
+      clusterManager.spawn({ timeout: ONE_MINUTE });
+    })
+    .catch((err: any) => {
+      logger.error(`Error while fetching shard data: ${err}`);
+    });
+});
+
 client.connect();
-
-client
-  .requestShardData()
-  .then((e: any) => {
-    if (!e) return;
-    if (!e.shardList) return;
-    clusterManager.totalShards = e.totalShards;
-    clusterManager.totalClusters = e.shardList.length;
-    clusterManager.shardList = e.shardList;
-    clusterManager.clusterList = e.clusterList;
-    clusterManager.spawn({ timeout: ONE_MINUTE });
-  })
-  .catch((err: any) => {
-    logger.error(`Error while fetching shard data: ${err}`);
-  });
