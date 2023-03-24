@@ -8,7 +8,7 @@ import { createLogger } from '@/shared/utils/logger';
 import { Shard } from 'discord-cross-hosting';
 import { ClusterClient } from 'discord-hybrid-sharding';
 import * as fs from 'fs';
-impor
+import * as path from 'path';
 import Config from './Config';
 
 const logger = createLogger("client");
@@ -111,6 +111,10 @@ export class Client extends DJSClient implements IClient {
     const plugins = fs
       .readdirSync(Config.pluginsPath)
       .filter((file) => fs.existsSync(path.join(Config.pluginsPath, file, 'index.js')));
+
+    if (plugins.length === 0) {
+      logger.warn("No plugins found")
+    }
 
     for (const plugin of plugins) {
       const pluginWrapper: IPluginWrapper = {
