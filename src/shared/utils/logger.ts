@@ -1,7 +1,8 @@
 import { pino } from 'pino';
-const dest = pino.destination('/dev/null');
-dest[Symbol.for('pino.metadata')] = true;
 export function createLogger(name?: string) {
+  const dest = pino.destination('/dev/null');
+  dest[Symbol.for('pino.metadata')] = true;
+
   const logger = pino(
     {
       name: name || 'default',
