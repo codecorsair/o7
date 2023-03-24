@@ -1,8 +1,7 @@
 import {
   Client as DJSClient,
   ClientOptions,
-  Collection,
-  GatewayIntentBits
+  Collection
 } from 'discord.js';
 import { ICommand } from '@/shared/interfaces/ICommand';
 import { ICronjob } from '@/shared/interfaces/ICronjob';
