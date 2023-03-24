@@ -29,6 +29,7 @@ export class Client extends DJSClient implements IClient {
     super(options);
 
     this.pluginManager = new PluginManager(this);
+    this.cluster = new ClusterClient(this);
     this.machine = new Shard(this.cluster);
 
     this.on('ready', this.onReady.bind(this));
@@ -39,8 +40,6 @@ export class Client extends DJSClient implements IClient {
   onReady() {
     console.log(`Logged in as ${this.user?.tag}!`);
     
-    this.cluster = new ClusterClient(this);
-
     this.machine
       .broadcastEval(`this.guilds.cache.size`)
       .then((results) => {
