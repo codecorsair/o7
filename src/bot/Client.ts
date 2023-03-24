@@ -37,11 +37,6 @@ export class Client extends DJSClient implements IClient {
     this.machine = new Shard(this.cluster); // Initialize Cluster
 
     this.pluginManager = new PluginManager(this);
-
-    this.loadPlugins();
-
-    this.initCommands();
-    this.initCronjobs();
   }
 
   onReady() {
@@ -56,6 +51,11 @@ export class Client extends DJSClient implements IClient {
       .catch((e: any) =>
         console.error(`Error while fetching guild count: ${e}`)
       );
+
+    this.loadPlugins();
+
+    this.initCommands();
+    this.initCronjobs();
   }
 
   async onGuildCreate(guild) {
