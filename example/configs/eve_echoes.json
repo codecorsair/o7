@@ -1,0 +1,7 @@
+{
+  "neo4j": {
+    "uri": "neo4j://neo4j:7687/",
+    "username": "neo4j",
+    "password": "neo4j"
+  }
+}

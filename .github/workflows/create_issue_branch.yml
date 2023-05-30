@@ -1,0 +1,44 @@
+name: Create Issue Branch
+on:
+  issues:
+    types: [labeled]
+    
+concurrency: 
+  group: create-branch-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
+jobs:
+  create_branch:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.label.name == "Accepted" }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: main
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create Branch
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const branchName = `issue-${{ github.event.issue.number }}`
+            const branchExists = await github.repos.getBranch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              branch: branchName
+            }).catch(() => false)
+            if (!branchExists) {
+              await github.git.createRef({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                ref: `refs/heads/${branchName}`,
+                sha: context.sha
+              })
+            }
+            await github.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `Branch created: ${branchName}`
+            })
