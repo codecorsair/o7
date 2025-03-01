@@ -1,6 +1,8 @@
 # o7 Discord bot
 A discord bot for the Eve Echoes community!
 
+**NOTE: THIS BOT IS NO LONGER OPERATIONAL**
+
 ## Overview
 o7 is a hosted bot that is available free for anyone to add to their server. Just [click here](https://discord.com/oauth2/authorize?client_id=753820564665270333&scope=bot&permissions=3072) to invite **o7** to your Discord server.
 
@@ -48,7 +50,7 @@ Have any questions or help with **o7** development by joining our [Official Disc
 ## License
 Released under the MIT license.
 
-Copyright (c) 2020-present James Ryan Brown
+Copyright (c) 2020-present James Brown
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
